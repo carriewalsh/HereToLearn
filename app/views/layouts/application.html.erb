@@ -10,6 +10,26 @@
   </head>
 
   <body>
+    <nav>
+      <br>
+      <div class="nav-dashboard">
+        <%= link_to "Dashboard", welcome_path %>
+        <!-- link_to "Dashboard", dashboard_path, class:"nav-button" -->
+        <%  %>
+        <!-- if !session[:user_id].nil? -->
+          <!-- link_to "Log Out", logout_path, class:"nav-button" -->
+        <!-- end -->
+        <%  %>
+      </div>
+      <div class="flash-message">
+        <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: name %>
+        <% end %>
+      </div>
+      <div class="nav-logout">
+        <a href="" class="nav-button">Login</a>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
