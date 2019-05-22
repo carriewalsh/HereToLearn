@@ -96,6 +96,23 @@ input {
 }
 
 
+.course-container {
+
+}
+
+.course-student-card {
+
+}
+
+.calendar-container {
+
+}
+
+.graph-container {
+  
+}
+
+
 #h2l {
   grid-column: 1 / span 1;
   height: 50px;
