@@ -19,8 +19,8 @@ describe "As a visitor or user" do
 
     it "has a place for me to log in" do
       within ".login-container" do
-        fill_in "email", with: "test"
-        fill_in "password", with: "test"
+        fill_in "session[email]", with: "test"
+        fill_in "session[password]", with: "test"
         expect(page).to have_link("Forgot Password?")
         expect(page).to have_button("Log In")
         # click_button("Log In")
