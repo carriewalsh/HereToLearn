@@ -1,8 +1,10 @@
 body {
-  background: #011627;
+  background: url("https://cdn.pixabay.com/photo/2016/03/22/15/31/background-image-1273097_960_720.jpg");
   color: #F6F7F8;
-  margin-top: 55px;
+  margin-top: 60px;
   font-family: helvetica;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 nav {
@@ -124,6 +126,14 @@ footer {
 
 .forgot:hover {
   color: #FF6F66;
+}
+
+.about-paragraph {
+  font-size: 20px;
+}
+
+.h2l-team {
+  margin-left: 250px;
 }
 
 
