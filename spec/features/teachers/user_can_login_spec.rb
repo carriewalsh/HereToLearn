@@ -15,9 +15,11 @@ describe "As a teacher" do
     Student.third.course << Course.second
     Student.fourth.course << Course.second
 
+
+    # Change this once db has been setup
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@teacher)
 
-    expect(page).to eq("Welcome to HereToLearn")
+    expect(page).to have_content("Welcome to HereToLearn")
     fill_in "email", with: @teacher.email
     fill_in "password", with: @teacher.password
     click_on "Log In"
