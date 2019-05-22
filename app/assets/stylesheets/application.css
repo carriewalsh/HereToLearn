@@ -59,3 +59,13 @@ input {
   margin-right: 30vw;
   padding: 25px;
 }
+
+.forgot {
+  color: #0a7abc;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.forgot:hover {
+  color: #FF6F66;
+}
