@@ -10,6 +10,8 @@ describe Course, type: :model do
 
   describe "relationships" do
     it { should have_many :student_courses }
+    it { should have_many :students }
     it { should have_many :teacher_courses }
+    it { should have_many :teachers }
   end
 end
