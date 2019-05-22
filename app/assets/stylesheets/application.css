@@ -26,6 +26,37 @@ input {
   width: 250px;
 }
 
+footer {
+  background: #FF6F66;
+  bottom: 0px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  height: 30px;
+  left: 0px;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+}
+
+.footer-link {
+  color: #F6F7F8;
+  grid-column: 3 / span 1;
+  padding-top: 3px;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: #011627;
+  text-decoration: none;
+}
+
+.copyright {
+  color: #011627;
+  font-size: 12px;
+  grid-column: 1 / span 1;
+  margin-bottom: 5px;
+}
+
 .input-box {
   font-size: 18px;
   margin-bottom: 5px;
@@ -109,7 +140,7 @@ input {
 }
 
 .graph-container {
-  
+
 }
 
 
