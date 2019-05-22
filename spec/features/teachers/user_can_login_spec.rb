@@ -49,4 +49,14 @@ describe "As a teacher" do
     expect(page).to have_content("Sorry, bad wrong email/password combination")
     expect(page).to_not have_content("Logged in as #{@teacher.first_name} #{teacher.last_name}")
   end
+
+  it "I can logout" do
+    fill_in "email", with: @teacher.email
+    fill_in "password", with: @teacher.password
+    click_on "Log In"
+    click_on "Log Out"
+    expect(current_path).to eq(welcome_path)
+    expect(page).to_not have_link("Log Out")
+    expect(page).to have_content("You have successfully logged out")
+  end
 end
