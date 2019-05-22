@@ -21,8 +21,10 @@ describe "As a visitor or user" do
       within ".login-container" do
         fill_in "email", with: "test"
         fill_in "password", with: "test"
-        expect(page).to have_button("Log In")
         expect(page).to have_link("Forgot Password?")
+        expect(page).to have_button("Log In")
+        # click_button("Log In")
+        # expect(current_path).to eq(dashboard_path)
       end
     end
   end
