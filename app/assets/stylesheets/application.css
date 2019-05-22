@@ -1,7 +1,7 @@
 body {
   background: #011627;
   color: #F6F7F8;
-  margin-top: 40px;
+  margin-top: 55px;
   font-family: helvetica;
 }
 
@@ -10,7 +10,8 @@ nav {
   background: #0a7abc;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  height: 35px;
+  height: 50px;
+  left: 0px;
   top: 0px;
   width: 100%;
 }
@@ -55,15 +56,21 @@ input {
 }
 
 .nav-logged-in {
-  grid-column: 1 span 2;
-  padding-left: 15px;
+  align-items: flex-start;
+  display: flex;
+  grid-column: 2 / span 2;
+  padding-left: 100px;
 }
 
 .nav-dashboard {
+  align-items: flex-start;
+  display: flex;
   grid-column: 7 / span 1;
 }
 
 .nav-logout {
+  align-items: flex-start;
+  display: flex;
   grid-column: 8 / span 1;
 }
 
@@ -86,4 +93,12 @@ input {
 
 .forgot:hover {
   color: #FF6F66;
+}
+
+
+#h2l {
+  grid-column: 1 / span 1;
+  height: 50px;
+  margin: 10px;
+  width: auto;
 }
