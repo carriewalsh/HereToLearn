@@ -1,0 +1,14 @@
+<h1>HereToLearn</h1>
+<h2>Help find strategies to best support <em>your</em> students.</h2>
+
+<div class="login-container">
+  <%= form_for :session, url: login_path do |f| %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+    <br>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <br>
+    <%= f.submit 'Log In', class: "nav-button" %>
+  <% end %>
+</div>
