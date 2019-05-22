@@ -1,5 +1,5 @@
 FactoryBot.define do
-  tactory :teacher do
+  factory :teacher do
     first_name { Faker::Creature::Dog.name }
     last_name { Faker::Artist.name }
     email { Faker::Internet.email }

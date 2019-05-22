@@ -27,3 +27,4 @@
 /config/master.key
 
 /spec/cassettes
+/coverage
