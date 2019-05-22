@@ -30,11 +30,13 @@
         <!-- end -->
         <%  %>
       </div>
+      <% if !flash.empty? %>
       <div class="flash-message">
         <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, class: name %>
         <% end %>
       </div>
+      <% end %>
     </nav>
     <%= yield %>
   </body>
