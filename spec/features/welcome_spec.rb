@@ -17,6 +17,12 @@ describe "As a visitor or user" do
       end
     end
 
+    it "shows a footer with the about link" do
+      within "footer" do
+        expect(page).to have_link("About Site")
+      end
+    end
+
     it "has a place for me to log in" do
       within ".login-container" do
         fill_in "session[email]", with: "test"
