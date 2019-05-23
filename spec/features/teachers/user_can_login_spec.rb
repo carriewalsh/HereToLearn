@@ -27,6 +27,7 @@ describe "As a teacher" do
     within "nav" do
       expect(page).to have_link("Log Out")
       expect(page).to have_link("Dashboard")
+      expect(page).to have_link("My Account")
     end
 
     within ".courses-container" do
