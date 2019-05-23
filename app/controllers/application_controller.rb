@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  helper_method :current_user?, :current_counselor?
+  helper_method :current_user, :current_counselor?
 
 
   def current_user
