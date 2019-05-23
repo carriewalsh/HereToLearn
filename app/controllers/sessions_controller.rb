@@ -6,7 +6,8 @@ class SessionsController < ApplicationController
       flash[:success] = "Successfully logged in"
       redirect_to dashboard_path
     else
-      flash[:error].now = "Sorry, bad wrong email/password combination"
+      flash[:error] = "Sorry, wrong email/password combination"
+      redirect_to welcome_path
     end
   end
 
