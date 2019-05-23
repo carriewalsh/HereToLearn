@@ -41,7 +41,7 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-  
+
   config.include FactoryBot::Syntax::Methods
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
@@ -79,3 +79,20 @@ end
 #   config.filter_sensitive_data("<________>") { ENV['___________'] }
 #   config.allow_http_connections_when_no_cassette = true
 # end
+
+def stub_omniauth(id, first_name, last_name)
+  google_id = id
+  name = first_name + " " + last_name
+
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new(
+    uid: google_id,
+    info: {
+      name: name,
+      email: "example@gmail.com"
+    }
+  )
+
+  Rails.application.env_config['omniauth.auth'] =
+    OmniAuth.config.mock_auth[:google]
+end
