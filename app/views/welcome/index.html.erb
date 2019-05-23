@@ -20,7 +20,7 @@
     <br>
     <div class="course-title-container">
       <% current_user.courses.each do |course| %>
-          <%= link_to "Period #{course.period}: #{course.name}", welcome_path, class:"course-heading" %>
+          <%= link_to "Period #{course.period}: #{course.name}", welcome_path, class:"welcome-course-heading" %>
       <% end %>
     </div>
   <% end %>

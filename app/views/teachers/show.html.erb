@@ -1,0 +1,16 @@
+<div class="course-container">
+    <% current_user.courses.each do |course| %>
+      <div class="course-card">
+        <%= link_to "Period #{course.period}: #{course.name}", welcome_path, class:"course-heading" %>
+        <div class="student-container">
+          <% course.students.each do |student| %>
+          <div class="course-student-card">
+            <%= student.first_name %>
+          </div>
+          <% end %>
+        </div>
+
+      </div>
+      <br>
+    <% end %>
+</div>

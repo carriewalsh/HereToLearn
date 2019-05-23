@@ -3,6 +3,7 @@ body {
   color: #F6F7F8;
   margin-top: 60px;
   font-family: helvetica;
+  background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -65,7 +66,7 @@ footer {
 }
 .flash-message {
   background-color: #e2fcca;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   color: #011627;
   font-size: 16px;
   padding: 5px;
@@ -74,7 +75,7 @@ footer {
 
 .nav-button {
   border: none;
-  border-radius: 2px;
+  /* border-radius: 2px; */
   background: #ACF766;
   color: #011627;
   font-size: 20px;
@@ -109,7 +110,7 @@ footer {
 
 .login-container {
   border: 5px solid #FF6F66;
-  border-radius: 15px;
+  /* border-radius: 15px; */
   background-color: #F6F7F8;
   color: #0a7abc;
   font-size: 25px;
@@ -137,10 +138,6 @@ footer {
 }
 
 
-.course-container {
-
-}
-
 .course-title-container {
   display: flex;
   flex-direction: column;
@@ -148,12 +145,36 @@ footer {
 
 }
 
+.welcome-course-heading {
+  background: #92DCE5;
+  border: 2px solid #ACF766;
+  /* border-radius: 5px; */
+  color: #011627;
+  font-size: 16px;
+  margin-bottom: 5px;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+
+.welcome-course-heading:hover {
+  transform: scale(1.1,1.1);
+}
+
+.course-card {
+  margin-top:15px;
+  margin-left: 10px;
+  width: 48%;
+  margin-bottom: 50px;
+}
+
 .course-heading {
   background: #92DCE5;
   border: 2px solid #ACF766;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   color: #011627;
-  font-size: 16px;
+  font-size: 22px;
   margin-bottom: 5px;
   padding: 5px;
   text-align: center;
@@ -165,8 +186,27 @@ footer {
   transform: scale(1.1,1.1);
 }
 
-.course-student-card {
+.course-container {
+  display: flex;
+  flex-wrap: wrap;
+}
 
+.student-container {
+  background: #F6F7F8;
+  color: #20A4F3;
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right: 250px;
+}
+
+.course-student-card {
+  border: 1px #CCCCCC solid;
+  font-size: 18px;
+  padding: 10px;
+}
+
+.course-student-card:hover {
+  background: #e2fcca;
 }
 
 .calendar-container {
