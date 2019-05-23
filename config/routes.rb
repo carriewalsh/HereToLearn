@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   namespace :student do
     root to: redirect('/auth/google_oauth2'), as: 'auth'
+    get '/class_code', to: 'class_code#index', as: 'class_code'
+    get '/failure', to: 'unregistered#index', as: 'unregistered'
   end
   get '/auth/google_oauth2/callback', to: 'survey#new'
 end

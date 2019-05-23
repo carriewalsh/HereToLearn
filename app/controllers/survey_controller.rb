@@ -5,10 +5,10 @@ class SurveyController < ApplicationController
     student = Student.find_by(google_id: google_id.to_s)
     if student
       flash[:info] = "Successfully Logged-In"
-      redirect_to class_code_path
+      redirect_to student_class_code_path
     else
       flash[:info] = "You are not registered in our system, please contact your teacher"
-      redirect_to unregistered_path
+      redirect_to student_unregistered_path
     end
 
   end

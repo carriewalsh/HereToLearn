@@ -12,7 +12,7 @@ describe 'A student with their e-mail in the system' do
     stub_omniauth(user.google_id, user.first_name, user.last_name)
     visit '/student'
 
-    expect(current_path).to eq(class_code_path)
+    expect(current_path).to eq(student_class_code_path)
     expect(page).to have_content("Successfully Logged-In")
   end
 
@@ -22,7 +22,7 @@ describe 'A student with their e-mail in the system' do
     stub_omniauth(user[:google_id], user[:first_name], user[:last_name])
     visit '/student'
 
-    expect(current_path).to eq(unregistered_path)
+    expect(current_path).to eq(student_unregistered_path)
     expect(page).to have_content("You are not registered in our system, please contact your teacher")
   end
 end
