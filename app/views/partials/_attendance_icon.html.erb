@@ -1,0 +1,15 @@
+<div class="attendance-icon">
+  <% if student.present_responded? %>
+    <%= image_tag "check-mark-3-xxl.png", id:"attendance-icon" %>
+  <% elsif student.present_no_response? %>
+    <%= image_tag "error-3-xxl.png", id:"attendance-icon" %>
+  <% elsif student.tardy? %>
+    <%= image_tag "letter-t-xxl.png", id:"attendance-icon" %>
+  <% elsif student.absent_no_response? %>
+    <%= image_tag "x-mark-xxl.png", id:"attendance-icon" %>
+  <% elsif student.absent_responsed? %>
+    <%= image_tag "x-mark-5-xxl.png", id:"attendance-icon" %>
+  <% else %>
+    <%= image_tag "circle-outline-3-xxl.png", id:"attendance-icon" %>
+  <% end %>
+</div>
