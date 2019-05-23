@@ -12,7 +12,7 @@
   <body>
     <nav>
       <%= link_to image_tag("H2L.png",width: 80, height: 60), { action: 'index', controller: 'welcome' } %>
-      <% if !session[:user_id].nil? %>
+      <% if current_user %>
       <div class="nav-logged-in">
           <%= "Logged in as #{current_user.first_name} #{current_user.last_name}" %>
       </div>
