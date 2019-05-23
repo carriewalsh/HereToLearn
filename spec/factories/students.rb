@@ -4,6 +4,5 @@ FactoryBot.define do
     last_name { Faker::Name.last_name }
     student_id { Faker::Number.number(6) }
     google_id {Faker::Number.number(10)}
-    token { Faker::Crypto.md5 }
   end
 end
