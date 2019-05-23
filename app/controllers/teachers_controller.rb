@@ -20,7 +20,7 @@ class TeachersController < ApplicationController
         flash[:success] = "Successfully Reset Password"
       else
         flash.now[:error] = "Passwords don't match"
-        render :edit
+        # render :edit - b/c params disappear for if statement in edit...
       end
     elsif params[:teacher]["New Password"]
       if confirm_params["New Password"] == confirm_params["Confirm New Password"]
@@ -28,7 +28,7 @@ class TeachersController < ApplicationController
         flash[:success] = "Successfully Reset Password"
       else
         flash.now[:error] = "Passwords don't match"
-        render :edit
+        # render :edit
       end
     else
       @teacher.update(general_params)
