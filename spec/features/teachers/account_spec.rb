@@ -17,7 +17,7 @@ describe "As a logged-in teacher" do
       end
     end
 
-    it "allows me to update my non-password information" do
+    xit "allows me to update my non-password information" do
       old_name = @teacher.last_name
       old_email = @teacher.email
 
@@ -35,7 +35,7 @@ describe "As a logged-in teacher" do
       expect(page).to_not have_content(old_email)
     end
 
-    it "allows me to update my password" do
+    xit "allows me to update my password" do
       old_password = @teacher.password
 
       click_link "Reset Password"
@@ -56,7 +56,7 @@ describe "As a logged-in teacher" do
       expect(page).to have_content("Logged in as #{@teacher.first_name} #{@teacher.last_name}")
     end
 
-    it "allows me to cancel an account update" do
+    xit "allows me to cancel an account update" do
       click_link "Edit Information"
       click_link "Cancel"
 

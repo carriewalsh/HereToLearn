@@ -30,7 +30,7 @@ describe "As a teacher" do
       expect(page).to have_link("My Account")
     end
 
-    within ".courses-container" do
+    within ".course-container" do
       within first ".course-card" do
         expect(page).to have_link("#{Course.first.name}")
         expect(page).to have_link("#{Student.first.last_name}")
