@@ -4,6 +4,7 @@ class Student::SurveyController < ApplicationController
 
     student = Student.find_by(google_id: google_id.to_s)
     if student
+      session[:student_id] = student.id
       flash[:info] = "Successfully Logged-In"
       redirect_to student_class_code_path
     else
@@ -13,15 +14,31 @@ class Student::SurveyController < ApplicationController
   end
 
   def create
-    course_from_code = Code.find_by(code:params[:code])
+    course = course_from_code(params[:code])
     student = Student.find(session[:student_id])
+    # binding.pry
 
-    if course_from_code && student.courses.include?(course_from_code)
-      session[:course_id] = course_from_code.course_id
-      redirect student_survey_path
+    if course && student.courses.include?(course)
+      session[:course_id] = course.id
+      redirect_to student_survey_path
     else
-      flash.now[:error] = "Invalid Code"
+      flash[:error] = "Invalid Code"
+      redirect_to student_class_code_path
     end
 
+  end
+
+  def show
+  end
+
+  private
+
+  def course_from_code(code)
+    info = Code.find_by(code:code)
+    if info
+      return Course.find(info.course_id)
+    else
+      return nil
+    end
   end
 end
