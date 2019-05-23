@@ -2,6 +2,6 @@ Rails.application.routes.draw do
   get '/', to: 'welcome#index', as: 'welcome'
   get '/about', to: 'about#index', as: 'about'
 
-  post '/login', to: 'session#create', as: 'login'
-  get '/logout', to: 'session#destroy', as: 'logout'
+  post '/login', to: 'sessions#create', as: 'login'
+  get '/logout', to: 'sessions#destroy', as: 'logout'
 end
