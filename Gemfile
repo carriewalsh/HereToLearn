@@ -35,7 +35,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'faraday'
-gem 'omniauth-google'
+gem 'omniauth-google-oauth2'
 gem 'figaro'
 gem 'fast_jsonapi'
 gem 'factory_bot_rails'
