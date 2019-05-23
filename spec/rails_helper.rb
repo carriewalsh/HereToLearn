@@ -85,7 +85,7 @@ def stub_omniauth(id, first_name, last_name)
   name = first_name + " " + last_name
 
   OmniAuth.config.test_mode = true
-  OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new(
+  OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(
     uid: google_id,
     info: {
       name: name,
@@ -94,5 +94,5 @@ def stub_omniauth(id, first_name, last_name)
   )
 
   Rails.application.env_config['omniauth.auth'] =
-    OmniAuth.config.mock_auth[:google]
+    OmniAuth.config.mock_auth[:google_oauth2]
 end

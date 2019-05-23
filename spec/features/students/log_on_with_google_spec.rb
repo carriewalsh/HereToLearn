@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'A student with their e-mail in the system' do
   after :each do
     # Cleanup OAuth mock
-    OmniAuth.config.mock_auth[:google] = nil
+    OmniAuth.config.mock_auth[:google_oauth2] = nil
   end
 
   it 'can log on with google account via OAuth' do
