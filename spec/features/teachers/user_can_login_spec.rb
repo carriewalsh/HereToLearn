@@ -17,7 +17,7 @@ describe "As a teacher" do
 
 
     # Change this once db has been setup
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@teacher)
+    # allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@teacher)
 
     expect(page).to have_content("Welcome to HereToLearn")
     fill_in "email", with: @teacher.email
@@ -33,9 +33,11 @@ describe "As a teacher" do
     end
 
     within ".courses-container" do
-      expect(page).to have_link("#{Course.first.name}")
-      expect(page).to have_link("#{Student.first.last_name}")
-      expect(page).to have_link("#{Student.second.last_name}")
+      within first ".course-card" do
+        expect(page).to have_link("#{Course.first.name}")
+        expect(page).to have_link("#{Student.first.last_name}")
+        expect(page).to have_link("#{Student.second.last_name}")
+      end
 
       expect(page).to_not have_link("#{Course.second.name}")
       expect(page).to_not have_link("#{Student.third.last_name}")
