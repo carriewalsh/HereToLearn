@@ -17,6 +17,7 @@
   <% else %>
     <%= "Welcome, #{current_user.first_name} #{current_user.last_name}" %>
     <br>
+    <br>
     <div class="course-title-container">
       <% current_user.courses.each do |course| %>
           <%= link_to "Period #{course.period}: #{course.name}", welcome_path, class:"course-heading" %>

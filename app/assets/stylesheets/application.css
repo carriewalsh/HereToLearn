@@ -144,13 +144,14 @@ footer {
 .course-title-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
 
 }
 
 .course-heading {
-  background: #0a7abc;
+  background: #92DCE5;
   border: 2px solid #ACF766;
-  border-radius: 15px;
+  border-radius: 5px;
   color: #011627;
   font-size: 16px;
   margin-bottom: 5px;
