@@ -42,18 +42,18 @@ describe "As a teacher" do
     end
   end
 
-  xit "I cannot log in with bad credentials" do
-    fill_in "email", with: @teacher.email
-    fill_in "password", with: "not_password"
+  it "I cannot log in with bad credentials" do
+    fill_in "session[email]", with: @teacher.email
+    fill_in "session[password]", with: "not_password"
     click_on "Log In"
     expect(current_path).to eq(welcome_path)
     expect(page).to have_content("Sorry, wrong email/password combination")
     expect(page).to_not have_content("Logged in as #{@teacher.first_name} #{@teacher.last_name}")
   end
 
-  xit "I can logout" do
-    fill_in "email", with: @teacher.email
-    fill_in "password", with: @teacher.password
+  it "I can logout" do
+    fill_in "session[email]", with: @teacher.email
+    fill_in "session[password]", with: @teacher.password
     click_on "Log In"
     click_on "Log Out"
     expect(current_path).to eq(welcome_path)
