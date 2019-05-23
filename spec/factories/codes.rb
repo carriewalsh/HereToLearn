@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :code do
-    code { "MyString" }
+    code { SecureRandom.hex(2) }
     course { nil }
   end
 end
