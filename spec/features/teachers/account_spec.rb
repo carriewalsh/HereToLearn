@@ -24,9 +24,9 @@ describe "As a logged-in teacher" do
       click_link "Edit Information"
 
       expect(page).to_not have_content("password")
-      fill_in "Last Name", with: "Nitro"
-      fill_in "Email", with: "wnitro@example.com"
-      click "Submit Changes"
+      fill_in "teacher[last_name]", with: "Nitro"
+      fill_in "teacher[email]", with: "wnitro@example.com"
+      click_on "Submit Changes"
 
       expect(page).to have_content("Successfully Updated Account Information")
       expect(page).to have_content("#{@teacher.first_name} #{@teacher.last_name}")
@@ -40,10 +40,10 @@ describe "As a logged-in teacher" do
 
       click_link "Reset Password"
 
-      fill_in "Old Password", with: old_password
-      fill_in "New Password", with: "new_password"
-      fill_in "Confirm New Password", with: "new_password"
-      click "Submit Changes"
+      fill_in "teacher[Old Password]", with: old_password
+      fill_in "teacher[New Password]", with: "new_password"
+      fill_in "teacher[Confirm New Password]", with: "new_password"
+      click_on "Submit Changes"
 
       expect(page).to have_content("Successfully Reset Password")
 
