@@ -5,5 +5,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create', as: 'login'
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
-  get '/dashboard', to: 'teachers#show', as: '/dashboard'
+  get '/dashboard', to: 'teachers#show', as: 'dashboard'
+  get '/account', to: 'account#show', as: 'account'
+  get '/account/edit', to: 'teachers#edit', as: 'edit_teacher'
+  patch '/account', to: 'teachers#update'
 end
