@@ -4,4 +4,6 @@ Rails.application.routes.draw do
 
   post '/login', to: 'sessions#create', as: 'login'
   get '/logout', to: 'sessions#destroy', as: 'logout'
+
+  get '/dashboard', to: 'teachers#show', as: '/dashboard'
 end

@@ -22,7 +22,7 @@ describe "As a teacher" do
     click_on "Log In"
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("Successfully logged in")
-    expect(page).to have_content("Logged in as #{@teacher.first_name} #{teacher.last_name}")
+    expect(page).to have_content("Logged in as #{@teacher.first_name} #{@teacher.last_name}")
 
     within "nav" do
       expect(page).to have_link("Log Out")
@@ -48,7 +48,7 @@ describe "As a teacher" do
     click_on "Log In"
     expect(current_path).to eq(welcome_path)
     expect(page).to have_content("Sorry, bad wrong email/password combination")
-    expect(page).to_not have_content("Logged in as #{@teacher.first_name} #{teacher.last_name}")
+    expect(page).to_not have_content("Logged in as #{@teacher.first_name} #{@teacher.last_name}")
   end
 
   xit "I can logout" do
