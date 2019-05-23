@@ -6,6 +6,8 @@
           <% course.students.each do |student| %>
           <div class="course-student-card">
             <%= student.first_name %>
+            <%= student.last_name %>
+            <!-- render 'partials/attendance_icon' -->
           </div>
           <% end %>
         </div>
