@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
   get '/dashboard', to: 'courses#index', as: 'dashboard'
-  get '/account', to: 'teacher#show', as: 'account'
+  get '/account', to: 'teachers#show', as: 'account'
   get '/account/edit', to: 'teachers#edit', as: 'edit_teacher'
   patch '/account', to: 'teachers#update'
 end

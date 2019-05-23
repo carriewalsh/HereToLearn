@@ -1,17 +1,14 @@
-<div class="course-container">
-    <% current_user.courses.each do |course| %>
-      <div class="course-card">
-        <%= link_to "Period #{course.period}: #{course.name}", welcome_path, class:"course-heading" %>
-        <div class="student-container">
-          <% course.students.each do |student| %>
-          <div class="course-student-card">
-            <%= link_to "#{student.first_name} #{student.last_name}", dashboard_path %>
-            <!-- render 'partials/attendance_icon' -->
-          </div>
-          <% end %>
-        </div>
-
-      </div>
-      <br>
-    <% end %>
+<div class="login-container">
+  First Name: <%= current_user.first_name %>
+  <br>
+  Last Name: <%= current_user.last_name %>
+  <br>
+  Email: <%= current_user.email %>
+  <br>
+  Password: ••••••••
+  <br>
+  <div class="submit-container">
+    <%= link_to "Edit Information", edit_teacher_path(current_user), class:'nav-button' %>
+    <%= link_to "Reset Password", edit_teacher_path(current_user, update: :confirm), class: 'nav-button' %>
+  </div>
 </div>
