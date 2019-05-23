@@ -2,17 +2,27 @@
 <h2>Help find strategies to best support <em>your</em> students.</h2>
 
 <div class="login-container">
-  <%= form_for :session, url: login_path do |f| %>
-    <%= f.label :email %>
-    <%= f.email_field :email, class:'input-box', autofocus: true %>
+  <% if !current_user %>
+    <%= form_for :session, url: login_path do |f| %>
+      <%= f.label :email %>
+      <%= f.email_field :email, class:'input-box', autofocus: true %>
+      <br>
+      <%= f.label :password %>
+      <%= f.password_field :password, class:'input-box' %>
+      <br>
+      <%= f.submit 'Log In', class: "nav-button" %>
+    <% end %>
+    <%= link_to "Forgot Password?", welcome_path, class:"forgot" %>
+    <!-- link_to "Forgot password?", forgot_password_path -->
+  <% else %>
+    <%= "Welcome, #{current_user.first_name} #{current_user.last_name}" %>
     <br>
-    <%= f.label :password %>
-    <%= f.password_field :password, class:'input-box' %>
-    <br>
-    <%= f.submit 'Log In', class: "nav-button" %>
+    <div class="course-title-container">
+      <% current_user.courses.each do |course| %>
+          <%= link_to "Period #{course.period}: #{course.name}", welcome_path, class:"course-heading" %>
+      <% end %>
+    </div>
   <% end %>
-  <%= link_to "Forgot Password?", welcome_path, class:"forgot" %>
-  <!-- link_to "Forgot password?", forgot_password_path -->
 </div>
 
 

@@ -92,7 +92,7 @@ footer {
   align-items: flex-start;
   display: flex;
   grid-column: 2 / span 2;
-  padding-left: 100px;
+  padding-top: 15px;
 }
 
 .nav-dashboard {
@@ -139,6 +139,29 @@ footer {
 
 .course-container {
 
+}
+
+.course-title-container {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.course-heading {
+  background: #0a7abc;
+  border: 2px solid #ACF766;
+  border-radius: 15px;
+  color: #011627;
+  font-size: 16px;
+  margin-bottom: 5px;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+
+.course-heading:hover {
+  transform: scale(1.1,1.1);
 }
 
 .course-student-card {

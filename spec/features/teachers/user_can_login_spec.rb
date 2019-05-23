@@ -60,4 +60,16 @@ describe "As a teacher" do
     expect(page).to_not have_link("Log Out")
     expect(page).to have_content("You have successfully logged out")
   end
+
+  it "Shows that I'm logged in on the welcome page" do
+    fill_in "session[email]", with: @teacher.email
+    fill_in "session[password]", with: @teacher.password
+    click_on "Log In"
+    visit welcome_path
+
+    within ".login-container" do
+      expect(page).to_not have_button("Log In")
+      expect(page).to have_content("Welcome, #{@teacher.first_name} #{@teacher.last_name}")
+    end
+  end
 end
