@@ -10,9 +10,10 @@ describe "As a visitor or user" do
       expect(page).to have_content("HereToLearn")
     end
 
-    it "shows the nav-bar without 'log out'" do
+    it "shows the nav-bar without buttons" do
       within "nav" do
-        expect(page).to have_link("Dashboard")
+        expect(page).to_not have_link("Dashboard")
+        expect(page).to_not have_link("My Account")
         expect(page).to_not have_link("Log Out")
       end
     end

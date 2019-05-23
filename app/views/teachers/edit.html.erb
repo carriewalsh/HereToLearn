@@ -1,0 +1,24 @@
+<div class="login-container">
+<!-- if they're just updating name or email, no additional params -->
+<!-- if they're coming from an email, will have reset in it -->
+<!-- if they're coming from their account page, params will have confirm -->
+
+  <%= form_for current_user, url: {action: "update"} do |f| %>
+    <% @edit_fields.each do |field| %>
+        <% if field.include?("Password") %>
+          <%= f.label field.to_sym %>
+          <br>
+          <%= f.password_field field.to_sym, :required => true %>
+          <br>
+        <% else %>
+          <%= f.label field.to_sym %>
+          <br>
+          <%= f.text_field field.to_sym %>
+          <br>
+        <% end %>
+      <% end %>
+      <br>
+    <%= f.submit "Submit Changes", class:'nav-button' %>
+  <% end %>
+  <%= link_to "Cancel", account_path, class:'nav-button' %>
+</div>

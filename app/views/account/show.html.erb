@@ -1,0 +1,12 @@
+<div class="login-container">
+  First Name: <%= current_user.first_name %>
+  <br>
+  Last Name: <%= current_user.last_name %>
+  <br>
+  Email: <%= current_user.email %>
+  <br>
+  Password: ••••••••
+  <br>
+  <%= link_to "Edit Information", edit_teacher_path(current_user), class:'nav-button' %>
+  <%= link_to "Reset Password", edit_teacher_path(current_user, update: :confirm), class: 'nav-button' %>
+</div>
