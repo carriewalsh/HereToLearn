@@ -12,19 +12,23 @@
   <body>
     <nav>
       <%= image_tag "H2L.png", id:"h2l" %>
+      <% if !session[:user_id].nil? %>
       <div class="nav-logged-in">
-        <% if !session[:user_id].nil? %>
           <%= "Logged in as #{current_user.first_name} #{current_user.last_name}" %>
-        <% end %>
       </div>
+
       <div class="nav-dashboard">
         <%= link_to "Dashboard", dashboard_path, class:"nav-button" %>
       </div>
-      <div class="nav-logout">
-        <% if !session[:user_id].nil? %>
-          <%= link_to "Log Out", logout_path, class:"nav-button" %>
-        <% end %>
+
+      <div class="nav-account">
+        <%= link_to "My Account", account_path, class:'nav-button' %>
       </div>
+      
+      <div class="nav-logout">
+          <%= link_to "Log Out", logout_path, class:"nav-button" %>
+      </div>
+      <% end %>
     </nav>
     <% if !flash.empty? %>
     <div class="flash-message">
