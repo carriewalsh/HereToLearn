@@ -1,4 +1,4 @@
-class SurveyController < ApplicationController
+class Student::SurveyController < ApplicationController
   def new
     google_id = request.env["omniauth.auth"][:uid]
 
