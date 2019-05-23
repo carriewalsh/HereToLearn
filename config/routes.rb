@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   namespace :student do
     root to: redirect('/auth/google_oauth2'), as: 'auth'
-    get '/class_code', to: 'class_code#index', as: 'class_code'
+    get '/class_code', to: 'class_code#new', as: 'class_code'
     get '/failure', to: 'unregistered#index', as: 'unregistered'
     post '/survey', to: 'survey#create'
   end

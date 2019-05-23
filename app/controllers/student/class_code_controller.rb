@@ -1,4 +1,4 @@
 class Student::ClassCodeController < ApplicationController
-  def index
+  def new
   end
 end
