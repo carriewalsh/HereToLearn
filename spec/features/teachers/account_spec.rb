@@ -9,9 +9,11 @@ describe "As a logged-in teacher" do
     end
 
     it "shows me my information" do
-      within ".account-card" do
-        expect(page).to have_content("#{@teacher.first_name} #{@teacher.last_name}")
-        expect(page).to have_content("#{@teacher.email}")
+      within ".login-container" do
+        expect(page).to have_content("First Name: #{@teacher.first_name}")
+        expect(page).to have_content("Last Name: #{@teacher.last_name}")
+        expect(page).to have_content("Email: #{@teacher.email}")
+        expect(page).to have_content("Password: ••••••••")
       end
     end
 
