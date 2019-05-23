@@ -23,14 +23,14 @@ describe 'A student with their e-mail in the system' do
 
   describe 'with a valid class code' do
     it 'can access the survey if they are in the class' do
-      fill_in 'Code', with: @in_class_code.code
+      fill_in :code, with: @in_class_code.code
       click_on 'Start Survey'
 
       expect(current_path).to eq(student_survey_path)
     end
 
     it 'cannot access the survey if they are not in the class' do
-      fill_in 'Code', with: @out_of_class_code.code
+      fill_in :code, with: @out_of_class_code.code
       click_on 'Start Survey'
 
       expect(page).to have_content("Invalid Code")
@@ -39,7 +39,7 @@ describe 'A student with their e-mail in the system' do
   end
   describe 'without a vaild class code' do
     it 'cannot access the survey' do
-      fill_in 'Code', with: "YAY"
+      fill_in :code, with: "YAY"
       click_on 'Start Survey'
 
       expect(page).to have_content("Invalid Code")
