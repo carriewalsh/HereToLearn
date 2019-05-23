@@ -3,4 +3,16 @@
 <!-- if they're coming from an email, will have reset in it -->
 <!-- if they're coming from their account page, params will have confirm -->
 
+  <% @edit_fields.each do |field| %>
+    <%= form_for current_user, url: {action: "update"} do |f| %>
+      <% if field.include?("Password") %>
+        <%= f.label field.to_sym %>
+        <%= f.password_field field.to_sym, :required => true %>
+      <% else %>
+        <%= f.label field.to_sym %>
+        <%= f.text_field field.to_sym %>
+      <% end %>
+    <% end %>
+  <% end %>
+
 </div>
