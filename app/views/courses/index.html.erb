@@ -1,0 +1,17 @@
+<div class="course-container">
+    <% current_user.courses.each do |course| %>
+      <div class="course-card">
+        <%= link_to "Period #{course.period}: #{course.name}", welcome_path, class:"course-heading" %>
+        <div class="student-container">
+          <% course.students.each do |student| %>
+          <div class="course-student-card">
+            <%= link_to "#{student.first_name} #{student.last_name}", dashboard_path %>
+            <!-- render 'partials/attendance_icon' -->
+          </div>
+          <% end %>
+        </div>
+
+      </div>
+      <br>
+    <% end %>
+</div>
