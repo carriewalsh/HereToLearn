@@ -1,4 +1,4 @@
-t1 = Teacher.create(first_name: "Maryl", last_name: "Wealthall", email: "mwealthall0@jigsy.com", password: "z7UtFD18Fo")
+t1 = Teacher.create(first_name: "Maryl", last_name: "Wealthall", email: "mwealthall0@jigsy.com", password: "password")
 t2 = Teacher.create(first_name: "Arnaldo", last_name: "McLise", email: "amclise1@google.ru", password: "4b1pjMA6BtP")
 t3 = Teacher.create(first_name: "Georgianne", last_name: "Lynd", email: "glynd2@mysql.com", password: "POtnXeZ0tpd")
 t4 = Teacher.create(first_name: "Minerva", last_name: "Denyakin", email: "mdenyakin3@globo.com", password: "46t6DzI3yn2")
@@ -17,7 +17,7 @@ t16 = Teacher.create(first_name: "Adan", last_name: "Stennard", email: "astennar
 t17 = Teacher.create(first_name: "Clea", last_name: "Cona", email: "ccona2@salon.com", password: "NGQ4K8L")
 t18 = Teacher.create(first_name: "Carmela", last_name: "Cleave", email: "ccleave3@businesswire.com", password: "9kPbGGYItuni")
 t19 = Teacher.create(first_name: "Clovis", last_name: "Freezer", email: "cfreezer4@patch.com", password: "n4p4LJkX")
-t20 = Teacher.create(first_name: "Bab", last_name: "McWilliams", email: "bmcwilliams5@comsenz.com", password: "M4cxPkdJTvV")
+t20 = Teacher.create(first_name: "Bab", last_name: "McWilliams", email: "bmcwilliams5@comsenz.com", password: "password")
 
 
 s1 = Student.create(first_name: "Ewart", last_name: "Ransley", student_id: "905286", token: "W5zTy50")

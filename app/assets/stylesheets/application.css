@@ -67,9 +67,9 @@ footer {
   background-color: #e2fcca;
   border-radius: 5px;
   color: #011627;
-  font-size: 20px;
+  font-size: 16px;
+  padding: 5px;
   text-align: center;
-  width: 100%;
 }
 
 .nav-button {
