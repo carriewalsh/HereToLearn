@@ -18,7 +18,9 @@
         <% end %>
       <% end %>
       <br>
-    <%= f.submit "Submit Changes", class:'nav-button' %>
-  <% end %>
-  <%= link_to "Cancel", account_path, class:'nav-button' %>
+      <div class="submit-container">
+        <%= f.submit "Submit Changes", class:'nav-button' %>
+        <% end %>
+        <%= link_to "Cancel", account_path, class:'nav-button' %>
+      </div>
 </div>

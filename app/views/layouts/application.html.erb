@@ -11,7 +11,7 @@
 
   <body>
     <nav>
-      <%= image_tag "H2L.png", id:"h2l" %>
+      <%= link_to image_tag("H2L.png",width: 80, height: 60), { action: 'index', controller: 'welcome' } %>
       <% if !session[:user_id].nil? %>
       <div class="nav-logged-in">
           <%= "Logged in as #{current_user.first_name} #{current_user.last_name}" %>
@@ -24,7 +24,7 @@
       <div class="nav-account">
         <%= link_to "My Account", account_path, class:'nav-button' %>
       </div>
-      
+
       <div class="nav-logout">
           <%= link_to "Log Out", logout_path, class:"nav-button" %>
       </div>

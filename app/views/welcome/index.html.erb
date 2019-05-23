@@ -3,6 +3,7 @@
 
 <div class="login-container">
   <% if !current_user %>
+  <div class="submit-container">
     <%= form_for :session, url: login_path do |f| %>
       <%= f.label :email %>
       <%= f.email_field :email, class:'input-box', autofocus: true %>
@@ -10,8 +11,11 @@
       <%= f.label :password %>
       <%= f.password_field :password, class:'input-box' %>
       <br>
-      <%= f.submit 'Log In', class: "nav-button" %>
+      <div class="submit-container">
+        <%= f.submit 'Log In', class: "nav-button" %>
+      </div>
     <% end %>
+  </div>
     <%= link_to "Forgot Password?", welcome_path, class:"forgot" %>
     <!-- link_to "Forgot password?", forgot_password_path -->
   <% else %>

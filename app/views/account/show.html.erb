@@ -7,6 +7,8 @@
   <br>
   Password: ••••••••
   <br>
-  <%= link_to "Edit Information", edit_teacher_path(current_user), class:'nav-button' %>
-  <%= link_to "Reset Password", edit_teacher_path(current_user, update: :confirm), class: 'nav-button' %>
+  <div class="submit-container">
+    <%= link_to "Edit Information", edit_teacher_path(current_user), class:'nav-button' %>
+    <%= link_to "Reset Password", edit_teacher_path(current_user, update: :confirm), class: 'nav-button' %>
+  </div>
 </div>
