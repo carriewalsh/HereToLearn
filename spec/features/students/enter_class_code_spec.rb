@@ -5,11 +5,11 @@ describe 'A student with their e-mail in the system' do
     @student = create(:student)
     stub_omniauth(@student.google_id, @student.first_name, @student.last_name)
 
-    @in_class = create(:courses)
+    @in_class = create(:course)
     @student.courses << @in_class
 
     @in_class_code = create(:code, course: @in_class)
-    @out_of_class = create(:courses)
+    @out_of_class = create(:course)
     @out_of_class_code = create(:code, course: @out_of_class)
 
 
