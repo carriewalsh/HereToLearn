@@ -9,13 +9,15 @@
         </div>
         <div class="student-container">
           <% course.students.each do |student| %>
-          <div class="student-card">
-            <%= image_tag('circle-outline-xxl.png', height: 20, class:'attendance-icon') %>
-            <%= image_tag('check-mark-3-xxl.png', height: 20, class:'attendance-icon') %>
-            <%= image_tag('x-mark-xxl.png', height: 20, class:'attendance-icon') %>
-            <%= image_tag('letter-t-xxl.png', height: 20, class:'attendance-icon') %>
-            <%= image_tag('error-3-xxl.png', height: 20, class:'attendance-icon') %>
-            <%= image_tag('x-mark-5-xxl.png', height: 20, class:'attendance-icon') %>
+          <div class="student-card" id="attendance-<%= student.id %>">
+            <div class="attendance-icons">
+              <%= image_tag('circle-outline-xxl.png', height: 20, class:'attendance-icon') %>
+              <%= image_tag('check-mark-3-xxl.png', height: 20, class:'attendance-icon') %>
+              <%= image_tag('x-mark-xxl.png', height: 20, class:'attendance-icon') %>
+              <%= image_tag('letter-t-xxl.png', height: 20, class:'attendance-icon') %>
+              <%= image_tag('error-3-xxl.png', height: 20, class:'attendance-icon') %>
+              <%= image_tag('x-mark-5-xxl.png', height: 20, class:'attendance-icon') %>
+            </div>
             <%= link_to "#{student.first_name} #{student.last_name}", dashboard_path, id:"small-link" %>
             <div class="smaller-grey">
               #<%= student.student_id %>
@@ -28,3 +30,6 @@
       <br>
     <% end %>
 </div>
+<script type="text/javascript">
+
+</script>

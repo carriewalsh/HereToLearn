@@ -229,11 +229,14 @@ footer {
 .dynamic, .tagline {
   color: #003a78;
   background-color: #F6F7F8;
-  font-size: 24px;
-  height: 350px;
+  height: 75%;
   padding: 40px;
   margin-top: -50px;
   margin-left: -30px;
+}
+
+.tagline {
+  font-size: calc((-.2 *(1em - 13px) - -2.5em - 13px));
 }
 
 .welcome-course-container {
@@ -246,7 +249,7 @@ footer {
 }
 
 .text-container {
-  font-size: 21px;
+  font-size: calc((-.2 *(1em - 16px) - -2.2em - 13px));
   position: relative;
   z-index: 5;
 }
@@ -333,7 +336,7 @@ footer {
 }
 
 .student-container {
-  padding: 15px 125px;
+  padding: 15px 100px;
   display: flex;
   flex-direction: column;
 }
@@ -367,12 +370,18 @@ footer {
   font-size: 14px;
 }
 
+.attendance-icon {
+  padding-right: 5px;
+  padding-top: 5px;
+}
+
+
 .attendance-icon:hover {
   transform: scale(1.2, 1.2);
 }
 
 #small-link {
-  font-size: 16px;
+  font-size: calc((-.2 *(1em - 20px) - -1.8em - 13px));
   letter-spacing: 1px;
   color: black;
 }

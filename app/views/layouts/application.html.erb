@@ -6,7 +6,6 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap" rel="stylesheet">
   </head>
 
@@ -53,5 +52,6 @@
     <div class="main-body">
       <%= yield %>
     </div>
+    <%= javascript_include_tag 'application' %>
   </body>
 </html>
