@@ -1,6 +1,7 @@
 body {
   background: #F6F7F8;
   font-family: "Open Sans", sans-serif;
+  letter-spacing: .5px;
 }
 
 header {
@@ -253,4 +254,21 @@ footer {
   text-align: right;
   padding-right: 100px;
   letter-spacing: 3px;
+}
+
+.input-box {
+  width: 250px;
+  font-size: 16px;
+}
+
+#forgot {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: black;
+}
+
+#forgot:hover {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #fdb811;
 }
