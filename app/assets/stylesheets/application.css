@@ -93,8 +93,51 @@ header nav.navbar .navbarNav li a {
   transition: all .3s ease-in-out;
 }
 
-.nav-highlight {
+.navbarNav {
+  z-index: 8;
+  position: relative;
+}
 
+.nav-button {
+  position: relative;
+}
+
+.item-value::after, .nav-button::after {
+  content: '';
+  background-color: #f9e0a9;
+  display: block;
+  position: absolute;
+  width: 0%;
+  height: 30px;
+  margin-top: -27px;
+  margin-left: -10px;
+  z-index: -1;
+  transition: all .3s ease-in-out;
+}
+
+ .item-value:hover::after, .nav-button:hover::after {
+  content: '';
+  background-color: #f9e0a9;
+  display: block;
+  position: absolute;
+  width: 40%;
+  height: 30px;
+  margin-top: -27px;
+  margin-left: -10px;
+  z-index: -1;
+  transition: all .3s ease-in-out;
+}
+
+.nav-button#active::after {
+  content: '';
+  background-color: #f9e0a9;
+  display: block;
+  position: absolute;
+  width: 40%;
+  height: 30px;
+  margin-top: -27px;
+  margin-left: -10px;
+  z-index: -1;
 }
 
 .logged-in-as {
@@ -204,6 +247,8 @@ footer {
 
 .text-container {
   font-size: 21px;
+  position: relative;
+  z-index: 5;
 }
 .text-container .item-value {
   color: #003a78;
@@ -275,16 +320,6 @@ footer {
   font-size: 16px;
 }
 
-#forgot {
-  font-size: 16px;
-  letter-spacing: 1px;
-  color: black;
-}
-
-#forgot:hover {
-  color: #5fb0c4;;
-}
-
 .course-container {
   display: flex;
   flex-wrap: wrap;
@@ -313,6 +348,7 @@ footer {
 }
 .student-card:hover {
   background-color: #f9e0a9;
+  transition: all .3s ease-in-out;
 }
 
 .item-key::after {
@@ -329,4 +365,18 @@ footer {
   letter-spacing: 1px;
   color: #6f6f6f;
   font-size: 14px;
+}
+
+.attendance-icon:hover {
+  transform: scale(1.2, 1.2);
+}
+
+#forgot {
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: black;
+}
+
+#forgot:hover {
+  color: #5fb0c4;;
 }

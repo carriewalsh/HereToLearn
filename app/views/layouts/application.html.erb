@@ -24,10 +24,10 @@
             </script>
             <% if current_user %>
               <li>
-                <%= link_to "Dashboard", dashboard_path, class:"nav-button" %>
+                <%= link_to "Dashboard", dashboard_path, class:"nav-button", id: current_id?(dashboard_path) %>
               </li>
               <li>
-                <%= link_to "My Account", account_path, class:"nav-button" %>
+                <%= link_to "My Account", account_path, class:"nav-button", id: current_id?(account_path) %>
               </li>
               <li>
                 <%= link_to "Log Out", logout_path, class:"nav-button" %>
