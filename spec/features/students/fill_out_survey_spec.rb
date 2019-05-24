@@ -12,6 +12,11 @@ describe 'A student with their e-mail in the system' do
 
     visit '/student'
     fill_in :code, with: @in_class_code.code
+    endpoint = '/api/v1/questions?ids=1,2'
+    domain = 'http://surveyapp.com'
+    body =  File.open('./api_responses/questions.json')
+
+    stub_request(:get, domain + endpoint).to_return(body: body)
     click_on 'Start Survey'
   end
 
@@ -20,10 +25,16 @@ describe 'A student with their e-mail in the system' do
   end
 
   it 'can submit a survey' do
-    endpoint = '/api/v1/questions?ids=1,2'
-    domain = 'http://surveyApp.com'
-    body =  File.open('./api_responses/questions.json')
-    stub_request(:get, domain + endpoint).to_return(body: body)
+
+    # binding.pry
+  # with(
+  #   headers: {
+  #  'Accept'=>'*/*',
+  #  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  #  'User-Agent'=>'Faraday v0.15.4'
+  #   }).
+  # to_return(status: 200, body: '', headers: {})
+    # stub_request(:get, domain + endpoint).to_return(body: body)
 
 
     choose :yes
