@@ -3,17 +3,17 @@
     <div class="dynamic">
       <div class="text-container">
         <%= form_for current_user, url: {action: "update"} do |f| %>
-        <%= f.label :first_name, class:'item-key' %>
+        <%= f.label "Old Password", label:'item-key' %>
         <br>
-        <%= f.password_field :first_name, class: 'input-box' %>
+        <%= f.password_field "Old Password", :required => true, class: 'input-box' %>
         <br>
-        <%= f.label :last_name, class:'item-key' %>
+        <%= f.label "New Password", label:'item-key' %>
         <br>
-        <%= f.password_field :last_name, class: 'input-box' %>
+        <%= f.password_field "New Password", :required => true, class: 'input-box' %>
         <br>
-        <%= f.label :email, class:'item-key' %>
+        <%= f.label "Confirm New Password", label:'item-key' %>
         <br>
-        <%= f.text_field :email, class: 'input-box' %>
+        <%= f.text_field "Confirm New Password", required: true, class: 'input-box' %>
         <br>
 
         <div class="submit-container">
