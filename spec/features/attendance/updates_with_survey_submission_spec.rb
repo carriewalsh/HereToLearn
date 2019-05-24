@@ -3,10 +3,12 @@ require 'rails_helper'
 describe 'A student with their e-mail in the system' do
   before :each do
     @student = create(:student)
+    @absent_student = create(:student)
     stub_omniauth(@student.google_id, @student.first_name, @student.last_name)
 
     @in_class = create(:course)
     @student.courses << @in_class
+    @absent_student.courses << @in_class
 
     @in_class_code = create(:code, course: @in_class)
 
@@ -39,11 +41,15 @@ describe 'A student with their e-mail in the system' do
 
   it 'updates attendance after submission' do
     attendance_record = Attendance.find_by(course:@in_class, student:@student)
-    expect(attendance_record.attendance). to eq("absent")
+    expect(attendance_record.attendance). to eq(nil)
 
     click_on "Submit"
     attendance_record = Attendance.find_by(course:@in_class, student:@student)
     expect(attendance_record.attendance). to eq("present")
+
+    expect(Attendance.where(attendance: 'absent').count).to eq(0)
+    Rake::Task["attendance:mark_absent #{@in_class.id}"]
+    expect(Attendance.where(attendance: 'absent').count).to eq(1)
 
   end
 end
