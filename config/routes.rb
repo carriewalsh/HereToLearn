@@ -10,6 +10,13 @@ Rails.application.routes.draw do
   get '/account/edit', to: 'teachers#edit', as: 'edit_teacher'
   patch '/account', to: 'teachers#update'
 
+  get '/password_reset', to: 'password_reset#edit', as: 'password_reset'
+  patch '/password_reset', to: 'password_reset#update'
+
+  get '/send_reset_link/new', to: 'send_reset_link#new', as: 'send_reset_link'
+  get '/send_reset_link', to: 'send_reset_link#edit', as: 'edit_send_reset_link'
+  patch '/send_reset_link', to: 'send_reset_link#update'
+
   namespace :student do
     root to: redirect('/auth/google_oauth2'), as: 'auth'
     get '/class_code', to: 'class_code#index', as: 'class_code'
