@@ -83,7 +83,7 @@ header nav.navbar .navbarNav li a {
   margin-top: -50px;
 }
 
-.test::after {
+.logged-in-as h3::after {
   content: '';
   height: 3px;
   width: 100%;
@@ -130,7 +130,64 @@ footer {
   width: 100%;
 }
 
-.tagline {
+.dynamic-container, .tagline-container {
+  margin: 10px 60px;
+  padding: 0px 30px;
+  height: 500px;
+  z-index: 2;
+}
+
+.dynamic-container::before, .tagline-container::before {
+  content: '';
+  background-color: #5fb0c4;
+  display: block;
+  height: 60px;
+  width: 60px;
+  margin-left: -40px;
+  margin-top: -10px;
+}
+
+.dynamic-container::after, .tagline-container::after {
+  content: '';
+  background-color: #5fb0c4;
+  display: block;
+  height: 60px;
+  width: 60px;
+  float: right;
+  position: relative;
+  margin-right: -10px;
+  margin-top: -50px;
+  z-index: -1;
+}
+
+.dynamic, .tagline {
   color: #003a78;
-  font-size: calc((11 *(1em - 13px) - -1.1em - 3px))
+  background-color: #F6F7F8;
+  font-size: 24px;
+  height: 350px;
+  padding: 40px;
+  margin-top: -50px;
+  margin-left: -30px;
+}
+
+.welcome-course-container {
+  padding: 0px;
+  margin: 0px;
+}
+
+.welcome-course-heading:hover {
+  background-color: #cfe2f3ff;
+}
+
+.welcome-course-heading .course-name {
+  color: #003a78;
+  font-size: 20px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+}
+
+.welcome-course-heading .course-period {
+  color: #fdb811;
+  font-size: 22px;
+  padding-left: 5px;
 }

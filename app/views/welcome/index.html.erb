@@ -1,37 +1,40 @@
 
 <div class="banner">
   <div class="tagline-container">
-    <h2 class="tagline">Find, create, and share strategies for <em>your</em> students.</h2>
+    <div class="tagline">Find, create, and share strategies for <em>your</em> students.</div>
   </div>
   <div class="dynamic-container">
-
-  </div>
-  <% if !current_user %>
-  <div class="submit-container">
-    <%= form_for :session, url: login_path do |f| %>
-      <%= f.label :email %>
-      <%= f.email_field :email, class:'input-box', autofocus: true %>
-      <br>
-      <%= f.label :password %>
-      <%= f.password_field :password, class:'input-box' %>
-      <br>
+    <div class="dynamic">
+      <% if !current_user %>
       <div class="submit-container">
-        <%= f.submit 'Log In', class: "nav-button" %>
+        <%= form_for :session, url: login_path do |f| %>
+        <%= f.label :email %>
+        <%= f.email_field :email, class:'input-box', autofocus: true %>
+        <br>
+        <%= f.label :password %>
+        <%= f.password_field :password, class:'input-box' %>
+        <br>
+        <div class="submit-container">
+          <%= f.submit 'Log In', class: "nav-button" %>
+        </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-    <%= link_to "Forgot Password?", welcome_path, class:"forgot" %>
-    <!-- link_to "Forgot password?", forgot_password_path -->
-  <% else %>
-    <%= "Welcome, #{current_user.first_name} #{current_user.last_name}" %>
-    <br>
-    <br>
-    <div class="course-title-container">
-      <% current_user.courses.each do |course| %>
-          <%= link_to "Period #{course.period}: #{course.name}", welcome_path, class:"welcome-course-heading" %>
+      <%= link_to "Forgot Password?", welcome_path, class:"forgot" %>
+      <!-- link_to "Forgot password?", forgot_password_path -->
+      <% else %>
+        <ul class ="welcome-course-container">
+          <% current_user.courses.each do |course| %>
+            <li class="welcome-course-heading">
+                <a href="<% welcome_path %>">
+                  <div class="course-period"><%= "• Period #{course.period}" %></div>
+                  <div class="course-name"><%= " #{course.name}" %></div>
+                </a>
+            </li>
+          <% end %>
+        </ul>
       <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
 
 
