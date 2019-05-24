@@ -18,12 +18,19 @@ describe 'A student with their e-mail in the system' do
     body =  File.open('./api_responses/questions.json')
 
     stub_request(:get, domain + endpoint).to_return(body: body)
+
+    expect(Attendance.count).to eq(0)
+    Rails.application.load_tasks
+    Rake::Task['attendance:populate'].invoke
+    
+    expect(Attendance.count).to eq(1)
+
     click_on 'Start Survey'
 
     choose "1"
     choose "5"
 
-    click_on "Submit"
+
   end
 
   after :each do
@@ -31,7 +38,7 @@ describe 'A student with their e-mail in the system' do
   end
 
   it 'updates attendance after submission' do
-
+    click_on "Submit"
 
   end
 end
