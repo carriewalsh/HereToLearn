@@ -29,6 +29,8 @@ class Student::SurveyController < ApplicationController
   end
 
   def show
+    facade = QuestionFacade.new([1,2]) # This should be changed as survey creation changes
+    render locals: { facade: facade }
   end
 
   private
