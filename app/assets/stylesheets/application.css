@@ -355,6 +355,10 @@ footer {
   font-size: 14px;
 }
 
+.attendance-icon:hover {
+  transform: scale(1.2, 1.2);
+}
+
 #forgot {
   font-size: 16px;
   letter-spacing: 1px;
