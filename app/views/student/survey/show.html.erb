@@ -1,4 +1,4 @@
-<form class="survey" method="post">
+<%= form_with url: student_response_path, method: :post do |f| %>
   <%facade.questions.each do |question|%>
     <h2 class="question-text"><%= question.text %></h2>
     <div class="flex-container" id="question-<%=question.id%>">
@@ -11,6 +11,6 @@
     </div>
   <% end %>
   <div class='submit-container'>
-    <input class="submit" type="submit" name="commit" value="Submit">
+    <%= f.submit "Submit" %>
   </div>
-</form>
+<% end %>

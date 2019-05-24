@@ -36,12 +36,12 @@ describe 'A student with their e-mail in the system' do
   # to_return(status: 200, body: '', headers: {})
     # stub_request(:get, domain + endpoint).to_return(body: body)
 
-    # save_and_open_page
+    save_and_open_page
     choose "1"
     choose "5"
 
     click_on "Submit"
-
+    binding.pry
     expect(current_path).to eq(student_completed_survey_path)
     expect(page).to have_content("Thank You!")
     # At this point there is a course_id and student_id in the session
