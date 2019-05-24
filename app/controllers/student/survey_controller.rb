@@ -16,7 +16,7 @@ class Student::SurveyController < ApplicationController
   def create
     course = course_from_code(params[:code])
     student = Student.find(session[:student_id])
-    # binding.pry
+
 
     if course && student.courses.include?(course)
       session[:course_id] = course.id
