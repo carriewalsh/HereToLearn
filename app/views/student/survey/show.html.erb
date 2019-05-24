@@ -5,7 +5,10 @@
       <%question.choices.each do |choice| %>
         <input id=<%=choice.id%> type="radio" name="question-<%=question.id%>" value=<%=choice.text%>>
         <label for=<%=choice.text%> class="question-<%=question.id%>-label">
+          <%=choice.text.capitalize%>
+        </label>
       <% end %>
+    </div>
   <% end %>
   <div class='submit-container'>
     <input class="submit" type="submit" name="commit" value="Submit">
