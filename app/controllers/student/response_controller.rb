@@ -6,7 +6,7 @@ class Student::ResponseController < ApplicationController
     attendance_record = find_attendance
     attendance_record.attendance = "present"
     attendance_record.save
-    
+
     flash[:info] = "Thank You!"
     redirect_to student_completed_survey_path
   end

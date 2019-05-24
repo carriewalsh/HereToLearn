@@ -10,14 +10,19 @@ describe 'A student with their e-mail in the system' do
 
     @in_class_code = create(:code, course: @in_class)
 
+
     visit '/student'
     fill_in :code, with: @in_class_code.code
-    
+
     endpoint = '/api/v1/questions?ids=1,2'
     domain = 'http://surveyapp.com'
     body =  File.open('./api_responses/questions.json')
-
     stub_request(:get, domain + endpoint).to_return(body: body)
+
+    expect(Attendance.count).to eq(0)
+    Rake::Task['attendance:populate'].execute
+    expect(Attendance.count).to eq(1)
+    
     click_on 'Start Survey'
   end
 

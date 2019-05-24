@@ -22,8 +22,7 @@ describe 'A student with their e-mail in the system' do
     stub_request(:get, domain + endpoint).to_return(body: body)
 
     expect(Attendance.count).to eq(0)
-    Rails.application.load_tasks
-    Rake::Task['attendance:populate'].invoke
+    Rake::Task['attendance:populate'].execute
 
     expect(Attendance.count).to eq(2)
 
