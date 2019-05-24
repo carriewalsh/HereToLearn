@@ -4,8 +4,8 @@ class QuestionFacade
   end
 
   def questions
-    question_data.map do |answer_list|
-      Question.new(answer_list)
+    @question_list.map do |question_number|
+      Question.new(question_data[question_number])
     end
   end
 
