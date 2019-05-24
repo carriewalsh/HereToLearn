@@ -9,4 +9,20 @@ class Student::ResponseController < ApplicationController
   def show
 
   end
+
+  private
+
+  def headers_for_post
+    {student_id: session[:student_id],
+     course_id: session[:course_id],
+     responses: responses}
+  end
+
+  def responses
+    params.require(:question).permit(question_ids).to_hash
+  end
+
+  def question_ids
+    session[:question_ids].map{ |i| i.to_s}
+  end
 end
