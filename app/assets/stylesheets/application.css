@@ -43,6 +43,11 @@ header nav.navbar .navbarLogo .headerLogo {
   display: inline-block;
 }
 
+.logo-image {
+  display: flex;
+  justify-content: center;
+}
+
 header nav.navbar .navbarLogo h3 {
     font-size: calc((1 *(1em - 13px) - -2.5em - 10px));
     color: #003a78;
@@ -195,6 +200,7 @@ footer {
 .text-container .item-key {
   color: #fdb811;
   padding-left: 5px;
+  letter-spacing: 2px;
 }
 
 .account-container {
@@ -205,6 +211,7 @@ footer {
 .submit-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .form-button {
@@ -230,4 +237,20 @@ footer {
   border-radius: 6px;
   margin-top: 20px;
   padding: 5px;
+}
+
+.about-paragraph {
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 2;
+}
+
+.about-paragraph-title {
+  letter-spacing: 3px;
+}
+
+.h2l-team {
+  text-align: right;
+  padding-right: 100px;
+  letter-spacing: 3px;
 }
