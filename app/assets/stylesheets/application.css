@@ -371,12 +371,12 @@ footer {
   transform: scale(1.2, 1.2);
 }
 
-#forgot {
+#small-link {
   font-size: 16px;
   letter-spacing: 1px;
   color: black;
 }
 
-#forgot:hover {
+#small-link:hover {
   color: #5fb0c4;;
 }
