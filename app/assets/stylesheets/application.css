@@ -102,7 +102,7 @@ header nav.navbar .navbarNav li a {
   position: relative;
 }
 
-.nav-button::after {
+.item-value::after, .nav-button::after {
   content: '';
   background-color: #f9e0a9;
   display: block;
@@ -115,7 +115,7 @@ header nav.navbar .navbarNav li a {
   transition: all .3s ease-in-out;
 }
 
-.nav-button:hover::after {
+.item-value:hover::after, .nav-button:hover::after {
   content: '';
   background-color: #f9e0a9;
   display: block;
@@ -235,6 +235,8 @@ footer {
 
 .text-container {
   font-size: 21px;
+  position: relative;
+  z-index: 5;
 }
 .text-container .item-value {
   color: #003a78;
@@ -334,6 +336,7 @@ footer {
 }
 .student-card:hover {
   background-color: #f9e0a9;
+  transition: all .3s ease-in-out;
 }
 
 .item-key::after {
