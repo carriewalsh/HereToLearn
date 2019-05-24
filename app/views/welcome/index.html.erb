@@ -1,33 +1,46 @@
-<h1>HereToLearn</h1>
-<h2>Help find strategies to best support <em>your</em> students.</h2>
 
-<div class="login-container">
-  <% if !current_user %>
-  <div class="submit-container">
-    <%= form_for :session, url: login_path do |f| %>
-      <%= f.label :email %>
-      <%= f.email_field :email, class:'input-box', autofocus: true %>
+<div class="banner">
+  <div class="tagline-container">
+    <div class="tagline">Find, create, and share strategies for <em>your</em> students.
       <br>
-      <%= f.label :password %>
-      <%= f.password_field :password, class:'input-box' %>
       <br>
-      <div class="submit-container">
-        <%= f.submit 'Log In', class: "nav-button" %>
+      <div class="logo-image">
+        <%= image_tag("arrow-logo-4.png", height: 300, class:"img") %>
       </div>
-    <% end %>
+    </div>
   </div>
-    <%= link_to "Forgot Password?", welcome_path, class:"forgot" %>
-    <!-- link_to "Forgot password?", forgot_password_path -->
-  <% else %>
-    <%= "Welcome, #{current_user.first_name} #{current_user.last_name}" %>
-    <br>
-    <br>
-    <div class="course-title-container">
-      <% current_user.courses.each do |course| %>
-          <%= link_to "Period #{course.period}: #{course.name}", welcome_path, class:"welcome-course-heading" %>
+  <div class="dynamic-container">
+    <div class="dynamic">
+      <% if !current_user %>
+      <div class="submit-container">
+        <%= form_for :session, url: login_path do |f| %>
+        <%= f.label :email %>
+        <%= f.email_field :email, class:'input-box', autofocus: true %>
+        <br>
+        <%= f.label :password %>
+        <%= f.password_field :password, class:'input-box' %>
+        <br>
+        <div class="submit-container">
+          <%= f.submit 'LOG IN', class: "form-button" %>
+        </div>
+        <% end %>
+        <%= link_to "Forgot Password?", welcome_path, id:"forgot" %>
+      </div>
+      <!-- link_to "Forgot password?", forgot_password_path -->
+      <% else %>
+        <ul class ="welcome-course-container">
+          <% current_user.courses.each do |course| %>
+            <li class="text-container">
+                <a href="<% welcome_path %>">
+                  <div class="item-key"><%= "Period #{course.period}" %></div>
+                  <div class="item-value"><%= " #{course.name}" %></div>
+                </a>
+            </li>
+          <% end %>
+        </ul>
       <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
 
 

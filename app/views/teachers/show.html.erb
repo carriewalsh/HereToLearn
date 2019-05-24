@@ -1,14 +1,36 @@
-<div class="login-container">
-  First Name: <%= current_user.first_name %>
-  <br>
-  Last Name: <%= current_user.last_name %>
-  <br>
-  Email: <%= current_user.email %>
-  <br>
-  Password: ••••••••
-  <br>
-  <div class="submit-container">
-    <%= link_to "Edit Information", edit_teacher_path(current_user), class:'nav-button' %>
-    <%= link_to "Reset Password", edit_teacher_path(current_user, update: :confirm), class: 'nav-button' %>
+<div class="account-container">
+  <div class="dynamic-container">
+    <div class="dynamic">
+      <div class="text-container">
+        <mark class="item-key">First Name: </mark>
+        <mark class="item-value">
+          <%= current_user.first_name %>
+        </mark>
+        <br>
+        <br>
+        <mark class="item-key">Last Name: </mark>
+        <mark class="item-value">
+          <%= current_user.last_name %>
+        </mark>
+        <br>
+        <br>
+        <mark class="item-key">Email: </mark>
+        <mark class="item-value">
+          <%= current_user.email %>
+        </mark>
+        <br>
+        <br>
+        <mark class="item-key">Password: </mark>
+        <mark class="item-value">
+          <%= "••••••••" %>
+        </mark>
+      </div>
+
+      <br>
+      <div class="submit-container">
+        <%= link_to "EDIT INFORMATION", edit_teacher_path(current_user), class:'form-button' %>
+        <%= link_to "RESET PASSWORD", edit_teacher_path(current_user, update: :confirm), class: 'form-button' %>
+      </div>
+    </div>
   </div>
 </div>

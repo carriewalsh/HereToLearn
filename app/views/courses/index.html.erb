@@ -1,12 +1,25 @@
 <div class="course-container">
     <% current_user.courses.each do |course| %>
       <div class="course-card">
-        <%= link_to "Period #{course.period}: #{course.name}", welcome_path, class:"course-heading" %>
+        <div class="text-container">
+            <a href="<% welcome_path %>">
+              <mark class="item-key"><%= "Period #{course.period}" %></mark>
+              <mark class="item-value"><%= " #{course.name}" %></mark>
+            </a>
+        </div>
         <div class="student-container">
           <% course.students.each do |student| %>
-          <div class="course-student-card">
-            <%= link_to "#{student.first_name} #{student.last_name}", dashboard_path %>
-            <!-- render 'partials/attendance_icon' -->
+          <div class="student-card">
+            <%= image_tag('circle-outline-xxl.png', height: 20) %>
+            <%= image_tag('check-mark-3-xxl.png', height: 20) %>
+            <%= image_tag('x-mark-xxl.png', height: 20) %>
+            <%= image_tag('letter-t-xxl.png', height: 20) %>
+            <%= image_tag('error-3-xxl.png', height: 20) %>
+            <%= image_tag('x-mark-5-xxl.png', height: 20) %>
+            <%= link_to "#{student.first_name} #{student.last_name}", dashboard_path, id:"forgot" %>
+            <div class="smaller-grey">
+              #<%= student.student_id %>
+            </div>
           </div>
           <% end %>
         </div>
