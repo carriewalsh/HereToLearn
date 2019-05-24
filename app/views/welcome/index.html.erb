@@ -24,10 +24,10 @@
       <% else %>
         <ul class ="welcome-course-container">
           <% current_user.courses.each do |course| %>
-            <li class="welcome-course-heading">
+            <li class="text-container">
                 <a href="<% welcome_path %>">
-                  <div class="course-period"><%= "• Period #{course.period}" %></div>
-                  <div class="course-name"><%= " #{course.name}" %></div>
+                  <div class="item-key"><%= "• Period #{course.period}" %></div>
+                  <div class="item-value"><%= " #{course.name}" %></div>
                 </a>
             </li>
           <% end %>

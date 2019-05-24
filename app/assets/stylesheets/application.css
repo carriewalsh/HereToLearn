@@ -10,6 +10,10 @@ header {
   z-index: 9;
 }
 
+mark {
+  background: none;
+}
+
 header nav.navbar {
   padding: 20px 100px 40px 100px;
 }
@@ -179,15 +183,51 @@ footer {
   background-color: #cfe2f3ff;
 }
 
-.welcome-course-heading .course-name {
+.text-container {
+  font-size: 21px;
+}
+.text-container .item-value {
   color: #003a78;
-  font-size: 20px;
   padding-bottom: 5px;
   padding-left: 15px;
 }
 
-.welcome-course-heading .course-period {
+.text-container .item-key {
   color: #fdb811;
-  font-size: 22px;
   padding-left: 5px;
+}
+
+.account-container {
+  width: 650px;
+  margin: 0px 300px;
+}
+
+.submit-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-button {
+  background-color: #003a78;
+  border: none;
+  width: 95%;
+  font-size: 16px;
+  font-weight: 300;
+  color: #cfe2f3ff;
+  border-radius: 6px;
+  margin-top: 20px;
+  padding: 5px;
+  text-align: center;
+}
+
+.form-button:hover {
+  background-color: #f9e0a9;
+  border: none;
+  width: 95%;
+  font-size: 16px;
+  font-weight: 300;
+  color: #003a78;
+  border-radius: 6px;
+  margin-top: 20px;
+  padding: 5px;
 }
