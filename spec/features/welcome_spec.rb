@@ -25,12 +25,12 @@ describe "As a visitor or user" do
     end
 
     it "has a place for me to log in" do
-      within ".login-container" do
+      within ".dynamic-container" do
         fill_in "session[email]", with: "test"
         fill_in "session[password]", with: "test"
         expect(page).to have_link("Forgot Password?")
-        expect(page).to have_button("Log In")
-        # click_button("Log In")
+        expect(page).to have_button("LOG IN")
+        # click_button("LOG IN")
         # expect(current_path).to eq(dashboard_path)
       end
     end

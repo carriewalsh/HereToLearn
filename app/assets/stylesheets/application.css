@@ -218,8 +218,6 @@ footer {
 }
 
 .account-container {
-  width: 100%
-  margin: 0px 300px;
   display: flex;
   justify-content: center;
 }

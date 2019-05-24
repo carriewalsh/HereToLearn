@@ -9,7 +9,7 @@ describe "As a logged-in teacher" do
     end
 
     it "shows me my information" do
-      within ".login-container" do
+      within ".dynamic-container" do
         expect(page).to have_content("First Name: #{@teacher.first_name}")
         expect(page).to have_content("Last Name: #{@teacher.last_name}")
         expect(page).to have_content("Email: #{@teacher.email}")
