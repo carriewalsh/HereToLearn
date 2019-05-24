@@ -22,7 +22,7 @@ describe 'A student with their e-mail in the system' do
     expect(Attendance.count).to eq(0)
     Rails.application.load_tasks
     Rake::Task['attendance:populate'].invoke
-    
+
     expect(Attendance.count).to eq(1)
 
     click_on 'Start Survey'
@@ -38,7 +38,12 @@ describe 'A student with their e-mail in the system' do
   end
 
   it 'updates attendance after submission' do
+    attendance_record = Attendance.find_by(course:@in_class, student:@student)
+    expect(attendance_record.attendance). to eq("absent")
+
     click_on "Submit"
+    attendance_record = Attendance.find_by(course:@in_class, student:@student)
+    expect(attendance_record.attendance). to eq("present")
 
   end
 end
