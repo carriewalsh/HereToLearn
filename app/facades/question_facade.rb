@@ -13,7 +13,7 @@ class QuestionFacade
 
   def question_data
     @_question_data ||= question_service.questions_by_ids(@question_list)
-    @_question_data.group_by{ |q| q[:id]}
+    @_question_data.group_by{ |q| q['id']}
   end
 
   def question_service
