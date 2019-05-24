@@ -1,0 +1,22 @@
+<div class="account-container">
+  <div class="dynamic-container">
+    <div class="dynamic">
+      <div class="text-container">
+        <%= form_for current_user, url: {action: "update"} do |f| %>
+        <%= f.label :password, class:'item-key' %>
+        <br>
+        <%= f.password_field :password, :required => true, class: 'input-box' %>
+        <br>
+        <%= f.label :confirm_password, class:'item-key' %>
+        <br>
+        <%= f.text_field :confirm_password, required: true, class: 'input-box' %>
+        <br>
+
+        <div class="submit-container">
+          <%= f.submit "Reset Password", class:'form-button' %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
