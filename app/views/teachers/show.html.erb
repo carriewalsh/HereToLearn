@@ -29,7 +29,7 @@
       <br>
       <div class="submit-container">
         <%= link_to "EDIT INFORMATION", edit_teacher_path(current_user), class:'form-button' %>
-        <%= link_to "RESET PASSWORD", edit_teacher_path(current_user, update: :confirm), class: 'form-button' %>
+        <%= link_to "RESET PASSWORD", password_reset_path(), class: 'form-button' %>
       </div>
     </div>
   </div>

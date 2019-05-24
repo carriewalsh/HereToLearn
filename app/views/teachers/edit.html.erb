@@ -5,11 +5,11 @@
         <%= form_for current_user, url: {action: "update"} do |f| %>
         <%= f.label :first_name, class:'item-key' %>
         <br>
-        <%= f.password_field :first_name, class: 'input-box' %>
+        <%= f.text_field :first_name, class: 'input-box' %>
         <br>
         <%= f.label :last_name, class:'item-key' %>
         <br>
-        <%= f.password_field :last_name, class: 'input-box' %>
+        <%= f.text_field :last_name, class: 'input-box' %>
         <br>
         <%= f.label :email, class:'item-key' %>
         <br>
