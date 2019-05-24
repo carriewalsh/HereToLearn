@@ -4,9 +4,14 @@ body {
   letter-spacing: .5px;
 }
 
+.main-body {
+  margin-top: 180px;
+}
+
 header {
   background: #F6F7F8;
-  /* position: absolute; */
+  position: fixed;
+  top: 0;
   width: 100%!important;
   z-index: 9;
 }
@@ -17,6 +22,14 @@ mark {
 
 header nav.navbar {
   padding: 20px 100px 40px 100px;
+}
+
+.flash-message {
+  background-color: #f9e0a9;
+  color: #003a78;
+  width: 100%;
+  text-align: center;
+  height: 25px;
 }
 
 .navbar {
@@ -36,7 +49,7 @@ header nav.navbar .navbarLogo {
 a, a:hover {
   text-decoration: none;
   outline: 0;
-  color: black;
+  color: #6f6f6f;
 }
 
 header nav.navbar .navbarLogo .headerLogo {
@@ -205,8 +218,10 @@ footer {
 }
 
 .account-container {
-  width: 650px;
+  width: 100%
   margin: 0px 300px;
+  display: flex;
+  justify-content: center;
 }
 
 .submit-container {
@@ -262,13 +277,57 @@ footer {
 }
 
 #forgot {
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 1px;
   color: black;
 }
 
 #forgot:hover {
-  font-size: 14px;
+  color: #5fb0c4;;
+}
+
+.course-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.course-card {
+  background: white;
+  width: 600px;
+  margin: 20px;
+  padding: 15px;
+}
+
+.student-container {
+  padding: 15px 125px;
+  display: flex;
+  flex-direction: column;
+}
+
+.student-card {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 45px;
+  margin-top: 10px;
+
+}
+.student-card:hover {
+  background-color: #f9e0a9;
+}
+
+.item-key::after {
+  content: '';
+  position: absolute;
+  background-color: #cfe2f3ff;
+  height: 5px;
+  width: 50px;
+  display: block;
+}
+
+.smaller-grey {
+  padding-left: 10px;
   letter-spacing: 1px;
-  color: #fdb811;
+  color: #6f6f6f;
+  font-size: 14px;
 }

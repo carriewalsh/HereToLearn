@@ -42,14 +42,16 @@
           </h3>
         </div>
       <% end %>
-    </header>
-    <% if !flash.empty? %>
-    <div class="flash-message">
-      <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: name %>
+      <% if !flash.empty? %>
+      <div class="flash-message">
+        <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: name %>
+        <% end %>
+      </div>
       <% end %>
+    </header>
+    <div class="main-body">
+      <%= yield %>
     </div>
-    <% end %>
-    <%= yield %>
   </body>
 </html>
