@@ -1,0 +1,16 @@
+<%= form_with url: student_response_path, method: :post do |f| %>
+  <%facade.questions.each do |question|%>
+    <h2 class="question-text"><%= question.text %></h2>
+    <div class="flex-container" id="question-<%=question.id%>">
+      <%question.choices.each do |choice| %>
+        <input id=<%=choice.id%> type="radio" name="question-<%=question.id%>" value=<%=choice.text%>>
+        <label for=<%=choice.text%> class="question-<%=question.id%>-label">
+          <%=choice.text.capitalize%>
+        </label>
+      <% end %>
+    </div>
+  <% end %>
+  <div class='submit-container'>
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>

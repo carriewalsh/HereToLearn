@@ -16,7 +16,7 @@ class Student::SurveyController < ApplicationController
   def create
     course = course_from_code(params[:code])
     student = Student.find(session[:student_id])
-    # binding.pry
+
 
     if course && student.courses.include?(course)
       session[:course_id] = course.id
@@ -29,6 +29,8 @@ class Student::SurveyController < ApplicationController
   end
 
   def show
+    facade = QuestionFacade.new([1,2]) # This should be changed as survey creation changes
+    render locals: { facade: facade }
   end
 
   private

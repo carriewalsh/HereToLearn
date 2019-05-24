@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'simplecov'
+require 'webmock/rspec'
 
 SimpleCov.start 'rails'
 

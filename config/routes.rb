@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     get '/failure', to: 'unregistered#index', as: 'unregistered'
     post '/survey', to: 'survey#create'
     get '/survey', to: 'survey#show'
+    get '/survey/complete', to: 'response#show', as: 'completed_survey'
+    post '/response', to: 'response#create', as: 'response'
   end
   get '/auth/google_oauth2/callback', to: 'student/survey#new'
 end

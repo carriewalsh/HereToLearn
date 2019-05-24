@@ -69,6 +69,8 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     crass (1.0.4)
     diff-lcs (1.3)
     docile (1.3.1)
@@ -90,6 +92,7 @@ GEM
       thor (~> 0.14)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    hashdiff (0.3.9)
     hashie (3.6.0)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
@@ -194,6 +197,7 @@ GEM
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
     ruby_dep (1.5.0)
+    safe_yaml (1.0.5)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -232,6 +236,10 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
+    webmock (3.5.1)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
@@ -269,6 +277,7 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   vcr
   web-console (>= 3.3.0)
+  webmock
 
 RUBY VERSION
    ruby 2.4.1p111
