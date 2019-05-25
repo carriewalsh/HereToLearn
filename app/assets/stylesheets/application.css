@@ -229,11 +229,14 @@ footer {
 .dynamic, .tagline {
   color: #003a78;
   background-color: #F6F7F8;
-  font-size: 24px;
-  height: 350px;
+  height: 75%;
   padding: 40px;
   margin-top: -50px;
   margin-left: -30px;
+}
+
+.tagline {
+  font-size: calc((-.2 *(1em - 13px) - -2.5em - 13px));
 }
 
 .welcome-course-container {
@@ -246,7 +249,7 @@ footer {
 }
 
 .text-container {
-  font-size: 21px;
+  font-size: calc((-.2 *(1em - 16px) - -2.2em - 13px));
   position: relative;
   z-index: 5;
 }
@@ -333,7 +336,7 @@ footer {
 }
 
 .student-container {
-  padding: 15px 125px;
+  padding: 15px 80px;
   display: flex;
   flex-direction: column;
 }
@@ -344,6 +347,8 @@ footer {
   justify-content: flex-start;
   height: 45px;
   margin-top: 10px;
+  padding: 0px 30px;
+  width: 100%;
 
 }
 .student-card:hover {
@@ -367,16 +372,74 @@ footer {
   font-size: 14px;
 }
 
+.date {
+  color: #003a78;
+  padding-left: 50px;
+}
+
+.date::after {
+  content: '';
+  background-color: #fdb811;
+  width: 30px;
+  height: 6px;
+  display: block;
+  position: relative;
+}
+
+.attendance-icon {
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: grey solid 1px;
+  height: 20px;
+  width: 20px;
+}
+
+
 .attendance-icon:hover {
   transform: scale(1.2, 1.2);
 }
 
-#forgot {
-  font-size: 16px;
+
+.attendance-nil {
+  background-image: url('circle-outline-xxl.png');
+}
+
+.attendance-present {
+  background-image: url('check-mark-3-xxl.png');
+
+}
+.attendance-absent {
+  background-image: url('x-mark-xxl.png');
+}
+.attendance-tardy {
+  background-image: url('letter-t-xxl.png');
+}
+.attendance-present_no_response {
+  background-image: url('error-3-xxl.png');
+}
+.attendance-absent_with_response {
+  background-image: url('x-mark-5-xxl.png');
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.hidden {
+  visibility: hidden;
+  z-index: 10;
+}
+
+.visible {
+  visibility: visible;
+}
+
+#small-link {
+  font-size: calc((-.2 *(1em - 20px) - -1.8em - 13px));
   letter-spacing: 1px;
   color: black;
 }
 
-#forgot:hover {
+#small-link:hover {
   color: #5fb0c4;;
 }

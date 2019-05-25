@@ -69,10 +69,11 @@ ActiveRecord::Schema.define(version: 2019_05_24_045051) do
     t.string "first_name"
     t.string "last_name"
     t.string "email"
-    t.string "password"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
   end
 
   add_foreign_key "attendances", "courses"

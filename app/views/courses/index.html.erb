@@ -1,5 +1,9 @@
+<div class="date-container">
+  <h2 class="date"><%= facade.date %></h2>
+</div>
+
 <div class="course-container">
-    <% current_user.courses.each do |course| %>
+    <% facade.courses.each do |course| %>
       <div class="course-card">
         <div class="text-container">
             <a href="<% welcome_path %>">
@@ -9,22 +13,56 @@
         </div>
         <div class="student-container">
           <% course.students.each do |student| %>
-          <div class="student-card">
-            <%= image_tag('circle-outline-xxl.png', height: 20, class:'attendance-icon') %>
-            <%= image_tag('check-mark-3-xxl.png', height: 20, class:'attendance-icon') %>
-            <%= image_tag('x-mark-xxl.png', height: 20, class:'attendance-icon') %>
-            <%= image_tag('letter-t-xxl.png', height: 20, class:'attendance-icon') %>
-            <%= image_tag('error-3-xxl.png', height: 20, class:'attendance-icon') %>
-            <%= image_tag('x-mark-5-xxl.png', height: 20, class:'attendance-icon') %>
-            <%= link_to "#{student.first_name} #{student.last_name}", dashboard_path, id:"forgot" %>
+          <div class="student-card" id="attendance-<%= student.id %>">
+            <div class="attendance-icons">
+              <div class="attendance-icon attendance-<%= student.todays_attendance %>">
+              </div>
+              <div class="hidden">
+              </div>
+            </div>
+            <%= link_to "#{student.first_name} #{student.last_name}", dashboard_path, id:"small-link" %>
             <div class="smaller-grey">
               #<%= student.student_id %>
             </div>
           </div>
           <% end %>
         </div>
-
       </div>
       <br>
     <% end %>
 </div>
+<script type="text/javascript">
+  $('.attendance-present').on('click', function(event) => {
+    $(event.target).addClass('rotate')
+  })
+  $('.attendance-icon').on('click', function(event) => {
+    $(event.target).addClass('visible')
+  })
+
+  $(.attendance-icon).qtip({
+    content: {
+      text: 'This is popping up'
+      <div class="attendance-icon attendance-present"></div><h4>Present</h4>
+      <div class="attendance-icon attendance-absent"></div><h4>Absent</h4>
+      <div class="attendance-icon attendance-tardy"></div><h4>Tardy</h4>
+      <div class="attendance-icon attendance-present_no_response"></div><h4>Present No Response</h4>
+      <div class="attendance-icon attendance-absent_with_response"></div><h4>Absent With Response</h4>
+    },
+    position: {
+      target: 'mouse',
+      adjust: { mouse: false }
+    }
+  })
+
+  <!-- $('.attendance-icon').qtip({
+    content: {
+        text: 'Loading...', // The text to use whilst the AJAX request is loading
+        ajax: {
+            url: '/path/to/file', // URL to the local file
+            type: 'POST', // POST or GET
+            data: {} // Data to pass along with your request
+        }
+    } -->
+});
+
+</script>

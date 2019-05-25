@@ -13,5 +13,6 @@ describe Course, type: :model do
     it { should have_many :students }
     it { should have_many :teacher_courses }
     it { should have_many :teachers }
+    it { should have_many :attendances }
   end
 end
