@@ -103,7 +103,12 @@ describe "As a logged-in teacher" do
       expect(page).to have_content("New Passwords Do Not Match")
     end
 
-    xit "allows me to cancel an account update" do
+    it "allows me to cancel an account update" do
+      visit welcome_path
+      fill_in 'session[email]', with: @teacher.email
+      fill_in 'session[password]', with: "password"
+      click_on "LOG IN"
+      visit account_path
       click_link "EDIT INFORMATION"
       click_link "CANCEL"
 
