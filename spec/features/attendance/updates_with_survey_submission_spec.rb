@@ -44,11 +44,11 @@ describe 'A student with their e-mail in the system' do
 
     click_on "Submit"
     attendance_record.reload
-    
+
     expect(attendance_record.attendance). to eq("present")
 
     expect(Attendance.where(attendance: 'absent').count).to eq(0)
-    Rake::Task["attendance:mark_absent"].invoke(@in_class.id)
+    Rake::Task["attendance:mark_absent"].execute(course_id: @in_class.id)
     expect(Attendance.where(attendance: 'absent').count).to eq(1)
     expect(Attendance.where(attendance: 'present').count).to eq(1)
 
