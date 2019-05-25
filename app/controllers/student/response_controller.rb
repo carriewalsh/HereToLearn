@@ -7,6 +7,11 @@ class Student::ResponseController < ApplicationController
     attendance_record.attendance = "present"
     attendance_record.save
 
+    ActionCable.server.broadcast 'attendance_channel',
+                                  student_id: session[:student_id],
+                                  attendance: 'present'
+
+
     flash[:info] = "Thank You!"
     redirect_to student_completed_survey_path
   end
