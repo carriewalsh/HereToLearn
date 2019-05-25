@@ -6,7 +6,7 @@ describe 'A student with their e-mail in the system' do
     @absent_student = create(:student)
     stub_omniauth(@student.google_id, @student.first_name, @student.last_name)
 
-    @in_class = create(:course)
+    @in_class = create(:course, start_time: DateTime.now)
     @student.courses << @in_class
     @absent_student.courses << @in_class
 
@@ -43,11 +43,12 @@ describe 'A student with their e-mail in the system' do
     expect(attendance_record.attendance). to eq(nil)
 
     click_on "Submit"
-    attendance_record = Attendance.find_by(course:@in_class, student:@student)
+    attendance_record.reload
+
     expect(attendance_record.attendance). to eq("present")
 
     expect(Attendance.where(attendance: 'absent').count).to eq(0)
-    Rake::Task["attendance:mark_absent"].invoke(@in_class.id)
+    Rake::Task["attendance:mark_absent"].execute(course_id: @in_class.id)
     expect(Attendance.where(attendance: 'absent').count).to eq(1)
     expect(Attendance.where(attendance: 'present').count).to eq(1)
 

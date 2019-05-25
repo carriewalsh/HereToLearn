@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def create
     teacher = Teacher.find_by(email: session_params[:email])
     if teacher && teacher.authenticate(session_params[:password])
-      session[:user_id] = teacher.id
+      cookies.signed[:user_id] = teacher.id
       flash[:success] = "Successfully logged in"
       redirect_to dashboard_path
     else
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    cookies.signed[:user_id] = nil
     flash[:success] = "You have successfully logged out"
     redirect_to welcome_path
   end

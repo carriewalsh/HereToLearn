@@ -6,10 +6,16 @@ class Student::SurveyController < ApplicationController
       session[:student_id] = student.id
       flash[:info] = "Successfully Logged-In"
       redirect_to student_class_code_path
+
+      ActionCable.server.broadcast 'attendance_channel',
+      student_id: session[:student_id],
+      attendance: 'present'
     else
       flash[:info] = "You are not registered in our system, please contact your teacher"
       redirect_to student_unregistered_path
     end
+
+
   end
 
   def create

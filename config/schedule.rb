@@ -22,6 +22,7 @@ set :chronic_options, hours24: true
 
 every :weekday, at: '2:00' do
   rake "attendance:populate"
+  rake "attendance:generate_codes"
 end
 
 require "./config/environment.rb"

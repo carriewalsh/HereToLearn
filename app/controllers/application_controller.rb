@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
 
   def current_user
-    @current_user ||= Teacher.find(session[:user_id]) if session[:user_id]
+    @current_user ||= Teacher.find(cookies.signed[:user_id]) if cookies.signed[:user_id]
   end
 
   def current_counselor?

@@ -8,12 +8,14 @@ describe 'Attendance' do
     @schedule = Whenever::Test::Schedule.new(file:'config/schedule.rb')
   end
 
-  it 'has a 2:00am job scheduled to create attendance_records for all week days' do
+  it 'has a 2:00am job scheduled to create attendance_records, and class codes on all week days' do
     course_count = Course.count
     expect( @schedule.jobs[:rake].first[:task]).to eq('attendance:populate')
     expect( @schedule.jobs[:rake].first[:every]).to eq([:weekday, {at: '2:00'}])
 
-    expect(@schedule.jobs[:rake].count).to eq(course_count+1)
+    expect( @schedule.jobs[:rake].second[:task]).to eq('attendance:generate_codes')
+    expect( @schedule.jobs[:rake].second[:every]).to eq([:weekday, {at: '2:00'}])
+    expect( @schedule.jobs[:rake].count).to eq(course_count+2)
   end
 
   it 'has a job scheduled for 5 minutes after class starts to mark students as absent' do
