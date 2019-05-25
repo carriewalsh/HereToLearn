@@ -13,9 +13,9 @@ describe 'Attendance' do
     expect( @schedule.jobs[:rake].first[:task]).to eq('attendance:populate')
     expect( @schedule.jobs[:rake].first[:every]).to eq([:weekday, {at: '2:00'}])
 
-    expect( @schedule.jobs[:rake].second[:task]).to eq('attendance.generate_codes')
+    expect( @schedule.jobs[:rake].second[:task]).to eq('attendance:generate_codes')
     expect( @schedule.jobs[:rake].second[:every]).to eq([:weekday, {at: '2:00'}])
-    expect( @schedule.jobs[:rake].count).to eq(course_count+1)
+    expect( @schedule.jobs[:rake].count).to eq(course_count+2)
   end
 
   it 'has a job scheduled for 5 minutes after class starts to mark students as absent' do
