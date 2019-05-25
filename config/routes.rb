@@ -27,4 +27,6 @@ Rails.application.routes.draw do
     post '/response', to: 'response#create', as: 'response'
   end
   get '/auth/google_oauth2/callback', to: 'student/survey#new'
+
+  mount ActionCable.server, at: '/cable'
 end
