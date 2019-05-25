@@ -15,7 +15,9 @@
           <% course.students.each do |student| %>
           <div class="student-card" id="attendance-<%= student.id %>">
             <div class="attendance-icons">
-              <div class="attendance <%= student.todays_attendance %>">
+              <div class="attendance-icon attendance-<%= student.todays_attendance %>">
+              </div>
+              <div class="hidden">
               </div>
             </div>
             <%= link_to "#{student.first_name} #{student.last_name}", dashboard_path, id:"small-link" %>
@@ -30,5 +32,37 @@
     <% end %>
 </div>
 <script type="text/javascript">
+  $('.attendance-present').on('click', function(event) => {
+    $(event.target).addClass('rotate')
+  })
+  $('.attendance-icon').on('click', function(event) => {
+    $(event.target).addClass('visible')
+  })
+
+  $(.attendance-icon).qtip({
+    content: {
+      text: 'This is popping up'
+      <div class="attendance-icon attendance-present"></div><h4>Present</h4>
+      <div class="attendance-icon attendance-absent"></div><h4>Absent</h4>
+      <div class="attendance-icon attendance-tardy"></div><h4>Tardy</h4>
+      <div class="attendance-icon attendance-present_no_response"></div><h4>Present No Response</h4>
+      <div class="attendance-icon attendance-absent_with_response"></div><h4>Absent With Response</h4>
+    },
+    position: {
+      target: 'mouse',
+      adjust: { mouse: false }
+    }
+  })
+
+  <!-- $('.attendance-icon').qtip({
+    content: {
+        text: 'Loading...', // The text to use whilst the AJAX request is loading
+        ajax: {
+            url: '/path/to/file', // URL to the local file
+            type: 'POST', // POST or GET
+            data: {} // Data to pass along with your request
+        }
+    } -->
+});
 
 </script>
