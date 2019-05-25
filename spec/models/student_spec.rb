@@ -12,6 +12,7 @@ describe Student, type: :model do
   describe "relationships" do
     it { should have_many :student_courses }
     it { should have_many :courses }
+    it { should have_many :attendances }
   end
 
   describe "instance methods" do
