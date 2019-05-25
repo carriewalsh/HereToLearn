@@ -1,3 +1,8 @@
+/*
+provides speech bubble tips from gem 'qtip2-jquery-rails':
+= require qtip2-jquery-rails
+*/
+
 body {
   background: #F6F7F8;
   font-family: "Open Sans", sans-serif;
