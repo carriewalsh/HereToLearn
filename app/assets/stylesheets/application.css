@@ -370,6 +370,20 @@ footer {
   font-size: 14px;
 }
 
+.date {
+  color: #003a78;
+  padding-left: 50px;
+}
+
+.date::after {
+  content: '';
+  background-color: #fdb811;
+  width: 30px;
+  height: 6px;
+  display: block;
+  position: relative;
+}
+
 .attendance-icon {
   padding-right: 5px;
   padding-top: 5px;
@@ -378,6 +392,33 @@ footer {
 
 .attendance-icon:hover {
   transform: scale(1.2, 1.2);
+}
+
+
+.attendance-nil {
+  background-image: url('circle-outline-xxl.png')
+  height: 20;
+}
+
+.attendance-present {
+  background-image: url('check-mark-3-xxl.png')
+  height: 20;
+}
+.attendane-absent {
+  background-image: url('x-mark-xxl.png')
+  height: 20;
+}
+.attendance-tardy {
+  background-image: url('letter-t-xxl.png')
+  height: 20;
+}
+.attendance-present_no_response {
+  background-image: url('error-3-xxl.png')
+  height: 20;
+}
+.attendance-absent_with_response {
+  background-image: url('x-mark-5-xxl.png')
+  height: 20;
 }
 
 #small-link {
