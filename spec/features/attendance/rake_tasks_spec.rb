@@ -49,8 +49,7 @@ describe 'Attendance' do
     expect(Attendance.where(attendance: nil).count).to eq(25)
     expect(Attendance.where(attendance: 'absent').count).to eq(0)
 
-
-    Rake::Task['attendance:mark_absent'].execute(Course.first.id)
+    Rake::Task['attendance:mark_absent'].execute(course_id: Course.first.id)
     expect(Attendance.where(attendance: nil).count).to eq(20)
     expect(Attendance.where(attendance: 'absent').count).to eq(5)
 
@@ -59,7 +58,7 @@ describe 'Attendance' do
     attendance_record = Attendance.find_by(course_id: course.id, student_id: student.id )
 
     attendance_record.update_attribute(:attendance, "present")
-    Rake::Task['attendance:mark_absent'].execute(Course.second.id)
+    Rake::Task['attendance:mark_absent'].execute(course_id: Course.second.id)
 
     expect(Attendance.where(attendance: nil).count).to eq(15)
     expect(Attendance.where(attendance: 'absent').count).to eq(9)
