@@ -17,4 +17,11 @@ namespace :attendance do
       attendance.update_attribute(:attendance, 'absent')
     end
   end
+
+  desc 'Generates codes for each course in the database'
+  task generate_codes: :environment do
+    Course.all.each do |course|
+      Code.create(course_id: course.id, code: SecureRandom.hex(2))
+    end
+  end
 end
