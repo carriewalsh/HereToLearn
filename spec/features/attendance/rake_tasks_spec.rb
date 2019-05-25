@@ -29,7 +29,18 @@ describe 'Attendance' do
   end
 
   it 'attendance:generate_codes' do
-    
+    expect(Code.count).to eq(0)
+    Rake::Task['attendance:generate_codes'].execute
+    expect(Code.count).to eq(5)
+
+    courses = Course.all
+
+    courses.each do |c|
+      codes = Code.where(course_id: c.id)
+      expect(codes.count).to eq(0)
+
+      expect(code.first.code).not_to eq(nil)
+    end
   end
 
   it 'attendance:mark_absent[class_id]' do
