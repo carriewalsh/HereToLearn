@@ -26,8 +26,7 @@ describe Student, type: :model do
 
         yesterday_att = student.attendances.create(course_id: course.id, created_at: yesterday, attendance: :absent)
         today_att = student.attendances.create(course_id: course.id, created_at: today, attendance: :present)
-
-        expect(student.todays_attendance).to eq(:present)
+        expect(student.todays_attendance).to eq("present")
       end
     end
   end
