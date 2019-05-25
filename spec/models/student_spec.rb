@@ -17,7 +17,7 @@ describe Student, type: :model do
 
   describe "instance methods" do
     describe ".todays_attendance" do
-      it "shows the value of TODAY's attendance" do
+      it "shows the value of TODAY's attendance if there was class" do
         today = DateTime.now.beginning_of_day
         yesterday = today-1
 
@@ -27,6 +27,12 @@ describe Student, type: :model do
         yesterday_att = student.attendances.create(course_id: course.id, created_at: yesterday, attendance: :absent)
         today_att = student.attendances.create(course_id: course.id, created_at: today, attendance: :present)
         expect(student.todays_attendance).to eq("present")
+      end
+
+      it "shows a response if there was no class today" do
+        student = create(:student)
+        response = "No Attendance Today"
+        expect(student.todays_attendance).to eq(response)
       end
     end
   end

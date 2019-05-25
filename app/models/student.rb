@@ -7,6 +7,7 @@ class Student < ApplicationRecord
   has_many :attendances
 
   def todays_attendance
-    attendances.where("created_at >= ?", Date.today).first.attendance
+    today = attendances.where("created_at >= ?", Date.today)
+    today.first ? today.first.attendance : "No Attendance Today"
   end
 end
