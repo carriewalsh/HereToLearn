@@ -29,6 +29,14 @@ describe Student, type: :model do
         expect(student.todays_attendance).to eq("present")
       end
 
+      it "returns nil if TODAY's class hasn't started yet" do
+        today = DateTime.now.beginning_of_day
+        student = create(:student)
+        course = student.courses.create(name: "PE", period: "1", start_time: "2019-05-21 8:00:00", end_time: "2019-05-21 9:00:00")
+        today_att = student.attendances.create(course_id: course.id, created_at: today)
+        expect(student.todays_attendance).to be(nil)
+      end
+
       it "shows a response if there was no class today" do
         student = create(:student)
         response = "No Attendance Today"
