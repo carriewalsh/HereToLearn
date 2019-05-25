@@ -4,7 +4,7 @@ class Student::ResponseController < ApplicationController
     # post_responses
 
     attendance_record = find_attendance
-    attendance_record.attendance = "present"
+    attendance_record.attendance = attendance_status if attendance_status
     attendance_record.save
 
     ActionCable.server.broadcast 'attendance_channel',
@@ -22,8 +22,18 @@ class Student::ResponseController < ApplicationController
 
   private
 
+  def attendance_status
+    course = Course.find(session[:course_id])
+    return nil if now > course.end_time
+    return 'present' if now < course.start_time + 5.minutes
+    'tardy'
+  end
+
+  def now
+    DateTime.now()
+  end
+
   def find_attendance
-    now = DateTime.now()
     time_range = (now-1.hour..now)
     Attendance.find_by(student_id: session[:student_id],
                        course_id: session[:course_id],
