@@ -336,7 +336,7 @@ footer {
 }
 
 .student-container {
-  padding: 15px 100px;
+  padding: 15px 80px;
   display: flex;
   flex-direction: column;
 }
@@ -347,6 +347,8 @@ footer {
   justify-content: flex-start;
   height: 45px;
   margin-top: 10px;
+  padding: 0px 30px;
+  width: 100%;
 
 }
 .student-card:hover {
@@ -385,8 +387,11 @@ footer {
 }
 
 .attendance-icon {
-  padding-right: 5px;
-  padding-top: 5px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: grey solid 1px;
+  height: 20px;
+  width: 20px;
 }
 
 
@@ -396,29 +401,37 @@ footer {
 
 
 .attendance-nil {
-  background-image: url('circle-outline-xxl.png')
-  height: 20;
+  background-image: url('circle-outline-xxl.png');
 }
 
 .attendance-present {
-  background-image: url('check-mark-3-xxl.png')
-  height: 20;
+  background-image: url('check-mark-3-xxl.png');
+
 }
-.attendane-absent {
-  background-image: url('x-mark-xxl.png')
-  height: 20;
+.attendance-absent {
+  background-image: url('x-mark-xxl.png');
 }
 .attendance-tardy {
-  background-image: url('letter-t-xxl.png')
-  height: 20;
+  background-image: url('letter-t-xxl.png');
 }
 .attendance-present_no_response {
-  background-image: url('error-3-xxl.png')
-  height: 20;
+  background-image: url('error-3-xxl.png');
 }
 .attendance-absent_with_response {
-  background-image: url('x-mark-5-xxl.png')
-  height: 20;
+  background-image: url('x-mark-5-xxl.png');
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.hidden {
+  visibility: hidden;
+  z-index: 10;
+}
+
+.visible {
+  visibility: visible;
 }
 
 #small-link {
