@@ -1,5 +1,9 @@
+<div class="date-container">
+  <h2 class="date"><%= facade.date %></h2>
+</div>
+
 <div class="course-container">
-    <% current_user.courses.each do |course| %>
+    <% facade.courses.each do |course| %>
       <div class="course-card">
         <div class="text-container">
             <a href="<% welcome_path %>">
@@ -11,12 +15,8 @@
           <% course.students.each do |student| %>
           <div class="student-card" id="attendance-<%= student.id %>">
             <div class="attendance-icons">
-              <%= image_tag('circle-outline-xxl.png', height: 20, class:'attendance-icon') %>
-              <%= image_tag('check-mark-3-xxl.png', height: 20, class:'attendance-icon') %>
-              <%= image_tag('x-mark-xxl.png', height: 20, class:'attendance-icon') %>
-              <%= image_tag('letter-t-xxl.png', height: 20, class:'attendance-icon') %>
-              <%= image_tag('error-3-xxl.png', height: 20, class:'attendance-icon') %>
-              <%= image_tag('x-mark-5-xxl.png', height: 20, class:'attendance-icon') %>
+              <div class="attendance <%= student.todays_attendance %>">
+              </div>
             </div>
             <%= link_to "#{student.first_name} #{student.last_name}", dashboard_path, id:"small-link" %>
             <div class="smaller-grey">
@@ -25,7 +25,6 @@
           </div>
           <% end %>
         </div>
-
       </div>
       <br>
     <% end %>
