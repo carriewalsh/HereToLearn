@@ -1,7 +1,8 @@
 class StudentsFacade
-  attr_reader :id
-  def initialize(id)
+  attr_reader :id, :course
+  def initialize(id, course_id)
     @id = id
+    @course = Course.find(course_id)
   end
 
   def student
@@ -16,6 +17,8 @@ class StudentsFacade
   end
 
   def statistics
-    [student.percent_present, student.percent_absent, student.total_absences]
+    ["Present: #{student.percent_present(@course)}%",
+      "Absent: #{student.percent_absent(@course)}%",
+      "Total Absences: #{student.total_absences(@course)}"]
   end
 end
