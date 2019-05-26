@@ -43,6 +43,47 @@ describe Student, type: :model do
         expect(student.todays_attendance).to eq(response)
       end
     end
+    describe "attendance stats" do
+      before :each do
+        @course = create(:course)
+        @course2 = create(:course)
+        @teacher = create(:teacher)
+        @teacher.courses << Course.first
+        @student = create(:student)
+        @student.courses << Course.first
+        @student.courses << Course.last
+
+        @student.attendances.create(course_id: @course.id, created_at: "2019-05-26 02:00:00", attendance: "present")
+        @student.attendances.create(course_id: @course.id, created_at: "2019-05-26 02:00:00", attendance: "absent")
+        @student.attendances.create(course_id: @course.id, created_at: "2019-05-26 02:00:00", attendance: "present")
+        @student.attendances.create(course_id: @course.id, created_at: "2019-05-26 02:00:00", attendance: "present")
+        @student.attendances.create(course_id: @course.id, created_at: "2019-05-26 02:00:00", attendance: "absent")
+        @student.attendances.create(course_id: @course.id, created_at: "2019-05-26 02:00:00", attendance: "present")
+        @student.attendances.create(course_id: @course.id, created_at: "2019-05-26 02:00:00", attendance: "present")
+        @student.attendances.create(course_id: @course.id, created_at: "2019-05-26 02:00:00", attendance: "present")
+        @student.attendances.create(course_id: @course.id, created_at: "2019-05-26 02:00:00", attendance: "present")
+        @student.attendances.create(course_id: @course.id, created_at: "2019-05-26 02:00:00", attendance: "present")
+        @student.attendances.create(course_id: @course2.id, created_at: "2019-05-26 02:00:00", attendance: "absent")
+      end
+
+      describe "percent_present" do
+        it "returns the percent of days present for a student" do
+          expect(@student.percent_present).to eq(80.0)
+        end
+      end
+
+      describe "percent_absent" do
+        it "returns the percent of days absent for a student" do
+          expect(@student.percent_absent).to eq(20.0)
+        end
+      end
+
+      describe "total_absences" do
+        it "returns the number of days absent for a student" do
+          expect(@student.total_absences).to eq(2)
+        end
+      end
+    end
   end
 
   describe "class methods" do
