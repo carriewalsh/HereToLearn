@@ -1,16 +1,13 @@
-class CoursesFacade
-  attr_reader :current_user
+class CourseFacade
+  attr_reader :current_user, :course
 
-  def initialize(current_user)
+  def initialize(current_user, course)
     @current_user = current_user
+    @course = course
   end
 
-  def courses
-    current_user.courses
-  end
-
-  def students(course_id)
-    courses.find(course_id).students
+  def students
+    current_user.courses.find(course.id).students
   end
 
   def date
