@@ -12,12 +12,12 @@ describe 'A student with their e-mail in the system' do
     @out_of_class = create(:course)
     @out_of_class_code = create(:code, course: @out_of_class)
 
-    endpoint = '/api/v1/questions?ids=1,2'
+    endpoint = '/api/v1/q_and_a?question_id=1,2'
     domain = 'http://surveyapp.com'
     body =  File.open('./api_responses/questions.json')
 
     stub_request(:get, domain + endpoint).to_return(body: body)
-    
+
     visit '/student'
     expect(current_path).to eq(student_class_code_path)
   end
