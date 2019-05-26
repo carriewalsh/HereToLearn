@@ -10,9 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-// provides speech bubble tips from gem 'qtip2-jquery-rails':
-//= require qtip2-jquery-rails
-//= require rails-ujs
+
 //= require activestorage
+//= require jquery
+//= require jquery_ujs
 //= require_tree .
