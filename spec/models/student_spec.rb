@@ -46,18 +46,21 @@ describe Student, type: :model do
   end
 
   describe "class methods" do
+    before :each do
+      @teacher = create(:teacher)
+      @course = create(:course)
+      create_list(:student, 6)
+      @teacher.courses << Course.first
+      Student.first.courses << @course
+      Student.second.courses << @course
+      Student.third.courses << @course
+      Student.fourth.courses << @course
+      Student.all[-2].courses << @course
+      Student.last.courses << @course
+    end
+
     describe ".random_groups()" do
       it "gives random groups based on an input number" do
-        @teacher = create(:teacher)
-        @course = create(:course)
-        create_list(:student, 6)
-        @teacher.courses << Course.first
-        Student.first.courses << @course
-        Student.second.courses << @course
-        Student.third.courses << @course
-        Student.fourth.courses << @course
-        Student.all[-2].courses << @course
-        Student.last.courses << @course
 
         result = Student.random_groups(2)
         expect(result).to be_an(Array)
@@ -70,15 +73,13 @@ describe Student, type: :model do
 
     describe ".present students" do
       it "returns only students who are present or tardy" do
-        create_list(:student, 5)
-        Student.first.attendances.create(course_id: 3, created_at: DateTime.now.midnight , attendance: "present")
-        Student.second.attendances.create(course_id: 3, created_at: DateTime.now.midnight , attendance: "present_no_response")
-        Student.third.attendances.create(course_id: 3, created_at: DateTime.now.midnight , attendance: "tardy")
-        Student.fourth.attendances.create(course_id: 3, created_at: DateTime.now.midnight , attendance: "absent")
-        Student.fifth.attendances.create(course_id: 3, created_at: DateTime.now.midnight , attendance: "absent_with_response")
-
-        expect(Student.present_students.includes?(Student.fourth)).to be false
-        expect(Student.present_students.includes?(Student.fifth)).to be false
+        Student.first.attendances.create(course_id: @course.id, created_at: DateTime.now.midday , attendance: "present")
+        Student.second.attendances.create(course_id: @course.id, created_at: DateTime.now.midday , attendance: "present_no_response")
+        Student.third.attendances.create(course_id: @course.id, created_at: DateTime.now.midday , attendance: "tardy")
+        Student.fourth.attendances.create(course_id: @course.id, created_at: DateTime.now.midday , attendance: "absent")
+        Student.last.attendances.create(course_id: @course.id, created_at: DateTime.now.midday , attendance: "absent_with_response")
+        expect(Student.present_students.include?(Student.fourth)).to be false
+        expect(Student.present_students.include?(Student.fifth)).to be false
         expect(Student.present_students.count).to eq(3)
       end
     end

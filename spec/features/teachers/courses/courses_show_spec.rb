@@ -25,8 +25,8 @@ describe "As a logged-in Teacher" do
     it "has a field and button that allows me to group randomly" do
       expect(page).to have_content "Grouping"
       expect(page).to have_content "Randomly:"
-      fill_in "number per group", with: 2
-      click_button "Create Groups"
+      fill_in "random-grouping", with: 2
+      click_button "ALL STUDENTS"
     end
   end
 end

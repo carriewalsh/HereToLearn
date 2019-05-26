@@ -27,8 +27,7 @@ class Student < ApplicationRecord
   def self.present_students
     students = Student.all
     students.find_all do |student|
-      binding.pry
-      student.todays_attendance.includes?("present") || student.todays_attendance == "tardy"
+      student.todays_attendance.include?("present") || student.todays_attendance == "tardy"
     end
   end
 end
