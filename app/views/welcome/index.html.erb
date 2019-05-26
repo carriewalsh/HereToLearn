@@ -31,10 +31,9 @@
         <ul class ="welcome-course-container">
           <% current_user.courses.each do |course| %>
             <li class="text-container">
-                <a href="<% welcome_path %>">
-                  <div class="item-key"><%= "Period #{course.period}" %></div>
-                  <div class="item-value"><%= " #{course.name}" %></div>
-                </a>
+              <%= link_to "Period #{course.period}", course_path(course), class:"item-key" %>
+              <br>
+              <%= link_to " #{course.name}", course_path(course), class:'item-value'%>
             </li>
           <% end %>
         </ul>

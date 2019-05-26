@@ -6,10 +6,8 @@
     <% facade.courses.each do |course| %>
       <div class="course-card">
         <div class="text-container">
-            <a href="<% course_path(course.id) %>">
-              <mark class="item-key"><%= "Period #{course.period}" %></mark>
-              <mark class="item-value"><%= " #{course.name}" %></mark>
-            </a>
+            <%= link_to "Period #{course.period}", course_path(course), class:"item-key" %>
+            <%= link_to " #{course.name}", course_path(course), class:'item-value'%>
         </div>
         <div class="student-container">
           <% course.students.each do |student| %>
