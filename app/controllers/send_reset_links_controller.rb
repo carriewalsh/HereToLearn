@@ -1,7 +1,7 @@
 class SendResetLinksController < ApplicationController
-  before_action :get_user, only: [:edit, :update]
-  before_action :valid_user, only: [:edit, :update]
-  before_action :check_expieration, only: [:edit, :update]
+  before_action :get_teacher, only: [:edit, :update]
+  before_action :valid_teacher, only: [:edit, :update]
+  before_action :check_expiration, only: [:edit, :update]
 
   def new
 
@@ -22,11 +22,16 @@ class SendResetLinksController < ApplicationController
   end
 
   def edit
-    @teacher =
   end
 
   def update
-
+    if @teacher.update_attributes(teacher_params)
+      @teacher.update_attribute(:reset_digest,nil)
+      flash[:success] = "Successfully reset password."
+      redirect_to login_path
+    else
+      render :edit
+    end
   end
 
   private
@@ -35,13 +40,24 @@ class SendResetLinksController < ApplicationController
       params.require(:password_reset).permit(:email)
     end
 
-    def get_user
+    def teacher_params
+      params.require(:teacher).permit(:password, :password_confirmation)
+    end
+
+    def get_teacher
       @teacher = Teacher.find_by(email: params[:email])
     end
 
-    def valid_user
-      unless (@user && @user.authenitcated?(:reset, params[:id]))
+    def valid_teacher
+      unless (@teacher && @teacher.authenitcated?(:reset, params[:id]))
         redirect_to welcome_path
+      end
+    end
+
+    def check_expiration
+      if @teacher.password_reset_expired?
+        flash[:danger] = "Password reset has expired."
+        redirect_to send_password_reset_email_path
       end
     end
 end
