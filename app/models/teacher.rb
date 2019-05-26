@@ -5,4 +5,8 @@ class Teacher < ApplicationRecord
 
   has_many :teacher_courses
   has_many :courses, through: :teacher_courses
+
+  def Teacher.new_token
+    SecureRandom.urlsafe_base64
+  end
 end
