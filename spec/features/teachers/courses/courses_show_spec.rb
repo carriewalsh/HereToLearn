@@ -19,7 +19,7 @@ describe "As a logged-in Teacher" do
     it "shows me the class roster with today's attendance information" do
       expect(page).to have_content(@course.name)
       expect(page).to have_css('.student-card', count: 4)
-      expect(page).to have_content("#{student.first.first_name} #{student.first.last_name}")
+      expect(page).to have_content("#{Student.first.first_name} #{Student.first.last_name}")
     end
 
     it "has a field and button that allows me to group randomly" do
