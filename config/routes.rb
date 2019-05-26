@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   patch '/send_reset_link', to: 'send_reset_links#update'
 
   resources :courses, only: :show
+  resources :students, only: :show
 
   namespace :student do
     root to: redirect('/auth/google_oauth2'), as: 'auth'
