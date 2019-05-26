@@ -11,20 +11,23 @@ class Student < ApplicationRecord
     today.first ? today.first.attendance : "No Attendance Today"
   end
 
-  def percent_present(course)
+  def percent_present(course = nil)
     100.0 - percent_absent(course)
   end
 
-  def percent_absent(course)
-    course_attendance = attendances.where(course_id: course.id)
-    total_days = course_attendance.count
+  def percent_absent(course = nil)
+    total_days = course_attendance(course).count
     (total_absences(course) * 100.0 / total_days).round(1)
   end
 
-  def total_absences(course)
-    course_attendance = attendances.where(course_id: course.id)
+  def total_absences(course = nil)
     options = ["absent", "absent_with_response"]
-    course_attendance.where(attendance: options, course_id: course.id).count
+    course_attendance(course).where(attendance: options).count
+  end
+
+  def course_attendance(course)
+    return attendances.where(course: course) if course
+    attendances
   end
 
   def self.random_groups(count)
