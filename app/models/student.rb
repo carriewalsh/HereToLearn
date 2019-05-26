@@ -11,6 +11,22 @@ class Student < ApplicationRecord
     today.first ? today.first.attendance : "No Attendance Today"
   end
 
+  def percent_present(course)
+    100.0 - percent_absent(course)
+  end
+
+  def percent_absent(course)
+    course_attendance = attendances.where(course_id: course.id)
+    total_days = course_attendance.count
+    (total_absences(course) * 100.0 / total_days).round(1)
+  end
+
+  def total_absences(course)
+    course_attendance = attendances.where(course_id: course.id)
+    options = ["absent", "absent_with_response"]
+    course_attendance.where(attendance: options, course_id: course.id).count
+  end
+
   def self.random_groups(count)
     shuffled = select("students.first_name || ' ' || students.last_name AS name").shuffle
     groups = []

@@ -68,19 +68,19 @@ describe Student, type: :model do
 
       describe "percent_present" do
         it "returns the percent of days present for a student" do
-          expect(@student.percent_present).to eq(80.0)
+          expect(@student.percent_present(@course)).to eq(80.0)
         end
       end
 
       describe "percent_absent" do
         it "returns the percent of days absent for a student" do
-          expect(@student.percent_absent).to eq(20.0)
+          expect(@student.percent_absent(@course)).to eq(20.0)
         end
       end
 
       describe "total_absences" do
         it "returns the number of days absent for a student" do
-          expect(@student.total_absences).to eq(2)
+          expect(@student.total_absences(@course)).to eq(2)
         end
       end
     end

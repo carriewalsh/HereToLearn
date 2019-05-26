@@ -15,7 +15,7 @@ class StudentsFacade
     list
   end
 
-  def schedule
+  def statistics
     [student.percent_present, student.percent_absent, student.total_absences]
   end
 end
