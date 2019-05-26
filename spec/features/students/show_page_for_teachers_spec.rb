@@ -24,7 +24,7 @@ describe "As a logged-in Teacher" do
       @student.attendances.create(course_id: @course2.id, created_at: "2019-05-26 02:00:00", attendance: "absent")
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@teacher)
-      visit student_path(@student)
+      visit student_path(@student, {course_id: @course.id})
     end
 
     it "should have student name and id" do
