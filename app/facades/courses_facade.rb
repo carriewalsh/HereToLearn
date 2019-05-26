@@ -12,14 +12,4 @@ class CoursesFacade
   def students(course_id)
     courses.find(course_id).students
   end
-
-  def date
-    wday = Date.today.strftime('%a')
-    if wday = 'Sat' || wday = 'Sun'
-      message = ' No Attendance Taken Today'
-    else
-      message = ''
-    end
-    "Today: #{Date.today.strftime('%a, %e %b, %Y')}#{message}"
-  end
 end

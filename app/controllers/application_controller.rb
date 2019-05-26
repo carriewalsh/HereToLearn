@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  helper_method :current_user, :current_counselor?
+  helper_method :current_user, :current_counselor?, :date
 
 
   def current_user
@@ -9,5 +9,15 @@ class ApplicationController < ActionController::Base
 
   def current_counselor?
     !current_user.courses.empty?
+  end
+
+  def date
+    wday = Date.today.strftime('%a')
+    if wday = 'Sat' || wday = 'Sun'
+      message = ' No Attendance Taken Today'
+    else
+      message = ''
+    end
+    "Today: #{Date.today.strftime('%a, %e %b, %Y')}#{message}"
   end
 end
