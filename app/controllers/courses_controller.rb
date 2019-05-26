@@ -7,9 +7,15 @@ class CoursesController < ApplicationController
   end
 
   def show
+    if params[:group_count]
+      render locals: {
+        facade: CourseFacade.new(current_user, course, params[:group_count])
+      }
+    else
     render locals: {
-      facade: CourseFacade.new(current_user, course)
+      facade: CourseFacade.new(current_user, course, nil)
     }
+    end
   end
 
   private
