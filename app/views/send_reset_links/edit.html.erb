@@ -2,14 +2,16 @@
   <div class="dynamic-container">
     <div class="dynamic">
       <div class="text-container">
-        <%= form_for current_user, url: {action: "update"} do |f| %>
+        <%= form_for @teacher, url: send_reset_link_path(params[:id]) do |f| %>
+        <%= hidden_field_tag :email, @teacher.email %>
+
         <%= f.label :password, class:'item-key' %>
         <br>
         <%= f.password_field :password, :required => true, class: 'input-box' %>
         <br>
-        <%= f.label :confirm_password, class:'item-key' %>
+        <%= f.label :password_confirmation, class:'item-key' %>
         <br>
-        <%= f.text_field :confirm_password, required: true, class: 'input-box' %>
+        <%= f.text_field :password_confirmation, required: true, class: 'input-box' %>
         <br>
 
         <div class="submit-container">
