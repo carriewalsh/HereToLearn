@@ -11,7 +11,6 @@ class SendResetLinksController < ApplicationController
     @teacher = Teacher.find_by(email: reset_params[:email])
     if @teacher
       @teacher.create_reset_digest
-      binding.pry
       @teacher.send_password_reset_email
       flash[:notice] = "Email has been sent with password reset instructions"
       redirect_to login_path
