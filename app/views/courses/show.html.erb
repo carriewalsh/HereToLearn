@@ -1,0 +1,26 @@
+<div class="date-container">
+  <h2 class="date"><%= facade.date %></h2>
+</div>
+<div class="text-container">
+  <mark class="item-key"><%= "Period #{facade.course.period}" %></mark>
+  <mark class="item-value"><%= " #{facade.course.name}" %></mark>
+</div>
+
+<div class="dynamic-container">
+  <div class="student-container">
+    <% facade.students.each do |student| %>
+    <div class="student-card" id="attendance-<%= student.id %>">
+      <div class="attendance-icons">
+        <div class="attendance-icon attendance-<%= student.todays_attendance %>">
+        </div>
+        <div class="hidden">
+        </div>
+      </div>
+      <%= link_to "#{student.first_name} #{student.last_name}", dashboard_path, id:"small-link" %>
+      <div class="smaller-grey">
+        #<%= student.student_id %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
