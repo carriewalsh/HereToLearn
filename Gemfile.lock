@@ -60,6 +60,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
+    chartkick (3.0.2)
     chronic (0.10.2)
     coderay (1.1.2)
     coffee-rails (4.2.2)
@@ -266,6 +267,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   capybara
+  chartkick
   coffee-rails (~> 4.2)
   factory_bot_rails
   faker

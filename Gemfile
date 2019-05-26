@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secu re_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'qtip2-jquery-rails', '~> 2.2.100'
+gem 'chartkick'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
