@@ -1,4 +1,4 @@
-class StudentsFacade
+class StudentFacade
   attr_reader :id, :course
   def initialize(id, course_id)
     @id = id
