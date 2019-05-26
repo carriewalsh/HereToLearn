@@ -37,8 +37,15 @@
           <h4>Randomly</h4>
           <label for="random-grouping">How many students per group</label>
           <input type="number" name="random-grouping" value="" max="<%= facade.students.count %>">
+          <input type="submit" name="" value="Only Present" class="random-present form-button">
+          <input type="submit" name="" value="All Students" class="random-present form-button">
+
           <script type="text/javascript">
-            
+            $('.random_present form-button').on('click', function(event) {
+              var count = $('.random-grouping').val();
+              event.preventDefault();
+              $.ajax("<%= course_path(facade.course.id) %>")
+              });
           </script>
         </div>
 
