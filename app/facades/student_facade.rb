@@ -1,4 +1,4 @@
-class StudentsFacade
+class StudentFacade
   attr_reader :id, :course
   def initialize(id, course_id)
     @id = id
@@ -19,6 +19,6 @@ class StudentsFacade
   def statistics
     ["Present: #{student.percent_present(@course)}%",
       "Absent: #{student.percent_absent(@course)}%",
-      "Total Absences: #{student.total_absences(@course)}"]
+      "Total Absences: #{student.total_absences(@course)} days"]
   end
 end
