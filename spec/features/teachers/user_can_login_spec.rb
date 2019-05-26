@@ -47,7 +47,7 @@ describe "As a teacher" do
     fill_in "session[email]", with: @teacher.email
     fill_in "session[password]", with: "not_password"
     click_on "LOG IN"
-    expect(current_path).to eq(welcome_path)
+    expect(current_path).to eq(login_path)
     expect(page).to have_content("Sorry, wrong email/password combination")
     expect(page).to_not have_content("Logged in as #{@teacher.first_name} #{@teacher.last_name}")
   end
