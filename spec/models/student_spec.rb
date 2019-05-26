@@ -43,7 +43,9 @@ describe Student, type: :model do
         expect(student.todays_attendance).to eq(response)
       end
     end
+  end
 
+  describe "class methods" do
     describe ".random_groups()" do
       it "gives random groups based on an input number" do
         @teacher = create(:teacher)
@@ -63,6 +65,21 @@ describe Student, type: :model do
         expect(result.first).to be_an(Array)
         expect(result.first.count).to eq(2)
         expect(result.flatten.uniq.count).to eq(6)
+      end
+    end
+
+    describe ".present students" do
+      it "returns only students who are present or tardy" do
+        create_list(:student, 5)
+        Student.first.attendances.create(course_id: 3, created_at: DateTime.now.midnight , attendance: "present")
+        Student.second.attendances.create(course_id: 3, created_at: DateTime.now.midnight , attendance: "present_no_response")
+        Student.third.attendances.create(course_id: 3, created_at: DateTime.now.midnight , attendance: "tardy")
+        Student.fourth.attendances.create(course_id: 3, created_at: DateTime.now.midnight , attendance: "absent")
+        Student.fifth.attendances.create(course_id: 3, created_at: DateTime.now.midnight , attendance: "absent_with_response")
+
+        expect(Student.present_students.includes?(Student.fourth)).to be false
+        expect(Student.present_students.includes?(Student.fifth)).to be false
+        expect(Student.present_students.count).to eq(3)
       end
     end
   end
