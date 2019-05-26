@@ -13,9 +13,13 @@ Rails.application.routes.draw do
   get '/password_reset', to: 'password_resets#edit', as: 'password_reset'
   patch '/password_reset', to: 'password_resets#update'
 
-  get '/send_reset_link/new', to: 'send_reset_links#new', as: 'send_reset_link'
+  get '/send_reset_link', to: 'send_reset_links#new', as: 'send_reset_link'
+  post '/send_reset_link', to: 'send_reset_links#create'
   get '/send_reset_link', to: 'send_reset_links#edit', as: 'edit_send_reset_link'
   patch '/send_reset_link', to: 'send_reset_links#update'
+
+  resources :courses, only: :show
+  resources :students, only: :show
 
   namespace :student do
     root to: redirect('/auth/google_oauth2'), as: 'auth'

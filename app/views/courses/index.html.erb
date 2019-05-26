@@ -1,15 +1,13 @@
 <div class="date-container">
-  <h2 class="date"><%= facade.date %></h2>
+  <h2 class="date"><%= date %></h2>
 </div>
 
 <div class="course-container">
     <% facade.courses.each do |course| %>
       <div class="course-card">
         <div class="text-container">
-            <a href="<% welcome_path %>">
-              <mark class="item-key"><%= "Period #{course.period}" %></mark>
-              <mark class="item-value"><%= " #{course.name}" %></mark>
-            </a>
+            <%= link_to "Period #{course.period}", course_path(course), class:"item-key" %>
+            <%= link_to " #{course.name}", course_path(course), class:'item-value'%>
         </div>
         <div class="student-container">
           <% course.students.each do |student| %>
@@ -20,7 +18,7 @@
               <div class="hidden">
               </div>
             </div>
-            <%= link_to "#{student.first_name} #{student.last_name}", dashboard_path, id:"small-link" %>
+            <%= link_to "#{student.first_name} #{student.last_name}", student_path(student.id, course_id: course.id), id:"small-link" %>
             <div class="smaller-grey">
               #<%= student.student_id %>
             </div>
@@ -32,6 +30,7 @@
     <% end %>
 </div>
 <script type="text/javascript">
+
   $('mark.item-key').on('click', alert('here'));
 
   $('.attendance-present').on('click', function(event){
@@ -57,15 +56,5 @@
     }
   })
 
-//   <!-- $('.attendance-icon').qtip({
-//     content: {
-//         text: 'Loading...', // The text to use whilst the AJAX request is loading
-//         ajax: {
-//             url: '/path/to/file', // URL to the local file
-//             type: 'POST', // POST or GET
-//             data: {} // Data to pass along with your request
-//         }
-//     } -->
-// });
 
 </script>

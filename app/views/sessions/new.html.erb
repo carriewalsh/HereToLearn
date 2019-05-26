@@ -1,0 +1,22 @@
+<div class="account-container">
+  <div class="dynamic-container">
+    <div class="dynamic">
+      <div class="submit-container">
+        <%= form_for :session, url: login_path do |f| %>
+        <%= f.label :email %>
+        <%= f.email_field :email, class:'input-box', autofocus: true %>
+        <br>
+        <br>
+        <%= f.label :password %>
+        <%= f.password_field :password, class:'input-box' %>
+        <br>
+        <div class="submit-container">
+          <%= f.submit 'LOG IN', class: "form-button" %>
+        </div>
+        <% end %>
+        <%= link_to "Forgot Password?", send_reset_link_path, id:"small-link" %>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

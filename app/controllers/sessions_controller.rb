@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       redirect_to dashboard_path
     else
       flash[:error] = "Sorry, wrong email/password combination"
-      redirect_to welcome_path
+      render :new
     end
   end
 

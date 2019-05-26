@@ -43,5 +43,86 @@ describe Student, type: :model do
         expect(student.todays_attendance).to eq(response)
       end
     end
+    describe "attendance stats" do
+      before :each do
+        @course = create(:course)
+        @course2 = create(:course)
+        @teacher = create(:teacher)
+        @teacher.courses << Course.first
+        @student = create(:student)
+        @student.courses << Course.first
+        @student.courses << Course.last
+
+        @student.attendances.create(course_id: @course.id, created_at: "2019-05-26 02:00:00", attendance: "present")
+        @student.attendances.create(course_id: @course.id, created_at: "2019-05-26 02:00:00", attendance: "absent")
+        @student.attendances.create(course_id: @course.id, created_at: "2019-05-26 02:00:00", attendance: "present")
+        @student.attendances.create(course_id: @course.id, created_at: "2019-05-26 02:00:00", attendance: "present")
+        @student.attendances.create(course_id: @course.id, created_at: "2019-05-26 02:00:00", attendance: "absent")
+        @student.attendances.create(course_id: @course.id, created_at: "2019-05-26 02:00:00", attendance: "present")
+        @student.attendances.create(course_id: @course.id, created_at: "2019-05-26 02:00:00", attendance: "present")
+        @student.attendances.create(course_id: @course.id, created_at: "2019-05-26 02:00:00", attendance: "present")
+        @student.attendances.create(course_id: @course.id, created_at: "2019-05-26 02:00:00", attendance: "present")
+        @student.attendances.create(course_id: @course.id, created_at: "2019-05-26 02:00:00", attendance: "present")
+        @student.attendances.create(course_id: @course2.id, created_at: "2019-05-26 02:00:00", attendance: "absent")
+      end
+
+      describe "percent_present" do
+        it "returns the percent of days present for a student" do
+          expect(@student.percent_present(@course)).to eq(80.0)
+        end
+      end
+
+      describe "percent_absent" do
+        it "returns the percent of days absent for a student" do
+          expect(@student.percent_absent(@course)).to eq(20.0)
+        end
+      end
+
+      describe "total_absences" do
+        it "returns the number of days absent for a student" do
+          expect(@student.total_absences(@course)).to eq(2)
+        end
+      end
+    end
+  end
+
+  describe "class methods" do
+    before :each do
+      @teacher = create(:teacher)
+      @course = create(:course)
+      create_list(:student, 6)
+      @teacher.courses << Course.first
+      Student.first.courses << @course
+      Student.second.courses << @course
+      Student.third.courses << @course
+      Student.fourth.courses << @course
+      Student.all[-2].courses << @course
+      Student.last.courses << @course
+    end
+
+    describe ".random_groups()" do
+      it "gives random groups based on an input number" do
+
+        result = Student.random_groups(2)
+        expect(result).to be_an(Array)
+        expect(result.count).to eq(3)
+        expect(result.first).to be_an(Array)
+        expect(result.first.count).to eq(2)
+        expect(result.flatten.uniq.count).to eq(6)
+      end
+    end
+
+    describe ".present students" do
+      it "returns only students who are present or tardy" do
+        Student.first.attendances.create(course_id: @course.id, created_at: DateTime.now.midday , attendance: "present")
+        Student.second.attendances.create(course_id: @course.id, created_at: DateTime.now.midday , attendance: "present_no_response")
+        Student.third.attendances.create(course_id: @course.id, created_at: DateTime.now.midday , attendance: "tardy")
+        Student.fourth.attendances.create(course_id: @course.id, created_at: DateTime.now.midday , attendance: "absent")
+        Student.last.attendances.create(course_id: @course.id, created_at: DateTime.now.midday , attendance: "absent_with_response")
+        expect(Student.present_students.include?(Student.fourth)).to be false
+        expect(Student.present_students.include?(Student.fifth)).to be false
+        expect(Student.present_students.count).to eq(3)
+      end
+    end
   end
 end

@@ -1,0 +1,46 @@
+<div class="text-container">
+  <mark class="item-key"><%= "#{facade.student.first_name}" %></mark>
+  <mark class="item-value"><%= " #{facade.student.last_name}" %></mark>
+  <mark class="smaller-grey"><%= "# #{facade.student.student_id}" %></mark>
+</div>
+<br>
+<div class="banner">
+  <div class="dynamic-container">
+    <div class="dynamic">
+      <div class="schedule">
+        <h3>Schedule</h3>
+        <% facade.schedule.each do |course| %>
+          <h4><%= course %></h4>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+  <div class="dynamic-container">
+    <div class="dynamic">
+      <div class="statistics">
+        <h3>Attendance Statistics : <%= facade.course.name %></h3>
+        <% facade.statistics.each do |stat| %>
+          <h4><%= stat %></h4>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="banner">
+  <div class="dynamic-container">
+    <div class="dynamic">
+      <div class="calendar">
+
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-container">
+    <div class="dynamic">
+      <div class="graph">
+
+      </div>
+    </div>
+  </div>
+</div>

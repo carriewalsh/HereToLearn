@@ -17,6 +17,7 @@
         <%= f.label :email %>
         <%= f.email_field :email, class:'input-box', autofocus: true %>
         <br>
+        <br>
         <%= f.label :password %>
         <%= f.password_field :password, class:'input-box' %>
         <br>
@@ -24,17 +25,16 @@
           <%= f.submit 'LOG IN', class: "form-button" %>
         </div>
         <% end %>
-        <%= link_to "Forgot Password?", welcome_path, id:"small-link" %>
+        <%= link_to "Forgot Password?", send_reset_link_path, id:"small-link" %>
       </div>
       <!-- link_to "Forgot password?", forgot_password_path -->
       <% else %>
         <ul class ="welcome-course-container">
           <% current_user.courses.each do |course| %>
             <li class="text-container">
-                <a href="<% welcome_path %>">
-                  <div class="item-key"><%= "Period #{course.period}" %></div>
-                  <div class="item-value"><%= " #{course.name}" %></div>
-                </a>
+              <%= link_to "Period #{course.period}", course_path(course), class:"item-key" %>
+              <br>
+              <%= link_to " #{course.name}", course_path(course), class:'item-value'%>
             </li>
           <% end %>
         </ul>
