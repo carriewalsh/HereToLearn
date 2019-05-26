@@ -4,10 +4,10 @@ class SendResetLinksController < ApplicationController
   end
 
   def create
-    binding.pry
-    @user = User.find_by(email: reset_params)
+    @user = Teacher.find_by(email: reset_params[:email])
     if @user
-      @user.create_reset_digest
+      binding.pry
+      @user.create_reset_digest # Failing here
       @user.send_password_reset_email
       flash[:notice] = "Email has been sent with password reset instructions"
       redirect_to login_path
