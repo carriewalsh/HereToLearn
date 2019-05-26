@@ -21,11 +21,15 @@ class Teacher < ApplicationRecord
 
   def create_reset_digest
     self.reset_token = Teacher.new_token
-    update_attribute(reset_digest: Teacher.digest(reset_token))
-    update_attribute(:reset_sent_at, Time.zone.noe)
+    update_columns(reset_digest: Teacher.digest(reset_token), reset_sent_at: Time.zone.now)
   end
 
   def send_password_reset_email
-    TeacherEmail.password_reset(self).deliver_now
+    TeacherMailer.password_reset(self).deliver_now
+  end
+
+  def authenticated?(reset_token)
+    BCrypt::Password.new(reset_digest).is_password?(reset_token)
+
   end
 end
