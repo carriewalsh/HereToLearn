@@ -54,11 +54,10 @@ describe Student, type: :model do
         Student.second.courses << @course
         Student.third.courses << @course
         Student.fourth.courses << @course
-        Student[-2].courses << @course
+        Student.all[-2].courses << @course
         Student.last.courses << @course
 
-        result = Student.all.random_groups(2)
-
+        result = Student.random_groups(2)
         expect(result).to be_an(Array)
         expect(result.count).to eq(3)
         expect(result.first).to be_an(Array)

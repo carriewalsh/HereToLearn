@@ -6,21 +6,43 @@
   <mark class="item-value"><%= " #{facade.course.name}" %></mark>
 </div>
 
-<div class="dynamic-container">
-  <div class="student-container">
-    <% facade.students.each do |student| %>
-    <div class="student-card" id="attendance-<%= student.id %>">
-      <div class="attendance-icons">
-        <div class="attendance-icon attendance-<%= student.todays_attendance %>">
+<div class="banner">
+  <div class="dynamic-container">
+    <div class="dynamic">
+      <div class="course-card">
+        <div class="student-container">
+          <% facade.students.each do |student| %>
+          <div class="student-card" id="attendance-<%= student.id %>">
+            <div class="attendance-icons">
+              <div class="attendance-icon attendance-<%= student.todays_attendance %>">
+              </div>
+              <div class="hidden">
+              </div>
+            </div>
+            <%= link_to "#{student.first_name} #{student.last_name}", dashboard_path, id:"small-link" %>
+            <div class="smaller-grey">
+              #<%= student.student_id %>
+            </div>
+          </div>
+          <% end %>
         </div>
-        <div class="hidden">
-        </div>
-      </div>
-      <%= link_to "#{student.first_name} #{student.last_name}", dashboard_path, id:"small-link" %>
-      <div class="smaller-grey">
-        #<%= student.student_id %>
       </div>
     </div>
-    <% end %>
+  </div>
+  <div class="dynamic-container">
+    <div class="dynamic">
+      <div class="grouping">
+        <h3>Grouping</h3>
+        <div class="random">
+          <h4>Randomly</h4>
+          <label for="random-grouping">How many students per group</label>
+          <input type="number" name="random-grouping" value="" max="<%= facade.students.count %>">
+          <script type="text/javascript">
+            
+          </script>
+        </div>
+
+      </div>
+    </div>
   </div>
 </div>

@@ -10,4 +10,17 @@ class Student < ApplicationRecord
     today = attendances.where("created_at >= ?", Date.today)
     today.first ? today.first.attendance : "No Attendance Today"
   end
+
+  def self.random_groups(count)
+    shuffled = select("students.first_name || ' ' || students.last_name AS name").shuffle
+    groups = []
+    remaining = shuffled.count % count
+    if remaining == 0
+      (shuffled.count / count).times { groups << shuffled.slice!(0,count) }
+    else
+      groups << shuffled.slice!(0,remaining)
+      ((shuffled.count / count) - 1).times { groups << shuffled.slice!(0,count) }
+    end
+    groups
+  end
 end
