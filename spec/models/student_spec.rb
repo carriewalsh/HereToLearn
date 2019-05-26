@@ -43,5 +43,28 @@ describe Student, type: :model do
         expect(student.todays_attendance).to eq(response)
       end
     end
+
+    describe ".random_groups()" do
+      it "gives random groups based on an input number" do
+        @teacher = create(:teacher)
+        @course = create(:course)
+        create_list(:student, 6)
+        @teacher.courses << Course.first
+        Student.first.courses << @course
+        Student.second.courses << @course
+        Student.third.courses << @course
+        Student.fourth.courses << @course
+        Student[-2].courses << @course
+        Student.last.courses << @course
+
+        result = Student.all.random_groups(2)
+
+        expect(result).to be_an(Array)
+        expect(result.count).to eq(3)
+        expect(result.first).to be_an(Array)
+        expect(result.first.count).to eq(2)
+        expect(result.flatten.uniq.count).to eq(6)
+      end
+    end
   end
 end
