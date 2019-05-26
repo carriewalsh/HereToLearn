@@ -2,8 +2,9 @@
   <div class="dynamic-container">
     <div class="dynamic">
       <div class="text-container">
+        <h3>HereToLearn Password Reset</h3>
         <%= form_for @teacher, url: send_reset_link_path(params[:id]) do |f| %>
-        <%= hidden_field_tag :email, @teacher.email %>
+        <%= hidden_field_tag :email, @teacher.email. id:'email' %>
 
         <%= f.label :password, class:'item-key' %>
         <br>
@@ -15,7 +16,7 @@
         <br>
 
         <div class="submit-container">
-          <%= f.submit "Reset Password", class:'form-button' %>
+          <%= f.submit "RESET PASSWORD", class:'form-button' %>
         </div>
         <% end %>
       </div>
