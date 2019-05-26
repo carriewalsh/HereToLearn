@@ -30,6 +30,9 @@ class Teacher < ApplicationRecord
 
   def authenticated?(reset_token)
     BCrypt::Password.new(reset_digest).is_password?(reset_token)
+  end
 
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
   end
 end
