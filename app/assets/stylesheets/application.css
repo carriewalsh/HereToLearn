@@ -430,13 +430,18 @@ footer {
   transform: rotate(180deg);
 }
 
-.hidden {
-  visibility: hidden;
+
+.attendance-options {
+  background: white;
+  margin-top: 200px;
+  width: 250px;
   z-index: 10;
+  padding: 10px;
 }
 
-.visible {
-  visibility: visible;
+.option {
+  display: flex;
+  padding-bottom: 10px;
 }
 
 .strategies {
@@ -489,6 +494,7 @@ footer {
   font-size: calc((-.2 *(1em - 20px) - -1.8em - 13px));
   letter-spacing: 1px;
   color: black;
+  margin: 0px;
 }
 
 #small-link:hover {

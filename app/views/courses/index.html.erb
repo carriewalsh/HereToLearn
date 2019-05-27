@@ -12,10 +12,23 @@
         <div class="student-container">
           <% course.students.each do |student| %>
           <div class="student-card" id="attendance-<%= student.id %>">
-            <div class="attendance-icons">
-              <div class="attendance-icon attendance-<%= student.todays_attendance %>">
+            <div class="attendance-icon current attendance-<%= student.todays_attendance %>">
+            </div>
+            <div class="attendance-options">
+              <div class="option">
+                <div class="attendance-icon attendance-present"></div><h4 id="small-link">Present</h4>
               </div>
-              <div class="hidden">
+              <div class="option">
+                <div class="attendance-icon attendance-absent"></div><h4 id="small-link">Absent</h4>
+              </div>
+              <div class="option">
+                <div class="attendance-icon attendance-tardy"></div><h4 id="small-link">Tardy</h4>
+              </div>
+              <div class="option">
+                <div class="attendance-icon attendance-present_no_response"></div><h4 id="small-link">Present No Response</h4>
+              </div>
+              <div class="option">
+                <div class="attendance-icon attendance-absent_with_response"></div><h4 id="small-link">Absent With Response</h4>
               </div>
             </div>
             <%= link_to "#{student.first_name} #{student.last_name}", student_path(student.id, course_id: course.id), id:"small-link" %>
@@ -30,16 +43,15 @@
     <% end %>
 </div>
 <script type="text/javascript">
-
-  $('mark.item-key').on('click', alert('here'));
-
-  $('.attendance-present').on('click', function(event){
-    $(event.target).addClass('rotate')
+  $(document).ready(function() {
+    $('.attendance-options').hide();
   });
-
-  $('.attendance-icon').on('click', function(event) {
-    $(event.target).addClass('visible')
+  $('.current').on('click', function(event) {
+    $(event.target).next().slideToggle();
   });
+  $('.attendance-options').on('mouseout'), function(event) {
+    $(this).stop(true,true).slideUp();
+  }
 
 
 
