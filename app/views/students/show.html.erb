@@ -44,3 +44,26 @@
     </div>
   </div>
 </div>
+
+<div class="dynamic-container">
+  <div class="dynamic">
+    <div class="strategies">
+      <div class="text-container">
+        <h3>Student Strategies</h3>
+        <% facade.strategies.each do |strategy| %>
+        <% if strategy.teacher_id == current_user.id %>
+        <div class="item-key">
+          <%= "By Me:" %>
+        </div>
+        <% else %>
+        <div class="item-key">
+          <%= "By #{facade.teacher_name(strategy.teacher_id)}" %>
+        </div>
+        <% end %>
+        <%= strategy.strategy %>
+        <br>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
