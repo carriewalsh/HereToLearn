@@ -421,26 +421,6 @@ s50.student_courses.create(course_id: c47.id)
 s50.student_courses.create(course_id: c53.id)
 s50.student_courses.create(course_id: c59.id)
 
-s1.attendances.create(course_id: 1, created_at: "2019-05-25 02:00:00" , attendance:"present")
-s19.attendances.create(course_id: 1, created_at: "2019-05-25 02:00:00" , attendance: "absent")
-s37.attendances.create(course_id: 1, created_at: "2019-05-25 02:00:00" , attendance: "tardy")
-
-s4.attendances.create(course_id: 2, created_at: "2019-05-25 02:00:00" , attendance: "present")
-s22.attendances.create(course_id: 2, created_at: "2019-05-25 02:00:00" , attendance: "present")
-s40.attendances.create(course_id: 2, created_at: "2019-05-25 02:00:00" , attendance: "present")
-
-s7.attendances.create(course_id: 3, created_at: "2019-05-25 02:00:00" , attendance: "absent_with_response")
-s25.attendances.create(course_id: 3, created_at: "2019-05-25 02:00:00" , attendance: "tardy")
-s43.attendances.create(course_id: 3, created_at: "2019-05-25 02:00:00" , attendance: "present")
-
-s10.attendances.create(course_id: 4, created_at: "2019-05-25 02:00:00" , attendance: "present")
-s28.attendances.create(course_id: 4, created_at: "2019-05-25 02:00:00" , attendance: "present_no_response")
-s46.attendances.create(course_id: 4, created_at: "2019-05-25 02:00:00" , attendance: "absent")
-
-s13.attendances.create(course_id: 5, created_at: "2019-05-25 02:00:00" , attendance: "present")
-s31.attendances.create(course_id: 5, created_at: "2019-05-25 02:00:00" , attendance: "present")
-s49.attendances.create(course_id: 5, created_at: "2019-05-25 02:00:00" , attendance: "tardy")
-
 s1.attendances.create(course_id: 1, created_at: "2019-05-26 02:00:00" , attendance:"present")
 s19.attendances.create(course_id: 1, created_at: "2019-05-26 02:00:00" , attendance: "absent")
 s37.attendances.create(course_id: 1, created_at: "2019-05-26 02:00:00" , attendance: "tardy")
@@ -460,6 +440,26 @@ s46.attendances.create(course_id: 4, created_at: "2019-05-26 02:00:00" , attenda
 s13.attendances.create(course_id: 5, created_at: "2019-05-26 02:00:00" , attendance: "present")
 s31.attendances.create(course_id: 5, created_at: "2019-05-26 02:00:00" , attendance: "present")
 s49.attendances.create(course_id: 5, created_at: "2019-05-26 02:00:00" , attendance: "tardy")
+
+s1.attendances.create(course_id: 1, created_at: "2019-05-27 02:00:00" , attendance:"present")
+s19.attendances.create(course_id: 1, created_at: "2019-05-27 02:00:00" , attendance: "absent")
+s37.attendances.create(course_id: 1, created_at: "2019-05-27 02:00:00" , attendance: "tardy")
+
+s4.attendances.create(course_id: 2, created_at: "2019-05-27 02:00:00" , attendance: "present")
+s22.attendances.create(course_id: 2, created_at: "2019-05-27 02:00:00" , attendance: "present")
+s40.attendances.create(course_id: 2, created_at: "2019-05-27 02:00:00" , attendance: "present")
+
+s7.attendances.create(course_id: 3, created_at: "2019-05-27 02:00:00" , attendance: "absent_with_response")
+s25.attendances.create(course_id: 3, created_at: "2019-05-27 02:00:00" , attendance: "tardy")
+s43.attendances.create(course_id: 3, created_at: "2019-05-27 02:00:00" , attendance: "present")
+
+s10.attendances.create(course_id: 4, created_at: "2019-05-27 02:00:00" , attendance: "present")
+s28.attendances.create(course_id: 4, created_at: "2019-05-27 02:00:00" , attendance: "present_no_response")
+s46.attendances.create(course_id: 4, created_at: "2019-05-27 02:00:00" , attendance: "absent")
+
+s13.attendances.create(course_id: 5, created_at: "2019-05-27 02:00:00" , attendance: "present")
+s31.attendances.create(course_id: 5, created_at: "2019-05-27 02:00:00" , attendance: "present")
+s49.attendances.create(course_id: 5, created_at: "2019-05-27 02:00:00" , attendance: "tardy")
 
 
 strat1 = t1.strategies.create(student_id: 29, strategy: "When Seattle Public Schools announced that it would reorganize school start times across the")
