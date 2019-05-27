@@ -40,7 +40,7 @@ describe "As a logged-in Teacher" do
     end
 
     it "should have a statistics section with attendance data" do
-      within ".statistics" do
+      within first ".statistics" do
         expect(page).to have_content("Attendance Statistics")
         expect(page).to have_content("Present: 80.0%")
         expect(page).to have_content("Absent: 20.0%")
@@ -61,12 +61,11 @@ describe "As a logged-in Teacher" do
       strat1 = @teacher.strategies.create(student_id: @student.id, strategy: "When Seattle Public Schools announced that it would reorganize school start times across the")
       strat2 = @teacher.strategies.create(student_id: @student.id, strategy: "district for the fall of 2016, the massive undertaking took more than a year to deploy.")
       strat3 = teacher2.strategies.create(student_id: @student.id, strategy: "Elementary schools started earlier, while most middle and all of the district's 18 high")
-      within ".strategies" do
-        expect(page).to have_content("Student Strategies")
+      visit student_path(@student, {course_id: @course.id})
+      expect(page).to have_content("Student Strategies")
         expect(page).to have_css(".strategy",count: 3)
         expect(page).to have_content("By Me:", count: 2)
         expect(page).to have_content("By #{teacher2.first_name} #{teacher2.last_name}:", count: 1)
-      end
     end
   end
 end
