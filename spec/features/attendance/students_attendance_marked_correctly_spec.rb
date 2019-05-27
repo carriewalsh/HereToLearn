@@ -20,9 +20,9 @@ describe 'A student with their e-mail in the system' do
 
     Rake::Task['attendance:populate'].execute
 
-    endpoint = '/api/v1/questions?ids=1,2'
+    endpoint = '/api/v1/q_and_a?question_id=1,2'
     domain = 'http://surveyapp.com'
-    body =  File.open('./api_responses/questions.json')
+    body =  File.open('./api_responses/q_and_a.json')
 
     stub_request(:get, domain + endpoint).to_return(body: body)
     visit '/student'

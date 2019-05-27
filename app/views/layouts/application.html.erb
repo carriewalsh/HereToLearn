@@ -8,7 +8,10 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap" rel="stylesheet">
     <!-- <link type="text/css" rel="stylesheet" href="../assets/stylesheets/jquery.qtip.css" /> -->
-    <%= javascript_include_tag 'application' %>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -56,5 +59,6 @@
     </div>
     <!-- <script type="text/javascript" src="/path/to/jquery.min.js"></script>
     <script type="text/javascript" src="/path/to/jquery.qtip.js"></script> -->
+    <%= javascript_include_tag 'application' %>
   </body>
 </html>
