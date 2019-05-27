@@ -8,7 +8,7 @@ namespace :surveys do
     responses = '/api/v1/responses'
 
     json_data = [questions, q_and_a, responses].map do |uri|
-      JSON(Faraday.get(domain+uri).body, symbolize_names: true)
+      Faraday.get(domain+uri).body
     end
 
     names = %w(questions q_and_a responses)
