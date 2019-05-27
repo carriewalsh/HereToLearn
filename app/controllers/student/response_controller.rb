@@ -2,7 +2,6 @@ class Student::ResponseController < ApplicationController
   def create
     # Submit to API with post
     # post_responses
-
     attendance_record = find_attendance
     attendance_record.attendance = attendance_status if attendance_status
     attendance_record.save
@@ -39,17 +38,25 @@ class Student::ResponseController < ApplicationController
                        course_id: session[:course_id],
                        created_at: time_range)
   end
-  def post_responses
-    domain = 'http://surveyapp.com'
-    endpoint = '/response'
 
-    Faraday.post domain + endpoint,  headers: headers_for_post
+  def post_responses(question_ids, domain = 'http://surveyapp.com', endpoint = '/response')
+    question_ids.each do |question_id|
+      Faraday.post domain + endpoint, params: params_for_post(question_id)
+    end
+
+    Faraday.post domain + endpoint, params: headers_for_post
   end
 
-  def headers_for_post
-    {student_id: session[:student_id],
-     course_id: session[:course_id],
-     responses: responses}
+  def params_for_post(question_id)
+    {
+      data:
+        { student_id: session[:student_id],
+          course_id: session[:course_id],
+          answer_type: 'id',
+          text_answer: nil,
+          question_id: question_id,
+          choice_id: params[:question][question_id]}
+    }
   end
 
   def responses
