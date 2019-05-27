@@ -4,14 +4,14 @@
 
 <div class="course-container">
     <% facade.courses.each do |course| %>
-      <div class="course-card">
+      <div class="course-card" id="<%= course.id %>">
         <div class="text-container">
             <%= link_to "Period #{course.period}", course_path(course), class:"item-key" %>
             <%= link_to " #{course.name}", course_path(course), class:'item-value'%>
         </div>
         <div class="student-container">
           <% course.students.each do |student| %>
-          <div class="student-card" id="attendance-<%= student.id %>">
+          <div class="student-card" id=<%= student.id %>>
             <div class="attendance-icon current attendance-<%= student.todays_attendance %>">
             </div>
             <div class="attendance-options">
@@ -57,11 +57,13 @@
   $('.option').on('click', function(event){
     var id = event.target.parentElement.parentElement.parentElement.id;
     var attendance = event.target.classList[1].split("-")[1];
-    updateAttendance(id, attendance);
+    var course = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id;
+    updateAttendance(id, course, attendance);
+    alert(course)
   });
 
-  var updateAttendance = function(id, attendance) {
-    fetch(`/admin/api/v1/attendances?student_id=${id}&attendance=${attendance}`, {
+  var updateAttendance = function(id, course, attendance) {
+    fetch(`/api/v1/attendances?student_id=${id}&course_id=${course}&attendance=${attendance}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json; charset=utf-8",
@@ -71,7 +73,6 @@
       .then(function(response){
         console.log("hello");
       });
-      alert("asdf")
     };
 
 

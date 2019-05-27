@@ -30,7 +30,14 @@ Rails.application.routes.draw do
     get '/survey/complete', to: 'response#show', as: 'completed_survey'
     post '/response', to: 'response#create', as: 'response'
   end
+
   get '/auth/google_oauth2/callback', to: 'student/survey#new'
+
+  namespace :api do
+    namespace :v1 do
+      put '/attendances', to: 'attendances#update'
+    end
+  end
 
   mount ActionCable.server, at: '/cable'
 end
