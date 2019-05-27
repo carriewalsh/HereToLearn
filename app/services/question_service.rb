@@ -1,6 +1,6 @@
 class QuestionService
-  def initialize
-
+  def initialize(domain = 'http://surveyapp.com')
+    @domain = domain
   end
 
   def json(body)
@@ -13,7 +13,7 @@ class QuestionService
   end
 
   def conn
-    Faraday.new('http://surveyapp.com') do |f|
+    Faraday.new(@domain) do |f|
       f.adapter Faraday.default_adapter
     end
   end
