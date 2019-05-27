@@ -49,9 +49,30 @@
   $('.current').on('click', function(event) {
     $(event.target).next().slideToggle();
   });
-  $('.attendance-options').on('mouseout'), function(event) {
-    $(this).stop(true,true).slideUp();
-  }
+  $('.student-card').mouseleave(
+  function(event) {
+    $('.attendance-options').slideUp();
+  });
+
+  $('.option').on('click', function(event){
+    var id = event.target.parentElement.parentElement.parentElement.id;
+    var attendance = event.target.classList[1].split("-")[1];
+    updateAttendance(id, attendance);
+  });
+
+  var updateAttendance = function(id, attendance) {
+    fetch(`/admin/api/v1/attendances?student_id=${id}&attendance=${attendance}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+    })
+      .then((response) => response.json())
+      .then(function(response){
+        console.log("hello");
+      });
+      alert("asdf")
+    };
 
 
 
