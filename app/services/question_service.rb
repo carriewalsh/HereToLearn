@@ -4,11 +4,11 @@ class QuestionService
   end
 
   def json(body)
-    JSON.parse(body, symbolize_name: true)
+    JSON.parse(body, symbolize_name: true)['data']
   end
 
   def questions_by_ids(question_list)
-    response = conn.get('/api/v1/questions', { ids: question_list.join(",") })
+    response = conn.get('/api/v1/q_and_a', { question_id: question_list.join(",") })
     json(response.body)
   end
 
