@@ -2,18 +2,21 @@
   <div class="dynamic-container">
     <div class="dynamic">
       <div class="text-container">
-        <%= form_for current_user, url: {action: "update"} do |f| %>
+        <h3>HereToLearn Password Reset</h3>
+        <%= form_for @teacher, url: send_reset_link_path(params[:id]) do |f| %>
+        <%= hidden_field_tag :email, @teacher.email. id:'email' %>
+
         <%= f.label :password, class:'item-key' %>
         <br>
         <%= f.password_field :password, :required => true, class: 'input-box' %>
         <br>
-        <%= f.label :confirm_password, class:'item-key' %>
+        <%= f.label :password_confirmation, class:'item-key' %>
         <br>
-        <%= f.text_field :confirm_password, required: true, class: 'input-box' %>
+        <%= f.text_field :password_confirmation, required: true, class: 'input-box' %>
         <br>
 
         <div class="submit-container">
-          <%= f.submit "Reset Password", class:'form-button' %>
+          <%= f.submit "RESET PASSWORD", class:'form-button' %>
         </div>
         <% end %>
       </div>
