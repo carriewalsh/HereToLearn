@@ -11,5 +11,6 @@ describe Teacher, type: :model do
   describe "relationships" do
     it { should have_many :teacher_courses }
     it { should have_many :courses }
+    it { should have_many :strategies }
   end
 end

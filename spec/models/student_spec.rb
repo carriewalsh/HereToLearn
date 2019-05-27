@@ -13,6 +13,7 @@ describe Student, type: :model do
     it { should have_many :student_courses }
     it { should have_many :courses }
     it { should have_many :attendances }
+    it { should have_many :strategies }
   end
 
   describe "instance methods" do
