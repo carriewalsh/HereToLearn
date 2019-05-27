@@ -9,15 +9,8 @@ class Teacher < ApplicationRecord
 
   attr_accessor :reset_token
 
-  def Teacher.new_token
-    SecureRandom.urlsafe_base64
-  end
-
-  def Teacher.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                  BCrypt::Engine.cost
-
-    BCrypt::Password.create(string,cost: cost)
+  def name
+    "#{first_name} #{last_name}"
   end
 
   def create_reset_digest
@@ -35,5 +28,16 @@ class Teacher < ApplicationRecord
 
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  def Teacher.new_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def Teacher.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+    BCrypt::Engine.cost
+
+    BCrypt::Password.create(string,cost: cost)
   end
 end
