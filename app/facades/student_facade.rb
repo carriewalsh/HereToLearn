@@ -10,7 +10,8 @@ class StudentFacade
   end
 
   def schedule
-    list = student.courses.map do |course|
+    ordered = student.courses.order(:period)
+    list = ordered.map do |course|
       "Period #{course.period} - #{course.name}"
     end
     list
@@ -20,5 +21,13 @@ class StudentFacade
     ["Present: #{student.percent_present(@course)}%",
       "Absent: #{student.percent_absent(@course)}%",
       "Total Absences: #{student.total_absences(@course)} days"]
+  end
+
+  def strategies
+    student.strategies
+  end
+
+  def teacher_name(id)
+    Teacher.find(id).name
   end
 end
