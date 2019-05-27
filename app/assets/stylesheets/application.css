@@ -447,6 +447,8 @@ footer {
 
 .strategy {
   background: white;
+  font-weight: 300;
+  line-height: 2;
   margin: 15px;
   padding: 15px;
   width: 44%;
