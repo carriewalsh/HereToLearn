@@ -76,7 +76,8 @@
     };
 
     var showUpdatedAttendance = function(id, course, attendance) {
-      $('.student-card#${id}').remove('.current').prepend('<div class="attendance-icon current attendance-${ attendance}"></div>');
+      $(`.student-card#${id} .current`).remove()
+      $(`.student-card#${id}`).prepend(`<div class="attendance-icon current attendance-${attendance}"></div>``);
     }
 
 
