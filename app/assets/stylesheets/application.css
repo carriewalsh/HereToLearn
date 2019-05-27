@@ -480,6 +480,11 @@ footer {
   width: 75px;
 }
 
+.fixed {
+  position: fixed;
+  background: #F6F7F8;
+}
+
 #small-link {
   font-size: calc((-.2 *(1em - 20px) - -1.8em - 13px));
   letter-spacing: 1px;
