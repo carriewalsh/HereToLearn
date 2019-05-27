@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_24_045051) do
+ActiveRecord::Schema.define(version: 2019_05_27_001159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,16 @@ ActiveRecord::Schema.define(version: 2019_05_24_045051) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "strategies", force: :cascade do |t|
+    t.text "strategy"
+    t.bigint "teacher_id"
+    t.bigint "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_strategies_on_student_id"
+    t.index ["teacher_id"], name: "index_strategies_on_teacher_id"
+  end
+
   create_table "student_courses", force: :cascade do |t|
     t.bigint "student_id"
     t.bigint "course_id"
@@ -69,16 +79,17 @@ ActiveRecord::Schema.define(version: 2019_05_24_045051) do
     t.string "first_name"
     t.string "last_name"
     t.string "email"
+    t.string "password"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "reset_digest"
-    t.datetime "reset_sent_at"
   end
 
   add_foreign_key "attendances", "courses"
   add_foreign_key "attendances", "students"
   add_foreign_key "codes", "courses"
+  add_foreign_key "strategies", "students"
+  add_foreign_key "strategies", "teachers"
   add_foreign_key "student_courses", "courses"
   add_foreign_key "student_courses", "students"
   add_foreign_key "teacher_courses", "courses"
