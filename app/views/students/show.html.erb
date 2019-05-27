@@ -8,9 +8,9 @@
   <div class="dynamic-container">
     <div class="dynamic">
       <div class="schedule">
-        <h3>Schedule</h3>
+        <h3 class="grey-heading">Schedule</h3>
         <% facade.schedule.each do |course| %>
-          <h4><%= course %></h4>
+          <h4 class="schedule"><%= course %></h4>
         <% end %>
       </div>
 
@@ -19,9 +19,9 @@
   <div class="dynamic-container">
     <div class="dynamic">
       <div class="statistics">
-        <h3>Attendance Statistics : <%= facade.course.name %></h3>
+        <h3 class="grey-heading">Attendance Statistics : <%= facade.course.name %></h3>
         <% facade.statistics.each do |stat| %>
-          <h4><%= stat %></h4>
+          <h4 class="statistics"><%= stat %></h4>
         <% end %>
       </div>
     </div>
@@ -32,13 +32,14 @@
   <div class="dynamic-container">
     <div class="dynamic">
       <div class="calendar">
-
+        <h3 class="grey-heading">Calendar</h3>
       </div>
     </div>
   </div>
   <div class="dynamic-container">
     <div class="dynamic">
       <div class="graph">
+        <h3 class="grey-heading">Attendance Graph</h3>
 
       </div>
     </div>
@@ -47,7 +48,7 @@
 
 <div class="dynamic-container">
   <div class="dynamic">
-    <h3>Student Strategies</h3>
+    <h3 class="grey-heading">Student Strategies</h3>
     <div class="strategies text-container">
       <br>
       <% facade.strategies.each do |strategy| %>
