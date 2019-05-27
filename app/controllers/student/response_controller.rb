@@ -8,7 +8,8 @@ class Student::ResponseController < ApplicationController
 
     ActionCable.server.broadcast 'attendance_channel',
                                   student_id: session[:student_id],
-                                  attendance: 'present'
+                                  attendance: 'present',
+                                  course_id: session[:course_id]
 
 
     flash[:info] = "Thank You!"

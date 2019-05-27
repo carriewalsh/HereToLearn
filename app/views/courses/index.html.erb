@@ -75,6 +75,10 @@
       });
     };
 
+    var showUpdatedAttendance = function(id, course, attendance) {
+      $('.student-card#${id}').remove('.current').prepend('<div class="attendance-icon current attendance-${ attendance}"></div>');
+    }
+
 
 
 
