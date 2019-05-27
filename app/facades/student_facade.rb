@@ -21,4 +21,12 @@ class StudentFacade
       "Absent: #{student.percent_absent(@course)}%",
       "Total Absences: #{student.total_absences(@course)} days"]
   end
+
+  def strategies
+    student.strategies
+  end
+
+  def teacher_name(id)
+    Teacher.find(id).name
+  end
 end
