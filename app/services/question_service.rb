@@ -1,5 +1,5 @@
 class QuestionService
-  def initialize(domain = 'http://surveyapp.com')
+  def initialize(domain = 'https://aqueous-caverns-33840.herokuapp.com/')
     @domain = domain
   end
 
@@ -8,7 +8,7 @@ class QuestionService
   end
 
   def questions_by_ids(question_list)
-    response = conn.get('/api/v1/q_and_a', { question_id: question_list.join(",") })
+    response = conn.get('api/v1/q_and_a', { question_id: question_list.join(",") })
     json(response.body)
   end
 
