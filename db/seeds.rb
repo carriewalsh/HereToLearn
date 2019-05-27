@@ -1,8 +1,11 @@
 will= Student.create(first_name: "William", last_name: "Peterson", student_id: "250923", google_id: "107113987859408235003")
 simple_teacher = Teacher.create(first_name: "bill", last_name: "patterson", email: "example@mail.com", password: "password")
-s_course = simple_teacher.courses.create(name: "Major Pharmaceuticals", period: "1", start_time: "2019-05-21 8:00:00", end_time: "2019-05-21 9:00:00")
+s_course = simple_teacher.courses.create(name: "Major Pharmaceuticals", period: "1", start_time: "2019-05-21 0:00:00", end_time: "2019-05-21 23:59:59")
 
 will.courses << s_course
+will.attendances.create(course: s_course, attendance: nil)
+Code.create(course:s_course, code:"abcd")
+
 
 t1 = Teacher.create(first_name: "Maryl", last_name: "Wealthall", email: "mwealthall0@jigsy.com", password: "password")
 t2 = Teacher.create(first_name: "Arnaldo", last_name: "McLise", email: "amclise1@google.ru", password: "4b1pjMA6BtP")
