@@ -10,7 +10,8 @@ class StudentFacade
   end
 
   def schedule
-    list = student.courses.map do |course|
+    ordered = student.courses.order(:period)
+    list = ordered.map do |course|
       "Period #{course.period} - #{course.name}"
     end
     list
