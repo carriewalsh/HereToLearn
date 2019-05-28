@@ -87,6 +87,9 @@ describe "As a logged-in Teacher" do
       expect(page).to have_content("Successfully Deleted Strategy")
       expect(page).to_not have_content("#{strat1.strategy}")
       expect(page).to_not have_button("Delete Strategy")
+
+      expect(Student.first.strategies.count).to eq(2)
+      expect(Student.first.strategies.first.status).to eq("deactivated")
     end
   end
 end
