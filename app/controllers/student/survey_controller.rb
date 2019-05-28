@@ -20,7 +20,6 @@ class Student::SurveyController < ApplicationController
   def show
     facade = QuestionFacade.new([1,2]) # This should be changed as survey creation changes
     session[:question_ids] = [1,2]
-    binding.pry
     render locals: { facade: facade }
   end
 
