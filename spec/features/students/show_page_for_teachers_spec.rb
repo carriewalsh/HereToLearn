@@ -79,8 +79,9 @@ describe "As a logged-in Teacher" do
 
     it "allows me to delete MY strategies" do
       teacher2 = create(:teacher)
-      strat1 = @teacher.strategies.create(student_id: @student.id, strategy: "When Seattle Public Schools announced that it would reorganize school start times across the")
-      strat2 = teacher2.strategies.create(student_id: @student.id, strategy: "district for the fall of 2016, the massive undertaking took more than a year to deploy.")
+      strat1 = @teacher.strategies.create!(student_id: @student.id, strategy: "When Seattle Public Schools announced that it would reorganize school start times across the")
+      strat2 = teacher2.strategies.create!(student_id: @student.id, strategy: "district for the fall of 2016, the massive undertaking took more than a year to deploy.")
+      visit student_path(@student, {course_id: @course.id})
       click_link "Delete Strategy"
       click_on "Yes"
       expect(current_path).to eq(@student, {course_id: @course.id})
