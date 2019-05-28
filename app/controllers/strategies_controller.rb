@@ -1,6 +1,9 @@
 class StrategiesController < ApplicationController
   def create
-    binding.pry
+    strategy = Strategy.new(strategy_params)
+    if strategy.save
+      redirect_to student_path(params[:strategy][:student_id], course: params[:strategy][:course_id])
+    end
   end
 
   def update
@@ -12,4 +15,10 @@ class StrategiesController < ApplicationController
     strategy.update(active: false)
     redirect_to student_path(strategy.student_id, course_id: params[:course_id])
   end
+
+  private
+
+    def strategy_params
+      params.require(:strategy).permit(:teacher_id, :student_id, :strategy)
+    end
 end
