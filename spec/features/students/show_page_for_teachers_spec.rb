@@ -83,6 +83,7 @@ describe "As a logged-in Teacher" do
       strat2 = teacher2.strategies.create!(student_id: @student.id, strategy: "district for the fall of 2016, the massive undertaking took more than a year to deploy.")
       visit student_path(@student, {course_id: @course.id})
       click_link "Delete Strategy"
+      save_and_open_page
       click_on "Yes"
       expect(current_path).to eq(@student, {course_id: @course.id})
       expect(page).to have_content("Successfully Deleted Strategy")

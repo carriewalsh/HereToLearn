@@ -48,7 +48,32 @@
 
 <div class="dynamic-container">
   <div class="dynamic">
-    <h3 class="grey-heading">Student Strategies</h3>
+    <div class="heading-link-container">
+      <h3 class="grey-heading">Student Strategies</h3>
+      <h3 class="add-edit-strategy" id="small-link">Add Strategy</h3>
+      <div class="modal">
+        <div class="modal-content">
+          <%= form_for facade.strategies.new , action: :create do |f| %>
+            <%= f.label "Provide a strategy that has helped this student be successful" %>
+            <br>
+            <%= f.text_area :strategy, size: "60x10" %>
+            <br>
+            <%= f.submit "Save Strategy", class:'form-button' %>
+          <% end %>
+        </div>
+      </div>
+      <script type="text/javascript">
+        $('.add-edit-strategy').on('click', function(event) {
+          $('.modal').css('display','block');
+        });
+
+        window.onclick = function(event) {
+          if (event.target == $('.modal')) {
+            modal.style.display = "none";
+          }
+        }
+      </script>
+    </div>
     <div class="strategies text-container">
       <br>
       <% facade.strategies.each do |strategy| %>
@@ -60,7 +85,7 @@
             <div class="item-value">
               <%= strategy.strategy %>
             </div>
-              <%= link_to "Delete Strategy", deactivate_strategy_path(strategy), method: :patch, id:'delete' %>
+              <%= link_to "Delete Strategy", deactivate_strategy_path(strategy, course_id: facade.course.id), method: :patch, id:'delete', confirm: "Are you sure you want to delete this strategy?" %>
           <% else %>
             <div class="item-key">
               <%= "By #{facade.teacher_name(strategy.teacher_id)}:" %>
