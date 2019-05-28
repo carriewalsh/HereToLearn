@@ -2,7 +2,7 @@ class StrategiesController < ApplicationController
   def create
     strategy = Strategy.new(strategy_params)
     if strategy.save
-      redirect_to student_path(params[:strategy][:student_id], course: params[:strategy][:course_id])
+      redirect_to student_path(params[:strategy][:student_id], course_id: params[:strategy][:course_id])
     end
   end
 
