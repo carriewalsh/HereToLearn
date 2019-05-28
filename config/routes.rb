@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :courses, only: :show
   resources :students, only: :show
 
-  resources :strategies, only: [:new, :create, :edit, :update] do
+  resources :strategies, only: [:create, :update] do
     member { patch :deactivate }
   end
 
