@@ -1,4 +1,4 @@
-<div class="text-container fixed">
+<div class="text-container student-name">Student:
   <mark class="item-key"><%= "#{facade.student.first_name}" %></mark>
   <mark class="item-value"><%= " #{facade.student.last_name}" %></mark>
   <mark class="smaller-grey"><%= "# #{facade.student.student_id}" %></mark>
@@ -50,8 +50,8 @@
   <div class="dynamic">
     <div class="heading-link-container">
       <h3 class="grey-heading">Student Strategies</h3>
-      <h3 class="add-edit-strategy">Add Strategy</h3>
-      <div class="modal">
+      <h3 class="add-strategy">Add Strategy</h3>
+      <div class="modal-add">
         <div class="modal-content">
           <%= form_for facade.strategies.new, controller: :strategies, action: :create do |f| %>
             <%= f.hidden_field :teacher_id, value: current_user.id %>
@@ -63,24 +63,12 @@
             <br>
             <div class="submit-container">
               <%= f.submit "SAVE STRATEGY", class:'form-button' %>
-              <p class="form-button" id="cancel">CANCEL</p>
+              <p class="form-button cancel">CANCEL</p>
             </div>
           <% end %>
         </div>
       </div>
-      <script type="text/javascript">
-        $('.add-edit-strategy').on('click', function(event) {
-          $('.modal').css('display','block');
-        });
-        $('#cancel').on('click', function(event) {
-          $('.modal').css('display','none');
-        })
-        $(document).keydown(function(event) {
-          if (event.keyCode == 27) {
-            $('.modal').css('display','none');
-          }
-        });
-      </script>
+
     </div>
     <div class="strategies text-container">
       <br>
@@ -93,18 +81,66 @@
             <div class="">
               <%= strategy.strategy %>
             </div>
-              <%= link_to "Delete Strategy", deactivate_strategy_path(strategy, course_id: facade.course.id), method: :patch, id:'delete', confirm: "Are you sure you want to delete this strategy?" %>
+              <div class="modal-edit" id="<%= strategy.id %>">
+                <div class="modal-content">
+                  <%= form_for facade.strategies.new, controller: :strategies, action: :update do |f| %>
+                  <%= f.hidden_field :teacher_id, value: current_user.id %>
+                  <%= f.hidden_field :student_id, value: facade.student.id %>
+                  <%= f.hidden_field :course_id, value: facade.course.id %>
+                  <%= f.label "Provide a strategy that has helped this student be successful" %>
+                  <br>
+                  <%= f.text_area :strategy, size: "60x10", require: true %>
+                  <br>
+                  <div class="submit-container">
+                    <%= f.submit "UPDATE STRATEGY", class:'form-button' %>
+                    <p class="form-button cancel">EDITCANCEL</p>
+                  </div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="add-edit-container">
+                <h3 class="edit-strategy-<%= strategy.id %> add-edit-button">Edit Strategy</h3>
+                <%= link_to "Delete Strategy", deactivate_strategy_path(strategy, course_id: facade.course.id), method: :patch, class:'add-edit-button', confirm: "Are you sure you want to delete this strategy?" %>
+            </div>
           <% else %>
             <div class="item-key">
               <%= "By #{facade.teacher_name(strategy.teacher_id)}:" %>
             </div>
-            <div class="item-value">
+            <div class="">
               <%= strategy.strategy %>
             </div>
           <% end %>
         <br>
         </div>
+        <script type="text/javascript">
+          $('.edit-strategy-<%= strategy.id %>').on('click', function(event) {
+            $('#<%= strategy.id %>').css('display','block');
+          });
+        </script>
       <% end %>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $('.add-strategy').on('click', function(event) {
+    $('.modal-add').css('display','block');
+  });
+
+  $('.cancel').on('click', function(event) {
+    $('.modal-add').css('display','none');
+  });
+  $('.cancel').on('click', function(event) {
+    $('.modal-edit').css('display','none');
+  });
+  $(document).keydown(function(event) {
+    if (event.keyCode == 27) {
+      $('.modal-add').css('display','none');
+    }
+  });
+  $(document).keydown(function(event) {
+    if (event.keyCode == 27) {
+      $('.modal-edit').css('display','none');
+    }
+  });
+</script>

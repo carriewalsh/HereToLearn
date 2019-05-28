@@ -103,16 +103,16 @@ header nav.navbar .navbarNav li a {
   transition: all .3s ease-in-out;
 }
 
-.add-edit-container .navbarNav {
+.navbarNav {
   z-index: 8;
   position: relative;
 }
 
-.add-edit-strategy, .nav-button {
+.nav-button {
   position: relative;
 }
 
-.add-edit-strategy::after, .item-value::after, .nav-button::after {
+.item-value::after, .nav-button::after {
   content: '';
   background-color: #f9e0a9;
   display: block;
@@ -125,7 +125,7 @@ header nav.navbar .navbarNav li a {
   transition: all .3s ease-in-out;
 }
 
- .add-edit-strategy:hover::after, .item-value:hover::after, .nav-button:hover::after {
+.item-value:hover::after, .nav-button:hover::after {
   content: '';
   background-color: #f9e0a9;
   display: block;
@@ -261,7 +261,7 @@ footer {
 .text-container {
   font-size: calc((-.2 *(1em - 16px) - -2.2em - 13px));
   position: relative;
-  z-index: 5;
+  z-index: 2;
 }
 .text-container .item-value {
   color: #003a78;
@@ -274,6 +274,7 @@ footer {
   padding-left: 5px;
   letter-spacing: 2px;
   line-height: 1.6;
+  z-index: 1;
 }
 
 .account-container {
@@ -463,7 +464,6 @@ footer {
   margin: 25px;
   padding: 15px;
   width: 40%;
-  z-index: 8;
 }
 
 .grey-heading {
@@ -483,12 +483,15 @@ footer {
   width: 75px;
 }
 
-.fixed {
+.student-name {
   position: fixed;
   background: #F6F7F8;
+  z-index: 5;
+  margin-left: 50%;
+  margin-top: -75px;
 }
 
-.modal {
+.modal-edit, .modal-add {
   background-color: rgba(0,0,0,0.4);
   display: none;
   left: 0;
@@ -497,7 +500,7 @@ footer {
   width: 100%;
   overflow: auto;
   position: fixed;
-  z-index: 10;
+  z-index: 20;
 }
 
 .modal-content{
@@ -505,7 +508,7 @@ footer {
   margin: 15% auto;
   padding: 20px;
   width: 50%;
-  z-index: 11;
+  z-index: 20;
 }
 
 .visible {
@@ -515,17 +518,22 @@ footer {
 .heading-link-container {
   display: flex;
   align-items: center;
-  z-index: 8;
+  z-index: 5;
   position: relative;
 }
 
-.add-edit-strategy {
+.add-edit-container {
+  position: relative;
+  z-index: 2;
+}
+
+.add-strategy, .edit-strategy {
   margin-left: 45px;
   position: relative;
   cursor: pointer;
 }
 
-.add-edit-strategy::after {
+.edit-strategy::after, .add-strategy::after {
   content: '';
   background-color: #f9e0a9;
   display: block;
@@ -538,7 +546,7 @@ footer {
   transition: all .3s ease-in-out;
 }
 
- .add-edit-strategy:hover::after {
+ .add-strategy:hover::after, .edit-strategy:hover::after {
   content: '';
   background-color: #f9e0a9;
   display: block;
@@ -551,6 +559,42 @@ footer {
   transition: all .3s ease-in-out;
 }
 
+.add-edit-button {
+  font-size: 14px;
+  margin-left: 60%;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.add-edit-button::after {
+  content: '';
+  background-color: #f9e0a9;
+  display: block;
+  position: absolute;
+  width: 0%;
+  height: 20px;
+  margin-left: -10px;
+  margin-top: 3px;
+  z-index: -1;
+  transition: all .3s ease-in-out;
+}
+
+.add-edit-button:hover::after {
+ content: '';
+ background-color: #f9e0a9;
+ display: block;
+ position: absolute;
+ width: 40px;
+ height: 20px;
+ margin-left: -10px;
+ margin-top: 3px;
+ z-index: -1;
+ transition: all .3s ease-in-out;
+}
+
 
 #small-link {
   font-size: calc((-.2 *(1em - 20px) - -1.8em - 13px));
@@ -561,36 +605,4 @@ footer {
 
 #small-link:hover {
   color: #5fb0c4;
-}
-
-#delete {
-  font-size: 14px;
-  margin-left: 75%;
-  text-decoration: none;
-}
-
-#delete::after {
-  content: '';
-  background-color: #f9e0a9;
-  display: block;
-  position: absolute;
-  width: 0%;
-  height: 20px;
-  margin-top: -27px;
-  margin-left: 29%;
-  z-index: -1;
-  transition: all .3s ease-in-out;
-}
-
-#delete:hover::after {
- content: '';
- background-color: #f9e0a9;
- display: block;
- position: absolute;
- width: 40px;
- height: 20px;
- margin-top: -27px;
- margin-left: 29%;
- z-index: -1;
- transition: all .3s ease-in-out;
 }
