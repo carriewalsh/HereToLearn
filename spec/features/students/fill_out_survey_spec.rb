@@ -15,7 +15,7 @@ describe 'A student with their e-mail in the system' do
     fill_in :code, with: @in_class_code.code
 
     endpoint = '/api/v1/q_and_a?question_id=1,2'
-    domain = 'http://surveyapp.com'
+    domain = 'https://aqueous-caverns-33840.herokuapp.com'
     body =  File.open('./api_responses/q_and_a.json')
     stub_request(:get, domain + endpoint).to_return(body: body)
 
