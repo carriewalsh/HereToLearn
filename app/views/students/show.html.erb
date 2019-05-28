@@ -53,10 +53,13 @@
       <h3 class="add-edit-strategy" id="small-link">Add Strategy</h3>
       <div class="modal">
         <div class="modal-content">
-          <%= form_for facade.strategies.new , action: :create do |f| %>
+          <%= form_for facade.strategies.new, action: :create do |f| %>
+            <%= f.hidden_field :teacher_id, value: current_user.id %>
+            <%= f.hidden_field :student_id, value: facade.student.id %>
+            <%= f.hidden_field :course_id, value: facade.course.id %>
             <%= f.label "Provide a strategy that has helped this student be successful" %>
             <br>
-            <%= f.text_area :strategy, size: "60x10" %>
+            <%= f.text_area :strategy, size: "60x10", require: true %>
             <br>
             <div class="submit-container">
               <%= f.submit "SAVE STRATEGY", class:'form-button' %>
