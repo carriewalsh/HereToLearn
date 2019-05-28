@@ -90,7 +90,7 @@ describe "As a logged-in Teacher" do
       expect(page).to_not have_link("Delete Strategy")
 
       expect(Student.first.strategies.count).to eq(2)
-      expect(Student.first.strategies.first.status).to eq("deactivated")
+      expect(Student.first.strategies.first.active).to eq(false)
     end
   end
 end

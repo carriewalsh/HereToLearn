@@ -60,7 +60,7 @@
             <div class="item-value">
               <%= strategy.strategy %>
             </div>
-              <%= link_to "Delete Strategy", strategies_path(strategy), method: :update, id:'delete' %>
+              <%= link_to "Delete Strategy", deactivate_strategy_path(strategy), method: :patch, id:'delete' %>
           <% else %>
             <div class="item-key">
               <%= "By #{facade.teacher_name(strategy.teacher_id)}:" %>

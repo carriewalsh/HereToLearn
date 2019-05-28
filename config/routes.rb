@@ -20,7 +20,10 @@ Rails.application.routes.draw do
 
   resources :courses, only: :show
   resources :students, only: :show
-  resources :strategies, only: [:new, :create, :edit]
+
+  resources :strategies, only: [:new, :create, :edit, :update] do
+    member { patch :deactivate }
+  end
 
   namespace :student do
     root to: redirect('/auth/google_oauth2'), as: 'auth'
