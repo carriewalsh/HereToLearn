@@ -25,6 +25,11 @@ mark {
   background: none;
 }
 
+textarea {
+  margin: 0 auto;
+  display: block;
+}
+
 header nav.navbar {
   padding: 20px 100px 40px 100px;
 }
@@ -491,6 +496,35 @@ footer {
   background: #F6F7F8;
 }
 
+.modal {
+  background-color: rgba(0,0,0,0.4);
+  display: none;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  position: fixed;
+  z-index: 10;
+}
+
+.modal-content{
+  background: #F6F7F8;
+  margin: 15% auto;
+  padding: 20px;
+  width: 50%;
+  z-index: 11;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.heading-link-container {
+  display: flex;
+  align-items: center;
+}
+
 #small-link {
   font-size: calc((-.2 *(1em - 20px) - -1.8em - 13px));
   letter-spacing: 1px;
@@ -499,7 +533,8 @@ footer {
 }
 
 #small-link:hover {
-  color: #5fb0c4;;
+  color: #5fb0c4;
+  cursor: pointer;
 }
 
 #delete {
