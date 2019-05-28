@@ -71,7 +71,7 @@ describe "As a logged-in Teacher" do
     it "allows me to add a new strategy with a popup feature" do
       click_on "Add Strategy"
       fill_in "text", with: "He's just a super kid."
-      click_on "Save Strategy"
+      click_on "SAVE STRATEGY"
       expect(current_path).to eq(@student, {course_id: @course.id})
       expect(page).to have_content("Successfully Added Strategy")
       expect(page).to have_content("He's just a super kid.")

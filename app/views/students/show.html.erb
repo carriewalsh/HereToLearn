@@ -58,7 +58,10 @@
             <br>
             <%= f.text_area :strategy, size: "60x10" %>
             <br>
-            <%= f.submit "Save Strategy", class:'form-button' %>
+            <div class="submit-container">
+              <%= f.submit "SAVE STRATEGY", class:'form-button' %>
+              <p class="form-button" id="cancel">CANCEL</p>
+            </div>
           <% end %>
         </div>
       </div>
@@ -66,12 +69,21 @@
         $('.add-edit-strategy').on('click', function(event) {
           $('.modal').css('display','block');
         });
+        $('#cancel').on('click', function(event) {
+          $('.modal').css('display','none');
+        })
 
-        window.onclick = function(event) {
+        $('.modal').onclick = function(event) {
           if (event.target == $('.modal')) {
-            modal.style.display = "none";
+            $('.modal').css('display','none');
           }
-        }
+        };
+
+        $(document).keydown(function(event) {
+          if (event.keyCode == 27) {
+            $('.modal').css('display','none');
+          }
+        });
       </script>
     </div>
     <div class="strategies text-container">
