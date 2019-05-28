@@ -54,15 +54,21 @@
       <% facade.strategies.each do |strategy| %>
         <div class="strategy">
           <% if strategy.teacher_id == current_user.id %>
-          <div class="item-key">
-            <%= "By Me:" %>
-          </div>
+            <div class="item-key">
+              <%= "By Me:" %>
+            </div>
+            <div class="item-value">
+              <%= strategy.strategy %>
+            </div>
+              <%= link_to "Delete Strategy", student_path(facade.student), method: :delete, id:'delete' %>
           <% else %>
-          <div class="item-key">
-            <%= "By #{facade.teacher_name(strategy.teacher_id)}:" %>
-          </div>
+            <div class="item-key">
+              <%= "By #{facade.teacher_name(strategy.teacher_id)}:" %>
+            </div>
+            <div class="item-value">
+              <%= strategy.strategy %>
+            </div>
           <% end %>
-          <%= strategy.strategy %>
         <br>
         </div>
       <% end %>

@@ -501,3 +501,13 @@ footer {
 #small-link:hover {
   color: #5fb0c4;;
 }
+
+#delete {
+  font-size: 14px;
+  margin-left: 75%;
+  text-decoration: none;
+}
+#delete:hover{
+  background-color: #f9e0a9;
+  transition: all .3s ease-in-out;
+}
