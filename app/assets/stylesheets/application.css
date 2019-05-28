@@ -486,7 +486,7 @@ footer {
 .student-name {
   position: fixed;
   background: #F6F7F8;
-  z-index: 5;
+  z-index: 10;
   margin-left: 50%;
   margin-top: -75px;
 }
