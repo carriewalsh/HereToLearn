@@ -40,7 +40,7 @@ class Student::ResponseController < ApplicationController
                        created_at: time_range)
   end
 
-  def post_responses(question_ids, domain = 'http://surveyapp.com', endpoint = '/response')
+  def post_responses(question_ids, domain = 'https://aqueous-caverns-33840.herokuapp.com', endpoint = '/response')
     question_ids.each do |question_id|
       Faraday.post domain + endpoint, params: params_for_post(question_id)
     end
