@@ -103,16 +103,16 @@ header nav.navbar .navbarNav li a {
   transition: all .3s ease-in-out;
 }
 
-.navbarNav {
+.add-edit-container .navbarNav {
   z-index: 8;
   position: relative;
 }
 
-.nav-button {
+.add-edit-strategy, .nav-button {
   position: relative;
 }
 
-.item-value::after, .nav-button::after {
+.add-edit-strategy::after, .item-value::after, .nav-button::after {
   content: '';
   background-color: #f9e0a9;
   display: block;
@@ -125,7 +125,7 @@ header nav.navbar .navbarNav li a {
   transition: all .3s ease-in-out;
 }
 
- .item-value:hover::after, .nav-button:hover::after {
+ .add-edit-strategy:hover::after, .item-value:hover::after, .nav-button:hover::after {
   content: '';
   background-color: #f9e0a9;
   display: block;
@@ -416,7 +416,6 @@ footer {
 
 .attendance-present {
   background-image: url('check-mark-3-xxl.png');
-
 }
 .attendance-absent {
   background-image: url('x-mark-xxl.png');
@@ -430,11 +429,6 @@ footer {
 .attendance-absent_with_response {
   background-image: url('x-mark-5-xxl.png');
 }
-
-.rotate {
-  transform: rotate(180deg);
-}
-
 
 .attendance-options {
   background: white;
@@ -466,11 +460,10 @@ footer {
   background: white;
   font-weight: 300;
   line-height: 2;
-  margin: 15px;
-  margin-right: 50px;
+  margin: 25px;
   padding: 15px;
-  padding-right: 50px;
   width: 40%;
+  z-index: 8;
 }
 
 .grey-heading {
@@ -478,7 +471,6 @@ footer {
   font-size: calc((-.2 *(1em - 20px) - -2.2em - 13px));
   font-weight: 300;
   margin: 5px;
-
 }
 
 .grey-heading::after {
@@ -523,7 +515,42 @@ footer {
 .heading-link-container {
   display: flex;
   align-items: center;
+  z-index: 8;
+  position: relative;
 }
+
+.add-edit-strategy {
+  margin-left: 45px;
+  position: relative;
+  cursor: pointer;
+}
+
+.add-edit-strategy::after {
+  content: '';
+  background-color: #f9e0a9;
+  display: block;
+  position: absolute;
+  width: 0%;
+  height: 30px;
+  margin-top: -27px;
+  margin-left: -10px;
+  z-index: -1;
+  transition: all .3s ease-in-out;
+}
+
+ .add-edit-strategy:hover::after {
+  content: '';
+  background-color: #f9e0a9;
+  display: block;
+  position: absolute;
+  width: 40%;
+  height: 30px;
+  margin-top: -27px;
+  margin-left: -10px;
+  z-index: -1;
+  transition: all .3s ease-in-out;
+}
+
 
 #small-link {
   font-size: calc((-.2 *(1em - 20px) - -1.8em - 13px));
@@ -534,7 +561,6 @@ footer {
 
 #small-link:hover {
   color: #5fb0c4;
-  cursor: pointer;
 }
 
 #delete {
@@ -542,7 +568,29 @@ footer {
   margin-left: 75%;
   text-decoration: none;
 }
-#delete:hover{
+
+#delete::after {
+  content: '';
   background-color: #f9e0a9;
+  display: block;
+  position: absolute;
+  width: 0%;
+  height: 20px;
+  margin-top: -27px;
+  margin-left: 29%;
+  z-index: -1;
   transition: all .3s ease-in-out;
+}
+
+#delete:hover::after {
+ content: '';
+ background-color: #f9e0a9;
+ display: block;
+ position: absolute;
+ width: 40px;
+ height: 20px;
+ margin-top: -27px;
+ margin-left: 29%;
+ z-index: -1;
+ transition: all .3s ease-in-out;
 }
