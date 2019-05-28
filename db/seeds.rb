@@ -1,10 +1,26 @@
 will= Student.create(first_name: "William", last_name: "Peterson", student_id: "250923", google_id: "107113987859408235003")
 simple_teacher = Teacher.create(first_name: "bill", last_name: "patterson", email: "example@mail.com", password: "password")
 s_course = simple_teacher.courses.create(name: "Major Pharmaceuticals", period: "1", start_time: "0:00:00", end_time: "23:59:59")
+s_course2 = simple_teacher.courses.create(name: "Major Pharmaceuticals2", period: "1", start_time: "0:00:00", end_time: "23:59:59")
+s_course3 = simple_teacher.courses.create(name: "Major Pharmaceuticals3", period: "1", start_time: "0:00:00", end_time: "23:59:59")
+s_course4 = simple_teacher.courses.create(name: "Major Pharmaceuticals4", period: "1", start_time: "0:00:00", end_time: "23:59:59")
+s_course5 = simple_teacher.courses.create(name: "Major Pharmaceuticals5", period: "1", start_time: "0:00:00", end_time: "23:59:59")
 
 will.courses << s_course
+will.courses << s_course2
+will.courses << s_course3
+will.courses << s_course4
+will.courses << s_course5
 will.attendances.create(course: s_course, attendance: nil)
+will.attendances.create(course: s_course2, attendance: nil)
+will.attendances.create(course: s_course3, attendance: nil)
+will.attendances.create(course: s_course4, attendance: nil)
+will.attendances.create(course: s_course5, attendance: nil)
 Code.create(course:s_course, code:"abcd")
+Code.create(course:s_course2, code:"abcd2")
+Code.create(course:s_course3, code:"abcd3")
+Code.create(course:s_course4, code:"abcd4")
+Code.create(course:s_course5, code:"abcd5")
 
 
 t1 = Teacher.create(first_name: "Maryl", last_name: "Wealthall", email: "mwealthall0@jigsy.com", password: "password")

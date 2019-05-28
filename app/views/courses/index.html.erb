@@ -76,9 +76,11 @@
     };
 
     var showUpdatedAttendance = function(id, course, attendance) {
-      $(`.student-card#${id} .current`).remove()
-      $(`.student-card#${id}`).prepend(`<div class="attendance-icon current attendance-${attendance}"></div>``);
-    }
+      debugger;
+      $(`div#${course}.course-card div#${id}.student-card div.current`).remove();
+      debugger;
+      $(`div#${course}.course-card div#${id}.student-card`).prepend(`<div class="attendance-icon current attendance-${attendance}"></div>`);
+    };
 
 
 
