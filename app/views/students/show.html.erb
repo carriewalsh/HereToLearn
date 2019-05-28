@@ -51,6 +51,7 @@
     <div class="heading-link-container">
       <h3 class="grey-heading">Student Strategies</h3>
       <h3 class="add-strategy">Add Strategy</h3>
+    </div>
       <div class="modal-add">
         <div class="modal-content">
           <%= form_for facade.strategies.new, controller: :strategies, action: :create do |f| %>
@@ -59,7 +60,16 @@
             <%= f.hidden_field :course_id, value: facade.course.id %>
             <%= f.label "Provide a strategy that has helped this student be successful" %>
             <br>
-            <%= f.text_area :strategy, size: "60x10", require: true %>
+            <div class="strategy-field">
+              <%= f.text_area :strategy, size: "60x10", require: true %>
+              <div class="strategy-examples">
+                <p><b>Example</b></p>
+                <p>"Blake can sometimes be jittery and needs assistance staying on tasks. It is helpful for him to have a short list of tasks and he can take a small break in between completion."</p>
+                <br>
+                <p><b>Avoid</b></p>
+                <p>"Blake is extremely jittery and annoys other students. He tends to be off task."</p>
+              </div>
+            </div>
             <br>
             <div class="submit-container">
               <%= f.submit "SAVE STRATEGY", class:'form-button' %>
@@ -69,7 +79,6 @@
         </div>
       </div>
 
-    </div>
     <div class="strategies text-container" id="strategies">
       <br>
       <% facade.strategies.each do |strategy| %>
@@ -78,7 +87,7 @@
             <div class="item-key">
               <%= "By Me:" %>
             </div>
-            <div class="">
+            <div class="strategy-text">
               <%= strategy.strategy %>
             </div>
               <div class="modal-edit" id="<%= strategy.id %>">
@@ -89,11 +98,20 @@
                   <%= f.hidden_field :course_id, value: facade.course.id %>
                   <%= f.label "Provide a strategy that has helped this student be successful" %>
                   <br>
-                  <%= f.text_area :strategy, value:strategy.strategy, size: "60x10", require: true %>
+                  <div class="strategy-field">
+                    <%= f.text_area :strategy, value:strategy.strategy, size: "60x10", require: true %>
+                    <div class="strategy-examples">
+                      <p><b>Example</b></p>
+                      <p>"Blake can sometimes be jittery and needs assistance staying on tasks. It is helpful for him to have a short list of tasks and he can take a small break in between completion."</p>
+                      <br>
+                      <p><b>Avoid</b></p>
+                      <p>"Blake is extremely jittery and annoys other students. He tends to be off task."</p>
+                    </div>
+                  </div>
                   <br>
                   <div class="submit-container">
                     <%= f.submit "UPDATE STRATEGY", method: :UPDATE, class:'form-button' %>
-                    <p class="form-button cancel">EDITCANCEL</p>
+                    <p class="form-button cancel">CANCEL</p>
                   </div>
                   <% end %>
                 </div>
@@ -106,7 +124,7 @@
             <div class="item-key">
               <%= "By #{facade.teacher_name(strategy.teacher_id)}:" %>
             </div>
-            <div class="">
+            <div class="strategy-text">
               <%= strategy.strategy %>
             </div>
           <% end %>

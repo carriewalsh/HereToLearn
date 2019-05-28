@@ -26,8 +26,17 @@ mark {
 }
 
 textarea {
-  margin: 0 auto;
+  color: #6f6f6f;
   display: block;
+  font-size: 18px;
+  font-weiight: 300;
+  margin: 15px auto;
+  padding: 20px;
+  width: 45%;
+}
+
+p {
+  margin: 0px;
 }
 
 header nav.navbar {
@@ -460,10 +469,15 @@ footer {
 .strategy {
   background: white;
   font-weight: 300;
-  line-height: 2;
   margin: 25px;
   padding: 15px;
   width: 40%;
+}
+
+.strategy-text {
+  margin-top: 10px;
+  font-size: 18px;
+  padding: 0px 10px;
 }
 
 .grey-heading {
@@ -518,7 +532,7 @@ footer {
 .heading-link-container {
   display: flex;
   align-items: center;
-  z-index: 5;
+  z-index: 2;
   position: relative;
 }
 
@@ -593,6 +607,19 @@ footer {
  margin-top: 3px;
  z-index: -1;
  transition: all .3s ease-in-out;
+}
+
+.strategy-field {
+  display: flex;
+}
+
+.strategy-examples {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: normal;
+  width: 45%;
 }
 
 
