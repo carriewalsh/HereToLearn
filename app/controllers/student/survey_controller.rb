@@ -15,38 +15,14 @@ class Student::SurveyController < ApplicationController
       redirect_to student_unregistered_path
     end
 
-
-  end
-
-  def create
-    course = course_from_code(params[:code])
-    student = Student.find(session[:student_id])
-
-
-    if course && student.courses.include?(course)
-      session[:course_id] = course.id
-      redirect_to student_survey_path
-    else
-      flash[:error] = "Invalid Code"
-      redirect_to student_class_code_path
-    end
-
   end
 
   def show
     facade = QuestionFacade.new([1,2]) # This should be changed as survey creation changes
     session[:question_ids] = [1,2]
+    binding.pry
     render locals: { facade: facade }
   end
 
-  private
 
-  def course_from_code(code)
-    info = Code.find_by(code:code)
-    if info
-      return Course.find(info.course_id)
-    else
-      return nil
-    end
-  end
 end
