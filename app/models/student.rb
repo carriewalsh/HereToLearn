@@ -50,4 +50,8 @@ class Student < ApplicationRecord
       student.todays_attendance.include?("present") || student.todays_attendance == "tardy"
     end
   end
+
+  def self.get_student(id)
+    Student.find(id)
+  end
 end

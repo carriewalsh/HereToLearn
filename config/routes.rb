@@ -37,4 +37,11 @@ Rails.application.routes.draw do
   get '/auth/google_oauth2/callback', to: 'student/survey#new'
 
   mount ActionCable.server, at: '/cable'
+
+  namespace :api do
+    namespace :v1 do
+      get '/machinelearning/results', to: 'machine_learning#show'
+    end
+  end
+
 end
