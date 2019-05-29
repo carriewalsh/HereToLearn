@@ -166,14 +166,18 @@
 </div>
 
 <div class="prediction">
-    Predicted Score: <%= facade.prediction_results.test_score %>
-    Breakfast Percentage: <%= facade.prediction_results.meals_missed %>
-    <h4>Sleep Information </h4>
-    <%= facade.prediction_results.sleep_quality.none %>
-    <%= facade.prediction_results.sleep_quality.less_than %>
-    <%= facade.prediction_results.sleep_quality.usual %>
-    <%= facade.prediction_results.sleep_quality.more_than %>
-    <%= facade.prediction_results.sleep_quality.way_more %>
+  <% if facade.prediction_results == "Data Not Available"%>
+    <%= facade.prediction_results %>
+  <% else %>
+  Predicted Score: <%= facade.prediction_results.test_score %>
+  Breakfast Percentage: <%= facade.prediction_results.meals_missed %>
+  <h4>Sleep Information </h4>
+  <%= facade.prediction_results.sleep_quality.none %>
+  <%= facade.prediction_results.sleep_quality.less_than %>
+  <%= facade.prediction_results.sleep_quality.usual %>
+  <%= facade.prediction_results.sleep_quality.more_than %>
+  <%= facade.prediction_results.sleep_quality.way_more %>
+  <% end %>
 </div>
 
 <script type="text/javascript">

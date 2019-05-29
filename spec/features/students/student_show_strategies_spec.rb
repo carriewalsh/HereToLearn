@@ -1,6 +1,7 @@
 require "rails_helper"
 
-describe "As a logged-in Teacher" do
+describe "As a logged-in Teacher", :vcr do
+
   describe "when I visit a student's show page" do
     before :each do
       @course = create(:course)
@@ -35,9 +36,9 @@ describe "As a logged-in Teacher" do
       strat3 = teacher2.strategies.create(student_id: @student.id, strategy: "Elementary schools started earlier, while most middle and all of the district's 18 high")
       visit student_path(@student, {course_id: @course.id})
       expect(page).to have_content("Student Strategies")
-        expect(page).to have_css(".strategy",count: 3)
-        expect(page).to have_content("By Me:", count: 2)
-        expect(page).to have_content("By #{teacher2.first_name} #{teacher2.last_name}:", count: 1)
+      expect(page).to have_css(".strategy",count: 3)
+      expect(page).to have_content("By Me:", count: 2)
+      expect(page).to have_content("By #{teacher2.first_name} #{teacher2.last_name}:", count: 1)
     end
 
     it "allows me to add a new strategy with a popup feature" do
