@@ -36,5 +36,7 @@ class StudentFacade
     results = conn.get
     data = JSON.parse(results.body, symbolize_names: true)
     Prediction.new(data)
+  def built_ins
+    StrategyReference.all.pluck(:built_in)
   end
 end
