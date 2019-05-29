@@ -27,8 +27,11 @@
     </div>
   </div>
 </div>
-
-<div class="banner">
+<div class="show-hide-container">
+  <h5 class='show-attendance'>&DownArrowBar; Show Attendance Calendar and Graph &DownArrowBar;</h5>
+  <h5 class='hide-attendance'>&UpArrowBar; Hide Attendance Calendar and Graph &UpArrowBar;</h5>
+</div>
+<div class="banner more-attendance">
   <div class="dynamic-container">
     <div class="dynamic">
       <div class="calendar">
@@ -141,6 +144,22 @@
 </div>
 
 <script type="text/javascript">
+  $(document).ready(function() {
+    $('.more-attendance').hide();
+    $('.hide-attendance').hide();
+  });
+  $('.show-attendance').on('click', function(event) {
+    $('.more-attendance').slideDown();
+    $('.hide-attendance').slideDown();
+    $('.show-attendance').slideUp();
+  })
+  $('.hide-attendance').on('click', function(event) {
+    $('.more-attendance').slideUp();
+    $('.hide-attendance').slideUp();
+    $('.show-attendance').slideDown();
+  })
+
+
   $('.add-strategy').on('click', function(event) {
     $('.modal-add').css('display','block');
   });
