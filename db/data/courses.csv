@@ -1,0 +1,51 @@
+end_time,id,name,period,start_time
+9:00:00,1,Remedial Calculus 5,1,8:00:00
+9:00:00,2,Remedial History 1,1,8:00:00
+9:00:00,3,Honors Philosophy 5,1,8:00:00
+9:00:00,4,Honors Neuroscience 1,1,8:00:00
+9:00:00,5,Beginner Chinese 2,1,8:00:00
+9:00:00,6,Advanced Italian 5,1,8:00:00
+9:00:00,7,Remedial Italian 3,1,8:00:00
+9:00:00,8,Advanced Derivatives 3,1,8:00:00
+9:00:00,9,Remedial Calculus 4,1,8:00:00
+9:00:00,10,Remedial Art History 5,1,8:00:00
+10:00:00,11,Intermediate German 2,2,9:00:00
+10:00:00,12,Advanced Geometry 1,2,9:00:00
+10:00:00,13,Beginner English 1,2,9:00:00
+10:00:00,14,Advanced English 4,2,9:00:00
+10:00:00,15,Beginner Linear Algebra 5,2,9:00:00
+10:00:00,16,Beginner Spanish 1,2,9:00:00
+10:00:00,17,Intermediate Economics 4,2,9:00:00
+10:00:00,18,Intermediate Swahili 2,2,9:00:00
+10:00:00,19,Honors Neuroscience 4,2,9:00:00
+10:00:00,20,Honors History 5,2,9:00:00
+11:00:00,21,Remedial Sociology 2,3,10:00:00
+11:00:00,22,Advanced Philosophy 4,3,10:00:00
+11:00:00,23,Honors Algebra 1,3,10:00:00
+11:00:00,24,Remedial Linear Algebra 4,3,10:00:00
+11:00:00,25,Advanced Anatomy 5,3,10:00:00
+11:00:00,26,Intermediate Spanish 1,3,10:00:00
+11:00:00,27,Beginner Chinese 2,3,10:00:00
+11:00:00,28,Honors Differential Equations 5,3,10:00:00
+11:00:00,29,Beginner Physics 5,3,10:00:00
+11:00:00,30,Honors Philosophy 1,3,10:00:00
+12:00:00,31,Advanced German 4,4,11:00:00
+12:00:00,32,Intermediate Biology 5,4,11:00:00
+12:00:00,33,Intermediate Chemistry 5,4,11:00:00
+12:00:00,34,Remedial Derivatives 2,4,11:00:00
+12:00:00,35,Intermediate Calculus 1,4,11:00:00
+12:00:00,36,Advanced Derivatives 3,4,11:00:00
+12:00:00,37,Beginner Chemistry 2,4,11:00:00
+12:00:00,38,Remedial Art History 1,4,11:00:00
+12:00:00,39,Remedial Swahili 3,4,11:00:00
+12:00:00,40,Intermediate Differential Equations 3,4,11:00:00
+13:00:00,41,Beginner History 2,5,12:00:00
+13:00:00,42,Intermediate Anatomy 4,5,12:00:00
+13:00:00,43,Advanced Economics 4,5,12:00:00
+13:00:00,44,Remedial Economics 3,5,12:00:00
+13:00:00,45,Advanced History 2,5,12:00:00
+13:00:00,46,Honors Physics 2,5,12:00:00
+13:00:00,47,Honors Economics 1,5,12:00:00
+13:00:00,48,Advanced Swahili 5,5,12:00:00
+13:00:00,49,Intermediate Literature 1,5,12:00:00
+13:00:00,50,Intermediate Geometry 3,5,12:00:00

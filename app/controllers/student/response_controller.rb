@@ -24,23 +24,23 @@ class Student::ResponseController < ApplicationController
 
   def attendance_status
     course = Course.find(session[:course_id])
-    return nil if now > course.end_time
+    return nil if now.strftime("%H%M%S") > course.end_time.strftime("%H%M%S")
     return 'present' if now < course.start_time + 5.minutes
     'tardy'
   end
 
   def now
-    DateTime.now()
+    DateTime.now
   end
 
   def find_attendance
-    time_range = (now-1.hour..now)
+    time_range = (now.beginning_of_day..now)
     Attendance.find_by(student_id: session[:student_id],
                        course_id: session[:course_id],
                        created_at: time_range)
   end
 
-  def post_responses(question_ids, domain = 'http://surveyapp.com', endpoint = '/response')
+  def post_responses(question_ids, domain = 'https://aqueous-caverns-33840.herokuapp.com', endpoint = '/response')
     question_ids.each do |question_id|
       Faraday.post domain + endpoint, params: params_for_post(question_id)
     end
