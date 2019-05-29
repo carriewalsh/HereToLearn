@@ -1,6 +1,13 @@
 #currently not in use, potential for the future
 <h1>Counselors Dashboard</h1>
-<%= facade.header %>
-<% facade.students_by_grade.each do |student| %>
-  <%= student.last_name %>, <%= student.first_name %>
-<% end %>
+
+<section class='flagged-strategies'>
+  <h3>Strategies we've flagged as "potentially unhelpful:"</h3>
+    <% facade.flagged_strats.each do |strat| %>
+      <section class='strategy'>
+        <p><%= strat.strategy %></p>
+        <%= button_to 'Delete this strategy', deactivate_strategy_path(strat), method: :patch %>
+        <%= button_to "Approve this strategy", approve_strategy_path(strat), method: :patch %>
+      </section>
+    <% end %>
+</section>

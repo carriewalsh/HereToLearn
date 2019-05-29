@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   resources :strategies, only: [:create, :update] do
     member { patch :deactivate }
+    member { patch :approve }
   end
 
   namespace :student do
