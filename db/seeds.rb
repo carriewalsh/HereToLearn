@@ -1,555 +1,146 @@
-will= Student.create(first_name: "William", last_name: "Peterson", student_id: "250923", google_id: "107113987859408235003")
-simple_teacher = Teacher.create(first_name: "bill", last_name: "patterson", email: "example@mail.com", password: "password")
-s_course = simple_teacher.courses.create(name: "Major Pharmaceuticals", period: "1", start_time: "0:00:00", end_time: "23:59:59")
-s_course2 = simple_teacher.courses.create(name: "Major Pharmaceuticals2", period: "1", start_time: "0:00:00", end_time: "23:59:59")
-s_course3 = simple_teacher.courses.create(name: "Major Pharmaceuticals3", period: "1", start_time: "0:00:00", end_time: "23:59:59")
-s_course4 = simple_teacher.courses.create(name: "Major Pharmaceuticals4", period: "1", start_time: "0:00:00", end_time: "23:59:59")
-s_course5 = simple_teacher.courses.create(name: "Major Pharmaceuticals5", period: "1", start_time: "0:00:00", end_time: "23:59:59")
+options_hash = {col_sep: ",", headers: true,
+  header_converters: :symbol, converters: :numeric}
 
-will.courses << s_course
-will.courses << s_course2
-will.courses << s_course3
-will.courses << s_course4
-will.courses << s_course5
-will.attendances.create(course: s_course, attendance: nil)
-will.attendances.create(course: s_course2, attendance: nil)
-will.attendances.create(course: s_course3, attendance: nil)
-will.attendances.create(course: s_course4, attendance: nil)
-will.attendances.create(course: s_course5, attendance: nil)
-Code.create(course:s_course, code:"abcd")
-Code.create(course:s_course2, code:"abcd2")
-Code.create(course:s_course3, code:"abcd3")
-Code.create(course:s_course4, code:"abcd4")
-Code.create(course:s_course5, code:"abcd5")
+teachers = CSV.open('./db/data/teachers.csv', options_hash)
+students = CSV.open('./db/data/students.csv', options_hash)
+courses = CSV.open('./db/data/courses.csv', options_hash)
 
+teachers_ar = {}; students_ar = {}; courses_ar = {}
+to_save = [ {model:Teacher, csv:teachers, collector:teachers_ar},
+            {model:Student, csv:students, collector:students_ar},
+            {model:Course, csv:courses, collector:courses_ar}]
 
-t1 = Teacher.create(first_name: "Maryl", last_name: "Wealthall", email: "mwealthall0@jigsy.com", password: "password")
-t2 = Teacher.create(first_name: "Arnaldo", last_name: "McLise", email: "amclise1@google.ru", password: "4b1pjMA6BtP")
-t3 = Teacher.create(first_name: "Georgianne", last_name: "Lynd", email: "glynd2@mysql.com", password: "POtnXeZ0tpd")
-t4 = Teacher.create(first_name: "Minerva", last_name: "Denyakin", email: "mdenyakin3@globo.com", password: "46t6DzI3yn2")
-t5 = Teacher.create(first_name: "Noah", last_name: "Venditto", email: "nvenditto4@histats.com", password: "8pACJg4Sd")
-t6 = Teacher.create(first_name: "Hersch", last_name: "Hobbing", email: "hhobbing5@elpais.com", password: "FvtpEvGAe")
-t7 = Teacher.create(first_name: "Dan", last_name: "Chataignier", email: "dchataignier6@sakura.net", password: "hpqIvukYk" )
-t8 = Teacher.create(first_name: "Artair", last_name: "Cheatle", email: "acheatle7@github.io", password: "oU93YuQW1")
-t9 = Teacher.create(first_name: "Melisande", last_name: "Geck", email: "mgeck8@samsung.com", password: "oe4eoIlJq")
-t10 = Teacher.create(first_name: "Monti", last_name: "Ayre", email: "mayre9@linkedin.com", password: "Zn98avjZkrQ")
-t11 = Teacher.create(first_name: "Clement", last_name: "Teall", email: "ctealla@home.pl", password: "7wCARW")
-t12 = Teacher.create(first_name: "Flynn", last_name: "Glason", email: "fglasonb@tripod.com", password: "7ylZN6JdZa6")
-t13 = Teacher.create(first_name: "Kaycee", last_name: "Tessington", email: "ktessingtonc@cocolog-nifty.com",  password: "Z7IQw6oaWXm" )
-t14 = Teacher.create(first_name: "Kristal", last_name: "Roft", email: "kroftd@tinypic.com", password: "RFs2gawWbiK")
-t15 = Teacher.create(first_name: "Ardene", last_name: "Daingerfield", email: "adaingerfield0@cnn.com", password: "tU4MD99jnC")
-t16 = Teacher.create(first_name: "Adan", last_name: "Stennard", email: "astennard1@discovery.com", password: "VAykcDVGPR")
-t17 = Teacher.create(first_name: "Clea", last_name: "Cona", email: "ccona2@salon.com", password: "NGQ4K8L")
-t18 = Teacher.create(first_name: "Carmela", last_name: "Cleave", email: "ccleave3@businesswire.com", password: "9kPbGGYItuni")
-t19 = Teacher.create(first_name: "Clovis", last_name: "Freezer", email: "cfreezer4@patch.com", password: "n4p4LJkX")
-t20 = Teacher.create(first_name: "Bab", last_name: "McWilliams", email: "bmcwilliams5@comsenz.com", password: "password")
+to_save.each do |options|
+  options[:csv].each do |row|
+    ar = options[:model].create!(row.to_hash)
+    options[:collector][ar.id.to_s] = ar
+  end
+end
 
+student_courses = CSV.open('./db/data/student_courses.csv', options_hash)
+teacher_courses = CSV.open('./db/data/teacher_courses.csv', options_hash)
+student_courses.each do |row|
+  hash = row.to_hash
+  s_id = hash[:student_id].to_s
+  c_id = hash[:course_id].to_s
+  students_ar[s_id].courses << courses_ar[c_id]
+end
 
-s1 = Student.create(first_name: "Ewart", last_name: "Ransley", student_id: "905286", google_id: "W5zTy50")
-s2 = Student.create(first_name: "Collette", last_name: "Mattys", student_id: "635474", google_id: "qaEfncEzR")
-s3 = Student.create(first_name: "Chere", last_name: "Santino", student_id: "790312", google_id: "8hMUTIJgX7M")
-s4 = Student.create(first_name: "Emmye", last_name: "Treadway", student_id: "567934", google_id: "jwa2fk0Mv8p")
-s5 = Student.create(first_name: "Gregoire", last_name: "Haster", student_id: "432443", google_id: "Ra3IneDRMh")
-s6 = Student.create(first_name: "Otha", last_name: "Shilburne", student_id: "612314", google_id: "Jy5mAA")
-s7 = Student.create(first_name: "Noemi", last_name: "Sands", student_id: "428767", google_id: "R1saEoeFkt")
-s8 = Student.create(first_name: "Chelsae", last_name: "Grigolashvill", student_id: "564924", google_id: "BHmfsE05uf1")
-s9 = Student.create(first_name: "Madeline", last_name: "Fennick", student_id: "514987", google_id: "Y7tPM1rBGVP")
-s10 = Student.create(first_name: "Fedora", last_name: "Cattermole", student_id: "890322", google_id: "kKiJzr2zp")
-s11 = Student.create(first_name: "Mavra", last_name: "Felten", student_id: "635894", google_id: "NHVtTY")
-s12 = Student.create(first_name: "Carce", last_name: "Caccavari", student_id: "666051", google_id: "GaVK6CZ4")
-s13 = Student.create(first_name: "Delphine", last_name: "Daish", student_id: "198724", google_id: "KLU3UGKs6FE4")
-s14 = Student.create(first_name: "Raphaela", last_name: "Elbourne", student_id: "235264", google_id: "n6DadIACQ")
-s15 = Student.create(first_name: "Silvie", last_name: "Goodright", student_id: "118255", google_id: "17dvdlPg")
-s16 = Student.create(first_name: "Cecilia", last_name: "Berkely", student_id: "209891", google_id: "gSnNxUQ")
-s17 = Student.create(first_name: "Benn", last_name: "Engall", student_id: "152287", google_id: "hDI1l3")
-s18 = Student.create(first_name: "Lucia", last_name: "Scargle", student_id: "925790", google_id: "KsfkC2Z9As8S")
-s19 = Student.create(first_name: "Armand", last_name: "Mouland", student_id: "697584", google_id: "ECq6BopwyXx")
-s20 = Student.create(first_name: "Bamby", last_name: "Lippitt", student_id: "516427", google_id: "6aBj65c")
-s21 = Student.create(first_name: "Emelina", last_name: "Sowthcote", student_id: "352957", google_id: "P8R7lQ61")
-s22 = Student.create(first_name: "Drucill", last_name: "Elleray", student_id: "967120", google_id: "PCyleJQ")
-s23 = Student.create(first_name: "Goldie", last_name: "Meers", student_id: "913631", google_id: "lnbU50zmR9fj")
-s24 = Student.create(first_name: "Karlee", last_name: "Scare", student_id: "320096", google_id: "zjh2vT")
-s25 = Student.create(first_name: "Latia", last_name: "Musterd", student_id: "378658", google_id: "vbNic9rwv")
-s26 = Student.create(first_name: "Valentino", last_name: "Seamon", student_id: "817502", google_id: "DwAIu5it3qX")
-s27 = Student.create(first_name: "Hallsy", last_name: "Bygate", student_id: "771706", google_id: "AnNN756VqX")
-s28 = Student.create(first_name: "Lani", last_name: "Havik", student_id: "959192", google_id: "mKL0TAFqV2")
-s29 = Student.create(first_name: "Marna", last_name: "Pennycuick", student_id: "696190", google_id: "3tqLg6iNP66t")
-s30 = Student.create(first_name: "Eydie", last_name: "Gallaccio", student_id: "727666", google_id: "sebjM0LM")
-s31 = Student.create(first_name: "Albie", last_name: "Nazareth", student_id: "921394", google_id: "6LBYMfI51")
-s32 = Student.create(first_name: "Janith", last_name: "Pullen", student_id: "823874", google_id: "qal7MrSeciDi")
-s33 = Student.create(first_name: "Wheeler", last_name: "Taffurelli", student_id: "251997", google_id: "C2cf0gBVQpd")
-s34 = Student.create(first_name: "Natale", last_name: "Mayow", student_id: "352623", google_id: "Pb3kGek9dY")
-s35 = Student.create(first_name: "Andrus", last_name: "Bollans", student_id: "520585", google_id: "XbLuYM6wsWH9")
-s36 = Student.create(first_name: "Nikoletta", last_name: "Phlippi", student_id: "688338", google_id: "ZJIdb5cmLha")
-s37 = Student.create(first_name: "Selia", last_name: "Bicksteth", student_id: "450545", google_id: "Abr7g5")
-s38 = Student.create(first_name: "Giavani", last_name: "McKenzie", student_id: "602267", google_id: "SIrD9Ka7")
-s39 = Student.create(first_name: "Murdoch", last_name: "Martinon", student_id: "319838", google_id: "AbA7X2")
-s40 = Student.create(first_name: "Holly", last_name: "Murrthum", student_id: "171066", google_id: "7lilFg")
-s41 = Student.create(first_name: "Yves", last_name: "Neeve", student_id: "653679", google_id: "szQt8f5")
-s42 = Student.create(first_name: "Sonia", last_name: "Screaton", student_id: "803464", google_id: "yb6VaSClfVU")
-s43 = Student.create(first_name: "Manfred", last_name: "Angear", student_id: "910147", google_id: "1LnrNOj4")
-s44 = Student.create(first_name: "Thoma", last_name: "MacAlpine", student_id: "314492", google_id: "FU0Qeh")
-s45 = Student.create(first_name: "Melosa", last_name: "Rothera", student_id: "848148", google_id: "n9IZoilO")
-s46 = Student.create(first_name: "Cherye", last_name: "Bysshe", student_id: "386896", google_id: "8VWMez")
-s47 = Student.create(first_name: "Karlens", last_name: "Newton", student_id: "960110", google_id: "tiimeY8")
-s48 = Student.create(first_name: "Gail", last_name: "Vasilyevski", student_id: "695299", google_id: "FGBBjNY")
-s49 = Student.create(first_name: "Sandye", last_name: "Baselli", student_id: "281144", google_id: "BMt3Ev4YJe")
-s50 = Student.create(first_name: "Zorah", last_name: "Torrent", student_id: "699119", google_id: "tSCzgNUGvi")
+teacher_courses.each do |row|
+  hash = row.to_hash
+  t_id = hash[:teacher_id].to_s
+  c_id = hash[:course_id].to_s
+  courses_ar[c_id].teachers << teachers_id[t_id]
+end
+
+attendances = CSV.open('./db/data/attendance.csv', options_hash)
+
+attendances.each do |row|
+  hash = row.to_hash
+  course = courses_ar[hash[:course_id].to_s]
+  student = students_ar[hash[:student_id].to_s]
+  creation = hash[:days_ago].days.ago
+  Attendance.create!(
+    course: course, student: student,
+    attendance: hash[:attendance],
+    created_at: creation, updated_at: creation
+    )
+end
+
+# will= Student.create(first_name: "William", last_name: "Peterson", student_id: "250923", google_id: "107113987859408235003")
+# simple_teacher = Teacher.create(first_name: "bill", last_name: "patterson", email: "example@mail.com", password: "password")
+# s_course = simple_teacher.courses.create(name: "Major Pharmaceuticals", period: "1", start_time: "0:00:00", end_time: "23:59:59")
+# s_course2 = simple_teacher.courses.create(name: "Major Pharmaceuticals2", period: "1", start_time: "0:00:00", end_time: "23:59:59")
+# s_course3 = simple_teacher.courses.create(name: "Major Pharmaceuticals3", period: "1", start_time: "0:00:00", end_time: "23:59:59")
+# s_course4 = simple_teacher.courses.create(name: "Major Pharmaceuticals4", period: "1", start_time: "0:00:00", end_time: "23:59:59")
+# s_course5 = simple_teacher.courses.create(name: "Major Pharmaceuticals5", period: "1", start_time: "0:00:00", end_time: "23:59:59")
+#
+# will.courses << s_course
+# will.courses << s_course2
+# will.courses << s_course3
+# will.courses << s_course4
+# will.courses << s_course5
+# will.attendances.create(course: s_course, attendance: nil)
+# will.attendances.create(course: s_course2, attendance: nil)
+# will.attendances.create(course: s_course3, attendance: nil)
+# will.attendances.create(course: s_course4, attendance: nil)
+# will.attendances.create(course: s_course5, attendance: nil)
+# Code.create(course:s_course, code:"abcd")
+# Code.create(course:s_course2, code:"abcd2")
+# Code.create(course:s_course3, code:"abcd3")
+# Code.create(course:s_course4, code:"abcd4")
+# Code.create(course:s_course5, code:"abcd5")
 
 
-c1 = t1.courses.create(name: "Major Pharmaceuticals", period: "1", start_time: "2019-05-21 8:00:00", end_time: "2019-05-21 9:00:00")
-c2 = t1.courses.create(name: "Biology", period: "2", start_time: "2019-05-21 9:05:00", end_time: "2019-05-21 10:05:00")
-c3 = t1.courses.create(name: "Computer Software: Prepackaged Software", period: "3", start_time: "2019-05-21 10:10:00", end_time: "2019-05-21 11:10:00")
-c4 = t1.courses.create(name: "Biology", period: "4", start_time: "2019-05-21 11:15:00", end_time: "2019-05-21 12:15:00")
-c5 = t1.courses.create(name: "Finance: Consumer Services", period: "5", start_time: "2019-05-21 12:20:00", end_time: "2019-05-21 13:20:00")
-c6 = t2.courses.create(name: "Biology", period: "1", start_time: "2019-05-21 8:00:00", end_time: "2019-05-21 9:00:00")
-c7 = t2.courses.create(name: "Major Pharmaceuticals", period: "2", start_time: "2019-05-21 9:05:00", end_time: "2019-05-21 10:05:00")
-c8 = t2.courses.create(name: "Biology", period: "3", start_time: "2019-05-21 10:10:00", end_time: "2019-05-21 11:10:00")
-c9 = t2.courses.create(name: "Department/Specialty Retail Stores", period: "4", start_time: "2019-05-21 11:15:00", end_time: "2019-05-21 12:15:00")
-c10 = t2.courses.create(name: "Precious Metals", period: "5", start_time: "2019-05-21 12:20:00", end_time: "2019-05-21 13:20:00")
-c11 = t3.courses.create(name: "Computer Software: Prepackaged Software", period: "1", start_time: "2019-05-21 8:00:00", end_time: "2019-05-21 9:00:00")
-c12 = t3.courses.create(name: "Biology", period: "2", start_time: "2019-05-21 9:05:00", end_time: "2019-05-21 10:05:00")
-c13 = t3.courses.create(name: "Advertising", period: "3", start_time: "2019-05-21 10:10:00", end_time: "2019-05-21 11:10:00")
-c14 = t3.courses.create(name: "Real Estate", period: "4", start_time: "2019-05-21 11:15:00", end_time: "2019-05-21 12:15:00")
-c15 = t3.courses.create(name: "Finance: Consumer Services", period: "5", start_time: "2019-05-21 12:20:00", end_time: "2019-05-21 13:20:00")
-c16 = t4.courses.create(name: "Retail: Computer Software & Peripheral Equipment", period: "1", start_time: "2019-05-21 8:00:00", end_time: "2019-05-21 9:00:00")
-c17 = t4.courses.create(name: "Major Chemicals", period: "2", start_time: "2019-05-21 9:05:00", end_time: "2019-05-21 10:05:00")
-c18 = t4.courses.create(name: "Life Insurance", period: "3", start_time: "2019-05-21 10:10:00", end_time: "2019-05-21 11:10:00")
-c19 = t4.courses.create(name: "Metal Fabrications", period: "4", start_time: "2019-05-21 11:15:00", end_time: "2019-05-21 12:15:00")
-c20 = t4.courses.create(name: "Transportation Services", period: "5", start_time: "2019-05-21 12:20:00", end_time: "2019-05-21 13:20:00")
-c21 = t5.courses.create(name: "Packaged Foods", period: "1", start_time: "2019-05-21 8:00:00", end_time: "2019-05-21 9:00:00")
-c22 = t5.courses.create(name: "Savings Institutions", period: "2", start_time: "2019-05-21 9:05:00", end_time: "2019-05-21 10:05:00")
-c23 = t5.courses.create(name: "Business Services", period: "3", start_time: "2019-05-21 10:10:00", end_time: "2019-05-21 11:10:00")
-c24 = t5.courses.create(name: "Investment Managers", period: "4", start_time: "2019-05-21 11:15:00", end_time: "2019-05-21 12:15:00")
-c25 = t5.courses.create(name: "Auto Manufacturing", period: "5", start_time: "2019-05-21 12:20:00", end_time: "2019-05-21 13:20:00")
-c26 = t6.courses.create(name: "Biotechnology", period: "1", start_time: "2019-05-21 8:00:00", end_time: "2019-05-21 9:00:00")
-c27 = t6.courses.create(name: "Real Estate Investment Trusts", period: "2", start_time: "2019-05-21 9:05:00", end_time: "2019-05-21 10:05:00")
-c28 = t6.courses.create(name: "Auto Manufacturing", period: "3", start_time: "2019-05-21 10:10:00", end_time: "2019-05-21 11:10:00")
-c29 = t6.courses.create(name: "Home Furnishings", period: "4", start_time: "2019-05-21 11:15:00", end_time: "2019-05-21 12:15:00")
-c30 = t6.courses.create(name: "Chemistry", period: "5", start_time: "2019-05-21 12:20:00", end_time: "2019-05-21 13:20:00")
-c31 = t7.courses.create(name: "Military/Government/Technical", period: "1", start_time: "2019-05-21 8:00:00", end_time: "2019-05-21 9:00:00")
-c32 = t7.courses.create(name: "Chemistry", period: "2", start_time: "2019-05-21 9:05:00", end_time: "2019-05-21 10:05:00")
-c33 = t7.courses.create(name: "Computer Software: Prepackaged Software", period: "3", start_time: "2019-05-21 10:10:00", end_time: "2019-05-21 11:10:00")
-c34 = t7.courses.create(name: "Books", period: "4", start_time: "2019-05-21 11:15:00", end_time: "2019-05-21 12:15:00")
-c35 = t7.courses.create(name: "Diversified Commercial Services", period: "5", start_time: "2019-05-21 12:20:00", end_time: "2019-05-21 13:20:00")
-c36 = t8.courses.create(name: "Chemistry", period: "1", start_time: "2019-05-21 8:00:00", end_time: "2019-05-21 9:00:00")
-c37 = t8.courses.create(name: "Other Consumer Services", period: "2", start_time: "2019-05-21 9:05:00", end_time: "2019-05-21 10:05:00")
-c38 = t8.courses.create(name: "Telecommunications Equipment", period: "3", start_time: "2019-05-21 10:10:00", end_time: "2019-05-21 11:10:00")
-c39 = t8.courses.create(name: "Major Pharmaceuticals", period: "4", start_time: "2019-05-21 11:15:00", end_time: "2019-05-21 12:15:00")
-c40 = t8.courses.create(name: "Major Pharmaceuticals", period: "5", start_time: "2019-05-21 12:20:00", end_time: "2019-05-21 13:20:00")
-c41 = t9.courses.create(name: "Professional Services", period: "1", start_time: "2019-05-21 8:00:00", end_time: "2019-05-21 9:00:00")
-c42 = t9.courses.create(name: "Air Freight/Delivery Services", period: "2", start_time: "2019-05-21 9:05:00", end_time: "2019-05-21 10:05:00")
-c43 = t9.courses.create(name: "Agricultural Chemicals", period: "3", start_time: "2019-05-21 10:10:00", end_time: "2019-05-21 11:10:00")
-c44 = t9.courses.create(name: "Precious Metals", period: "4", start_time: "2019-05-21 11:15:00", end_time: "2019-05-21 12:15:00")
-c45 = t9.courses.create(name: "Biotechnology", period: "5", start_time: "2019-05-21 12:20:00", end_time: "2019-05-21 13:20:00")
-c46 = t10.courses.create(name: "Economics", period: "1", start_time: "2019-05-21 8:00:00", end_time: "2019-05-21 9:00:00")
-c47 = t10.courses.create(name: "Paper", period: "2", start_time: "2019-05-21 9:05:00", end_time: "2019-05-21 10:05:00")
-c48 = t10.courses.create(name: "Other Consumer Services", period: "3", start_time: "2019-05-21 10:10:00", end_time: "2019-05-21 11:10:00")
-c49 = t10.courses.create(name: "Books", period: "4", start_time: "2019-05-21 11:15:00", end_time: "2019-05-21 12:15:00")
-c50 = t10.courses.create(name: "Electrical Products", period: "5", start_time: "2019-05-21 12:20:00", end_time: "2019-05-21 13:20:00")
-c51 = t11.courses.create(name: "Metal Fabrications", period: "1", start_time: "2019-05-21 8:00:00", end_time: "2019-05-21 9:00:00")
-c52 = t11.courses.create(name: "Major Banks", period: "2", start_time: "2019-05-21 9:05:00", end_time: "2019-05-21 10:05:00")
-c53 = t11.courses.create(name: "Major Pharmaceuticals", period: "3", start_time: "2019-05-21 10:10:00", end_time: "2019-05-21 11:10:00")
-c54 = t11.courses.create(name: "Semiconductors", period: "4", start_time: "2019-05-21 11:15:00", end_time: "2019-05-21 12:15:00")
-c55 = t11.courses.create(name: "Property-Casualty Insurers", period: "5", start_time: "2019-05-21 12:20:00", end_time: "2019-05-21 13:20:00")
-c56 = t12.courses.create(name: "Electrical Products", period: "1", start_time: "2019-05-21 8:00:00", end_time: "2019-05-21 9:00:00")
-c57 = t12.courses.create(name: "Economics", period: "2", start_time: "2019-05-21 9:05:00", end_time: "2019-05-21 10:05:00")
-c58 = t12.courses.create(name: "Marine Transportation", period: "3", start_time: "2019-05-21 10:10:00", end_time: "2019-05-21 11:10:00")
-c59 = t12.courses.create(name: "Electrical Products", period: "4", start_time: "2019-05-21 11:15:00", end_time: "2019-05-21 12:15:00")
-c60 = t12.courses.create(name: "Economics", period: "5", start_time: "2019-05-21 12:20:00", end_time: "2019-05-21 13:20:00")
-c61 = t13.courses.create(name: "Biotechnology", period: "1", start_time: "2019-05-21 8:00:00", end_time: "2019-05-21 9:00:00")
-c62 = t13.courses.create(name: "Economics", period: "2", start_time: "2019-05-21 9:05:00", end_time: "2019-05-21 10:05:00")
-c63 = t13.courses.create(name: "Economics", period: "3", start_time: "2019-05-21 10:10:00", end_time: "2019-05-21 11:10:00")
-c64 = t13.courses.create(name: "Commercial Banks", period: "4", start_time: "2019-05-21 11:15:00", end_time: "2019-05-21 12:15:00")
-c65 = t13.courses.create(name: "Telecommunications Equipment", period: "5", start_time: "2019-05-21 12:20:00", end_time: "2019-05-21 13:20:00")
-c66 = t14.courses.create(name: "Electric Utilities: Central", period: "1", start_time: "2019-05-21 8:00:00", end_time: "2019-05-21 9:00:00")
-c67 = t14.courses.create(name: "Power Generation", period: "2", start_time: "2019-05-21 9:05:00", end_time: "2019-05-21 10:05:00")
-c68 = t14.courses.create(name: "Biotechnology", period: "3", start_time: "2019-05-21 10:10:00", end_time: "2019-05-21 11:10:00")
-c69 = t14.courses.create(name: "Oil & Gas Production", period: "4", start_time: "2019-05-21 11:15:00", end_time: "2019-05-21 12:15:00")
-c70 = t14.courses.create(name: "Home Furnishings", period: "5", start_time: "2019-05-21 12:20:00", end_time: "2019-05-21 13:20:00")
-c71 = t15.courses.create(name: "EDP Services", period: "1", start_time: "2019-05-21 8:00:00", end_time: "2019-05-21 9:00:00")
-c72 = t15.courses.create(name: "Telecommunications Equipment", period: "2", start_time: "2019-05-21 9:05:00", end_time: "2019-05-21 10:05:00")
-c73 = t15.courses.create(name: "Home Economics", period: "3", start_time: "2019-05-21 10:10:00", end_time: "2019-05-21 11:10:00")
-c74 = t15.courses.create(name: "Coal Mining", period: "4", start_time: "2019-05-21 11:15:00", end_time: "2019-05-21 12:15:00")
-c75 = t15.courses.create(name: "Home Economics", period: "5", start_time: "2019-05-21 12:20:00", end_time: "2019-05-21 13:20:00")
-c76 = t16.courses.create(name: "Auto Parts:O.E.M.", period: "1", start_time: "2019-05-21 8:00:00", end_time: "2019-05-21 9:00:00")
-c77 = t16.courses.create(name: "Department/Specialty Retail Stores", period: "2", start_time: "2019-05-21 9:05:00", end_time: "2019-05-21 10:05:00")
-c78 = t16.courses.create(name: "Oil & Gas Production", period: "3", start_time: "2019-05-21 10:10:00", end_time: "2019-05-21 11:10:00")
-c79 = t16.courses.create(name: "Home Economics", period: "4", start_time: "2019-05-21 11:15:00", end_time: "2019-05-21 12:15:00")
-c80 = t16.courses.create(name: "Restaurants", period: "5", start_time: "2019-05-21 12:20:00", end_time: "2019-05-21 13:20:00")
-c81 = t17.courses.create(name: "Home Economics", period: "1", start_time: "2019-05-21 8:00:00", end_time: "2019-05-21 9:00:00")
-c82 = t17.courses.create(name: "Property-Casualty Insurers", period: "2", start_time: "2019-05-21 9:05:00", end_time: "2019-05-21 10:05:00")
-c83 = t17.courses.create(name: "Investment Managers", period: "3", start_time: "2019-05-21 10:10:00", end_time: "2019-05-21 11:10:00")
-c84 = t17.courses.create(name: "Industrial Machinery/Components", period: "4", start_time: "2019-05-21 11:15:00", end_time: "2019-05-21 12:15:00")
-c85 = t17.courses.create(name: "Oilfield Services/Equipment", period: "5", start_time: "2019-05-21 12:20:00", end_time: "2019-05-21 13:20:00")
-c86 = t18.courses.create(name: "Industrial Specialties", period: "1", start_time: "2019-05-21 8:00:00", end_time: "2019-05-21 9:00:00")
-c87 = t18.courses.create(name: "Major Chemicals", period: "2", start_time: "2019-05-21 9:05:00", end_time: "2019-05-21 10:05:00")
-c88 = t18.courses.create(name: "Medical/Dental Instruments", period: "3", start_time: "2019-05-21 10:10:00", end_time: "2019-05-21 11:10:00")
-c89 = t18.courses.create(name: "Telecommunications Equipment", period: "4", start_time: "2019-05-21 11:15:00", end_time: "2019-05-21 12:15:00")
-c90 = t18.courses.create(name: "Diversified Commercial Services", period: "5", start_time: "2019-05-21 12:20:00", end_time: "2019-05-21 13:20:00")
-
-
-s1.student_courses.create(course_id: c1.id)
-s1.student_courses.create(course_id: c7.id)
-s1.student_courses.create(course_id: c13.id)
-s1.student_courses.create(course_id: c19.id)
-s1.student_courses.create(course_id: c25.id)
-s2.student_courses.create(course_id: c31.id)
-s2.student_courses.create(course_id: c37.id)
-s2.student_courses.create(course_id: c43.id)
-s2.student_courses.create(course_id: c49.id)
-s2.student_courses.create(course_id: c55.id)
-s3.student_courses.create(course_id: c61.id)
-s3.student_courses.create(course_id: c67.id)
-s3.student_courses.create(course_id: c73.id)
-s3.student_courses.create(course_id: c79.id)
-s3.student_courses.create(course_id: c85.id)
-s4.student_courses.create(course_id: c2.id)
-s4.student_courses.create(course_id: c8.id)
-s4.student_courses.create(course_id: c14.id)
-s4.student_courses.create(course_id: c20.id)
-s4.student_courses.create(course_id: c26.id)
-s5.student_courses.create(course_id: c32.id)
-s5.student_courses.create(course_id: c38.id)
-s5.student_courses.create(course_id: c44.id)
-s5.student_courses.create(course_id: c50.id)
-s5.student_courses.create(course_id: c56.id)
-s6.student_courses.create(course_id: c62.id)
-s6.student_courses.create(course_id: c68.id)
-s6.student_courses.create(course_id: c74.id)
-s6.student_courses.create(course_id: c80.id)
-s6.student_courses.create(course_id: c86.id)
-s7.student_courses.create(course_id: c3.id)
-s7.student_courses.create(course_id: c9.id)
-s7.student_courses.create(course_id: c15.id)
-s7.student_courses.create(course_id: c21.id)
-s7.student_courses.create(course_id: c27.id)
-s8.student_courses.create(course_id: c33.id)
-s8.student_courses.create(course_id: c39.id)
-s8.student_courses.create(course_id: c45.id)
-s8.student_courses.create(course_id: c51.id)
-s8.student_courses.create(course_id: c57.id)
-s9.student_courses.create(course_id: c63.id)
-s9.student_courses.create(course_id: c69.id)
-s9.student_courses.create(course_id: c75.id)
-s9.student_courses.create(course_id: c81.id)
-s9.student_courses.create(course_id: c87.id)
-s10.student_courses.create(course_id: c4.id)
-s10.student_courses.create(course_id: c10.id)
-s10.student_courses.create(course_id: c16.id)
-s10.student_courses.create(course_id: c22.id)
-s10.student_courses.create(course_id: c28.id)
-s11.student_courses.create(course_id: c34.id)
-s11.student_courses.create(course_id: c40.id)
-s11.student_courses.create(course_id: c46.id)
-s11.student_courses.create(course_id: c52.id)
-s11.student_courses.create(course_id: c58.id)
-s12.student_courses.create(course_id: c64.id)
-s12.student_courses.create(course_id: c70.id)
-s12.student_courses.create(course_id: c76.id)
-s12.student_courses.create(course_id: c82.id)
-s12.student_courses.create(course_id: c88.id)
-s13.student_courses.create(course_id: c5.id)
-s13.student_courses.create(course_id: c11.id)
-s13.student_courses.create(course_id: c17.id)
-s13.student_courses.create(course_id: c23.id)
-s13.student_courses.create(course_id: c29.id)
-s14.student_courses.create(course_id: c35.id)
-s14.student_courses.create(course_id: c41.id)
-s14.student_courses.create(course_id: c47.id)
-s14.student_courses.create(course_id: c53.id)
-s14.student_courses.create(course_id: c59.id)
-s15.student_courses.create(course_id: c65.id)
-s15.student_courses.create(course_id: c71.id)
-s15.student_courses.create(course_id: c77.id)
-s15.student_courses.create(course_id: c83.id)
-s15.student_courses.create(course_id: c89.id)
-s16.student_courses.create(course_id: c6.id)
-s16.student_courses.create(course_id: c12.id)
-s16.student_courses.create(course_id: c18.id)
-s16.student_courses.create(course_id: c24.id)
-s16.student_courses.create(course_id: c30.id)
-s17.student_courses.create(course_id: c36.id)
-s17.student_courses.create(course_id: c42.id)
-s17.student_courses.create(course_id: c48.id)
-s17.student_courses.create(course_id: c54.id)
-s17.student_courses.create(course_id: c60.id)
-s18.student_courses.create(course_id: c66.id)
-s18.student_courses.create(course_id: c72.id)
-s18.student_courses.create(course_id: c78.id)
-s18.student_courses.create(course_id: c84.id)
-s18.student_courses.create(course_id: c90.id)
-s19.student_courses.create(course_id: c1.id)
-s19.student_courses.create(course_id: c7.id)
-s19.student_courses.create(course_id: c13.id)
-s19.student_courses.create(course_id: c19.id)
-s19.student_courses.create(course_id: c25.id)
-s20.student_courses.create(course_id: c31.id)
-s20.student_courses.create(course_id: c37.id)
-s20.student_courses.create(course_id: c43.id)
-s20.student_courses.create(course_id: c49.id)
-s20.student_courses.create(course_id: c55.id)
-s21.student_courses.create(course_id: c61.id)
-s21.student_courses.create(course_id: c67.id)
-s21.student_courses.create(course_id: c73.id)
-s21.student_courses.create(course_id: c79.id)
-s21.student_courses.create(course_id: c85.id)
-s22.student_courses.create(course_id: c2.id)
-s22.student_courses.create(course_id: c8.id)
-s22.student_courses.create(course_id: c14.id)
-s22.student_courses.create(course_id: c20.id)
-s22.student_courses.create(course_id: c26.id)
-s23.student_courses.create(course_id: c32.id)
-s23.student_courses.create(course_id: c38.id)
-s23.student_courses.create(course_id: c44.id)
-s23.student_courses.create(course_id: c50.id)
-s23.student_courses.create(course_id: c56.id)
-s24.student_courses.create(course_id: c62.id)
-s24.student_courses.create(course_id: c68.id)
-s24.student_courses.create(course_id: c74.id)
-s24.student_courses.create(course_id: c80.id)
-s24.student_courses.create(course_id: c86.id)
-s25.student_courses.create(course_id: c3.id)
-s25.student_courses.create(course_id: c9.id)
-s25.student_courses.create(course_id: c15.id)
-s25.student_courses.create(course_id: c21.id)
-s25.student_courses.create(course_id: c27.id)
-s26.student_courses.create(course_id: c33.id)
-s26.student_courses.create(course_id: c39.id)
-s26.student_courses.create(course_id: c45.id)
-s26.student_courses.create(course_id: c51.id)
-s26.student_courses.create(course_id: c57.id)
-s27.student_courses.create(course_id: c63.id)
-s27.student_courses.create(course_id: c69.id)
-s27.student_courses.create(course_id: c75.id)
-s27.student_courses.create(course_id: c81.id)
-s27.student_courses.create(course_id: c87.id)
-s28.student_courses.create(course_id: c4.id)
-s28.student_courses.create(course_id: c10.id)
-s28.student_courses.create(course_id: c16.id)
-s28.student_courses.create(course_id: c22.id)
-s28.student_courses.create(course_id: c28.id)
-s29.student_courses.create(course_id: c34.id)
-s29.student_courses.create(course_id: c40.id)
-s29.student_courses.create(course_id: c46.id)
-s29.student_courses.create(course_id: c52.id)
-s29.student_courses.create(course_id: c58.id)
-s30.student_courses.create(course_id: c64.id)
-s30.student_courses.create(course_id: c70.id)
-s30.student_courses.create(course_id: c76.id)
-s30.student_courses.create(course_id: c82.id)
-s30.student_courses.create(course_id: c88.id)
-s31.student_courses.create(course_id: c5.id)
-s31.student_courses.create(course_id: c11.id)
-s31.student_courses.create(course_id: c17.id)
-s31.student_courses.create(course_id: c23.id)
-s31.student_courses.create(course_id: c29.id)
-s32.student_courses.create(course_id: c35.id)
-s32.student_courses.create(course_id: c41.id)
-s32.student_courses.create(course_id: c47.id)
-s32.student_courses.create(course_id: c53.id)
-s32.student_courses.create(course_id: c59.id)
-s33.student_courses.create(course_id: c65.id)
-s33.student_courses.create(course_id: c71.id)
-s33.student_courses.create(course_id: c77.id)
-s33.student_courses.create(course_id: c83.id)
-s33.student_courses.create(course_id: c89.id)
-s34.student_courses.create(course_id: c6.id)
-s34.student_courses.create(course_id: c12.id)
-s34.student_courses.create(course_id: c18.id)
-s34.student_courses.create(course_id: c24.id)
-s34.student_courses.create(course_id: c30.id)
-s35.student_courses.create(course_id: c36.id)
-s35.student_courses.create(course_id: c42.id)
-s35.student_courses.create(course_id: c48.id)
-s35.student_courses.create(course_id: c54.id)
-s35.student_courses.create(course_id: c60.id)
-s36.student_courses.create(course_id: c66.id)
-s36.student_courses.create(course_id: c72.id)
-s36.student_courses.create(course_id: c78.id)
-s36.student_courses.create(course_id: c84.id)
-s36.student_courses.create(course_id: c90.id)
-s37.student_courses.create(course_id: c1.id)
-s37.student_courses.create(course_id: c7.id)
-s37.student_courses.create(course_id: c13.id)
-s37.student_courses.create(course_id: c19.id)
-s37.student_courses.create(course_id: c25.id)
-s38.student_courses.create(course_id: c31.id)
-s38.student_courses.create(course_id: c37.id)
-s38.student_courses.create(course_id: c43.id)
-s38.student_courses.create(course_id: c49.id)
-s38.student_courses.create(course_id: c55.id)
-s39.student_courses.create(course_id: c61.id)
-s39.student_courses.create(course_id: c67.id)
-s39.student_courses.create(course_id: c73.id)
-s39.student_courses.create(course_id: c79.id)
-s39.student_courses.create(course_id: c85.id)
-s40.student_courses.create(course_id: c2.id)
-s40.student_courses.create(course_id: c8.id)
-s40.student_courses.create(course_id: c14.id)
-s40.student_courses.create(course_id: c20.id)
-s40.student_courses.create(course_id: c26.id)
-s41.student_courses.create(course_id: c32.id)
-s41.student_courses.create(course_id: c38.id)
-s41.student_courses.create(course_id: c44.id)
-s41.student_courses.create(course_id: c50.id)
-s41.student_courses.create(course_id: c56.id)
-s42.student_courses.create(course_id: c62.id)
-s42.student_courses.create(course_id: c68.id)
-s42.student_courses.create(course_id: c74.id)
-s42.student_courses.create(course_id: c80.id)
-s42.student_courses.create(course_id: c86.id)
-s43.student_courses.create(course_id: c3.id)
-s43.student_courses.create(course_id: c9.id)
-s43.student_courses.create(course_id: c15.id)
-s43.student_courses.create(course_id: c21.id)
-s43.student_courses.create(course_id: c27.id)
-s44.student_courses.create(course_id: c33.id)
-s44.student_courses.create(course_id: c39.id)
-s44.student_courses.create(course_id: c45.id)
-s44.student_courses.create(course_id: c51.id)
-s44.student_courses.create(course_id: c57.id)
-s45.student_courses.create(course_id: c63.id)
-s45.student_courses.create(course_id: c69.id)
-s45.student_courses.create(course_id: c75.id)
-s45.student_courses.create(course_id: c81.id)
-s45.student_courses.create(course_id: c87.id)
-s46.student_courses.create(course_id: c4.id)
-s46.student_courses.create(course_id: c10.id)
-s46.student_courses.create(course_id: c16.id)
-s46.student_courses.create(course_id: c22.id)
-s46.student_courses.create(course_id: c28.id)
-s47.student_courses.create(course_id: c34.id)
-s47.student_courses.create(course_id: c40.id)
-s47.student_courses.create(course_id: c46.id)
-s47.student_courses.create(course_id: c52.id)
-s47.student_courses.create(course_id: c58.id)
-s48.student_courses.create(course_id: c64.id)
-s48.student_courses.create(course_id: c70.id)
-s48.student_courses.create(course_id: c76.id)
-s48.student_courses.create(course_id: c82.id)
-s48.student_courses.create(course_id: c88.id)
-s49.student_courses.create(course_id: c5.id)
-s49.student_courses.create(course_id: c11.id)
-s49.student_courses.create(course_id: c17.id)
-s49.student_courses.create(course_id: c23.id)
-s49.student_courses.create(course_id: c29.id)
-s50.student_courses.create(course_id: c35.id)
-s50.student_courses.create(course_id: c41.id)
-s50.student_courses.create(course_id: c47.id)
-s50.student_courses.create(course_id: c53.id)
-s50.student_courses.create(course_id: c59.id)
-
-s1.attendances.create(course_id: 1, created_at: "2019-05-26 02:00:00" , attendance:"present")
-s19.attendances.create(course_id: 1, created_at: "2019-05-26 02:00:00" , attendance: "absent")
-s37.attendances.create(course_id: 1, created_at: "2019-05-26 02:00:00" , attendance: "tardy")
-
-s4.attendances.create(course_id: 2, created_at: "2019-05-26 02:00:00" , attendance: "present")
-s22.attendances.create(course_id: 2, created_at: "2019-05-26 02:00:00" , attendance: "present")
-s40.attendances.create(course_id: 2, created_at: "2019-05-26 02:00:00" , attendance: "present")
-
-s7.attendances.create(course_id: 3, created_at: "2019-05-26 02:00:00" , attendance: "absent_with_response")
-s25.attendances.create(course_id: 3, created_at: "2019-05-26 02:00:00" , attendance: "tardy")
-s43.attendances.create(course_id: 3, created_at: "2019-05-26 02:00:00" , attendance: "present")
-
-s10.attendances.create(course_id: 4, created_at: "2019-05-26 02:00:00" , attendance: "present")
-s28.attendances.create(course_id: 4, created_at: "2019-05-26 02:00:00" , attendance: "present_no_response")
-s46.attendances.create(course_id: 4, created_at: "2019-05-26 02:00:00" , attendance: "absent")
-
-s13.attendances.create(course_id: 5, created_at: "2019-05-26 02:00:00" , attendance: "present")
-s31.attendances.create(course_id: 5, created_at: "2019-05-26 02:00:00" , attendance: "present")
-s49.attendances.create(course_id: 5, created_at: "2019-05-26 02:00:00" , attendance: "tardy")
-
-s1.attendances.create(course_id: 1, created_at: "2019-05-27 02:00:00" , attendance:"present")
-s19.attendances.create(course_id: 1, created_at: "2019-05-27 02:00:00" , attendance: "absent")
-s37.attendances.create(course_id: 1, created_at: "2019-05-27 02:00:00" , attendance: "tardy")
-
-s4.attendances.create(course_id: 2, created_at: "2019-05-27 02:00:00" , attendance: "present")
-s22.attendances.create(course_id: 2, created_at: "2019-05-27 02:00:00" , attendance: "present")
-s40.attendances.create(course_id: 2, created_at: "2019-05-27 02:00:00" , attendance: "present")
-
-s7.attendances.create(course_id: 3, created_at: "2019-05-27 02:00:00" , attendance: "absent_with_response")
-s25.attendances.create(course_id: 3, created_at: "2019-05-27 02:00:00" , attendance: "tardy")
-s43.attendances.create(course_id: 3, created_at: "2019-05-27 02:00:00" , attendance: "present")
-
-s10.attendances.create(course_id: 4, created_at: "2019-05-27 02:00:00" , attendance: "present")
-s28.attendances.create(course_id: 4, created_at: "2019-05-27 02:00:00" , attendance: "present_no_response")
-s46.attendances.create(course_id: 4, created_at: "2019-05-27 02:00:00" , attendance: "absent")
-
-s13.attendances.create(course_id: 5, created_at: "2019-05-27 02:00:00" , attendance: "present")
-s31.attendances.create(course_id: 5, created_at: "2019-05-27 02:00:00" , attendance: "present")
-s49.attendances.create(course_id: 5, created_at: "2019-05-27 02:00:00" , attendance: "tardy")
-
-
-strat1 = t1.strategies.create(student_id: 29, strategy: "When Seattle Public Schools announced that it would reorganize school start times across the")
-strat2 = t1.strategies.create(student_id: 47, strategy: "district for the fall of 2016, the massive undertaking took more than a year to deploy.")
-strat3 = t1.strategies.create(student_id: 38, strategy: "Elementary schools started earlier, while most middle and all of the district's 18 high")
-strat4 = t1.strategies.create(student_id: 1, strategy: "schools shifted their opening bell almost an hour later -- from 7:50 a.m. to 8:45 a.m.")
-strat5 = t2.strategies.create(student_id: 10, strategy: "Parents had mixed reactions. Extracurricular activity schedules changed. School buses were")
-strat6 = t2.strategies.create(student_id: 45, strategy: "redeployed.")
-strat7 = t2.strategies.create(student_id: 14, strategy: "And as hoped, teenagers used the extra time to sleep in.")
-strat8 = t2.strategies.create(student_id: 37, strategy: "In a paper published Dec. 12 in the journal Science Advances, researchers at the University")
-strat9 = t3.strategies.create(student_id: 38, strategy: "of Washington and the Salk Institute for Biological Studies announced that teens at two")
-strat10 = t3.strategies.create(student_id: 48, strategy: "Seattle high schools got more sleep on school nights after start times were pushed later -- a")
-strat11 = t3.strategies.create(student_id: 16, strategy: "median increase of 34 minutes of sleep each night. This boosted the total amount of sleep on")
-strat12 = t3.strategies.create(student_id: 40, strategy: "school nights for students from a median of six hours and 50 minutes, under the earlier start")
-strat13 = t4.strategies.create(student_id: 24, strategy: "time, to seven hours and 24 minutes under the later start time.")
-strat14 = t4.strategies.create(student_id: 29, strategy: "This study shows a significant improvement in the sleep duration of students -- all by delaying school start times so that they're more in line with the natural wake-up times of adolescents, said senior and corresponding author Horacio de la Iglesia, a UW professor of")
-strat15 = t4.strategies.create(student_id: 37, strategy: "biology.")
-strat16 = t4.strategies.create(student_id: 21, strategy: "The study collected light and activity data from subjects using wrist activity monitors --")
-strat17 = t5.strategies.create(student_id: 37, strategy: "rather than relying solely on self-reported sleep patterns from subjects, as is often done in")
-strat18 = t5.strategies.create(student_id: 8, strategy: "sleep studies -- to show that a later school start time benefits adolescents by letting them")
-strat19 = t5.strategies.create(student_id: 44, strategy: "sleep longer each night. The study also revealed that, after the change in school start time,")
-strat20 = t5.strategies.create(student_id: 34, strategy: "students did not stay up significantly later: They simply slept in longer, a behavior that")
-strat21 = t6.strategies.create(student_id: 27, strategy: "scientists say is consistent with the natural biological rhythms of adolescents.")
-strat22 = t6.strategies.create(student_id: 31, strategy: "Research to date has shown that the circadian rhythms of adolescents are simply fundamentally different from those of adults and children, said lead author Gideon Dunster,")
-strat23 = t6.strategies.create(student_id: 7, strategy: "a UW doctoral student in biology.")
-strat24 = t6.strategies.create(student_id: 49, strategy: "In humans, the churnings of our circadian rhythms help our minds and bodies maintain an")
-strat25 = t7.strategies.create(student_id: 18, strategy: "internal 'clock' that tells us when it is time to eat, sleep, rest and work on a world that")
-strat26 = t7.strategies.create(student_id: 18, strategy: "spins once on its axis approximately every 24 hours. Our genes and external cues from the")
-strat27 = t7.strategies.create(student_id: 19, strategy: "environment, such as sunlight, combine to create and maintain this steady hum of activity.")
-strat28 = t7.strategies.create(student_id: 29, strategy: "But the onset of puberty lengthens the circadian cycle in adolescents and also decreases the")
-strat29 = t8.strategies.create(student_id: 31, strategy: "rhythm's sensitivity to light in the morning. These changes cause teens to fall asleep later")
-strat30 = t8.strategies.create(student_id: 36, strategy: "each night and wake up later each morning relative to most children and adults.")
-strat31 = t8.strategies.create(student_id: 21, strategy: "To ask a teen to be up and alert at 7:30 a.m. is like asking an adult to be active and alert at 5:30 a.m., said de la Iglesia.")
-strat32 = t8.strategies.create(student_id: 32, strategy: "Scientists generally recommend that teenagers get eight to 10 hours of sleep each night. But")
-strat33 = t9.strategies.create(student_id: 2, strategy: "early-morning social obligations -- such as school start times -- force adolescents to either")
-strat34 = t9.strategies.create(student_id: 4, strategy: "shift their entire sleep schedule earlier on school nights or truncate it. Certain light-")
-strat35 = t9.strategies.create(student_id: 41, strategy: "emitting devices -- such as smartphones, computers and even lamps with blue-light LED bulbs -")
-strat36 = t9.strategies.create(student_id: 50, strategy: "- can interfere with circadian rhythms in teens and adults alike, delaying the onset of")
-strat37 = t10.strategies.create(student_id: 20, strategy: "sleep, de la Iglesia said. According to a survey of youth released in 2017 by the U.S.")
-strat38 = t10.strategies.create(student_id: 13, strategy: "Centers for Disease Control and Prevention, only one-quarter of high school age adolescents")
-strat39 = t10.strategies.create(student_id: 13, strategy: "reported sleeping the minimum recommended eight hours each night.")
-strat40 = t10.strategies.create(student_id: 20, strategy: "All of the studies of adolescent sleep patterns in the United States are showing that the time at which teens generally fall asleep is biologically determined -- but the time at which they wake up is socially determined, said Dunster. This has severe consequences for health")
-strat41 = t11.strategies.create(student_id: 6, strategy: "and well-being, because disrupted circadian rhythms can adversely affect digestion, heart")
-strat42 = t11.strategies.create(student_id: 33, strategy: "rate, body temperature, immune system function, attention span and mental health.")
-strat43 = t11.strategies.create(student_id: 48, strategy: "The UW study compared the sleep behaviors of two separate groups of sophomores, all enrolled")
-strat44 = t11.strategies.create(student_id: 19, strategy: "in biology classes at Roosevelt and Franklin high schools. One group of 92 students, drawn")
-strat45 = t12.strategies.create(student_id: 6, strategy: "from both schools, wore wrist activity monitors all day for two-week periods in the spring of")
-strat46 = t12.strategies.create(student_id: 50, strategy: "2016, when school still started at 7:50 a.m. The wrist monitors collected information about")
-strat47 = t12.strategies.create(student_id: 35, strategy: "light and activity levels every 15 seconds, but no physiological data about the students. In")
-strat48 = t12.strategies.create(student_id: 42, strategy: "2017, about seven months after school start times had shifted later, the researchers had a")
-strat49 = t13.strategies.create(student_id: 47, strategy: "second group of 88 students -- again drawn from both schools -- wear the wrist activity")
-strat50 = t13.strategies.create(student_id: 7, strategy: "monitors. Researchers used both the light and motion data in the wrist monitors to determine")
-strat51 = t13.strategies.create(student_id: 6, strategy: "when the students were awake and asleep. Two teachers at Roosevelt and one at Franklin worked")
-strat52 = t13.strategies.create(student_id: 2, strategy: "at 5:30 a.m., said de la Iglesia.")
-strat53 = t14.strategies.create(student_id: 34, strategy: "but the time at which")
-strat54 = t14.strategies.create(student_id: 29, strategy: "they wake up is socially determined, said Dunster. This has severe consequences for health")
-strat55 = t14.strategies.create(student_id: 5, strategy: "the biology classes. Students in both groups also self-reported their sleep data.")
-strat56 = t14.strategies.create(student_id: 1, strategy: "The information obtained from the wrist monitors revealed the significant increase in sleep")
-strat57 = t15.strategies.create(student_id: 40, strategy: "duration, due largely to the effect of sleeping in more on weekdays.")
-strat58 = t15.strategies.create(student_id: 37, strategy: "Thirty-four minutes of extra sleep each night is a huge impact to see from a single intervention, said de la Iglesia.")
-strat59 = t15.strategies.create(student_id: 4, strategy: "The study also revealed other changes beyond additional shut-eye. After the change, the wake-")
-strat60 = t15.strategies.create(student_id: 48, strategy: "up times for students on weekdays and weekends moved closer together. And their academic")
-strat61 = t16.strategies.create(student_id: 13, strategy: "performance, at least in the biology course, improved: Final grades were 4.5 percent higher")
-strat62 = t16.strategies.create(student_id: 30, strategy: "for students who took the class after school start times were pushed back compared with")
-strat63 = t16.strategies.create(student_id: 36, strategy: "students who took the class when school started earlier. In addition, the number of tardies")
-strat64 = t16.strategies.create(student_id: 18, strategy: "and first-period absences at Franklin dropped to levels similar to those of Roosevelt")
-strat65 = t17.strategies.create(student_id: 39, strategy: "students, which showed no difference between pre- and post-change.")
-strat66 = t17.strategies.create(student_id: 50, strategy: "The researchers hope that their study will help inform ongoing discussions in education")
-strat67 = t17.strategies.create(student_id: 36, strategy: "circles about school start times. The American Academy of Pediatrics recommended in 2014 that")
-strat68 = t17.strategies.create(student_id: 14, strategy: "middle and high schools begin instruction no earlier than 8:30 a.m., though most U.S. high")
-strat69 = t18.strategies.create(student_id: 38, strategy: "schools start the day before then. In 2018, California lawmakers nearly enacted a measure")
-strat70 = t18.strategies.create(student_id: 12, strategy: "that would ban most high schools from starting class before 8:30 a.m. In 2019, Virginia")
-strat71 = t18.strategies.create(student_id: 42, strategy: "Beach, home to one of the largest school districts in Virginia, will consider changes to its")
-strat72 = t18.strategies.create(student_id: 50, strategy: "school start times.")
+# strategy: "When Seattle Public Schools announced that it would reorganize school start times across the"
+# strategy: "district for the fall of 2016, the massive undertaking took more than a year to deploy."
+# strategy: "Elementary schools started earlier, while most middle and all of the district's 18 high"
+# strategy: "schools shifted their opening bell almost an hour later -- from 7:50 a.m. to 8:45 a.m."
+# strategy: "Parents had mixed reactions. Extracurricular activity schedules changed. School buses were"
+# strategy: "redeployed."
+# strategy: "And as hoped, teenagers used the extra time to sleep in."
+# strategy: "In a paper published Dec. 12 in the journal Science Advances, researchers at the University"
+# strategy: "of Washington and the Salk Institute for Biological Studies announced that teens at two"
+# strategy: "Seattle high schools got more sleep on school nights after start times were pushed later -- a"
+# strategy: "median increase of 34 minutes of sleep each night. This boosted the total amount of sleep on"
+# strategy: "school nights for students from a median of six hours and 50 minutes, under the earlier start"
+# strategy: "time, to seven hours and 24 minutes under the later start time."
+# strategy: "This study shows a significant improvement in the sleep duration of students -- all by delaying school start times so that they're more in line with the natural wake-up times of adolescents, said senior and corresponding author Horacio de la Iglesia, a UW professor of"
+# strategy: "biology."
+# strategy: "The study collected light and activity data from subjects using wrist activity monitors --"
+# strategy: "rather than relying solely on self-reported sleep patterns from subjects, as is often done in"
+# strategy: "sleep studies -- to show that a later school start time benefits adolescents by letting them"
+# strategy: "sleep longer each night. The study also revealed that, after the change in school start time,"
+# strategy: "students did not stay up significantly later: They simply slept in longer, a behavior that"
+# strategy: "scientists say is consistent with the natural biological rhythms of adolescents."
+# strategy: "Research to date has shown that the circadian rhythms of adolescents are simply fundamentally different from those of adults and children, said lead author Gideon Dunster,"
+# strategy: "a UW doctoral student in biology."
+# strategy: "In humans, the churnings of our circadian rhythms help our minds and bodies maintain an"
+# strategy: "internal 'clock' that tells us when it is time to eat, sleep, rest and work on a world that"
+# strategy: "spins once on its axis approximately every 24 hours. Our genes and external cues from the"
+# strategy: "environment, such as sunlight, combine to create and maintain this steady hum of activity."
+# strategy: "But the onset of puberty lengthens the circadian cycle in adolescents and also decreases the"
+# strategy: "rhythm's sensitivity to light in the morning. These changes cause teens to fall asleep later"
+# strategy: "each night and wake up later each morning relative to most children and adults."
+# strategy: "To ask a teen to be up and alert at 7:30 a.m. is like asking an adult to be active and alert at 5:30 a.m., said de la Iglesia."
+# strategy: "Scientists generally recommend that teenagers get eight to 10 hours of sleep each night. But"
+# strategy: "early-morning social obligations -- such as school start times -- force adolescents to either"
+# strategy: "shift their entire sleep schedule earlier on school nights or truncate it. Certain light-"
+# strategy: "emitting devices -- such as smartphones, computers and even lamps with blue-light LED bulbs -"
+# strategy: "- can interfere with circadian rhythms in teens and adults alike, delaying the onset of"
+# strategy: "sleep, de la Iglesia said. According to a survey of youth released in 2017 by the U.S."
+# strategy: "Centers for Disease Control and Prevention, only one-quarter of high school age adolescents"
+# strategy: "reported sleeping the minimum recommended eight hours each night."
+# strategy: "All of the studies of adolescent sleep patterns in the United States are showing that the time at which teens generally fall asleep is biologically determined -- but the time at which they wake up is socially determined, said Dunster. This has severe consequences for health"
+# strategy: "and well-being, because disrupted circadian rhythms can adversely affect digestion, heart"
+# strategy: "rate, body temperature, immune system function, attention span and mental health."
+# strategy: "The UW study compared the sleep behaviors of two separate groups of sophomores, all enrolled"
+# strategy: "in biology classes at Roosevelt and Franklin high schools. One group of 92 students, drawn"
+# strategy: "from both schools, wore wrist activity monitors all day for two-week periods in the spring of"
+# strategy: "2016, when school still started at 7:50 a.m. The wrist monitors collected information about"
+# strategy: "light and activity levels every 15 seconds, but no physiological data about the students. In"
+# strategy: "2017, about seven months after school start times had shifted later, the researchers had a"
+# strategy: "second group of 88 students -- again drawn from both schools -- wear the wrist activity"
+# strategy: "monitors. Researchers used both the light and motion data in the wrist monitors to determine"
+# strategy: "when the students were awake and asleep. Two teachers at Roosevelt and one at Franklin worked"
+# strategy: "at 5:30 a.m., said de la Iglesia."
+# strategy: "but the time at which"
+# strategy: "they wake up is socially determined, said Dunster. This has severe consequences for health"
+# strategy: "the biology classes. Students in both groups also self-reported their sleep data."
+# strategy: "The information obtained from the wrist monitors revealed the significant increase in sleep"
+# strategy: "duration, due largely to the effect of sleeping in more on weekdays."
+# strategy: "Thirty-four minutes of extra sleep each night is a huge impact to see from a single intervention, said de la Iglesia."
+# strategy: "The study also revealed other changes beyond additional shut-eye. After the change, the wake-"
+# strategy: "up times for students on weekdays and weekends moved closer together. And their academic"
+# strategy: "performance, at least in the biology course, improved: Final grades were 4.5 percent higher"
+# strategy: "for students who took the class after school start times were pushed back compared with"
+# strategy: "students who took the class when school started earlier. In addition, the number of tardies"
+# strategy: "and first-period absences at Franklin dropped to levels similar to those of Roosevelt"
+# strategy: "students, which showed no difference between pre- and post-change."
+# strategy: "The researchers hope that their study will help inform ongoing discussions in education"
+# strategy: "circles about school start times. The American Academy of Pediatrics recommended in 2014 that"
+# strategy: "middle and high schools begin instruction no earlier than 8:30 a.m., though most U.S. high"
+# strategy: "schools start the day before then. In 2018, California lawmakers nearly enacted a measure"
+# strategy: "that would ban most high schools from starting class before 8:30 a.m. In 2019, Virginia"
+# strategy: "Beach, home to one of the largest school districts in Virginia, will consider changes to its"
+# strategy: "school start times."
