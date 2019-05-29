@@ -7,6 +7,7 @@ class CoursesController < ApplicationController
   end
 
   def show
+    binding.pry
     if params[:group_count]
       render locals: {
         facade: CourseFacade.new(current_user, course, params[:group_count])
