@@ -91,7 +91,7 @@
             <%= f.label "Select a strategy that has helped this student be successful" %>
             <br>
             <div class="strategy-field">
-                <%= f.select :strategy, ["Graphic Organizers", "Kinesthetic Learner","Fidget Toy", "Classroom Job", "Team Facilitator"] %>
+                <%= f.select :strategy, facade.built_ins %>
             </div>
             <br>
             <div class="submit-container">

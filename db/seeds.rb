@@ -128,3 +128,12 @@ students_ar.each do |id, student|
       )
   end
 end
+
+StrategyReference.create(built_in: "Graphic Organizers")
+StrategyReference.create(built_in: "Fidget Toy")
+StrategyReference.create(built_in: "Classroom Job")
+StrategyReference.create(built_in: "Kinesthetic Learner")
+StrategyReference.create(built_in: "Team Facilitator")
+StrategyReference.create(built_in: "Music with Headphones")
+StrategyReference.create(built_in: "Quiet Space")
+StrategyReference.create(built_in: "Verbal Assessments")

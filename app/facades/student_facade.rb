@@ -30,4 +30,9 @@ class StudentFacade
   def teacher_name(id)
     Teacher.find(id).name
   end
+
+  def built_ins
+    binding.pry
+    StrategyReference.all.pluck(:built_in)
+  end
 end
