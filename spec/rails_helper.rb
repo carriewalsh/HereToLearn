@@ -73,14 +73,14 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-# VCR.configure do |config|
-#   config.ignore_localhost = true
-#   config.cassette_library_dir = 'spec/cassettes'
-#   config.hook_into :webmock
-#   config.configure_rspec_metadata!
-#   config.filter_sensitive_data("<________>") { ENV['___________'] }
-#   config.allow_http_connections_when_no_cassette = true
-# end
+VCR.configure do |config|
+  config.ignore_localhost = true
+  config.cassette_library_dir = 'spec/cassettes'
+  config.hook_into :webmock
+  config.configure_rspec_metadata!
+  config.filter_sensitive_data("<________>") { ENV['___________'] }
+  config.allow_http_connections_when_no_cassette = true
+end
 
 def stub_omniauth(id, first_name, last_name)
   google_id = id
