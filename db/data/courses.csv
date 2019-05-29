@@ -1,0 +1,51 @@
+end_time,id,name,period,start_time
+9:00:00,1,Beginner Chemistry 4,1,8:00:00
+9:00:00,2,Beginner Swahili 2,1,8:00:00
+9:00:00,3,Beginner Linear Algebra 5,1,8:00:00
+9:00:00,4,Remedial Anatomy 2,1,8:00:00
+9:00:00,5,Advanced Philosophy 1,1,8:00:00
+9:00:00,6,Advanced Philosophy 5,1,8:00:00
+9:00:00,7,Honors Philosophy 5,1,8:00:00
+9:00:00,8,Honors Geometry 4,1,8:00:00
+9:00:00,9,Advanced Swahili 2,1,8:00:00
+9:00:00,10,Beginner Spanish 3,1,8:00:00
+10:00:00,11,Intermediate German 2,2,9:00:00
+10:00:00,12,Intermediate Algebra 2,2,9:00:00
+10:00:00,13,Remedial Italian 4,2,9:00:00
+10:00:00,14,Intermediate Anatomy 4,2,9:00:00
+10:00:00,15,Beginner German 3,2,9:00:00
+10:00:00,16,Honors Sociology 2,2,9:00:00
+10:00:00,17,Intermediate Spanish 5,2,9:00:00
+10:00:00,18,Honors Biology 5,2,9:00:00
+10:00:00,19,Honors Physics 2,2,9:00:00
+10:00:00,20,Remedial Anatomy 1,2,9:00:00
+11:00:00,21,Advanced Art History 4,3,10:00:00
+11:00:00,22,Advanced Literature 2,3,10:00:00
+11:00:00,23,Honors Swahili 5,3,10:00:00
+11:00:00,24,Advanced Literature 1,3,10:00:00
+11:00:00,25,Remedial Neuroscience 4,3,10:00:00
+11:00:00,26,Honors German 2,3,10:00:00
+11:00:00,27,Beginner Neuroscience 1,3,10:00:00
+11:00:00,28,Intermediate Spanish 2,3,10:00:00
+11:00:00,29,Remedial Sociology 2,3,10:00:00
+11:00:00,30,Remedial Italian 2,3,10:00:00
+12:00:00,31,Honors Anatomy 3,4,11:00:00
+12:00:00,32,Advanced History 3,4,11:00:00
+12:00:00,33,Beginner Algebra 1,4,11:00:00
+12:00:00,34,Honors Anatomy 4,4,11:00:00
+12:00:00,35,Remedial Derivatives 1,4,11:00:00
+12:00:00,36,Beginner Art History 3,4,11:00:00
+12:00:00,37,Advanced Algebra 5,4,11:00:00
+12:00:00,38,Remedial Anatomy 1,4,11:00:00
+12:00:00,39,Beginner Philosophy 1,4,11:00:00
+12:00:00,40,Advanced Economics 3,4,11:00:00
+13:00:00,41,Intermediate French 5,5,12:00:00
+13:00:00,42,Beginner Philosophy 3,5,12:00:00
+13:00:00,43,Remedial Japanese 2,5,12:00:00
+13:00:00,44,Remedial Italian 1,5,12:00:00
+13:00:00,45,Advanced History 1,5,12:00:00
+13:00:00,46,Honors Sociology 5,5,12:00:00
+13:00:00,47,Advanced Chemistry 5,5,12:00:00
+13:00:00,48,Advanced Literature 2,5,12:00:00
+13:00:00,49,Advanced Japanese 1,5,12:00:00
+13:00:00,50,Honors English 4,5,12:00:00
