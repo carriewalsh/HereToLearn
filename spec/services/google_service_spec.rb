@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe GoogleService do
-  it "can get information" do
-    statement = "I'm angry >:("
+  it "can get information", :vcr do
+    statement = "I'm angry"
     service = GoogleService.new(statement)
 
     return_value = service.get_rating
