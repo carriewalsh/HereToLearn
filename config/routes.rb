@@ -21,6 +21,10 @@ Rails.application.routes.draw do
   resources :courses, only: :show
   resources :students, only: :show
 
+  resources :strategies, only: [:create, :update] do
+    member { patch :deactivate }
+  end
+
   namespace :student do
     root to: redirect('/auth/google_oauth2'), as: 'auth'
     get '/class_code', to: 'class_code#new', as: 'class_code'
@@ -34,7 +38,14 @@ Rails.application.routes.draw do
   namespace :counselor do
     get '/dashboard', to: 'dashboard#index'
   end
+
   get '/auth/google_oauth2/callback', to: 'student/survey#new'
+
+  namespace :api do
+    namespace :v1 do
+      put '/attendances', to: 'attendances#update'
+    end
+  end
 
   mount ActionCable.server, at: '/cable'
 end

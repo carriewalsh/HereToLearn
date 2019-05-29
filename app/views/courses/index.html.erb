@@ -4,18 +4,31 @@
 
 <div class="course-container">
     <% facade.courses.each do |course| %>
-      <div class="course-card">
+      <div class="course-card" id="<%= course.id %>">
         <div class="text-container">
             <%= link_to "Period #{course.period}", course_path(course), class:"item-key" %>
             <%= link_to " #{course.name}", course_path(course), class:'item-value'%>
         </div>
         <div class="student-container">
           <% course.students.each do |student| %>
-          <div class="student-card" id="attendance-<%= student.id %>">
-            <div class="attendance-icons">
-              <div class="attendance-icon attendance-<%= student.todays_attendance %>">
+          <div class="student-card" id=<%= student.id %>>
+            <div class="attendance-icon current attendance-<%= student.todays_attendance %>">
+            </div>
+            <div class="attendance-options">
+              <div class="option">
+                <div class="attendance-icon attendance-present"></div><h4 id="small-link">Present</h4>
               </div>
-              <div class="hidden">
+              <div class="option">
+                <div class="attendance-icon attendance-absent"></div><h4 id="small-link">Absent</h4>
+              </div>
+              <div class="option">
+                <div class="attendance-icon attendance-tardy"></div><h4 id="small-link">Tardy</h4>
+              </div>
+              <div class="option">
+                <div class="attendance-icon attendance-present_no_response"></div><h4 id="small-link">Present No Response</h4>
+              </div>
+              <div class="option">
+                <div class="attendance-icon attendance-absent_with_response"></div><h4 id="small-link">Absent With Response</h4>
               </div>
             </div>
             <%= link_to "#{student.first_name} #{student.last_name}", student_path(student.id, course_id: course.id), id:"small-link" %>
@@ -30,31 +43,43 @@
     <% end %>
 </div>
 <script type="text/javascript">
-
-  $('mark.item-key').on('click', alert('here'));
-
-  $('.attendance-present').on('click', function(event){
-    $(event.target).addClass('rotate')
+  $(document).ready(function() {
+    $('.attendance-options').hide();
+  });
+  $('.current').on('click', function(event) {
+    $(event.target).next().slideToggle();
+  });
+  $('.student-card').mouseleave(
+  function(event) {
+    $('.attendance-options').slideUp();
   });
 
-  $('.attendance-icon').on('click', function(event) {
-    $(event.target).addClass('visible')
+  $('.option').on('click', function(event){
+    var id = event.target.parentElement.parentElement.parentElement.id;
+    var attendance = event.target.classList[1].split("-")[1];
+    var course = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id;
+    updateAttendance(id, course, attendance);
+    alert(course)
   });
 
-  // $('.attendance-icon').qtip({
-  //   content: {
-  //     text: 'This is popping up'
-  //     // <div class="attendance-icon attendance-present"></div><h4>Present</h4>
-  //     // <div class="attendance-icon attendance-absent"></div><h4>Absent</h4>
-  //     // <div class="attendance-icon attendance-tardy"></div><h4>Tardy</h4>
-  //     // <div class="attendance-icon attendance-present_no_response"></div><h4>Present No Response</h4>
-  //     // <div class="attendance-icon attendance-absent_with_response"></div><h4>Absent With Response</h4>
-  //   },
-  //   position: {
-  //     target: 'mouse',
-  //     adjust: { mouse: false }
-  //   }
-  // })
+  var updateAttendance = function(id, course, attendance) {
+    fetch(`/api/v1/attendances?student_id=${id}&course_id=${course}&attendance=${attendance}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+    })
+      .then((response) => response.json())
+      .then(function(response){
+        console.log("hello");
+      });
+    };
+
+    var showUpdatedAttendance = function(id, course, attendance) {
+      $('.student-card#${id}').remove('.current').prepend('<div class="attendance-icon current attendance-${ attendance}"></div>');
+    }
+
+
 
 
 </script>
