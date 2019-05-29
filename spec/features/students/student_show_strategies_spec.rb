@@ -53,7 +53,7 @@ describe "As a logged-in Teacher" do
       find(".add-strategy").click
       fill_in "strategy[strategy]", with: "He's just a super kid."
       click_on "SAVE STRATEGY"
-      binding.pry
+
       find(".edit-strategy-#{Strategy.first.id}").click
       within '.modal-edit' do
         fill_in "strategy[strategy]", with: "What a great guy."
