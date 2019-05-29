@@ -4,6 +4,9 @@ class StrategiesController < ApplicationController
     service = GoogleService.new(strategy.strategy)
     rating = service.get_rating
     if strategy.save
+      if rating <= -0.25
+        strategy.update(flagged: true)
+      end
       flash[:notice] = "Successfully Added Strategy."
       redirect_to student_path(params[:strategy][:student_id], course_id: params[:strategy][:course_id])
     end
