@@ -21,6 +21,10 @@ Rails.application.routes.draw do
   resources :courses, only: :show
   resources :students, only: :show
 
+  resources :strategies, only: [:create, :update] do
+    member { patch :deactivate }
+  end
+
   namespace :student do
     root to: redirect('/auth/google_oauth2'), as: 'auth'
     get '/class_code', to: 'class_code#new', as: 'class_code'
@@ -29,6 +33,10 @@ Rails.application.routes.draw do
     get '/survey', to: 'survey#show'
     get '/survey/complete', to: 'response#show', as: 'completed_survey'
     post '/response', to: 'response#create', as: 'response'
+  end
+
+  namespace :counselor do
+    get '/dashboard', to: 'dashboard#index'
   end
 
   get '/auth/google_oauth2/callback', to: 'student/survey#new'

@@ -25,6 +25,20 @@ mark {
   background: none;
 }
 
+textarea {
+  color: #6f6f6f;
+  display: block;
+  font-size: 18px;
+  font-weiight: 300;
+  margin: 15px auto;
+  padding: 20px;
+  width: 45%;
+}
+
+p {
+  margin: 0px;
+}
+
 header nav.navbar {
   padding: 20px 100px 40px 100px;
 }
@@ -120,7 +134,7 @@ header nav.navbar .navbarNav li a {
   transition: all .3s ease-in-out;
 }
 
- .item-value:hover::after, .nav-button:hover::after {
+.item-value:hover::after, .nav-button:hover::after {
   content: '';
   background-color: #f9e0a9;
   display: block;
@@ -256,7 +270,7 @@ footer {
 .text-container {
   font-size: calc((-.2 *(1em - 16px) - -2.2em - 13px));
   position: relative;
-  z-index: 5;
+  z-index: 2;
 }
 .text-container .item-value {
   color: #003a78;
@@ -269,6 +283,7 @@ footer {
   padding-left: 5px;
   letter-spacing: 2px;
   line-height: 1.6;
+  z-index: 1;
 }
 
 .account-container {
@@ -280,12 +295,13 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .form-button {
   background-color: #003a78;
   border: none;
-  width: 95%;
   font-size: 16px;
   font-weight: 300;
   color: #cfe2f3ff;
@@ -298,7 +314,6 @@ footer {
 .form-button:hover {
   background-color: #f9e0a9;
   border: none;
-  width: 95%;
   font-size: 16px;
   font-weight: 300;
   color: #003a78;
@@ -411,7 +426,6 @@ footer {
 
 .attendance-present {
   background-image: url('check-mark-3-xxl.png');
-
 }
 .attendance-absent {
   background-image: url('x-mark-xxl.png');
@@ -426,11 +440,6 @@ footer {
   background-image: url('x-mark-5-xxl.png');
 }
 
-.rotate {
-  transform: rotate(180deg);
-}
-
-
 .attendance-options {
   background: white;
   margin-top: 200px;
@@ -443,6 +452,36 @@ footer {
   display: flex;
   letter-spacing: 1;
   padding-bottom: 10px;
+}
+
+.hide-attendance, .show-attendance {
+  color: #6f6f6f;
+  cursor: pointer;
+  text-align: center;
+}
+
+.hide-attendance::after, .show-attendance::after {
+  content: '';
+  background-color: #f9e0a9;
+  display: block;
+  position: absolute;
+  margin-left: 50%;
+  width: 0%;
+  height: 5px;
+  margin-top: 3px;
+  transition: all .3s ease-in-out;
+}
+
+.hide-attendance:hover::after, .show-attendance:hover::after {
+  content: '';
+  background-color: #cfe2f3ff;
+  display: block;
+  position: absolute;
+  width: 25%;
+  margin-left: 37%;
+  height: 5px;
+  margin-top: 3px;
+  transition: all .3s ease-in-out;
 }
 
 .strategies {
@@ -460,12 +499,15 @@ footer {
 .strategy {
   background: white;
   font-weight: 300;
-  line-height: 2;
-  margin: 15px;
-  margin-right: 50px;
+  margin: 25px;
   padding: 15px;
-  padding-right: 50px;
   width: 40%;
+}
+
+.strategy-text {
+  margin-top: 10px;
+  font-size: 18px;
+  padding: 0px 10px;
 }
 
 .grey-heading {
@@ -473,7 +515,6 @@ footer {
   font-size: calc((-.2 *(1em - 20px) - -2.2em - 13px));
   font-weight: 300;
   margin: 5px;
-
 }
 
 .grey-heading::after {
@@ -486,10 +527,131 @@ footer {
   width: 75px;
 }
 
-.fixed {
+.student-name {
   position: fixed;
   background: #F6F7F8;
+  z-index: 10;
+  margin-left: 50%;
+  margin-top: -75px;
 }
+
+.modal-edit, .modal-add {
+  background-color: rgba(0,0,0,0.4);
+  display: none;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  position: fixed;
+  z-index: 20;
+}
+
+.modal-content{
+  background: #F6F7F8;
+  margin: 15% auto;
+  padding: 20px;
+  width: 50%;
+  z-index: 20;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.heading-link-container {
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  position: relative;
+}
+
+.add-edit-container {
+  position: relative;
+  z-index: 2;
+}
+
+.add-strategy, .edit-strategy {
+  margin-left: 45px;
+  position: relative;
+  cursor: pointer;
+}
+
+.edit-strategy::after, .add-strategy::after {
+  content: '';
+  background-color: #f9e0a9;
+  display: block;
+  position: absolute;
+  width: 0%;
+  height: 30px;
+  margin-top: -27px;
+  margin-left: -10px;
+  z-index: -1;
+  transition: all .3s ease-in-out;
+}
+
+ .add-strategy:hover::after, .edit-strategy:hover::after {
+  content: '';
+  background-color: #f9e0a9;
+  display: block;
+  position: absolute;
+  width: 40%;
+  height: 30px;
+  margin-top: -27px;
+  margin-left: -10px;
+  z-index: -1;
+  transition: all .3s ease-in-out;
+}
+
+.add-edit-button {
+  font-size: 14px;
+  margin-left: 60%;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.add-edit-button::after {
+  content: '';
+  background-color: #f9e0a9;
+  display: block;
+  position: absolute;
+  width: 0%;
+  height: 20px;
+  margin-left: -10px;
+  margin-top: 3px;
+  z-index: -1;
+  transition: all .3s ease-in-out;
+}
+
+.add-edit-button:hover::after {
+ content: '';
+ background-color: #f9e0a9;
+ display: block;
+ position: absolute;
+ width: 40px;
+ height: 20px;
+ margin-left: -10px;
+ margin-top: 3px;
+ z-index: -1;
+ transition: all .3s ease-in-out;
+}
+
+.strategy-field {
+  display: flex;
+}
+
+.strategy-examples {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: normal;
+  width: 45%;
+}
+
 
 #small-link {
   font-size: calc((-.2 *(1em - 20px) - -1.8em - 13px));
@@ -499,5 +661,5 @@ footer {
 }
 
 #small-link:hover {
-  color: #5fb0c4;;
+  color: #5fb0c4;
 }

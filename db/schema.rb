@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_28_020051) do
+ActiveRecord::Schema.define(version: 2019_05_28_142410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_05_28_020051) do
     t.bigint "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active", default: true
     t.index ["student_id"], name: "index_strategies_on_student_id"
     t.index ["teacher_id"], name: "index_strategies_on_teacher_id"
   end
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(version: 2019_05_28_020051) do
     t.string "google_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "grade_level"
   end
 
   create_table "teacher_courses", force: :cascade do |t|
@@ -83,6 +85,7 @@ ActiveRecord::Schema.define(version: 2019_05_28_020051) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role"
   end
 
   add_foreign_key "attendances", "courses"

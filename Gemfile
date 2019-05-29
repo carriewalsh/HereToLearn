@@ -58,6 +58,7 @@ group :development, :test do
   gem 'launchy'
   gem 'simplecov'
   gem 'vcr'
+  gem 'rspec-pride', '~> 3.2', '>= 3.2.1'
   # gem 'selenium-webdriver'
   # gem 'chromedriver-helper'
 end
