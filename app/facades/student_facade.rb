@@ -32,7 +32,6 @@ class StudentFacade
   end
 
   def built_ins
-    binding.pry
     StrategyReference.all.pluck(:built_in)
   end
 end
