@@ -35,6 +35,10 @@ Rails.application.routes.draw do
     post '/response', to: 'response#create', as: 'response'
   end
 
+  namespace :counselor do
+    get '/dashboard', to: 'dashboard#index'
+  end
+
   get '/auth/google_oauth2/callback', to: 'student/survey#new'
 
   namespace :api do

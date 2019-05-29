@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2019_05_28_142410) do
     t.string "google_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "grade_level"
   end
 
   create_table "teacher_courses", force: :cascade do |t|
@@ -84,6 +85,7 @@ ActiveRecord::Schema.define(version: 2019_05_28_142410) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role"
   end
 
   add_foreign_key "attendances", "courses"

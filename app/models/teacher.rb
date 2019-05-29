@@ -8,6 +8,7 @@ class Teacher < ApplicationRecord
   has_many :strategies
 
   attr_accessor :reset_token
+  enum role: [:admin, :counselor, :teacher]
 
   def name
     "#{first_name} #{last_name}"
