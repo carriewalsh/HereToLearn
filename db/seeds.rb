@@ -18,7 +18,6 @@ to_save.each do |options|
 end
 
 student_courses = CSV.open('./db/data/student_courses.csv', options_hash)
-teacher_courses = CSV.open('./db/data/teacher_courses.csv', options_hash)
 student_courses.each do |row|
   hash = row.to_hash
   s_id = hash[:student_id].to_s
@@ -26,14 +25,15 @@ student_courses.each do |row|
   students_ar[s_id].courses << courses_ar[c_id]
 end
 
+teacher_courses = CSV.open('./db/data/teacher_courses.csv', options_hash)
 teacher_courses.each do |row|
   hash = row.to_hash
   t_id = hash[:teacher_id].to_s
   c_id = hash[:course_id].to_s
-  courses_ar[c_id].teachers << teachers_id[t_id]
+  courses_ar[c_id].teachers << teachers_ar[t_id]
 end
 
-attendances = CSV.open('./db/data/attendance.csv', options_hash)
+attendances = CSV.open('./db/data/attendances.csv', options_hash)
 
 attendances.each do |row|
   hash = row.to_hash
