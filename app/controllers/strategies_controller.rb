@@ -2,6 +2,7 @@ class StrategiesController < ApplicationController
   def create
     strategy = Strategy.new(strategy_params)
     if strategy.save
+      flash[:notice] = "Successfully Added Strategy."
       redirect_to student_path(params[:strategy][:student_id], course_id: params[:strategy][:course_id])
     end
   end
@@ -9,6 +10,7 @@ class StrategiesController < ApplicationController
   def update
     strategy = Strategy.find(params[:id])
     if strategy.update(update_params)
+      flash[:notice] = "Successfully Updated Strategy."
       redirect_to student_path(strategy.student_id, course_id: params[:strategy][:course_id], anchor: 'strategies')
     end
   end
@@ -16,6 +18,7 @@ class StrategiesController < ApplicationController
   def deactivate
     strategy = Strategy.find(params[:id])
     strategy.update(active: false)
+    flash[:notice] = "Successfully Deleted Strategy."
     redirect_to student_path(strategy.student_id, course_id: params[:course_id], anchor: 'strategies')
   end
 

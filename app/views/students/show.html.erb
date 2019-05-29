@@ -121,7 +121,7 @@
               </div>
               <div class="add-edit-container">
                 <h3 class="edit-strategy-<%= strategy.id %> add-edit-button">Edit Strategy</h3>
-                <%= link_to "Delete Strategy", deactivate_strategy_path(strategy, course_id: facade.course.id), method: :patch, class:'add-edit-button', confirm: "Are you sure you want to delete this strategy?" %>
+                <%= link_to "Delete Strategy", deactivate_strategy_path(strategy, course_id: facade.course.id), method: :patch, class:'add-edit-button',data: {:confirm => 'Are you sure?'} %>
             </div>
           <% else %>
             <div class="item-key">

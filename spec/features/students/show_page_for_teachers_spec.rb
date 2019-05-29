@@ -69,12 +69,26 @@ describe "As a logged-in Teacher" do
     end
 
     it "allows me to add a new strategy with a popup feature" do
-      click_on "Add Strategy"
-      fill_in "text", with: "He's just a super kid."
+      find(".add-strategy").click
+      fill_in "strategy[strategy]", with: "He's just a super kid."
       click_on "SAVE STRATEGY"
-      expect(current_path).to eq(@student, {course_id: @course.id})
+      expect(current_path).to eq(student_path(@student))
       expect(page).to have_content("Successfully Added Strategy")
       expect(page).to have_content("He's just a super kid.")
+    end
+
+    it "allows me to edit a strategy with a popup feature" do
+      find(".add-strategy").click
+      fill_in "strategy[strategy]", with: "He's just a super kid."
+      click_on "SAVE STRATEGY"
+      find(".edit-strategy-#{Strategy.first.id}").click
+      within '.modal-edit' do
+        fill_in "strategy[strategy]", with: "What a great guy."
+      end
+      click_on "UPDATE STRATEGY"
+      expect(current_path).to eq(student_path(@student))
+      expect(page).to have_content("Successfully Updated Strategy")
+      expect(page).to have_content("What a great guy.")
     end
 
     it "allows me to delete MY strategies" do
@@ -83,9 +97,7 @@ describe "As a logged-in Teacher" do
       strat2 = teacher2.strategies.create!(student_id: @student.id, strategy: "district for the fall of 2016, the massive undertaking took more than a year to deploy.")
       visit student_path(@student, {course_id: @course.id})
       click_link "Delete Strategy"
-      save_and_open_page
-      click_on "Yes"
-      expect(current_path).to eq(@student, {course_id: @course.id})
+      expect(current_path).to eq(student_path(@student))
       expect(page).to have_content("Successfully Deleted Strategy")
       expect(page).to_not have_content("#{strat1.strategy}")
       expect(page).to_not have_link("Delete Strategy")
