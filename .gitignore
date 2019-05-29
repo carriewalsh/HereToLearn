@@ -32,4 +32,4 @@
 
 # Ignore application configuration
 /config/application.yml
-/db/data/.ipynb_checkpoints
+/**/.ipynb_checkpoints
