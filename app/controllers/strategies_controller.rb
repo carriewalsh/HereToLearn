@@ -1,6 +1,7 @@
 class StrategiesController < ApplicationController
   def create
     strategy = Strategy.new(strategy_params)
+    service = GoogleService.new(strategy.strategy)
     if strategy.save
       flash[:notice] = "Successfully Added Strategy."
       redirect_to student_path(params[:strategy][:student_id], course_id: params[:strategy][:course_id])
