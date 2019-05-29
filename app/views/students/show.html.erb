@@ -65,9 +65,7 @@
             <%= f.label "Provide a strategy that has helped this student be successful" %>
             <br>
             <div class="strategy-field">
-              <div class="strategy-examples">
-                <%= f.text_area :strategy, size: "60x10", require: true  %>
-              </div>
+              <%= f.text_area :strategy, size: "60x10", require: true  %>
               <div class="strategy-examples">
                 <p><b>Example</b></p>
                 <p>"Blake can sometimes be jittery and needs assistance staying on tasks. It is helpful for him to have a short list of tasks and he can take a small break in between completion."</p>
@@ -90,12 +88,10 @@
             <%= f.hidden_field :teacher_id, value: current_user.id %>
             <%= f.hidden_field :student_id, value: facade.student.id %>
             <%= f.hidden_field :course_id, value: facade.course.id %>
-            <%= f.label "Provide a strategy that has helped this student be successful" %>
+            <%= f.label "Select a strategy that has helped this student be successful" %>
             <br>
             <div class="strategy-field">
-              <div class="strategy-examples">
                 <%= f.select :strategy, ["Graphic Organizers", "Kinesthetic Learner","Fidget Toy", "Classroom Job", "Team Facilitator"] %>
-              </div>
             </div>
             <br>
             <div class="submit-container">
@@ -126,9 +122,7 @@
                   <%= f.label "Provide a strategy that has helped this student be successful" %>
                   <br>
                   <div class="strategy-field">
-                    <div class="strategy-examples">
-                      <%= f.text_area :strategy, value:strategy.strategy, size: "60x10", require: true %>
-                    </div>
+                    <%= f.text_area :strategy, value:strategy.strategy, size: "60x10", require: true %>
                     <div class="strategy-examples">
                       <p><b>Example</b></p>
                       <p>"Blake can sometimes be jittery and needs assistance staying on tasks. It is helpful for him to have a short list of tasks and he can take a small break in between completion."</p>
