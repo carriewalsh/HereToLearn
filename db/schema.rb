@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2019_05_29_144245) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "active", default: true
+    t.boolean "flagged", default: false
     t.index ["student_id"], name: "index_strategies_on_student_id"
     t.index ["teacher_id"], name: "index_strategies_on_teacher_id"
   end
