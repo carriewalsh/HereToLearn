@@ -577,7 +577,7 @@ footer {
   cursor: pointer;
 }
 
-.edit-strategy::after, .add-strategy::after, ..add-builtin-strategy::after {
+.edit-strategy::after, .add-strategy::after, .add-builtin-strategy::after {
   content: '';
   background-color: #f9e0a9;
   display: block;
