@@ -535,7 +535,7 @@ footer {
   margin-top: -75px;
 }
 
-.modal-edit, .modal-add {
+.modal-edit, .modal-add, .modal-builtin-add {
   background-color: rgba(0,0,0,0.4);
   display: none;
   left: 0;
@@ -547,7 +547,7 @@ footer {
   z-index: 20;
 }
 
-.modal-content{
+.modal-content {
   background: #F6F7F8;
   margin: 15% auto;
   padding: 20px;
@@ -571,13 +571,13 @@ footer {
   z-index: 2;
 }
 
-.add-strategy, .edit-strategy {
+.add-strategy, .edit-strategy, .add-builtin-strategy {
   margin-left: 45px;
   position: relative;
   cursor: pointer;
 }
 
-.edit-strategy::after, .add-strategy::after {
+.edit-strategy::after, .add-strategy::after, ..add-builtin-strategy::after {
   content: '';
   background-color: #f9e0a9;
   display: block;
@@ -590,7 +590,7 @@ footer {
   transition: all .3s ease-in-out;
 }
 
- .add-strategy:hover::after, .edit-strategy:hover::after {
+ .add-strategy:hover::after, .edit-strategy:hover::after, .add-builtin-strategy:hover::after {
   content: '';
   background-color: #f9e0a9;
   display: block;
