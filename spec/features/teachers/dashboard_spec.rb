@@ -29,13 +29,15 @@ describe "As a logged-in teacher" do
     end
 
     it 'can request a prediction' do
-      will= Student.create!(first_name: "William", last_name: "Peterson", student_id: "250923", google_id: "107113987859408235003")
+      WebMock.allow_net_connect!
+      will= Student.create!(first_name: "William", last_name: "Peterson", student_id: "6", google_id: "107113987859408235003")
       @course = create(:course)
 
       visit student_path(will, course_id: @course.id)
 
-      click_on "Request Test Prediction"
-      # expect(current_path).to eq(student_path(will, course_id: @course.id))
+      expect(page).to have_content("Predicted Score")
+      expect(page).to have_content("Sleep Information")
+      expect(page).to have_content("Breakfast Percentage")
     end
 
   end

@@ -4,4 +4,6 @@ class StudentsController < ApplicationController
       facade: StudentFacade.new(params[:id], params[:course_id])
     }
   end
+
+
 end
