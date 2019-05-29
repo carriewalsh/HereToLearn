@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   def date
     wday = Date.today.strftime('%a')
-    if wday = 'Sat' || wday = 'Sun'
+    if wday == 'Sat' || wday == 'Sun'
       message = ' No Attendance Taken Today'
     else
       message = ''

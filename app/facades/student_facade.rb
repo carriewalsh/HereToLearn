@@ -24,7 +24,7 @@ class StudentFacade
   end
 
   def strategies
-    student.strategies
+    student.strategies.where(active: true)
   end
 
   def teacher_name(id)
