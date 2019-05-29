@@ -42,8 +42,10 @@ describe "As a logged-in Teacher" do
 
     it "allows me to add a new strategy with a popup feature" do
       find(".add-strategy").click
-      fill_in "strategy[strategy]", with: "He's just a super kid."
-      click_on "SAVE STRATEGY"
+      within ".modal-add" do
+        fill_in "strategy[strategy]", with: "He's just a super kid."
+        click_on "SAVE STRATEGY"
+      end
       expect(current_path).to eq(student_path(@student))
       expect(page).to have_content("Successfully Added Strategy")
       expect(page).to have_content("He's just a super kid.")
@@ -51,8 +53,10 @@ describe "As a logged-in Teacher" do
 
     it "allows me to edit a strategy with a popup feature" do
       find(".add-strategy").click
-      fill_in "strategy[strategy]", with: "He's just a super kid."
-      click_on "SAVE STRATEGY"
+      within ".modal-add" do
+        fill_in "strategy[strategy]", with: "Super."
+        click_on "SAVE STRATEGY"
+      end
 
       find(".edit-strategy-#{Strategy.first.id}").click
       within '.modal-edit' do
@@ -80,9 +84,11 @@ describe "As a logged-in Teacher" do
     end
 
     it "allows me to choose pre-made strategies from a list" do
-      find(".add-strategy-built-in").click
-      select "Graphic Organizers", from: :built_in
-      click_on "SAVE STRATEGY"
+      builtin = StrategyReference.create(built_in: "Graphic Organizers")
+      find(".add-builtin-strategy").click
+      within ".modal-builtin-add" do
+        click_on "SAVE STRATEGY"
+      end
       expect(page).to have_content("Graphic Organizers")
     end
   end
