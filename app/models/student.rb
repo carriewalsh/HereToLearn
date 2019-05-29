@@ -52,6 +52,6 @@ class Student < ApplicationRecord
   end
 
   def self.get_student(id)
-    Student.find(id)
+    Student.find_by_student_id(id)
   end
 end

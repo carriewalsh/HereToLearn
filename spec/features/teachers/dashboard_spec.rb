@@ -27,5 +27,16 @@ describe "As a logged-in teacher" do
         expect(page).to have_css(".student-card", count: count)
       end
     end
+
+    it 'can request a prediction' do
+      will= Student.create!(first_name: "William", last_name: "Peterson", student_id: "250923", google_id: "107113987859408235003")
+      @course = create(:course)
+
+      visit student_path(will, course_id: @course.id)
+
+      click_on "Request Test Prediction"
+      # expect(current_path).to eq(student_path(will, course_id: @course.id))
+    end
+
   end
 end

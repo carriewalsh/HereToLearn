@@ -2,6 +2,8 @@
   <mark class="item-key"><%= "#{facade.student.first_name}" %></mark>
   <mark class="item-value"><%= " #{facade.student.last_name}" %></mark>
   <mark class="smaller-grey"><%= "# #{facade.student.student_id}" %></mark>
+  <mark class="smaller-grey"><%= link_to "Request Test Prediction", "/api/v1/machinelearning/results?student_id=#{facade.student.student_id}" %></mark>
+
 </div>
 <br>
 <div class="banner">
