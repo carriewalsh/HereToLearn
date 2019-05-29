@@ -2,6 +2,7 @@
   <mark class="item-key"><%= "#{facade.student.first_name}" %></mark>
   <mark class="item-value"><%= " #{facade.student.last_name}" %></mark>
   <mark class="smaller-grey"><%= "# #{facade.student.student_id}" %></mark>
+
 </div>
 <br>
 <div class="banner">
@@ -162,6 +163,17 @@
     </div>
     </div>
   </div>
+</div>
+
+<div class="prediction">
+    Predicted Score: <%= facade.prediction_results.test_score %>
+    Breakfast Percentage: <%= facade.prediction_results.meals_missed %>
+    <h4>Sleep Information </h4>
+    <%= facade.prediction_results.sleep_quality.none %>
+    <%= facade.prediction_results.sleep_quality.less_than %>
+    <%= facade.prediction_results.sleep_quality.usual %>
+    <%= facade.prediction_results.sleep_quality.more_than %>
+    <%= facade.prediction_results.sleep_quality.way_more %>
 </div>
 
 <script type="text/javascript">

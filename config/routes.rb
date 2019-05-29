@@ -48,4 +48,11 @@ Rails.application.routes.draw do
   end
 
   mount ActionCable.server, at: '/cable'
+
+  namespace :api do
+    namespace :v1 do
+      get '/machinelearning/results', to: 'machine_learning#show'
+    end
+  end
+
 end

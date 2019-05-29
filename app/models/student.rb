@@ -56,4 +56,6 @@ class Student < ApplicationRecord
       student.todays_attendance.include?("present") || student.todays_attendance == "tardy"
     end
   end
+
+
 end
