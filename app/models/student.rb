@@ -7,9 +7,15 @@ class Student < ApplicationRecord
   has_many :attendances
   has_many :strategies
 
-  def todays_attendance
+  def todays_attendance(course_id = nil)
+    # created_at: [DateTime.now.beginning_of_day, DateTime.now])
     today = attendances.where("created_at >= ?", Date.today)
-    today.first ? today.first.attendance : "No Attendance Today"
+    if course_id
+      today.where(course_id: course_id)
+    else
+
+      today.first ? today.first.attendance : "No Attendance Today"
+    end
   end
 
   def percent_present(course = nil)
@@ -50,4 +56,6 @@ class Student < ApplicationRecord
       student.todays_attendance.include?("present") || student.todays_attendance == "tardy"
     end
   end
+
+
 end

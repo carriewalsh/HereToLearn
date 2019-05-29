@@ -36,19 +36,30 @@
         <div class="random">
           <h4>Randomly:</h4>
           <label for="random-grouping">How many students per group</label>
-          <input type="number" name="random-grouping" value="" max="<%= facade.students.count %>">
+          <input type="number" class="random-grouping" name="random-grouping" value="" max="<%= facade.students.count %>">
           <input type="submit" name="" value="PRESENT STUDENTS" class="random-present form-button">
-          <input type="submit" name="" value="ALL STUDENTS" class="random-present form-button">
+          <input type="submit" name="" value="ALL STUDENTS" class="random-all form-button">
 
           <script type="text/javascript">
-            $('.random_present form-button').on('click', function(event) {
+            $('.random-all').on('click', function(event) {
               var count = $('.random-grouping').val();
+              var course_id = <%= facade.course.id %>;
+              console.log($('.random-grouping').val());
+              console.log(course_id);
               event.preventDefault();
-              $.ajax("<%= course_path(facade.course.id) %>")
+              $.ajax({
+                url: `/courses/${course_id}`,
+                type: 'GET',
+                data: {
+                  group_count: count,
+                },
+                success: function(r){
+                  alert("count" + count);
+                },
               });
+            });
           </script>
         </div>
-
       </div>
     </div>
   </div>

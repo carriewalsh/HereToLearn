@@ -2,6 +2,7 @@
   <mark class="item-key"><%= "#{facade.student.first_name}" %></mark>
   <mark class="item-value"><%= " #{facade.student.last_name}" %></mark>
   <mark class="smaller-grey"><%= "# #{facade.student.student_id}" %></mark>
+
 </div>
 <br>
 <div class="banner">
@@ -54,6 +55,7 @@
     <div class="heading-link-container">
       <h3 class="grey-heading">Student Strategies</h3>
       <h3 class="add-strategy">Add Strategy</h3>
+      <h3 class="add-builtin-strategy">Add Pre-made Strategy</h3>
     </div>
       <div class="modal-add">
         <div class="modal-content">
@@ -64,7 +66,7 @@
             <%= f.label "Provide a strategy that has helped this student be successful" %>
             <br>
             <div class="strategy-field">
-              <%= f.text_area :strategy, size: "60x10", require: true %>
+              <%= f.text_area :strategy, size: "60x10", require: true  %>
               <div class="strategy-examples">
                 <p><b>Example</b></p>
                 <p>"Blake can sometimes be jittery and needs assistance staying on tasks. It is helpful for him to have a short list of tasks and he can take a small break in between completion."</p>
@@ -72,6 +74,25 @@
                 <p><b>Avoid</b></p>
                 <p>"Blake is extremely jittery and annoys other students. He tends to be off task."</p>
               </div>
+            </div>
+            <br>
+            <div class="submit-container">
+              <%= f.submit "SAVE STRATEGY", class:'form-button' %>
+              <p class="form-button cancel">CANCEL</p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="modal-builtin-add">
+        <div class="modal-content">
+          <%= form_for facade.strategies.new, controller: :strategies, action: :create do |f| %>
+            <%= f.hidden_field :teacher_id, value: current_user.id %>
+            <%= f.hidden_field :student_id, value: facade.student.id %>
+            <%= f.hidden_field :course_id, value: facade.course.id %>
+            <%= f.label "Select a strategy that has helped this student be successful" %>
+            <br>
+            <div class="strategy-field">
+                <%= f.select :strategy, facade.built_ins %>
             </div>
             <br>
             <div class="submit-container">
@@ -111,18 +132,18 @@
                       <p>"Blake is extremely jittery and annoys other students. He tends to be off task."</p>
                     </div>
                   </div>
-                  <br>
-                  <div class="submit-container">
-                    <%= f.submit "UPDATE STRATEGY", method: :UPDATE, class:'form-button' %>
-                    <p class="form-button cancel">CANCEL</p>
-                  </div>
-                  <% end %>
+                <br>
+                <div class="submit-container">
+                  <%= f.submit "UPDATE STRATEGY", method: :UPDATE, class:'form-button' %>
+                  <p class="form-button cancel">CANCEL</p>
                 </div>
-              </div>
-              <div class="add-edit-container">
-                <h3 class="edit-strategy-<%= strategy.id %> add-edit-button">Edit Strategy</h3>
-                <%= link_to "Delete Strategy", deactivate_strategy_path(strategy, course_id: facade.course.id), method: :patch, class:'add-edit-button',data: {:confirm => 'Are you sure?'} %>
+              <% end %>
             </div>
+          </div>
+        <div class="add-edit-container">
+          <h3 class="edit-strategy-<%= strategy.id %> add-edit-button">Edit Strategy</h3>
+          <%= link_to "Delete Strategy", deactivate_strategy_path(strategy, course_id: facade.course.id), method: :patch, class:'add-edit-button',data: {:confirm => 'Are you sure?'} %>
+        </div>
           <% else %>
             <div class="item-key">
               <%= "By #{facade.teacher_name(strategy.teacher_id)}:" %>
@@ -131,8 +152,8 @@
               <%= strategy.strategy %>
             </div>
           <% end %>
-        <br>
         </div>
+        <br>
         <script type="text/javascript">
           $('.edit-strategy-<%= strategy.id %>').on('click', function(event) {
             $('#<%= strategy.id %>').css('display','block');
@@ -140,7 +161,23 @@
         </script>
       <% end %>
     </div>
+    </div>
   </div>
+</div>
+
+<div class="prediction">
+  <% if facade.prediction_results == "Data Not Available"%>
+    <%= facade.prediction_results %>
+  <% else %>
+  Predicted Score: <%= facade.prediction_results.test_score %>
+  Breakfast Percentage: <%= facade.prediction_results.meals_missed %>
+  <h4>Sleep Information </h4>
+  <%= facade.prediction_results.sleep_quality.none %>
+  <%= facade.prediction_results.sleep_quality.less_than %>
+  <%= facade.prediction_results.sleep_quality.usual %>
+  <%= facade.prediction_results.sleep_quality.more_than %>
+  <%= facade.prediction_results.sleep_quality.way_more %>
+  <% end %>
 </div>
 
 <script type="text/javascript">
@@ -160,19 +197,32 @@
   })
 
 
+
   $('.add-strategy').on('click', function(event) {
     $('.modal-add').css('display','block');
+  });
+  $('.add-builtin-strategy').on('click', function(event) {
+    $('.modal-builtin-add').css('display','block');
   });
 
   $('.cancel').on('click', function(event) {
     $('.modal-add').css('display','none');
   });
   $('.cancel').on('click', function(event) {
+    $('.modal-builtin-add').css('display','none');
+  });
+
+  $('.cancel').on('click', function(event) {
     $('.modal-edit').css('display','none');
   });
   $(document).keydown(function(event) {
     if (event.keyCode == 27) {
       $('.modal-add').css('display','none');
+    }
+  });
+  $(document).keydown(function(event) {
+    if (event.keyCode == 27) {
+      $('.modal-builtin-add').css('display','none');
     }
   });
   $(document).keydown(function(event) {

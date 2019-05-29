@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     root to: redirect('/auth/google_oauth2'), as: 'auth'
     get '/class_code', to: 'class_code#new', as: 'class_code'
     get '/failure', to: 'unregistered#index', as: 'unregistered'
-    post '/survey', to: 'survey#create'
+    post '/survey', to: 'class_code#create'
     get '/survey', to: 'survey#show'
     get '/survey/complete', to: 'response#show', as: 'completed_survey'
     post '/response', to: 'response#create', as: 'response'
@@ -49,4 +49,11 @@ Rails.application.routes.draw do
   end
 
   mount ActionCable.server, at: '/cable'
+
+  namespace :api do
+    namespace :v1 do
+      get '/machinelearning/results', to: 'machine_learning#show'
+    end
+  end
+
 end

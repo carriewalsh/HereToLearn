@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_counselor?
-    !current_user.courses.empty?
+    current_user.courses.empty?
   end
 
   def date

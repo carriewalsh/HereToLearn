@@ -45,6 +45,7 @@ gem 'factory_bot_rails'
 gem 'faker'
 gem 'jquery-rails'
 gem 'whenever', require: false
+gem 'csv'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

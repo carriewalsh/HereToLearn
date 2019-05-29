@@ -1,5 +1,5 @@
-<%= form_with url: student_survey_path, method: :post do |f| %>
-  <%= f.label :code %>
-  <%= f.text_field :code %>
-  <%= f.submit 'Start Survey' %>
+<%= form_tag student_survey_path, method: :post do %>
+  <%= label_tag :code %>
+  <%= text_field_tag :code %>
+  <%= submit_tag 'Start Survey' %>
 <% end %>
