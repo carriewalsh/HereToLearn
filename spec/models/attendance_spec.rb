@@ -19,9 +19,9 @@ RSpec.describe Attendance, type: :model do
         att5 = student.attendances.create(attendance: "absent",course_id: course.id, created_at: today - 1.day)
         att6 = student.attendances.create(attendance: "absent",course_id: course.id, created_at: today)
 
-        expect(student.attendance_percent_this_date(course)).to eq(100.0)
-        expect(student.attendance_percent_this_date(course)).to eq(75.0)
-        expect(student.attendance_percent_this_date(course)).to eq(50.0)
+        expect(att3.percent_this_date(course)).to eq(100.0)
+        expect(att4.percent_this_date(course)).to eq(75.0)
+        expect(att6.percent_this_date(course)).to eq(50.0)
       end
     end
   end
