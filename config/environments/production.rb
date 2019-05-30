@@ -98,8 +98,9 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
+  config.web_socket_server_url = "wss://young-anchorage-86985.herokuapp.com/cable"
 
-
+  config.action_cable.allowed_request_origins = ['https://young-anchorage-86985.herokuapp.com', 'http://young-anchorage-86985.herokuapp.com']
 
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
