@@ -25,7 +25,7 @@
           <canvas id=<%= "#{facade.student.id}" %> width="200" height="200"></canvas>
           <script>
             function getData(student_id) {
-              fetch(`http://lit-fortress-28598.herokuapp.com/machinelearning/results/?student_id=${<%= "#{facade.student.id}" %>}`)
+              fetch(`https://lit-fortress-28598.herokuapp.com/machinelearning/results/?student_id=${<%= "#{facade.student.id}" %>}`)
                 .then(function(response) {
                   return response.json();
                 })
