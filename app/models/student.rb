@@ -8,7 +8,6 @@ class Student < ApplicationRecord
   has_many :strategies
 
   def todays_attendance(course_id = nil)
-    # created_at: [DateTime.now.beginning_of_day, DateTime.now])
     today = attendances.where("created_at >= ?", Date.today)
     if course_id
       today.where(course_id: course_id)
@@ -56,6 +55,4 @@ class Student < ApplicationRecord
       student.todays_attendance.include?("present") || student.todays_attendance == "tardy"
     end
   end
-
-
 end

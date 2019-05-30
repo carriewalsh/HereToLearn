@@ -2,8 +2,12 @@
   <mark class="item-key"><%= "#{facade.student.first_name}" %></mark>
   <mark class="item-value"><%= " #{facade.student.last_name}" %></mark>
   <mark class="smaller-grey"><%= "# #{facade.student.student_id}" %></mark>
+  <mark class="smaller-grey"><%= link_to "Predict Test Scores", '#', :onclick => "getData(#{facade.student.student_id})" %></mark>
+
 
 </div>
+
+<canvas id=<%= "#{facade.student.student_id}" %> width="200" height="200"></canvas>
 <br>
 <div class="banner">
   <div class="dynamic-container">
@@ -44,7 +48,9 @@
     <div class="dynamic">
       <div class="graph">
         <h3 class="grey-heading">Attendance Graph</h3>
-
+        <div class="attendance-chart">
+          <%= line_chart facade.chart_percents(facade.course), colors: ['#003a78'], ytitle: 'Percentage Present', width: '100%' %>
+        </div>
       </div>
     </div>
   </div>
@@ -163,21 +169,6 @@
     </div>
     </div>
   </div>
-</div>
-
-<div class="prediction">
-  <% if facade.prediction_results == "Data Not Available"%>
-    <%= facade.prediction_results %>
-  <% else %>
-  Predicted Score: <%= facade.prediction_results.test_score %>
-  Breakfast Percentage: <%= facade.prediction_results.meals_missed %>
-  <h4>Sleep Information </h4>
-  <%= facade.prediction_results.sleep_quality.none %>
-  <%= facade.prediction_results.sleep_quality.less_than %>
-  <%= facade.prediction_results.sleep_quality.usual %>
-  <%= facade.prediction_results.sleep_quality.more_than %>
-  <%= facade.prediction_results.sleep_quality.way_more %>
-  <% end %>
 </div>
 
 <script type="text/javascript">
