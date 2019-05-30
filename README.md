@@ -1,8 +1,8 @@
 # Project Name: Here To Learn
 ## Description
 ```
-Here to Learn is a Rails application built to assist teachers in helping students reach their full potential, by tracking vital statistics, collecting student and teacher input, using machine learning to predict test outcomes and indicate students in need of extra attention. The Rails application works with a Django application that has been trained a machine learning model on over 5000 data points to predict test outcomes based on eating and sleeping habits in order to help
-In addition, the Rails application works with Surveys is a stand alone Sinatra application built in the spirit of Service Oriented Architecture (SOA).
+Here to Learn is a Rails application built to assist teachers in helping students reach their full potential, by tracking vital statistics, collecting student and teacher input, using machine learning to predict test outcomes and indicate students in need of extra attention. The Rails application works with a Django application that has trained a machine learning model on over 5000 data points to predict test outcomes based on eating and sleeping habits in order to help.
+In addition, the Rails application works with the Surveys application which is a stand alone Sinatra application built in the spirit of Service Oriented Architecture (SOA) and stores survey information gathered from students.
 ```
 ## Goals
 ```
@@ -22,7 +22,7 @@ In addition, the Rails application works with Surveys is a stand alone Sinatra a
 ## Getting Started/Requirements/Prerequisites/Dependencies
 ```
 ```
-## URLs
+## Locations/Where to Find the applications
 ### Here To Learn
 ```development: localhost:3000
 production: https://young-anchorage-86985.herokuapp.com
@@ -39,7 +39,9 @@ production:
 ```v1  5/30/2019
 ```
 ## Contributing
-```
+```https://github.com/blake-enyart/heretolearn_django
+https://github.com/carriewalsh/HereToLearn
+https://github.com/JennicaStiehl/surveys
 ```
 ## Testing
 ```
