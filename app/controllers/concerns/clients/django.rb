@@ -1,4 +1,4 @@
-module Django
+module Clients::Django
   def get_json(url, student_ids)
     conn.get url do |f|
       f.params['student_ids'] = student_ids
