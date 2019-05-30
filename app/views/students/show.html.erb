@@ -5,6 +5,7 @@
   <mark class="smaller-grey"><%= link_to "Predict Test Scores", '#', :onclick => "getData(#{facade.student.student_id})" %></mark>
 </div>
 
+
     <canvas id=<%= "#{facade.student.student_id}" %> width="200" height="200"></canvas>
       <script>
         function getData(student_id) {
@@ -65,6 +66,7 @@
           });
         }
       </script>
+
 
 <canvas id=<%= "#{facade.student.student_id}" %> width="200" height="200"></canvas>
 <br>
