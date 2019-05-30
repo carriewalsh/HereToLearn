@@ -12,7 +12,7 @@
 </section>
 
 <div class="student-container">
-  <% facade.students(current_user).each do |student| %>
+  <% facade.students.each do |student| %>
   <div class="student-card" id=<%= student.id %>></div>
     <%= link_to "#{student.first_name} #{student.last_name}", counselor_student_path(student.id), id:"small-link" %>
     <div class="smaller-grey">

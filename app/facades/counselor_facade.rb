@@ -1,12 +1,10 @@
-#currently not in use, potential for the future
 class CounselorFacade
   def initialize(counselor)
     @counselor = counselor
   end
 
-  def students(user)
-    Student.joins(courses: :teacher_courses)
-           .where('teacher_courses.teacher_id =?', user.id)
+  def students
+    Student.all
   end
 
   def flagged_strats
