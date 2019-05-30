@@ -8,12 +8,13 @@ class Student < ApplicationRecord
   has_many :strategies
 
   def todays_attendance(course_id = nil)
-    # created_at: [DateTime.now.beginning_of_day, DateTime.now])
-    today = attendances.where("created_at >= ?", Date.today)
+    today = attendances.where("created_at >= ?", Time.today - 24.hours)
     if course_id
-      today.where(course_id: course_id)
+      attendance = today.where(course_id: course_id)
+      unless attendance
+        return "nil"
+      end
     else
-
       today.first ? today.first.attendance : "No Attendance Today"
     end
   end
