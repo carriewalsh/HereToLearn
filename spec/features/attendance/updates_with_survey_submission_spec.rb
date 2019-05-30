@@ -6,7 +6,7 @@ describe 'A student with their e-mail in the system' do
     @absent_student = create(:student)
     stub_omniauth(@student.google_id, @student.first_name, @student.last_name)
 
-    @in_class = create(:course, start_time: DateTime.now)
+    @in_class = create(:course, start_time: convert_to_string(DateTime.now))
     @student.courses << @in_class
     @absent_student.courses << @in_class
 
