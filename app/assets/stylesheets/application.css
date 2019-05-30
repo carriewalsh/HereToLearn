@@ -765,6 +765,25 @@ footer {
   color: #5fb0c4;
 }
 
+.graph-card {
+  width: 40%;
+  margin: 20px;
+}
+
+
+.graph-card img {
+  width: 100%;
+  height: auto;
+}
+
+.graph-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 5px;
+  justify-content: center;
+
 #code {
   font-size: 24px;
+
 }

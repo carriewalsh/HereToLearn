@@ -57,11 +57,11 @@ end
 ##############
 
 will1= Student.create(id: Student.count + 1, first_name: "William", last_name: "Peterson", student_id: "250923", google_id: "107113987859408235003")
-will2 = Student.create(id: Student.count + 1, first_name: "wpgp", last_name: "Peterson", student_id: "4441", google_id: "123456")
-blake = Student.create(id: Student.count + 1, first_name: "Blake", last_name: "Enyart", student_id: "5497", google_id: "1234567")
+will2 = Student.create(id: Student.count + 1, first_name: "wpgp", last_name: "Peterson", student_id: "4441", google_id: "115025690176283038402")
+blake = Student.create(id: Student.count + 1, first_name: "Blake", last_name: "Enyart", student_id: "5497", google_id: "117998694578240744299")
 carrie = Student.create(id: Student.count + 1, first_name: "Carrie", last_name: "Walsh", student_id: "2233", google_id: "1234568")
-jennica = Student.create(id: Student.count + 1, first_name: "Jennica", last_name: "Stiehl", student_id: "5928", google_id: "1234569")
-trevor = Student.create(id: Student.count + 1, first_name: "Trevor", last_name: "Nodland", student_id: "1022", google_id: "1234560")
+jennica = Student.create(id: Student.count + 1, first_name: "Jennica", last_name: "Stiehl", student_id: "5928", google_id: "108955043751025939619")
+trevor = Student.create(id: Student.count + 1, first_name: "Trevor", last_name: "Nodland", student_id: "1022", google_id: "111319318487931094375")
 
 simple_teacher = Teacher.create(id: Teacher.count + 1, first_name: "Sam", last_name: "Johnson", email: "example@mail.com", password: "password", role: 2)
 
