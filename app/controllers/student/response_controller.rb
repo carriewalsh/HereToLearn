@@ -8,7 +8,7 @@ class Student::ResponseController < ApplicationController
 
     ActionCable.server.broadcast 'attendance_channel',
                                   student_id: session[:student_id],
-                                  attendance: attendance_record.atteendance,
+                                  attendance: attendance_record.attendance,
                                   course_id: session[:course_id]
 
 
@@ -49,13 +49,12 @@ class Student::ResponseController < ApplicationController
                        course_id: session[:course_id],
                        created_at: time_range)
   end
-
-  def post_responses( domain = 'https://aqueous-caverns-33840.herokuapp.com', endpoint = '/response')
+# 'https://aqueous-caverns-33840.herokuapp.com/api/v1/'
+  def post_responses( domain = 'https://aqueous-caverns-33840.herokuapp.com/api/v1/', endpoint = 'responses')
     question_ids.each do |question_id|
-      Faraday.post domain + endpoint, params: params_for_post(question_id)
+      binding.pry
+      Faraday.post domain + endpoint, params_for_post(question_id)
     end
-
-    Faraday.post domain + endpoint, params: headers_for_post
   end
 
   def params_for_post(question_id)
