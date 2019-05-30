@@ -1,7 +1,12 @@
 class StrategiesController < ApplicationController
   def create
     strategy = Strategy.new(strategy_params)
+    service = GoogleService.new(strategy.strategy)
+    rating = service.get_rating
     if strategy.save
+      if rating <= -0.25
+        strategy.update(flagged: true)
+      end
       flash[:notice] = "Successfully Added Strategy."
       redirect_to student_path(params[:strategy][:student_id], course_id: params[:strategy][:course_id])
     end
@@ -19,7 +24,17 @@ class StrategiesController < ApplicationController
     strategy = Strategy.find(params[:id])
     strategy.update(active: false)
     flash[:notice] = "Successfully Deleted Strategy."
-    redirect_to student_path(strategy.student_id, course_id: params[:course_id], anchor: 'strategies')
+    if current_user.role == 'teacher'
+      redirect_to student_path(strategy.student_id, course_id: params[:course_id], anchor: 'strategies')
+    elsif current_user.role == 'counselor'
+      redirect_to counselor_dashboard_path
+    end
+  end
+
+  def approve
+    strategy = Strategy.find(params[:id])
+    strategy.update(flagged: false)
+    redirect_to counselor_dashboard_path
   end
 
   private

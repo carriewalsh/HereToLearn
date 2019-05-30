@@ -64,6 +64,19 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  # config.before(:each) do
+  #   stub_request(:post, "https://language.googleapis.com/v1/documents:analyzeSentiment").
+  #   with(
+  #     body: {"document"=>{"type"=>"PLAIN_TEXT", "content"=>nil}, "encodingType"=>"UTF8"},
+  #     headers: {
+  #       'Accept'=>'*/*',
+  #       'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  #       'Fields'=>'documentSentiment%2Clanguage%2Csentences',
+  #       'Key'=>ENV['GOOGLE-API-KEY'],
+  #       'User-Agent'=>'Faraday v0.15.4'
+  #       }).
+  #       to_return(status: 200, body: "{'documentSentiment': {'magnitude': 1.2, 'score': 0.6},}", headers: {})
+  # end
 end
 
 Shoulda::Matchers.configure do |config|
@@ -73,14 +86,14 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-# VCR.configure do |config|
-#   config.ignore_localhost = true
-#   config.cassette_library_dir = 'spec/cassettes'
-#   config.hook_into :webmock
-#   config.configure_rspec_metadata!
-#   config.filter_sensitive_data("<________>") { ENV['___________'] }
-#   config.allow_http_connections_when_no_cassette = true
-# end
+VCR.configure do |config|
+  config.ignore_localhost = true
+  config.cassette_library_dir = 'spec/cassettes'
+  config.hook_into :webmock
+  config.configure_rspec_metadata!
+  config.filter_sensitive_data("<________>") { ENV['___________'] }
+  config.allow_http_connections_when_no_cassette = true
+end
 
 def stub_omniauth(id, first_name, last_name)
   google_id = id
