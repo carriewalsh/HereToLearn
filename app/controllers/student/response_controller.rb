@@ -8,7 +8,7 @@ class Student::ResponseController < ApplicationController
 
     ActionCable.server.broadcast 'attendance_channel',
                                   student_id: session[:student_id],
-                                  attendance: 'present',
+                                  attendance: attendance_record.atteendance,
                                   course_id: session[:course_id]
 
 
