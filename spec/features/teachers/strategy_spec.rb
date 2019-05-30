@@ -15,7 +15,9 @@ RSpec.describe "as a teacher writing a strategy" do
       visit student_path(@student, course_id: @course.id)
 
       fill_in "strategy[strategy]", with: "Blake can sometimes be jittery and needs assistance staying on tasks. It is helpful for him to have a short list of tasks and he can take a small break in between completion."
-      click_on "SAVE STRATEGY"
+      within ".modal-add" do
+        click_on "SAVE STRATEGY"
+      end
 
       strategy = Strategy.last
 
@@ -27,7 +29,9 @@ RSpec.describe "as a teacher writing a strategy" do
       visit student_path(@student, course_id: @course.id)
 
       fill_in "strategy[strategy]", with: "Blake is extremely jittery and annoys other students. He tends to be off task."
-      click_on "SAVE STRATEGY"
+      within ".modal-add" do
+        click_on "SAVE STRATEGY"
+      end
 
       strategy = Strategy.last
 

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "As a logged-in Teacher", :vcr do
+describe "As a logged-in Teacher" do
 
   describe "when I visit a student's show page" do
     before :each do
