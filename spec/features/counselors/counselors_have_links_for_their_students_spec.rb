@@ -22,9 +22,9 @@ RSpec.describe "as a counselor" do
 
       visit counselor_dashboard_path
 
-      expect(page.all('.student').count).to eq(2)
-      expect(page).to_not have_link(student1.name)
-      click_link "#{student2.name}"
+      expect(page.all('.student-card').count).to eq(2)
+      expect(page).to_not have_link(student1.first_name)
+      click_link "#{student2.first_name}"
 
       expect(current_path).to eq(counselor_student_path(student2))
     end

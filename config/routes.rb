@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 
   namespace :counselor do
     get '/dashboard', to: 'dashboard#index'
+    get '/students/:id', to: 'students#show', as: 'student'
   end
 
   get '/auth/google_oauth2/callback', to: 'student/survey#new'
