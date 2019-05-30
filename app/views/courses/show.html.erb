@@ -14,7 +14,7 @@
           <% facade.students.each do |student| %>
           <div class="student-card" id="attendance-<%= student.id %>">
             <div class="attendance-icons">
-              <div class="attendance-icon attendance-<%= student.todays_attendance %>">
+              <div class="attendance-icon attendance-<%= student.todays_attendance(facade.course.id) %>">
               </div>
               <div class="hidden">
               </div>

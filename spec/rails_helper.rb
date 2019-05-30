@@ -112,4 +112,8 @@ def stub_omniauth(id, first_name, last_name)
     OmniAuth.config.mock_auth[:google_oauth2]
 end
 
+def convert_to_string(time)
+  time.in_time_zone("America/Denver").strftime("%H:%M")
+end
+
 Rails.application.load_tasks
