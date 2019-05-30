@@ -1,7 +1,7 @@
 <h1>Counselors Dashboard</h1>
-<p><%= link_to "View student metrics", counselor_student_metrics_path %></p>
+<p><%= link_to "View machine accuracy information", counselor_machine_path %></p>
 <section class='flagged-strategies'>
-  <h3>Strategies we've flagged as "potentially unhelpful:"</h3>
+  <h3>Strategies we've flagged as "potentially unhelpful":</h3>
   <% facade.flagged_strats.each do |strat| %>
   <section class='strategy'>
     <p><%= strat.strategy %></p>
@@ -13,8 +13,7 @@
 
 <div class="student-container">
   <% facade.students(current_user).each do |student| %>
-  <div class="student-card" id=<%= student.id %>>
-    <div class="attendance-icon current attendance-<%= student.todays_attendance %>"></div></div>
+  <div class="student-card" id=<%= student.id %>></div>
     <%= link_to "#{student.first_name} #{student.last_name}", counselor_student_path(student.id), id:"small-link" %>
     <div class="smaller-grey">
       #<%= student.student_id %>

@@ -8,9 +8,9 @@ RSpec.describe "as a counselor" do
 
       visit counselor_dashboard_path
 
-      click_link("View student metrics")
-
-      expect(current_path).to eq(counselor_student_metrics_path)
+      click_link("View machine accuracy information")
+# save_and_open_page
+      expect(current_path).to eq(counselor_machine_path)
     end
   end
 end
