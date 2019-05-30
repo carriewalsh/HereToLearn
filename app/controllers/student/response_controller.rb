@@ -1,7 +1,7 @@
 class Student::ResponseController < ApplicationController
   def create
     # Submit to API with post
-    # post_responses
+    post_responses
     attendance_record = find_attendance
     attendance_record.attendance = attendance_status if attendance_status
     attendance_record.save
@@ -50,7 +50,7 @@ class Student::ResponseController < ApplicationController
                        created_at: time_range)
   end
 
-  def post_responses(question_ids, domain = 'https://aqueous-caverns-33840.herokuapp.com', endpoint = '/response')
+  def post_responses( domain = 'https://aqueous-caverns-33840.herokuapp.com', endpoint = '/response')
     question_ids.each do |question_id|
       Faraday.post domain + endpoint, params: params_for_post(question_id)
     end
@@ -68,10 +68,6 @@ class Student::ResponseController < ApplicationController
           question_id: question_id,
           choice_id: params[:question][question_id]}
     }
-  end
-
-  def responses
-    params.require(:question).permit(question_ids).to_hash
   end
 
   def question_ids
