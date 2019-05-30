@@ -700,14 +700,6 @@ footer {
   padding: 0 25%;
 }
 
-input[type=radio] {
-}
-
-input[type=radio]:checked {
-  background-color: green;
-  color: green;
-}
-
 .survey-button {
   background-color: #24d3ff;
   border: none;
@@ -732,6 +724,15 @@ input[type=radio]:checked {
   text-align: center;
 }
 
+.code-form {
+  font-size: 40px;
+  padding: 0 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 
 #small-link {
   font-size: calc((-.2 *(1em - 20px) - -1.8em - 13px));
@@ -742,4 +743,8 @@ input[type=radio]:checked {
 
 #small-link:hover {
   color: #5fb0c4;
+}
+
+#code {
+  font-size: 24px;
 }

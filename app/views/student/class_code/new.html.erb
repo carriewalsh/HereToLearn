@@ -1,5 +1,12 @@
-<%= form_tag student_survey_path, method: :post do %>
-  <%= label_tag :code %>
-  <%= text_field_tag :code %>
-  <%= submit_tag 'Start Survey' %>
-<% end %>
+<div class="survey-container">
+  <h1 class="survey-heading">Welcome!</h1>
+  <div class="code-form">
+    <%= form_tag student_survey_path, method: :post, class:'code-form' do %>
+    <%= label_tag :daily_code %>
+    <br>
+    <%= text_field_tag :code %>
+    <br>
+    <%= submit_tag 'Start Survey', class:'survey-button' %>
+    <% end %>
+  </div>
+</div>
