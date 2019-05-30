@@ -1,4 +1,5 @@
 class PasswordResetsController < ApplicationController
+  before_action :require_teacher! || :require_counselor!
   def edit
 
   end

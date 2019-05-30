@@ -1,4 +1,6 @@
 class StrategiesController < ApplicationController
+  before_action :require_teacher! || :require_teacher!
+
   def create
     strategy = Strategy.new(strategy_params)
     service = GoogleService.new(strategy.strategy)

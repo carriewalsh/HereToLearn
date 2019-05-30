@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  # should probably have a before action here for safety
+  before_action :require_teacher!
   def index
     render locals: {
       facade: CoursesFacade.new(current_user)
