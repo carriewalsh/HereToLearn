@@ -29,7 +29,7 @@ textarea {
   color: #6f6f6f;
   display: block;
   font-size: 18px;
-  font-weiight: 300;
+  font-weight: 300;
   margin: 15px auto;
   padding: 20px;
   width: 45%;
@@ -502,6 +502,12 @@ footer {
   font-size: calc((-.2 *(1em - 20px) - -1.9em - 13px));
   font-weight: 300;
   padding-left: 25px;
+}
+
+.attendance-chart {
+  background-color: #fff;
+  margin: 25px auto;
+  width: 85%;
 }
 
 .strategy {
