@@ -24,13 +24,23 @@ class Student::ResponseController < ApplicationController
 
   def attendance_status
     course = Course.find(session[:course_id])
-    return nil if now.strftime("%H%M%S") > course.end_time.strftime("%H%M%S")
-    return 'present' if now < course.start_time + 5.minutes
+
+    tardy_time = Time.parse(course.start_time) + 5.minutes
+    tardy_time_string = compareable_time(tardy_time)
+    now_time_string = compareable_time(now)
+    end_time_string = compareable_time(Time.parse(course.end_time))
+
+    return nil if now_time_string > end_time_string
+    return 'present' if now_time_string < tardy_time_string
     'tardy'
   end
 
+  def compareable_time(time)
+    time.strftime("%H%M")
+  end
+
   def now
-    DateTime.now
+    Time.current.in_time_zone("America/Denver")
   end
 
   def find_attendance
