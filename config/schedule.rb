@@ -29,7 +29,7 @@ require "./config/environment.rb"
 set :output, "#{path}/log/cron.log" #logs
 @courses = Course.all
 @courses.each do |course|
-  start = Time.strptime(course.start_time, '%H%M') + 5.minutes
+  start = Time.strptime(course.start_time, '%H:%M') + 5.minutes
   schedule_start = start.hour.to_s + ":" + start.min.to_s
   every :weekday, at: schedule_start do
     rake "attendance:mark_absent[#{course.id}]"
