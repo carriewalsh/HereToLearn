@@ -1,0 +1,109 @@
+<h1>Statistics</h1>
+<script>
+  function buildChart(data, labels, element, title) {
+    var ctx = document.getElementById(element).getContext('2d');
+    return new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          data: data,
+          backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: title
+        },
+        responsive: false,
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+  }
+</script>
+
+<div class="date-container">
+  <h2 class="date"><%= date %></h2>
+</div>
+
+<div class="text-container">
+  <mark class="item-key"><%= "Period #{facade.course.period}" %></mark>
+  <mark class="item-value"><%= " #{facade.course.name}" %></mark>
+</div>
+
+<div class="banner">
+  <% facade.students.each do |student| %>
+  <div class="dynamic-container">
+    <div class="dynamic">
+      <div class="student-card" id="attendance-<%= student.id %>">
+        <%= link_to "#{student.first_name} #{student.last_name}", student_path(student.id, course_id: facade.course.id), id:"small-link" %>
+        <div class="smaller-grey">
+          #<%= student.student_id %>
+        </div>
+      </div>
+      <div class="predicted-score">
+        <h2>Predicted Score</h2>
+        <h3 id=<%= "predicted-score-#{student.id}" %>></h3>
+      </div>
+      <div class="student-chartjs food-chart" style="display: inline-block">
+        <canvas id='<%= "foodchart-#{student.id}" %>' width="200" height="200"></canvas>
+        <script>
+          var url = `http://lit-fortress-28598.herokuapp.com/machinelearning/results/?student_id=${<%= student.id %>}`
+          var rawData = fetch(url)
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(myJson) {
+            return myJson;
+          });
+
+          rawData.then(function(json) {
+            var data = Object.values(json.meals);
+            var labels = Object.keys(json.meals);
+            buildChart(data, labels, `foodchart-${<%= student.id %>}`, 'Weekly Food (%)');
+          });
+
+        </script>
+      </div>
+      <div class="student-chartjs sleep-chart" style="display: inline-block">
+        <canvas id='<%= "sleepchart-#{student.id}" %>' width="200" height="200"></canvas>
+        <script>
+          rawData.then(function(json) {
+            var data = Object.values(json.sleep_quality);
+            var labels = Object.keys(json.sleep_quality);
+            var ctx = document.getElementById(`predicted-score-${<%= student.id %>}`);
+            ctx.appendChild(document.createTextNode(json.score));
+            buildChart(data, labels, `sleepchart-${<%= student.id %>}`, 'Weekly Sleep (%)');
+          });
+        </script>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
