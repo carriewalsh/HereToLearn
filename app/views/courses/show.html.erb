@@ -95,6 +95,7 @@
     var attendance = event.target.classList[1].split("-")[1];
     var course = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id;
     updateAttendance(id, course, attendance);
+    showUpdatedAttendance(id, course, attendance);
   });
 
   var updateAttendance = function(id, course, attendance) {
@@ -104,16 +105,10 @@
         "Content-Type": "application/json; charset=utf-8",
       },
     })
-      .then((response) => response.json())
-      .then(function(response){
-        console.log("hello");
-      });
     };
 
     var showUpdatedAttendance = function(id, course, attendance) {
-      // debugger;
-      $(`div#${course}.course-card div#${id}.student-card div.current`).remove();
-      // debugger;
-      $(`div#${course}.course-card div#${id}.student-card`).prepend(`<div class="attendance-icon current attendance-${attendance}"></div>`);
+      $(`div.course-card div#${id}.student-card div.current`).remove();
+      $(`div.course-card div#${id}.student-card`).prepend(`<div class="attendance-icon current attendance-${attendance}"></div>`);
     };
 </script>
