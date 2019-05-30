@@ -504,6 +504,12 @@ footer {
   padding-left: 25px;
 }
 
+.attendance-chart {
+  background-color: #fff;
+  margin: 25px auto;
+  width: 75%;
+}
+
 .strategy {
   background: white;
   font-weight: 300;
