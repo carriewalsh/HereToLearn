@@ -10,10 +10,10 @@ class Student < ApplicationRecord
   def todays_attendance(course_id = nil)
 
     today = attendances.where("created_at >= ?", Time.current - 24.hours)
-    # binding.pry
     if course_id
       attendance = today.find_by(course_id: course_id)
-      unless attendance
+      # binding.pry
+      unless attendance.attendance
         return "nil"
       else
         return attendance.attendance
