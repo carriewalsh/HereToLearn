@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "As a logged-in Teacher", :vcr do
+describe "As a logged-in Teacher" do
   describe "when I visit a student's show page" do
     before :each do
       @course = create(:course)
@@ -46,14 +46,6 @@ describe "As a logged-in Teacher", :vcr do
         expect(page).to have_content("Absent: 20.0%")
         expect(page).to have_content("Total Absences: 2 days")
       end
-    end
-
-    xit "should have a calendar that shows this months attendance" do
-
-    end
-
-    xit "should have a graph that shows percentage attendance over time" do
-
     end
   end
 end

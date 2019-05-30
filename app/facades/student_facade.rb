@@ -45,4 +45,12 @@ class StudentFacade
   def built_ins
     StrategyReference.all.pluck(:built_in)
   end
+
+  def chart_percents(course)
+    chart_data = {}
+    student.attendances.map do |attendance|
+      chart_data[attendance.created_at.strftime('%e-%b')] = attendance.percent_this_date(course)
+    end
+    chart_data
+  end
 end
