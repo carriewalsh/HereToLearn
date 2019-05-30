@@ -343,9 +343,11 @@ footer {
 }
 
 .h2l-team {
-  text-align: right;
   padding-right: 100px;
   letter-spacing: 3px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 .input-box {
