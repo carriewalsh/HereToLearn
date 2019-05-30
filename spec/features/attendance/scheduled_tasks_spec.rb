@@ -20,7 +20,7 @@ describe 'Attendance' do
 
   it 'has a job scheduled for 5 minutes after class starts to mark students as absent' do
     expect(@schedule.jobs[:rake].last[:task]).to eq("attendance:mark_absent[#{@course.id}]")
-    absent_time = @course.start_time + 5.minutes
+    absent_time = Time.strptime(@course.start_time, '%H%M') + 5.minutes
     schedule_time = absent_time.hour.to_s + ":" + absent_time.min.to_s
     expect(@schedule.jobs[:rake].last[:every]).to eq([:weekday, at: schedule_time])
   end
