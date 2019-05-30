@@ -7,9 +7,8 @@ RSpec.describe Attendance, type: :model do
   end
 
   describe "instance methods" do
-    describe "attendance_percent_this_date" do
+    describe "percent_this_date" do
       it "returns the total percent attendance on a given date" do
-
         today = DateTime.now
         student = create(:student)
         course = create(:course)
@@ -20,9 +19,9 @@ RSpec.describe Attendance, type: :model do
         att5 = student.attendances.create(attendance: "absent",course_id: course.id, created_at: today - 1.day)
         att6 = student.attendances.create(attendance: "absent",course_id: course.id, created_at: today)
 
-        expect(att2.attendance_percent_this_date(student,course)).to eq(100.0)
-        expect(att4.attendance_percent_this_date(student,course)).to eq(75.0)
-        expect(att6.attendance_percent_this_date(student,course)).to eq(50.0)
+        expect(student.attendance_percent_this_date(course)).to eq(100.0)
+        expect(student.attendance_percent_this_date(course)).to eq(75.0)
+        expect(student.attendance_percent_this_date(course)).to eq(50.0)
       end
     end
   end
