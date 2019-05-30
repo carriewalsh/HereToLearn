@@ -52,7 +52,6 @@ class Student::ResponseController < ApplicationController
 # 'https://aqueous-caverns-33840.herokuapp.com/api/v1/'
   def post_responses( domain = 'https://aqueous-caverns-33840.herokuapp.com/api/v1/', endpoint = 'responses')
     question_ids.each do |question_id|
-      binding.pry
       Faraday.post domain + endpoint, params_for_post(question_id)
     end
   end

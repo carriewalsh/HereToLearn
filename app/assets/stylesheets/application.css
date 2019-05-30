@@ -782,6 +782,7 @@ footer {
   flex-direction: row;
   padding: 5px;
   justify-content: center;
+}
 
 #code {
   font-size: 24px;
