@@ -462,13 +462,13 @@ footer {
   padding-bottom: 10px;
 }
 
-.hide-attendance, .show-attendance {
+.hide-attendance, .show-attendance, .show-predictions, .hide-predictions {
   color: #6f6f6f;
   cursor: pointer;
   text-align: center;
 }
 
-.hide-attendance::after, .show-attendance::after {
+.hide-attendance::after, .show-attendance::after, .show-predictions::after, .hide-predictions::after {
   content: '';
   background-color: #f9e0a9;
   display: block;

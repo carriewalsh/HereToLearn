@@ -5,70 +5,90 @@
   <mark class="smaller-grey"><%= link_to "Predict Test Scores", '#', :onclick => "getData(#{facade.student.student_id})" %></mark>
 </div>
 
-
-    <canvas id=<%= "#{facade.student.student_id}" %> width="200" height="200"></canvas>
-      <script>
-        function getData(student_id) {
-          fetch(`http://localhost:8000/machinelearning/results/?student_id=${<%= "#{facade.student.student_id}" %>}`)
-            .then(function(response) {
-              return response.json();
-            })
-            .then(function(myJson) {
-              buildChart(myJson);
-          });
-        }
-        function buildChart(data) {
-          var ctx = document.getElementById(<%= "#{facade.student.student_id}2" %>).getContext('2d');
-          var sleepData = Object.values(data.sleep_quality);
-          var sleepLabels = Object.keys(data.sleep_quality);
-          return new Chart(ctx, {
-            type: 'bar',
-            data: {
-              labels: sleepLabels,
-              datasets: [{
-                data: sleepData,
-                backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-              }]
-            },
-            options: {
-              legend: {
-                display: false
-              },
-              title: {
-                      display: true,
-                      text: 'Meals Missed this Week (%)'
-              },
-              responsive: false,
-              scales: {
-                yAxes: [{
-                  ticks: {
-                    beginAtZero: true
-                  }
-                }]
-              }
+<div class="show-hide-container">
+  <h5 class='show-predictions'>&DownArrowBar; Show Grade Prediction &DownArrowBar;</h5>
+  <h5 class='hide-predictions'>&UpArrowBar; Hide Grade Prediction &UpArrowBar;</h5>
+</div>
+<div class="banner predictions">
+  <div class="dynamic-container">
+    <div class="dynamic">
+      <div class="prediction-explanation">
+        <h3 class="grey-heading">Grade Prediction</h3>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-container">
+    <div class="dynamic">
+      <div class="prediction-graph">
+        <h3 class="grey-heading">Prediction Graph</h3>
+        <div class="attendance-chart">
+          <canvas id=<%= "#{facade.student.id}" %> width="200" height="200"></canvas>
+          <script>
+            function getData(student_id) {
+              fetch(`http://localhost:8000/machinelearning/results/?student_id=${<%= "#{facade.student.id}" %>}`)
+                .then(function(response) {
+                  return response.json();
+                })
+                .then(function(myJson) {
+                  buildChart(myJson);
+              });
             }
-          });
-        }
-      </script>
+            function buildChart(data) {
+              var ctx = document.getElementById(<%= "#{facade.student.id}" %>).getContext('2d');
+              var sleepData = Object.values(data.sleep_quality);
+              var sleepLabels = Object.keys(data.sleep_quality);
+              return new Chart(ctx, {
+                type: 'bar',
+                data: {
+                  labels: sleepLabels,
+                  datasets: [{
+                    data: sleepData,
+                    backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                  }]
+                },
+                options: {
+                  legend: {
+                    display: false
+                  },
+                  title: {
+                          display: true,
+                          text: 'Sleep this Week (%)'
+                  },
+                  responsive: false,
+                  scales: {
+                    yAxes: [{
+                      ticks: {
+                        beginAtZero: true
+                      }
+                    }]
+                  }
+                }
+              });
+            }
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-<canvas id=<%= "#{facade.student.student_id}" %> width="200" height="200"></canvas>
 <br>
 <div class="banner">
   <div class="dynamic-container">
@@ -247,7 +267,20 @@
     $('.hide-attendance').slideUp();
     $('.show-attendance').slideDown();
   })
-
+  $(document).ready(function() {
+    $('.predictions').hide();
+    $('.hide-predictions').hide();
+  });
+  $('.show-predictions').on('click', function(event) {
+    $('.predictions').slideDown();
+    $('.hide-predictions').slideDown();
+    $('.show-predictions').slideUp();
+  })
+  $('.hide-predictions').on('click', function(event) {
+    $('.predictions').slideUp();
+    $('.hide-predictions').slideUp();
+    $('.show-predictions').slideDown();
+  })
 
 
   $('.add-strategy').on('click', function(event) {
