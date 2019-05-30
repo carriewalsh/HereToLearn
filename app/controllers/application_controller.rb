@@ -31,6 +31,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # def my_course!(course)
+  #   if current_user.nil?
+  #     four_oh_four
+  #   else
+  #     four_oh_four unless current_user.courses.
+  #   end
+  # end
+
   def date
     wday = Date.today.strftime('%a')
     if wday == 'Sat' || wday == 'Sun'
