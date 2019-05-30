@@ -12,9 +12,9 @@ class CoursesController < ApplicationController
         facade: CourseFacade.new(current_user, course, params[:group_count])
       }
     else
-    render locals: {
-      facade: CourseFacade.new(current_user, course, nil)
-    }
+      render locals: {
+        facade: CourseFacade.new(current_user, course, nil)
+      }
     end
   end
 

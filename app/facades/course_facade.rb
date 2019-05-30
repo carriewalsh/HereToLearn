@@ -25,4 +25,10 @@ class CourseFacade
   def random_groups_present
     present_students.random_groups(@group_count)
   end
+
+  def predicted_score
+    student_ids = students.map { |student| student.id }
+    django_service = DjangoService.new(student_ids)
+    @_service ||= django_service.predict_course_scores # return hash of {<id>:{predicted_score: <number>, data: <array of percents>}, ...}
+  end
 end

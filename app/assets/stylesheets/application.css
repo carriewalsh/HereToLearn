@@ -666,6 +666,9 @@ footer {
   width: 45%;
 }
 
+.student-chartjs {
+  padding: .75em;
+}
 .survey-container h1 {
   border-bottom: solid 3px #fdb811;
   font-size: 70px;

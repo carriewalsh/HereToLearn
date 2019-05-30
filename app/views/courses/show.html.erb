@@ -4,6 +4,7 @@
 <div class="text-container">
   <mark class="item-key"><%= "Period #{facade.course.period}" %></mark>
   <mark class="item-value"><%= " #{facade.course.name}" %></mark>
+  <mark class="item-value statistics"><%= link_to "Statistics", statistics_path(course_id: facade.course.id) %></mark>
 </div>
 
 <div class="banner">

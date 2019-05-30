@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   patch '/send_reset_link', to: 'send_reset_links#update'
 
   resources :courses, only: :show
+  get '/statistics', to: 'statistics#index'
   resources :students, only: :show
 
   resources :strategies, only: [:create, :update] do
