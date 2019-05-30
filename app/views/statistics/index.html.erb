@@ -1,6 +1,6 @@
 <h1>Statistics</h1>
 <script>
-  function buildChart(data, labels, element) {
+  function buildChart(data, labels, element, title) {
     var ctx = document.getElementById(element).getContext('2d');
     return new Chart(ctx, {
       type: 'bar',
@@ -33,7 +33,7 @@
         },
         title: {
           display: true,
-          text: 'Sleep'
+          text: title
         },
         responsive: false,
         scales: {
@@ -86,7 +86,7 @@
           rawData.then(function(json) {
             var data = Object.values(json.meals);
             var labels = Object.keys(json.meals);
-            buildChart(data, labels, `foodchart-${<%= student.id %>}`);
+            buildChart(data, labels, `foodchart-${<%= student.id %>}`, 'Weekly Food (%)');
           });
 
         </script>
@@ -99,7 +99,7 @@
             var labels = Object.keys(json.sleep_quality);
             var ctx = document.getElementById(`predicted-score-${<%= student.id %>}`);
             ctx.appendChild(document.createTextNode(json.score));
-            buildChart(data, labels, `sleepchart-${<%= student.id %>}`);
+            buildChart(data, labels, `sleepchart-${<%= student.id %>}`, 'Weekly Sleep (%)');
           });
         </script>
       </div>
