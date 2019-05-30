@@ -2,12 +2,16 @@
   <div class="dynamic-container">
     <div class="dynamic">
       <h4>Enter your email address and we will send you a link to reset your password.</h4>
-
-      <%= form_for :send_reset_link, url: send_reset_link_path do |f| %>
+      <div class="submit-container">
+        <%= form_for :send_reset_link, url: send_reset_link_path do |f| %>
         <%= f.label :email %>
         <%= f.email_field :email, class:'input-box', autofocus:true, required: true  %>
-        <%= f.submit "SEND PASSWORD RESET EMAIL", class:'form-button' %>
-      <% end %>
+        <br>
+        <div class="submit-container">
+          <%= f.submit "SEND PASSWORD RESET EMAIL", class:'form-button' %>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

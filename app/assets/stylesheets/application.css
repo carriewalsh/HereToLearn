@@ -196,6 +196,7 @@ footer {
   position: fixed;
   text-align: center;
   width: 100%;
+  z-index: 5;
 }
 
 .footer-link {
@@ -302,6 +303,7 @@ footer {
 .submit-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   width: 80%;
   margin: 0 auto;
@@ -315,7 +317,7 @@ footer {
   color: #cfe2f3ff;
   border-radius: 6px;
   margin-top: 20px;
-  padding: 5px;
+  padding: 5px 15px;
   text-align: center;
 }
 
@@ -341,9 +343,11 @@ footer {
 }
 
 .h2l-team {
-  text-align: right;
   padding-right: 100px;
   letter-spacing: 3px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 .input-box {
@@ -693,6 +697,17 @@ footer {
   padding-bottom: 100%;
 }
 
+.welcome-student-container {
+  background: #222222;
+  color: #F6F7F8;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 20px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .response-container {
   display: flex;
   flex-direction: column;
@@ -738,14 +753,15 @@ footer {
 }
 
 
-#small-link {
+.small-link {
   font-size: calc((-.2 *(1em - 20px) - -1.8em - 13px));
   letter-spacing: 1px;
   color: black;
   margin: 0px;
+  margin-left: 10px;
 }
 
-#small-link:hover {
+.small-link:hover {
   color: #5fb0c4;
 }
 

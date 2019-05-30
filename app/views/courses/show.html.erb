@@ -13,13 +13,26 @@
         <div class="student-container">
           <% facade.students.each do |student| %>
           <div class="student-card" id="attendance-<%= student.id %>">
-            <div class="attendance-icons">
-              <div class="attendance-icon attendance-<%= student.todays_attendance(facade.course.id) %>">
+            <div class="attendance-icon current attendance-<%= student.todays_attendance(facade.course.id) %>">
+            </div>
+            <div class="attendance-options">
+              <div class="option">
+                <div class="attendance-icon attendance-present"></div><h4 class="small-link">Present</h4>
               </div>
-              <div class="hidden">
+              <div class="option">
+                <div class="attendance-icon attendance-absent"></div><h4 class="small-link">Absent</h4>
+              </div>
+              <div class="option">
+                <div class="attendance-icon attendance-tardy"></div><h4 class="small-link">Tardy</h4>
+              </div>
+              <div class="option">
+                <div class="attendance-icon attendance-present_no_response"></div><h4 class="small-link">Present No Response</h4>
+              </div>
+              <div class="option">
+                <div class="attendance-icon attendance-absent_with_response"></div><h4 class="small-link">Absent With Response</h4>
               </div>
             </div>
-            <%= link_to "#{student.first_name} #{student.last_name}", student_path(student.id, course_id: facade.course.id), id:"small-link" %>
+            <%= link_to "#{student.first_name} #{student.last_name}", student_path(student.id, course_id: facade.course.id), class:"small-link" %>
             <div class="smaller-grey">
               #<%= student.student_id %>
             </div>
@@ -64,3 +77,42 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.attendance-options').hide();
+  });
+  $('.current').on('click', function(event) {
+    $(event.target).next().slideToggle();
+  });
+  $('.student-card').mouseleave(
+  function(event) {
+    $('.attendance-options').slideUp();
+  });
+
+  $('.option').on('click', function(event){
+    var id = event.target.parentElement.parentElement.parentElement.id;
+    var attendance = event.target.classList[1].split("-")[1];
+    var course = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id;
+    updateAttendance(id, course, attendance);
+  });
+
+  var updateAttendance = function(id, course, attendance) {
+    fetch(`/api/v1/attendances?student_id=${id}&course_id=${course}&attendance=${attendance}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+    })
+      .then((response) => response.json())
+      .then(function(response){
+        console.log("hello");
+      });
+    };
+
+    var showUpdatedAttendance = function(id, course, attendance) {
+      // debugger;
+      $(`div#${course}.course-card div#${id}.student-card div.current`).remove();
+      // debugger;
+      $(`div#${course}.course-card div#${id}.student-card`).prepend(`<div class="attendance-icon current attendance-${attendance}"></div>`);
+    };
+</script>

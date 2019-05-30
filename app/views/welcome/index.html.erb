@@ -25,14 +25,14 @@
           <%= f.submit 'LOG IN', class: "form-button" %>
         </div>
         <% end %>
-        <%= link_to "Forgot Password?", send_reset_link_path, id:"small-link" %>
+        <%= link_to "Forgot Password?", send_reset_link_path, class:"small-link" %>
       </div>
       <br>
       <hr>
       <div class="">
-        <div class="submit-container">
+        <div class="welcome-student-container">
           <h3>Looking for Student Login?</h3>
-          <%= link_to "Go To Login", student_auth_path, class: "form-button" %>
+          <%= link_to "Go To Login", student_auth_path, class: "survey-button" %>
         </div>
       </div>
       <% else %>
@@ -40,9 +40,9 @@
           <% current_user.courses.each do |course| %>
             <li class="text-container">
               <%= link_to "Period #{course.period}", course_path(course), class:"item-key" %>
-              <br>
               <%= link_to " #{course.name}", course_path(course), class:'item-value'%>
             </li>
+            <br>
           <% end %>
         </ul>
       <% end %>
