@@ -27,7 +27,14 @@
         <% end %>
         <%= link_to "Forgot Password?", send_reset_link_path, id:"small-link" %>
       </div>
-      <!-- link_to "Forgot password?", forgot_password_path -->
+      <br>
+      <hr>
+      <div class="">
+        <div class="submit-container">
+          <h3>Looking for Student Login?</h3>
+          <%= link_to "Go To Login", student_auth_path, class: "form-button" %>
+        </div>
+      </div>
       <% else %>
         <ul class ="welcome-course-container">
           <% current_user.courses.each do |course| %>

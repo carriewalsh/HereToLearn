@@ -12,7 +12,7 @@
         <div class="student-container">
           <% course.students.each do |student| %>
           <div class="student-card" id=<%= student.id %>>
-            <div class="attendance-icon current attendance-<%= student.todays_attendance %>">
+            <div class="attendance-icon current attendance-<%= student.todays_attendance(course.id) %>">
             </div>
             <div class="attendance-options">
               <div class="option">
@@ -76,8 +76,11 @@
     };
 
     var showUpdatedAttendance = function(id, course, attendance) {
-      $('.student-card#${id}').remove('.current').prepend('<div class="attendance-icon current attendance-${ attendance}"></div>');
-    }
+      // debugger;
+      $(`div#${course}.course-card div#${id}.student-card div.current`).remove();
+      // debugger;
+      $(`div#${course}.course-card div#${id}.student-card`).prepend(`<div class="attendance-icon current attendance-${attendance}"></div>`);
+    };
 
 
 

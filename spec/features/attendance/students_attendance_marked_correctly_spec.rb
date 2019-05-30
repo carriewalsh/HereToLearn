@@ -3,12 +3,11 @@ require 'rails_helper'
 describe 'A student with their e-mail in the system' do
   before :each do
     @student = create(:student)
-
     stub_omniauth(@student.google_id, @student.first_name, @student.last_name)
 
-    @on_time_class = create(:course, start_time: DateTime.now)
-    @late_class = create(:course, start_time: 6.minutes.ago)
-    @absent_class = create(:course, start_time: 1.hour.ago, end_time: 15.minutes.ago)
+    @on_time_class = create(:course, start_time: convert_to_string(DateTime.now))
+    @late_class = create(:course, start_time: convert_to_string(6.minutes.ago))
+    @absent_class = create(:course, start_time: convert_to_string(1.hour.ago), end_time: convert_to_string(15.minutes.ago))
 
     @student.courses << @on_time_class
     @student.courses << @late_class
@@ -21,7 +20,7 @@ describe 'A student with their e-mail in the system' do
     Rake::Task['attendance:populate'].execute
 
     endpoint = '/api/v1/q_and_a?question_id=1,2'
-    domain = 'http://surveyapp.com'
+    domain = 'https://aqueous-caverns-33840.herokuapp.com'
     body =  File.open('./api_responses/q_and_a.json')
 
     stub_request(:get, domain + endpoint).to_return(body: body)
@@ -47,7 +46,6 @@ describe 'A student with their e-mail in the system' do
 
   it 'marks as tardy after 5 mins from start of course' do
     fill_in :code, with: @late_code.code
-
 
     click_on 'Start Survey'
 

@@ -15,7 +15,7 @@ class SendResetLinksController < ApplicationController
       flash[:notice] = "Email has been sent with password reset instructions"
       redirect_to login_path
     else
-      flash[:notice] = "Email address not found"
+      flash[:danger] = "Email address not found"
       render :new
     end
   end
@@ -29,14 +29,13 @@ class SendResetLinksController < ApplicationController
       flash[:success] = "Successfully reset password."
       redirect_to login_path
     else
-      render :edit
     end
   end
 
   private
 
     def reset_params
-      params.require(:password_reset).permit(:email)
+      params.require(:send_reset_link).permit(:email)
     end
 
     def teacher_params
