@@ -8,11 +8,15 @@ class Student < ApplicationRecord
   has_many :strategies
 
   def todays_attendance(course_id = nil)
+
     today = attendances.where("created_at >= ?", Time.current - 24.hours)
+    # binding.pry
     if course_id
-      attendance = today.where(course_id: course_id)
+      attendance = today.find_by(course_id: course_id)
       unless attendance
         return "nil"
+      else
+        return attendance.attendance
       end
     else
       today.first ? today.first.attendance : "No Attendance Today"
