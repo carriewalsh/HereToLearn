@@ -4,7 +4,11 @@ class SessionsController < ApplicationController
     if teacher && teacher.authenticate(session_params[:password])
       cookies.signed[:user_id] = teacher.id
       flash[:success] = "Successfully logged in"
-      redirect_to dashboard_path
+      if teacher.role == 'teacher'
+        redirect_to dashboard_path
+      elsif teacher.role == 'counselor'
+        redirect_to counselor_dashboard_path
+      end
     else
       flash[:error] = "Sorry, wrong email/password combination"
       render :new
