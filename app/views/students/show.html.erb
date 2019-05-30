@@ -2,7 +2,6 @@
   <mark class="item-key"><%= "#{facade.student.first_name}" %></mark>
   <mark class="item-value"><%= " #{facade.student.last_name}" %></mark>
   <mark class="smaller-grey"><%= "# #{facade.student.student_id}" %></mark>
-  <mark class="smaller-grey"><%= link_to "Predict Test Scores", '#', :onclick => "getData(#{facade.student.student_id})" %></mark>
 </div>
 
 <div class="show-hide-container">
@@ -22,6 +21,7 @@
       <div class="prediction-graph">
         <h3 class="grey-heading">Prediction Graph</h3>
         <div class="attendance-chart">
+          <div class="form-button predict-button"><%= link_to "PREDICT TEST SCORES", '#', :onclick => "getData(#{facade.student.student_id})" %></div>
           <canvas id=<%= "#{facade.student.id}" %> width="200" height="200"></canvas>
           <script>
             function getData(student_id) {
@@ -280,6 +280,10 @@
     $('.predictions').slideUp();
     $('.hide-predictions').slideUp();
     $('.show-predictions').slideDown();
+  })
+
+  $('.predict-button').on('click', function(event) {
+    $('.predict-button').hide();
   })
 
 

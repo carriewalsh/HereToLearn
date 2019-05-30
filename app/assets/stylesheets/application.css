@@ -480,7 +480,7 @@ footer {
   transition: all .3s ease-in-out;
 }
 
-.hide-attendance:hover::after, .show-attendance:hover::after {
+.hide-attendance:hover::after, .show-attendance:hover::after, .show-predictions:hover::after, .hide-predictions:hover::after {
   content: '';
   background-color: #cfe2f3ff;
   display: block;
@@ -715,7 +715,7 @@ footer {
 .survey-button:hover {
   background-color: #fdb811;
   border: none;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 300;
   color: white;
   border-radius: 6px;
@@ -731,6 +731,10 @@ footer {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.predict-button a {
+  color: white;
 }
 
 
