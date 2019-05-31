@@ -65,11 +65,11 @@ trevor = Student.create(id: Student.count + 1, first_name: "Trevor", last_name: 
 
 simple_teacher = Teacher.create(id: Teacher.count + 1, first_name: "Sam", last_name: "Johnson", email: "example@mail.com", password: "password", role: 2)
 
-s_course = simple_teacher.courses.create(id: Course.count + 1, name: "Calculus", period: "1", start_time: "0:00:00", end_time: "23:59:59")
-s_course2 = simple_teacher.courses.create(id: Course.count + 1, name: "English IV", period: "2", start_time: "0:00:00", end_time: "23:59:59")
-s_course3 = simple_teacher.courses.create(id: Course.count + 1, name: "Philosophy", period: "3", start_time: "0:00:00", end_time: "23:59:59")
-s_course4 = simple_teacher.courses.create(id: Course.count + 1, name: "History", period: "4", start_time: "0:00:00", end_time: "23:59:59")
-s_course5 = simple_teacher.courses.create(id: Course.count + 1, name: "Computer Science", period: "5", start_time: "0:00:00", end_time: "23:59:59")
+s_course = simple_teacher.courses.create(id: Course.count + 1, name: "Calculus", period: "1", start_time: "23:00", end_time: "23:59:59")
+s_course2 = simple_teacher.courses.create(id: Course.count + 1, name: "English IV", period: "2", start_time: "0:00", end_time: "23:59:59")
+s_course3 = simple_teacher.courses.create(id: Course.count + 1, name: "Philosophy", period: "3", start_time: "23:00", end_time: "23:59:59")
+s_course4 = simple_teacher.courses.create(id: Course.count + 1, name: "History", period: "4", start_time: "23:00", end_time: "23:59:59")
+s_course5 = simple_teacher.courses.create(id: Course.count + 1, name: "Computer Science", period: "5", start_time: "23:00", end_time: "23:59:59")
 
 [will1, will2, blake, carrie, jennica, trevor].each do |student|
   [s_course, s_course2, s_course3, s_course4, s_course5]. each do |course|
