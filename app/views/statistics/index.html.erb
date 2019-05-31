@@ -62,7 +62,7 @@
   <div class="dynamic-container">
     <div class="dynamic">
       <div class="student-card" id="attendance-<%= student.id %>">
-        <%= link_to "#{student.first_name} #{student.last_name}", student_path(student.id, course_id: facade.course.id), id:"small-link" %>
+        <%= link_to "#{student.first_name} #{student.last_name}", student_path(student.id, course_id: facade.course.id), class:"medium-link" %>
         <div class="smaller-grey">
           #<%= student.student_id %>
         </div>
