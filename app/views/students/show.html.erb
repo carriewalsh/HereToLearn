@@ -10,14 +10,7 @@
   <h5 class='hide-predictions'>&UpArrowBar; Hide Grade Prediction &UpArrowBar;</h5>
 </div>
 <div class="banner predictions">
-  <div class="dynamic-container">
-    <div class="dynamic">
-      <div class="prediction-explanation">
-        <h3 class="grey-heading">Grade Prediction</h3>
-      </div>
-    </div>
-  </div>
-  <div class="dynamic-container">
+  <div class="dynamic-container-wide">
     <div class="dynamic">
       <div class="prediction-graph">
         <h3 class="grey-heading">Prediction Graph</h3>
@@ -99,6 +92,7 @@
         <% facade.schedule.each do |course| %>
           <h4 class="schedule"><%= course %></h4>
         <% end %>
+        <br>
       </div>
 
     </div>
@@ -154,7 +148,7 @@
             <%= f.label "Provide a strategy that has helped this student be successful" %>
             <br>
             <div class="strategy-field">
-              <%= f.text_area :strategy, size: "60x10", require: true  %>
+              <%= f.text_area :strategy, size: "60x10", require: true, autofocus: true   %>
               <div class="strategy-examples">
                 <p><b>Example</b></p>
                 <p>"Blake can sometimes be jittery and needs assistance staying on tasks. It is helpful for him to have a short list of tasks and he can take a small break in between completion."</p>
@@ -257,6 +251,8 @@
   $(document).ready(function() {
     $('.more-attendance').hide();
     $('.hide-attendance').hide();
+    $('.predictions').hide();
+    $('.hide-predictions').hide();
   });
   $('.show-attendance').on('click', function(event) {
     $('.more-attendance').slideDown();
@@ -268,10 +264,7 @@
     $('.hide-attendance').slideUp();
     $('.show-attendance').slideDown();
   })
-  $(document).ready(function() {
-    $('.predictions').hide();
-    $('.hide-predictions').hide();
-  });
+
   $('.show-predictions').on('click', function(event) {
     $('.predictions').slideDown();
     $('.hide-predictions').slideDown();
