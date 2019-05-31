@@ -16,22 +16,22 @@
             </div>
             <div class="attendance-options">
               <div class="option">
-                <div class="attendance-icon attendance-present"></div><h4 class="small-link">Present</h4>
+                <div class="attendance-icon attendance-present"></div><h4 class="medium-link">Present</h4>
               </div>
               <div class="option">
-                <div class="attendance-icon attendance-absent"></div><h4 class="small-link">Absent</h4>
+                <div class="attendance-icon attendance-absent"></div><h4 class="medium-link">Absent</h4>
               </div>
               <div class="option">
-                <div class="attendance-icon attendance-tardy"></div><h4 class="small-link">Tardy</h4>
+                <div class="attendance-icon attendance-tardy"></div><h4 class="medium-link">Tardy</h4>
               </div>
               <div class="option">
-                <div class="attendance-icon attendance-present_no_response"></div><h4 class="small-link">Present No Response</h4>
+                <div class="attendance-icon attendance-present_no_response"></div><h4 class="medium-link">Present No Response</h4>
               </div>
               <div class="option">
-                <div class="attendance-icon attendance-absent_with_response"></div><h4 class="small-link">Absent With Response</h4>
+                <div class="attendance-icon attendance-absent_with_response"></div><h4 class="medium-link">Absent With Response</h4>
               </div>
             </div>
-            <%= link_to "#{student.first_name} #{student.last_name}", student_path(student.id, course_id: course.id), class:"small-link" %>
+            <%= link_to "#{student.first_name} #{student.last_name}", student_path(student.id, course_id: course.id), class:"medium-link" %>
             <div class="smaller-grey">
               #<%= student.student_id %>
             </div>
@@ -60,6 +60,7 @@
     var course = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id;
     updateAttendance(id, course, attendance);
     showUpdatedAttendance(id, course, attendance);
+    $('.attendance-options').slideUp();
   });
 
   var updateAttendance = function(id, course, attendance) {
