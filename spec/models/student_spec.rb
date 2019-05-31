@@ -23,11 +23,15 @@ describe Student, type: :model do
         yesterday = today-1
 
         student = create(:student)
-        course = student.courses.create(name: "PE", period: "1", start_time: "2019-05-21 8:00:00", end_time: "2019-05-21 9:00:00")
+        course = student.courses.create(name: "PE", period: "1", start_time: "8:00", end_time: "9:00")
+        course2 = student.courses.create(name: "PE2", period: "2", start_time: "9:00", end_time: "10:00")
 
         yesterday_att = student.attendances.create(course_id: course.id, created_at: yesterday, attendance: :absent)
         today_att = student.attendances.create(course_id: course.id, created_at: today, attendance: :present)
-        expect(student.todays_attendance).to eq("present")
+        today_att_nil = student.attendances.create(course_id: course2.id, created_at: today, attendance: nil)
+
+        expect(student.todays_attendance(course.id)).to eq("present")
+        expect(student.todays_attendance(course2.id)).to eq("nil")
       end
 
       it "returns nil if TODAY's class hasn't started yet" do
