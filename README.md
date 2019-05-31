@@ -49,3 +49,17 @@ https://github.com/JennicaStiehl/surveys
 rails generate rspec:install
 bundle exec rspec
 ```
+### Tech Stack
+```
+-Javascript
+-jQuery
+-Chart JS
+-Python
+-pandas
+-scikit-learn
+-NumPy
+-django
+-Sinatra
+-Ruby on Rails
+-Redis
+```
