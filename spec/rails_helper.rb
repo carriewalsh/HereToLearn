@@ -3,7 +3,13 @@ require 'simplecov'
 require 'webmock/rspec'
 require 'rake'
 
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' do
+  add_filter '/channels/'
+  add_filter '/jobs/'
+  add_filter '/mailers/'
+  add_filter '/helpers/'
+end
+
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
