@@ -13,7 +13,7 @@ th {
   background: #DDD;
   color: #666;
   text-align: center;
-  width: 14.285714285;
+  width: 14.2857142857143%;
 }
 
 td {
@@ -24,8 +24,8 @@ td {
   font-size: 16px;
 }
 
-  .notmonth {color: #CCC;  }
-  .today { background-color: #D7F2FF; }
+.notmonth, .notmonth a { color: #CCC; }
+.today { background-color: #D7F2FF; }
 
   #month {
     margin: 0;
@@ -38,7 +38,7 @@ td {
       color: #999;
     }
   }
-#ul {
-  font-size: 11px;
-  padding-left: 20px;
-}
+    #articles ul {
+      font-size: 11px;
+      padding-left: 20px;
+    }
