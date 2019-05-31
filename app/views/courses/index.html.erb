@@ -46,7 +46,8 @@
   $(document).ready(function() {
     $('.attendance-options').hide();
   });
-  $('.current').on('click', function(event) {
+  $('.student-card').on('click', '.current', function(event) {
+    debugger;
     $(event.target).next().slideToggle();
   });
   $('.student-card').mouseleave(
