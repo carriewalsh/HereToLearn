@@ -26,7 +26,7 @@ gem 'redis', '~> 4.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'qtip2-jquery-rails', '~> 2.2.100'
 gem 'chartkick'
-
+gem  'jquery-ui-rails'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
