@@ -29,6 +29,8 @@ describe "As a logged-in teacher" do
       count = @teacher.courses.first.students.count
       within first ".course-card" do
         expect(page).to have_css(".student-card", count: count)
+        expect(page).to have_content(Student.first.first_name)
+        expect(page).to have_content(Student.second.first_name)
       end
     end
 

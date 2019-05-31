@@ -47,6 +47,14 @@ describe "As a teacher" do
     end
   end
 
+  it "I can log in as a counselor" do
+    counselor = create(:teacher, password: 'password', role: 1)
+    fill_in "session[email]", with: counselor.email
+    fill_in "session[password]", with: "password"
+    click_on "LOG IN"
+    expect(current_path).to eq(counselor_dashboard_path)
+  end
+
   it "I cannot log in with bad credentials" do
     fill_in "session[email]", with: @teacher.email
     fill_in "session[password]", with: "not_password"

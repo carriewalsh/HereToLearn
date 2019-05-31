@@ -8,8 +8,4 @@ class CoursesFacade
   def courses
     current_user.courses
   end
-
-  def students(course_id)
-    courses.find(course_id).students
-  end
 end
