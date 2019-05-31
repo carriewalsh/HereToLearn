@@ -78,4 +78,15 @@ describe 'A student with their e-mail in the system' do
     expect(attendance.attendance).to eq(nil)
   end
 
+  describe 'api for updating attendance', type: :request do
+
+    it 'changes attendance status with a put call to api/v1/attendances' do
+      url = "/api/v1/attendances?student_id=#{@student.id}&course_id=#{@on_time_class.id}&attendance=present"
+      put url
+
+      attendance = @student.attendances.find_by(course: @on_time_class)
+      expect(attendance.attendance).to eq('present')
+    end
+  end
+
 end
