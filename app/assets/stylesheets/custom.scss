@@ -567,6 +567,18 @@ footer {
   padding-left: 25px;
 }
 
+.schedule-link {
+  color: #fdb811;
+  font-size: calc((-.2 *(1em - 20px) - -1.9em - 13px));
+  font-weight: 300;
+  padding-left: 25px;
+}
+
+.schedule-link:hover {
+  color: #5fb0c4!important;
+}
+
+
 .attendance-chart {
   background-color: #fff;
   margin: 25px auto;
