@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "As a teacher" do
   before :each do
-    @teacher = create(:teacher, password: "password")
+    @teacher = create(:teacher, password: "password", role: 2)
     visit welcome_path
   end
 
@@ -14,6 +14,10 @@ describe "As a teacher" do
     Student.second.courses << Course.first
     Student.third.courses << Course.second
     Student.fourth.courses << Course.second
+    att1 = Student.first.attendances.create(attendance: "absent",course_id: Course.first.id, created_at: DateTime.now.midnight)
+    att2 = Student.second.attendances.create(attendance: "present",course_id: Course.first.id, created_at: DateTime.now.midnight)
+    att3 = Student.third.attendances.create(attendance: "absent",course_id: Course.second.id, created_at: DateTime.now.midnight)
+    att4 = Student.fourth.attendances.create(attendance: "present",course_id: Course.second.id, created_at: DateTime.now.midnight)
 
     expect(page).to have_content("HereToLearn")
 
@@ -41,6 +45,14 @@ describe "As a teacher" do
       expect(page).to_not have_link("#{Student.third.last_name}")
       expect(page).to_not have_link("#{Student.fourth.last_name}")
     end
+  end
+
+  it "I can log in as a counselor" do
+    counselor = create(:teacher, password: 'password', role: 1)
+    fill_in "session[email]", with: counselor.email
+    fill_in "session[password]", with: "password"
+    click_on "LOG IN"
+    expect(current_path).to eq(counselor_dashboard_path)
   end
 
   it "I cannot log in with bad credentials" do

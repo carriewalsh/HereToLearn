@@ -14,7 +14,7 @@
 <div class="student-container">
   <% facade.students.each do |student| %>
   <div class="student-card" id=<%= student.id %>></div>
-    <%= link_to "#{student.first_name} #{student.last_name}", counselor_student_path(student.id), id:"small-link" %>
+    <%= link_to "#{student.first_name} #{student.last_name}", counselor_student_path(student.id), class:"small-link" %>
     <div class="smaller-grey">
       #<%= student.student_id %>
     </div>

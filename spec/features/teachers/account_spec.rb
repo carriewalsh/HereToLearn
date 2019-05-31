@@ -3,12 +3,12 @@ require "rails_helper"
 describe "As a logged-in teacher" do
   describe "when I visit my account page" do
     before :each do
-      @teacher = create(:teacher, password: "password")
+      @teacher = create(:teacher, password: "password", role: 2)
     end
 
     it "shows me my information" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@teacher)
-      visit account_path
+      visit '/account'
       within ".dynamic-container" do
         expect(page).to have_content("First Name: #{@teacher.first_name}")
         expect(page).to have_content("Last Name: #{@teacher.last_name}")
