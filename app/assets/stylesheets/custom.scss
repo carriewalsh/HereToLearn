@@ -1,3 +1,8 @@
+/*
+provides speech bubble tips from gem 'qtip2-jquery-rails':
+= require qtip2-jquery-rails
+= require jquery-ui/datepicker
+*/
 
 body {
   background: #F6F7F8;
@@ -56,7 +61,7 @@ header nav.navbar {
 }
 
 .navbar {
-  position: relatiove;
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -125,6 +130,21 @@ header nav.navbar .navbarNav li a {
   position: relative;
 }
 
+.stats {
+  color: #4b4b4b;
+  cursor: pointer;
+  font-size: calc((-.2 *(1em - 13px) - -2em - 13px));
+  line-height: 26px;
+}
+
+.nav-stats {
+  background: white;
+  padding: 15px;
+  position: absolute;
+  width: 230px;
+  z-index: 20;
+}
+
 .item-value::after, .nav-button::after {
   content: '';
   background-color: #f9e0a9;
@@ -164,12 +184,14 @@ header nav.navbar .navbarNav li a {
 }
 
 .logged-in-as {
+  color: #6f6f6f;
   display: flex;
 }
 
 .logged-in-as h3 {
-  padding-left: 150px;
+  font-weight: 300;
   margin-top: -50px;
+  padding-left: 150px;
 }
 
 .logged-in-as h3::after {
@@ -220,14 +242,22 @@ footer {
   width: 100%;
 }
 
-.dynamic-container, .tagline-container {
+.dynamic-container-wide {
+  height: auto;
+  grid-column: 1 / span 2;
   margin: 10px 60px;
   padding: 0px 30px;
-  height: 500px;
   z-index: 2;
 }
 
-.dynamic-container::before, .tagline-container::before {
+.dynamic-container, .tagline-container {
+  margin: 10px 60px;
+  padding: 0px 30px;
+  height: auto;
+  z-index: 2;
+}
+
+.dynamic-container::before, .tagline-container::before, .dynamic-container-wide::before {
   content: '';
   background-color: #5fb0c4;
   display: block;
@@ -237,7 +267,7 @@ footer {
   margin-top: -10px;
 }
 
-.dynamic-container::after, .tagline-container::after {
+.dynamic-container::after, .tagline-container::after, .dynamic-container-wide::after {
   content: '';
   background-color: #5fb0c4;
   display: block;
@@ -325,7 +355,7 @@ footer {
   color: #003a78;
   border-radius: 6px;
   margin-top: 20px;
-  padding: 5px;
+  padding: 5px 15px;
 }
 
 .about-paragraph {
@@ -354,6 +384,7 @@ footer {
 .course-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .course-card {
@@ -402,6 +433,7 @@ footer {
 
 .date {
   color: #003a78;
+  font-size: 20px;
   padding-left: 50px;
 }
 
@@ -462,13 +494,14 @@ footer {
   padding-bottom: 10px;
 }
 
-.hide-attendance, .show-attendance, .show-predictions, .hide-predictions {
+.hide-attendance, .show-attendance, .show-predictions, .hide-predictions, .hide-grouping, .show-grouping {
   color: #6f6f6f;
   cursor: pointer;
+  font-size: 20px;
   text-align: center;
 }
 
-.hide-attendance::after, .show-attendance::after, .show-predictions::after, .hide-predictions::after {
+.hide-attendance::after, .show-attendance::after, .show-predictions::after, .hide-predictions::after, .hide-grouping::after, .show-grouping::after {
   content: '';
   background-color: #f9e0a9;
   display: block;
@@ -480,7 +513,7 @@ footer {
   transition: all .3s ease-in-out;
 }
 
-.hide-attendance:hover::after, .show-attendance:hover::after, .show-predictions:hover::after, .hide-predictions:hover::after {
+.hide-attendance:hover::after, .show-attendance:hover::after, .show-predictions:hover::after, .hide-predictions:hover::after, .hide-grouping:hover::after, .show-grouping:hover::after {
   content: '';
   background-color: #cfe2f3ff;
   display: block;
@@ -542,11 +575,12 @@ footer {
 }
 
 .student-name {
+  font-size: calc((-.2 *(1em - 20px) - -2.4em - 13px));
   position: fixed;
   background: #F6F7F8;
-  z-index: 10;
-  margin-left: 50%;
-  margin-top: -75px;
+  z-index: 9;
+  margin-left: 10%;
+  margin-top: -20px;
 }
 
 .modal-edit, .modal-add, .modal-builtin-add {
@@ -666,9 +700,32 @@ footer {
   width: 45%;
 }
 
+/* Course Statistics Page */
+.predicted-score {
+  text-align: center;
+}
+
+.predicted-score h2 {
+  margin-block-start: 0.1em;
+  margin-block-end: 0.1em;
+}
+
 .student-chartjs {
   padding: .75em;
+  display: inline-block;
+  height: 15em;
+  width: 15em;
 }
+
+.dynamic.thin {
+  padding: 0;
+  margin-top: -60px;
+}
+
+.thin.student-card {
+  padding: 0 15px;
+}
+
 .survey-container h1 {
   border-bottom: solid 3px #fdb811;
   font-size: 70px;
@@ -680,6 +737,7 @@ footer {
 .survey-form {
   padding: 0 25%;
 }
+
 .question-text {
   font-size: 40px;
   text-align: center;
@@ -762,6 +820,18 @@ footer {
 
 .small-link:hover {
   color: #5fb0c4;
+}
+
+.medium-link {
+  font-size: calc((-.2 *(1em - 20px) - -2em - 13px));
+  letter-spacing: 1px;
+  color: black;
+  margin: 0px;
+  margin-left: 10px;
+}
+
+.medium-link:hover {
+  color: #5fb0c4!important;
 }
 
 .graph-card {
