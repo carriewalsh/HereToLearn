@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "As a teacher" do
   before :each do
-    @teacher = create(:teacher, password: "password")
+    @teacher = create(:teacher, password: "password", role: 2)
     visit welcome_path
   end
 
@@ -14,6 +14,10 @@ describe "As a teacher" do
     Student.second.courses << Course.first
     Student.third.courses << Course.second
     Student.fourth.courses << Course.second
+    att1 = Student.first.attendances.create(attendance: "absent",course_id: Course.first.id, created_at: DateTime.now.midnight)
+    att2 = Student.second.attendances.create(attendance: "present",course_id: Course.first.id, created_at: DateTime.now.midnight)
+    att3 = Student.third.attendances.create(attendance: "absent",course_id: Course.second.id, created_at: DateTime.now.midnight)
+    att4 = Student.fourth.attendances.create(attendance: "present",course_id: Course.second.id, created_at: DateTime.now.midnight)
 
     expect(page).to have_content("HereToLearn")
 

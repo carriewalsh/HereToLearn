@@ -5,7 +5,7 @@ describe "As a logged-in Teacher" do
     before :each do
       @course = create(:course)
       @course2 = create(:course)
-      @teacher = create(:teacher)
+      @teacher = create(:teacher, role: 2)
       @teacher.courses << Course.first
       @student = create(:student)
       @student.courses << Course.first
@@ -22,7 +22,6 @@ describe "As a logged-in Teacher" do
       @student.attendances.create(course_id: @course.id, created_at: "2019-05-26 02:00:00", attendance: "present")
       @student.attendances.create(course_id: @course.id, created_at: "2019-05-26 02:00:00", attendance: "present")
       @student.attendances.create(course_id: @course2.id, created_at: "2019-05-26 02:00:00", attendance: "absent")
-
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@teacher)
       visit student_path(@student, {course_id: @course.id})
