@@ -710,11 +710,42 @@ footer {
   margin-block-end: 0.1em;
 }
 
+/* Course Statistics Page */
+.predicted-score {
+  text-align: center;
+}
+
+.predicted-score h2 {
+  margin-block-start: 0.1em;
+  margin-block-end: 0.1em;
+}
+
 .student-chartjs {
   padding: .75em;
   display: inline-block;
   height: 15em;
   width: 15em;
+}
+
+.student-chartjs canvas {
+  height: inherit;
+  width: inherit;
+}
+
+.student-chartjs > canvas:first-child {
+  background-image: url('copper-loader.gif');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.dynamic.thin {
+  padding: 0;
+  margin-top: -60px;
+}
+
+.thin.student-card {
+  padding: 0 15px;
 }
 
 .dynamic.thin {
