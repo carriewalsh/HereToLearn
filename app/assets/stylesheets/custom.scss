@@ -541,6 +541,23 @@ footer {
   width: 85%;
 }
 
+.chart-container {
+  display: flex;
+  justify-content: center;
+}
+
+.student-show-chartjs {
+  padding: .75em;
+  display: inline-block;
+  height: 15em;
+  width: 15em;
+}
+
+.student-show-chartjs canvas {
+  height: inherit;
+  width: inherit;
+}
+
 .strategy {
   background: white;
   font-weight: 300;

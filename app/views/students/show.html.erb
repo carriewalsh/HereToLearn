@@ -15,64 +15,40 @@
       <div class="prediction-graph">
         <h3 class="grey-heading">Prediction Graph</h3>
         <div class="attendance-chart">
-          <div class="form-button predict-button"><%= link_to "PREDICT TEST SCORES", '#', :onclick => "getData(#{facade.student.student_id})" %></div>
-          <canvas id=<%= "#{facade.student.id}" %> width="200" height="200"></canvas>
+          <div class="form-button predict-button"><%= link_to "PREDICT TEST SCORES", '#', onclick: "getData(#{facade.student.id})" %></div>
+          <div class="predicted-score">
+            <h2>Predicted Score: <div id=<%= "predicted-score-#{facade.student.id}" %>></div></h2>
+          </div>
+          <div class="chart-container">
+            <div class="student-show-chartjs food-chart">
+              <canvas id='<%= "foodchart-#{facade.student.id}" %>'></canvas>
+            </div>
+            <div class="student-show-chartjs sleep-chart">
+              <canvas id='<%= "sleepchart-#{facade.student.id}" %>'></canvas>
+            </div>
+          </div>
           <script>
             function getData(student_id) {
-              fetch(`https://lit-fortress-28598.herokuapp.com/machinelearning/results/?student_id=${<%= "#{facade.student.id}" %>}`)
-                .then(function(response) {
-                  return response.json();
-                })
-                .then(function(myJson) {
-                  buildChart(myJson);
-              });
-            }
-            function buildChart(data) {
-              var ctx = document.getElementById(<%= "#{facade.student.id}" %>).getContext('2d');
-              var sleepData = Object.values(data.sleep_quality);
-              var sleepLabels = Object.keys(data.sleep_quality);
-              return new Chart(ctx, {
-                type: 'bar',
-                data: {
-                  labels: sleepLabels,
-                  datasets: [{
-                    data: sleepData,
-                    backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                  }]
-                },
-                options: {
-                  legend: {
-                    display: false
-                  },
-                  title: {
-                          display: true,
-                          text: 'Sleep this Week (%)'
-                  },
-                  responsive: false,
-                  scales: {
-                    yAxes: [{
-                      ticks: {
-                        beginAtZero: true
-                      }
-                    }]
-                  }
-                }
+              var url = `https://lit-fortress-28598.herokuapp.com/machinelearning/results/?student_id=${<%= facade.student.id %>}`
+              fetch(url)
+              .then(function(response) {
+                return response.json();
+              })
+              .then(function(myJson) {
+                return myJson;
+              })
+              .then(function(json) {
+                var data = Object.values(json.meals);
+                var labels = Object.keys(json.meals);
+                buildChart(data, labels, `foodchart-${<%= facade.student.id %>}`, 'Weekly Food (%)');
+                return json
+              })
+              .then(function(json) {
+                var data = Object.values(json.sleep_quality);
+                var labels = Object.keys(json.sleep_quality);
+                var ctx = document.getElementById(`predicted-score-${<%= facade.student.id %>}`);
+                ctx.appendChild(document.createTextNode(json.score));
+                buildChart(data, labels, `sleepchart-${<%= facade.student.id %>}`, 'Weekly Sleep (%)');
               });
             }
           </script>
