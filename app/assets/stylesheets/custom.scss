@@ -385,12 +385,44 @@ footer {
   justify-content: center;
 }
 
+.roster {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.roster-course-card {
+  display: flex;
+  flex-direction : column;
+  flex-wrap: wrap;
+  grid-column: 1 span 2;
+  margin: 20px;
+  max-height: 500px;
+  padding: 15px;
+  width: 45%;
+}
+
+.roster-student-card {
+  background: white;
+  display: flex;
+  align-items: center;
+  flex: 1 1 33.333%;
+  justify-content: flex-start;
+  padding: 10px 30px;
+  width: 100%;
+}
+
+.roster-student-card:hover {
+  background-color: #f9e0a9;
+  transition: all .3s ease-in-out;
+}
+
 .course-card {
   background: white;
   width: 600px;
   margin: 20px;
   padding: 15px;
 }
+
 
 .student-container {
   padding: 15px 80px;
@@ -406,8 +438,8 @@ footer {
   margin-top: 10px;
   padding: 0px 30px;
   width: 100%;
-
 }
+
 .student-card:hover {
   background-color: #f9e0a9;
   transition: all .3s ease-in-out;
