@@ -1,5 +1,5 @@
 class StrategiesController < ApplicationController
-  before_action :require_teacher! || :require_teacher!
+  before_action :require_teacher! || :require_counselor!
 
   def create
     strategy = Strategy.new(strategy_params)
