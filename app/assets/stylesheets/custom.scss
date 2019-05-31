@@ -1,5 +1,5 @@
 /*
-= require jquery-ui/datepicker
+= require jquery-ui/widgets/datepicker
 */
 
 body {
@@ -557,7 +557,7 @@ footer {
 
 .grey-heading {
   color: #6f6f6f;
-  font-size: calc((-.2 *(1em - 20px) - -2.2em - 13px));
+  font-size: calc((-.2 *(1em - 20px) - -1.9em - 13px));
   font-weight: 300;
   margin: 5px;
 }
@@ -848,6 +848,12 @@ footer {
   flex-wrap: wrap;
   flex-direction: row;
   padding: 5px;
+  justify-content: center;
+}
+
+.stats-header {
+  display: flex;
+  font-size: 24px;
   justify-content: center;
 }
 

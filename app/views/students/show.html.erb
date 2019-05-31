@@ -89,10 +89,11 @@
     <div class="dynamic">
       <div class="schedule">
         <h3 class="grey-heading">Schedule</h3>
+        <br>
         <% facade.schedule.each do |course| %>
           <h4 class="schedule"><%= course %></h4>
+          <br>
         <% end %>
-        <br>
       </div>
 
     </div>
@@ -101,22 +102,26 @@
     <div class="dynamic">
       <div class="statistics">
         <h3 class="grey-heading">Attendance Statistics : <%= facade.course.name %></h3>
+        <br>
         <% facade.statistics.each do |stat| %>
           <h4 class="statistics"><%= stat %></h4>
+          <br>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+<br>
 <div class="show-hide-container">
   <h5 class='show-attendance'>&DownArrowBar; Show Attendance Calendar and Graph &DownArrowBar;</h5>
   <h5 class='hide-attendance'>&UpArrowBar; Hide Attendance Calendar and Graph &UpArrowBar;</h5>
 </div>
+<br>
 <div class="banner more-attendance">
   <div class="dynamic-container">
     <div class="dynamic">
       <div class="calendar">
-        <h3 class="grey-heading">Calendar</h3>
+        <h3 class="grey-heading">Calendar - <%= Date.today.strftime("%B %Y") %></h3>
         <br>
           <%= stylesheet_link_tag "calendar" %>
           <%= calendar do |date| %>

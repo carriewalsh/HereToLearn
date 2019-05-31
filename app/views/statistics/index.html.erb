@@ -1,4 +1,6 @@
-<h1>Statistics</h1>
+<div class="stats-header">
+  <h3 class="grey-heading">Statistics</h3>
+</div>
 <script>
   function buildChart(data, labels, element, title) {
     var ctx = document.getElementById(element).getContext('2d');
@@ -61,12 +63,12 @@
 <div class="date-container">
   <h2 class="date"><%= date %></h2>
 </div>
-
+<br>
 <div class="text-container">
   <mark class="item-key"><%= "Period #{facade.course.period}" %></mark>
   <mark class="item-value"><%= " #{facade.course.name}" %></mark>
 </div>
-
+<br>
 <div class="banner">
   <% facade.students.each do |student| %>
   <div class="dynamic-container">
