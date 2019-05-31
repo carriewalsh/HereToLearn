@@ -1,7 +1,6 @@
 class Student::SurveyController < ApplicationController
   def new
     google_id = request.env["omniauth.auth"][:uid]
-
     student = Student.find_by(google_id: google_id.to_s)
     if student
       session[:student_id] = student.id
