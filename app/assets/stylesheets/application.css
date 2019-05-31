@@ -29,7 +29,7 @@ textarea {
   color: #6f6f6f;
   display: block;
   font-size: 18px;
-  font-weight: 300;
+  font-weiight: 300;
   margin: 15px auto;
   padding: 20px;
   width: 45%;
@@ -37,14 +37,6 @@ textarea {
 
 p {
   margin: 0px;
-}
-
-select {
-  color: #003a78;
-  font-size: 16px;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 header nav.navbar {
@@ -196,7 +188,6 @@ footer {
   position: fixed;
   text-align: center;
   width: 100%;
-  z-index: 5;
 }
 
 .footer-link {
@@ -263,6 +254,20 @@ footer {
   margin-left: -30px;
 }
 
+.dynamic.thin {
+  color: #003a78;
+  background-color: #F6F7F8;
+  height: 75%;
+  padding: 20px;
+  margin-top: -50px;
+  margin-left: -30px;
+}
+
+.predicted-score h2 {
+  margin-block-start: 0.20em;
+  margin-block-end: 0.20em;
+}
+
 .tagline {
   font-size: calc((-.2 *(1em - 13px) - -2.5em - 13px));
 }
@@ -303,7 +308,6 @@ footer {
 .submit-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   width: 80%;
   margin: 0 auto;
@@ -317,7 +321,7 @@ footer {
   color: #cfe2f3ff;
   border-radius: 6px;
   margin-top: 20px;
-  padding: 5px 15px;
+  padding: 5px;
   text-align: center;
 }
 
@@ -343,11 +347,9 @@ footer {
 }
 
 .h2l-team {
+  text-align: right;
   padding-right: 100px;
   letter-spacing: 3px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
 }
 
 .input-box {
@@ -377,15 +379,20 @@ footer {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  height: 45px;
-  margin-top: 10px;
-  padding: 0px 30px;
   width: 100%;
 
 }
+
 .student-card:hover {
   background-color: #f9e0a9;
   transition: all .3s ease-in-out;
+}
+
+.student-chartjs {
+  padding: 0 5px;
+  display: inline-block;
+  width: 15em;
+  height: 15em;
 }
 
 .item-key::after {
@@ -466,13 +473,13 @@ footer {
   padding-bottom: 10px;
 }
 
-.hide-attendance, .show-attendance, .show-predictions, .hide-predictions {
+.hide-attendance, .show-attendance {
   color: #6f6f6f;
   cursor: pointer;
   text-align: center;
 }
 
-.hide-attendance::after, .show-attendance::after, .show-predictions::after, .hide-predictions::after {
+.hide-attendance::after, .show-attendance::after {
   content: '';
   background-color: #f9e0a9;
   display: block;
@@ -484,7 +491,7 @@ footer {
   transition: all .3s ease-in-out;
 }
 
-.hide-attendance:hover::after, .show-attendance:hover::after, .show-predictions:hover::after, .hide-predictions:hover::after {
+.hide-attendance:hover::after, .show-attendance:hover::after {
   content: '';
   background-color: #cfe2f3ff;
   display: block;
@@ -506,12 +513,6 @@ footer {
   font-size: calc((-.2 *(1em - 20px) - -1.9em - 13px));
   font-weight: 300;
   padding-left: 25px;
-}
-
-.attendance-chart {
-  background-color: #fff;
-  margin: 25px auto;
-  width: 85%;
 }
 
 .strategy {
@@ -553,7 +554,7 @@ footer {
   margin-top: -75px;
 }
 
-.modal-edit, .modal-add, .modal-builtin-add {
+.modal-edit, .modal-add {
   background-color: rgba(0,0,0,0.4);
   display: none;
   left: 0;
@@ -565,7 +566,7 @@ footer {
   z-index: 20;
 }
 
-.modal-content {
+.modal-content{
   background: #F6F7F8;
   margin: 15% auto;
   padding: 20px;
@@ -589,13 +590,13 @@ footer {
   z-index: 2;
 }
 
-.add-strategy, .edit-strategy, .add-builtin-strategy {
+.add-strategy, .edit-strategy {
   margin-left: 45px;
   position: relative;
   cursor: pointer;
 }
 
-.edit-strategy::after, .add-strategy::after, .add-builtin-strategy::after {
+.edit-strategy::after, .add-strategy::after {
   content: '';
   background-color: #f9e0a9;
   display: block;
@@ -608,7 +609,7 @@ footer {
   transition: all .3s ease-in-out;
 }
 
- .add-strategy:hover::after, .edit-strategy:hover::after, .add-builtin-strategy:hover::after {
+ .add-strategy:hover::after, .edit-strategy:hover::after {
   content: '';
   background-color: #f9e0a9;
   display: block;
@@ -670,124 +671,18 @@ footer {
   width: 45%;
 }
 
-.student-chartjs {
-  padding: .75em;
-}
-.survey-container h1 {
-  border-bottom: solid 3px #fdb811;
-  font-size: 70px;
-  margin-top: 20px;
-  text-align: center;
-  width: 100%;
-}
-
-.survey-form {
-  padding: 0 25%;
-}
-.question-text {
-  font-size: 40px;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.survey-container {
-  background: #222222;
-  color: #F6F7F8;
-  font-family: 'Rajdhani', sans-serif;
-  margin-top: -30px;
-  padding-top: 20px;
-  padding-bottom: 50px;
-  padding-bottom: 100%;
-}
-
-.welcome-student-container {
-  background: #222222;
-  color: #F6F7F8;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 20px;
-  padding: 15px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.response-container {
-  display: flex;
-  flex-direction: column;
-  font-size: 20px;
-  padding: 0 25%;
-}
-
-.survey-button {
-  background-color: #24d3ff;
-  border: none;
-  font-size: 20px;
-  font-weight: 300;
-  color: black;
-  border-radius: 6px;
-  margin-top: 20px;
-  padding: 5px;
+.predicted-score {
   text-align: center;
 }
 
-.survey-button:hover {
-  background-color: #fdb811;
-  border: none;
-  font-size: 20px;
-  font-weight: 300;
-  color: white;
-  border-radius: 6px;
-  margin-top: 20px;
-  padding: 5px;
-  text-align: center;
-}
 
-.code-form {
-  font-size: 40px;
-  padding: 0 40%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.predict-button a {
-  color: white;
-}
-
-
-.small-link {
+#small-link {
   font-size: calc((-.2 *(1em - 20px) - -1.8em - 13px));
   letter-spacing: 1px;
   color: black;
   margin: 0px;
-  margin-left: 10px;
 }
 
-.small-link:hover {
+#small-link:hover {
   color: #5fb0c4;
-}
-
-.graph-card {
-  width: 40%;
-  margin: 20px;
-}
-
-
-.graph-card img {
-  width: 100%;
-  height: auto;
-}
-
-.graph-container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  padding: 5px;
-  justify-content: center;
-}
-
-#code {
-  font-size: 24px;
-
 }
