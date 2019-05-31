@@ -3,7 +3,7 @@ module CalendarHelper
     Calendar.new(self, date, block).table
   end
 
-  class Calendar < Struc.new(:view, :date, :callback)
+  class Calendar < Struct.new(:view, :date, :callback)
     HEADER = %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday]
     START_DAY = :sunday
 
@@ -30,7 +30,7 @@ module CalendarHelper
     end
 
     def day_cell(day)
-      content_tag :td, view.capture(day, &?callback), class: day_classes(day)
+      content_tag :td, view.capture(day, &callback), class: day_classes(day)
     end
 
     def day_classes(day)
@@ -46,3 +46,4 @@ module CalendarHelper
       (first..last).to_a.in_groups_of(7)
     end
   end
+end

@@ -1,7 +1,7 @@
 /*
 provides speech bubble tips from gem 'qtip2-jquery-rails':
 = require qtip2-jquery-rails
-= require jquery.ui.datepicker
+= require jquery-ui/datepicker
 */
 
 body {

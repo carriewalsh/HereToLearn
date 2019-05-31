@@ -122,6 +122,11 @@
     <div class="dynamic">
       <div class="calendar">
         <h3 class="grey-heading">Calendar</h3>
+        <br>
+          <%= stylesheet_link_tag "calendar" %>
+          <%= calendar do |date| %>
+            <%= date.day %>
+          <% end %>
       </div>
     </div>
   </div>
