@@ -68,6 +68,7 @@
         <div class="logged-in-as">
           <h3><%= "Logged in as #{current_user.first_name} #{current_user.last_name}"  %>
           </h3>
+          
         </div>
       <% end %>
       <% if !flash.empty? %>
@@ -90,9 +91,9 @@
       $('.stats').on('click', function(event) {
         $(event.target).next().slideToggle();
       })
-      $('.statistics-options').mouseleave(
+      $('.nav-stats').mouseleave(
       function(event) {
-        $('.statistics-options').slideUp();
+        $('.nav-stats').slideUp();
       });
     </script>
     <%= javascript_include_tag 'application' %>
