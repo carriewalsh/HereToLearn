@@ -16,4 +16,5 @@
 //= require jquery_ujs
 //= require Chart.bundle
 //= require chartkick
+//= require jquery-ui/widgets/datepicker
 //= require_tree .

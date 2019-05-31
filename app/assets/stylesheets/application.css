@@ -461,23 +461,23 @@ footer {
 
 
 .attendance-nil {
-  background-image: image-url('circle-outline-xxl.png');
+  background-image: url('circle-outline-xxl.png');
 }
 
 .attendance-present {
-  background-image: image-url('check-mark-3-xxl.png');
+  background-image: url('check-mark-3-xxl.png');
 }
 .attendance-absent {
-  background-image: image-url('x-mark-xxl.png');
+  background-image: url('x-mark-xxl.png');
 }
 .attendance-tardy {
-  background-image: image-url('letter-t-xxl.png');
+  background-image: url('letter-t-xxl.png');
 }
 .attendance-present_no_response {
-  background-image: image-url('error-3-xxl.png');
+  background-image: url('error-3-xxl.png');
 }
 .attendance-absent_with_response {
-  background-image: image-url('x-mark-5-xxl.png');
+  background-image: url('x-mark-5-xxl.png');
 }
 
 .attendance-options {
