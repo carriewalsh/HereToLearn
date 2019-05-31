@@ -67,7 +67,12 @@
         <h3 class="grey-heading">Schedule</h3>
         <br>
         <% facade.schedule.each do |course| %>
-          <h4 class="schedule"><%= course %></h4>
+          <% if course.teachers.include?(current_user) %>
+            <%= link_to "• Period #{course.period} - #{course.name}", course_path(course), class:"schedule-link" %>
+            <br>
+          <% else %>
+            <h4 class="schedule"><%= "  Period #{course.period} - #{course.name}" %></h4>
+          <% end %>
           <br>
         <% end %>
       </div>

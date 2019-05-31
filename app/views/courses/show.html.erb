@@ -9,13 +9,12 @@
 
 <br>
 <div class="banner">
-  <div class="dynamic-container">
+  <div class="dynamic-container-wide">
     <div class="dynamic">
       <h3 class="grey-heading">Roster</h3>
-      <div class="course-card">
-        <div class="student-container">
+      <div class="roster-course-card">
           <% facade.students.each do |student| %>
-          <div class="student-card" id="attendance-<%= student.id %>">
+          <div class="roster-student-card" id="attendance-<%= student.id %>">
             <div class="attendance-icon current attendance-<%= student.todays_attendance(facade.course.id) %>">
             </div>
             <div class="attendance-options">
@@ -41,13 +40,7 @@
             </div>
           </div>
           <% end %>
-        </div>
       </div>
-    </div>
-  </div>
-  <div class="dynamic-container">
-    <div class="dynamic">
-      <h3 class="grey-heading">Statistics?</h3>
     </div>
   </div>
 </div>
