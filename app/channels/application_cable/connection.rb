@@ -12,7 +12,6 @@ module ApplicationCable
     private
 
       def find_verified_user
-        # binding.pryxt
         if cookies.signed[:user_id]
           Teacher.find(cookies.signed[:user_id])
         else

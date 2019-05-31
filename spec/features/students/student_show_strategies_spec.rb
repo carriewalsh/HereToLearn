@@ -6,7 +6,7 @@ describe "As a logged-in Teacher" do
     before :each do
       @course = create(:course)
       @course2 = create(:course)
-      @teacher = create(:teacher)
+      @teacher = create(:teacher, role: 2)
       @teacher.courses << Course.first
       @student = create(:student)
       @student.courses << Course.first

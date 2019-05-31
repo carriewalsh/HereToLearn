@@ -35,11 +35,21 @@
           display: true,
           text: title
         },
-        responsive: false,
+        responsive: true,
+        maintainAspectRatio: false,
         scales: {
           yAxes: [{
             ticks: {
-              beginAtZero: true
+              beginAtZero: true,
+              max: 100,
+              stepSize: 20
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              autoSkip: false,
+              maxRotation: 45,
+              minRotation: 45
             }
           }]
         }
@@ -60,8 +70,8 @@
 <div class="banner">
   <% facade.students.each do |student| %>
   <div class="dynamic-container">
-    <div class="dynamic">
-      <div class="student-card" id="attendance-<%= student.id %>">
+    <div class="dynamic thin">
+      <div class="thin student-card" id="attendance-<%= student.id %>">
         <%= link_to "#{student.first_name} #{student.last_name}", student_path(student.id, course_id: facade.course.id), id:"small-link" %>
         <div class="smaller-grey">
           #<%= student.student_id %>
@@ -69,12 +79,12 @@
       </div>
       <div class="predicted-score">
         <h2>Predicted Score</h2>
-        <h3 id=<%= "predicted-score-#{student.id}" %>></h3>
+        <h2 id=<%= "predicted-score-#{student.id}" %>></h2>
       </div>
-      <div class="student-chartjs food-chart" style="display: inline-block">
-        <canvas id='<%= "foodchart-#{student.id}" %>' width="200" height="200"></canvas>
+      <div class="student-chartjs food-chart">
+        <canvas id='<%= "foodchart-#{student.id}" %>'></canvas>
         <script>
-          var url = `http://lit-fortress-28598.herokuapp.com/machinelearning/results/?student_id=${<%= student.id %>}`
+          var url = `https://lit-fortress-28598.herokuapp.com/machinelearning/results/?student_id=${<%= student.id %>}`
           var rawData = fetch(url)
           .then(function(response) {
             return response.json();
@@ -91,8 +101,8 @@
 
         </script>
       </div>
-      <div class="student-chartjs sleep-chart" style="display: inline-block">
-        <canvas id='<%= "sleepchart-#{student.id}" %>' width="200" height="200"></canvas>
+      <div class="student-chartjs sleep-chart">
+        <canvas id='<%= "sleepchart-#{student.id}" %>'></canvas>
         <script>
           rawData.then(function(json) {
             var data = Object.values(json.sleep_quality);

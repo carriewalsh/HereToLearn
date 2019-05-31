@@ -37,13 +37,23 @@
         <div class="menu-div">
           <ul class="navbarNav">
             <% if current_user %>
-              <li>
                 <% if current_user.role == 'teacher' %>
+                <li>
+                  <div class="nav-button stats" id="<%= current_id?(statistics_path) %>" >Statistics</div>
+                  <div class="nav-stats">
+                    <% current_user.courses.each do |course| %>
+                      <%= link_to course.name, statistics_path(course_id: course.id), class:'medium-link' %>
+                    <% end %>
+                  </div>
+                </li>
+                <li>
                   <%= link_to "Dashboard", dashboard_path, class:"nav-button", id: current_id?(dashboard_path) %>
+                </li>
                 <% elsif current_user.role == 'counselor' %>
+                <li>
                   <%= link_to "Dashboard", counselor_dashboard_path, class:"nav-button", id: current_id?(dashboard_path) %>
+                </li>
                 <% end %>
-              </li>
               <li>
                 <%= link_to "My Account", account_path, class:"nav-button", id: current_id?(account_path) %>
               </li>
@@ -58,6 +68,7 @@
         <div class="logged-in-as">
           <h3><%= "Logged in as #{current_user.first_name} #{current_user.last_name}"  %>
           </h3>
+          
         </div>
       <% end %>
       <% if !flash.empty? %>
@@ -73,6 +84,18 @@
     </div>
     <!-- <script type="text/javascript" src="/path/to/jquery.min.js"></script>
     <script type="text/javascript" src="/path/to/jquery.qtip.js"></script> -->
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('.nav-stats').hide();
+      });
+      $('.stats').on('click', function(event) {
+        $(event.target).next().slideToggle();
+      })
+      $('.nav-stats').mouseleave(
+      function(event) {
+        $('.nav-stats').slideUp();
+      });
+    </script>
     <%= javascript_include_tag 'application' %>
   </body>
 </html>

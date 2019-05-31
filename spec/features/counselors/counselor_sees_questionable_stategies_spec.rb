@@ -4,9 +4,9 @@ RSpec.describe "counselor strategies" do
   context "as a counselor on my dashboard" do
     it "can unflag or delete suspect reviews" do
       student = create(:student)
-      counselor = create(:teacher, role: :counselor)
-      teacher = create(:teacher, role: :teacher)
-      teacher2 = create(:teacher, role: :teacher)
+      counselor = create(:teacher, role: 1)
+      teacher = create(:teacher, role: 2)
+      teacher2 = create(:teacher, role: 2)
       good_strategy = student.strategies.create(teacher: teacher, strategy: "great student!")
       bad_strategy = student.strategies.create(teacher: teacher2, strategy: "this kid sucks!", flagged: true)
       oops_strategy = student.strategies.create(teacher: teacher2, strategy: "this kid is awesome!", flagged: true)

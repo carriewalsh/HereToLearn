@@ -1,15 +1,17 @@
 <div class="date-container">
   <h2 class="date"><%= date %></h2>
 </div>
+<br>
 <div class="text-container">
   <mark class="item-key"><%= "Period #{facade.course.period}" %></mark>
   <mark class="item-value"><%= " #{facade.course.name}" %></mark>
-  <mark class="item-value statistics"><%= link_to "Statistics", statistics_path(course_id: facade.course.id) %></mark>
 </div>
 
+<br>
 <div class="banner">
   <div class="dynamic-container">
     <div class="dynamic">
+      <h3 class="grey-heading">Roster</h3>
       <div class="course-card">
         <div class="student-container">
           <% facade.students.each do |student| %>
@@ -18,22 +20,22 @@
             </div>
             <div class="attendance-options">
               <div class="option">
-                <div class="attendance-icon attendance-present"></div><h4 class="small-link">Present</h4>
+                <div class="attendance-icon attendance-present"></div><h4 class="medium-link">Present</h4>
               </div>
               <div class="option">
-                <div class="attendance-icon attendance-absent"></div><h4 class="small-link">Absent</h4>
+                <div class="attendance-icon attendance-absent"></div><h4 class="medium-link">Absent</h4>
               </div>
               <div class="option">
-                <div class="attendance-icon attendance-tardy"></div><h4 class="small-link">Tardy</h4>
+                <div class="attendance-icon attendance-tardy"></div><h4 class="medium-link">Tardy</h4>
               </div>
               <div class="option">
-                <div class="attendance-icon attendance-present_no_response"></div><h4 class="small-link">Present No Response</h4>
+                <div class="attendance-icon attendance-present_no_response"></div><h4 class="medium-link">Present No Response</h4>
               </div>
               <div class="option">
-                <div class="attendance-icon attendance-absent_with_response"></div><h4 class="small-link">Absent With Response</h4>
+                <div class="attendance-icon attendance-absent_with_response"></div><h4 class="medium-link">Absent With Response</h4>
               </div>
             </div>
-            <%= link_to "#{student.first_name} #{student.last_name}", student_path(student.id, course_id: facade.course.id), class:"small-link" %>
+            <%= link_to "#{student.first_name} #{student.last_name}", student_path(student.id, course_id: facade.course.id), class:"medium-link" %>
             <div class="smaller-grey">
               #<%= student.student_id %>
             </div>
@@ -44,6 +46,17 @@
     </div>
   </div>
   <div class="dynamic-container">
+    <div class="dynamic">
+      <h3 class="grey-heading">Statistics?</h3>
+    </div>
+  </div>
+</div>
+<div class="show-hide-container">
+  <h5 class='show-grouping'>&DownArrowBar; Show Grouping &DownArrowBar;</h5>
+  <h5 class='hide-grouping'>&UpArrowBar; Hide Grouping &UpArrowBar;</h5>
+</div>
+<div class="banner grouping-banner">
+  <div class="dynamic-container-wide">
     <div class="dynamic">
       <div class="grouping">
         <h3>Grouping</h3>
@@ -75,6 +88,7 @@
           </script>
         </div>
       </div>
+
     </div>
   </div>
 </div>
@@ -85,7 +99,7 @@
   $('.current').on('click', function(event) {
     $(event.target).next().slideToggle();
   });
-  $('.student-card').mouseleave(
+  $('.student-container').mouseleave(
   function(event) {
     $('.attendance-options').slideUp();
   });
@@ -96,6 +110,7 @@
     var course = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id;
     updateAttendance(id, course, attendance);
     showUpdatedAttendance(id, course, attendance);
+    $('.attendance-options').slideUp();
   });
 
   var updateAttendance = function(id, course, attendance) {
@@ -111,4 +126,21 @@
       $(`div.course-card div#${id}.student-card div.current`).remove();
       $(`div.course-card div#${id}.student-card`).prepend(`<div class="attendance-icon current attendance-${attendance}"></div>`);
     };
+</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.grouping-banner').hide();
+    $('.hide-grouping').hide();
+  });
+  $('.show-grouping').on('click', function(event) {
+    $('.grouping-banner').slideDown();
+    $('.hide-grouping').slideDown();
+    $('.show-grouping').slideUp();
+  })
+  $('.hide-grouping').on('click', function(event) {
+    $('.grouping-banner').slideUp();
+    $('.hide-grouping').slideUp();
+    $('.show-grouping').slideDown();
+    $(window).scrollTo('100px');
+  })
 </script>
