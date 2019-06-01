@@ -1,7 +1,5 @@
 # Here To Learn
 ## Empowering teachers to help students reach their fullest potential.
-
-### Description
  Here to Learn is a Rails application that tracks vital statistics, collects student and teacher input, uses machine learning to predict test outcomes and highlights students in need of extra attention.
 
  The Rails application works with a Django application that has trained a machine learning model on over 5000 data points to predict test outcomes based on eating and sleeping habits in order to assist students reach their full potential.
