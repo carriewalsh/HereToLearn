@@ -1,13 +1,12 @@
 # Here To Learn
 ## Here To Learn is here to empower teachers to assist students reach their full potential
 ### Description
-```
-Here to Learn is a Rails application that tracks vital statistics, collecting student and teacher input, using machine learning to predict test outcomes and indicate students in need of extra attention.
+ Here to Learn is a Rails application that tracks vital statistics, collects student and teacher input, uses machine learning to predict test outcomes and highlights students in need of extra attention.
 
-The Rails application works with a Django application that has trained a machine learning model on over 5000 data points to predict test outcomes based on eating and sleeping habits in order to assist students reach their full potential.
+ The Rails application works with a Django application that has trained a machine learning model on over 5000 data points to predict test outcomes based on eating and sleeping habits in order to assist students reach their full potential.
 
-In addition, the Rails application works with the Surveys application which is a stand alone Sinatra application built in the spirit of Service Oriented Architecture (SOA) and stores survey information gathered from students.
-```
+ In addition, the Rails application works with the Surveys application which is a stand alone Sinatra application built in the spirit of Service Oriented Architecture (SOA) and stores survey information gathered from students.
+
 ### Goals
 ```
 -assist in learning
@@ -50,16 +49,14 @@ rails generate rspec:install
 bundle exec rspec
 ```
 ### Tech Stack
-```
--Javascript
--jQuery
--Chart JS
--Python
--pandas
--scikit-learn
--NumPy
--django
--Sinatra
--Ruby on Rails
--Redis
-```
+* Javascript
+ - jQuery
+ - Chart JS
+* Python
+ - pandas/NumPy
+ - scikit-learn
+ - django
+* Ruby
+ - Sinatra
+ - Ruby on Rails
+ - Redis
