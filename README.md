@@ -52,13 +52,13 @@ bundle exec rspec
 ```
 ### Tech Stack
 * Javascript
- - jQuery
- - Chart JS
+    - jQuery
+    - Chart JS
 * Python
- - pandas/NumPy
- - scikit-learn
- - django
+    - pandas/NumPy
+    - scikit-learn
+    - django
 * Ruby
- - Sinatra
- - Ruby on Rails
- - Redis
+    - Sinatra
+    - Ruby on Rails
+    - Redis
