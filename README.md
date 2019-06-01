@@ -1,5 +1,5 @@
 # Here To Learn
-## Here To Learn empowers teachers to help students reach their fullest potential.
+## Empowering teachers to help students reach their fullest potential.
 
 ### Description
  Here to Learn is a Rails application that tracks vital statistics, collects student and teacher input, uses machine learning to predict test outcomes and highlights students in need of extra attention.
