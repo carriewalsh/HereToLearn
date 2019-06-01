@@ -6,20 +6,28 @@
 
  In addition, the Rails application works with the Surveys application which is a stand alone Sinatra application built in the spirit of Service Oriented Architecture (SOA) and stores survey information gathered from students.
 
+### Contributing
+* [Blake Enyart](https://github.com/blake-enyart) - Developed the [Machine Learning Microservice](https://github.com/blake-enyart/heretolearn_django) django app
+* [Carrie Walsh](https://github.com/carriewalsh) - Developed and designed the main [Here To Learn](https://github.com/carriewalsh/HereToLearn) Ruby on Rails app
+* [Jennica Stiehl](https://github.com/JennicaStiehl) - Developed and designed the [Surveys](https://github.com/JennicaStiehl/surveys) Sinatra app
+* [William Peterson](https://github.com/wipegup) - Oversaw Machine Learning Microservice development and Rails app attendance through websockets
+* [Trevor Nodland](https://github.com/tnodland) - Assisted in Rails app design and dockerization
+
 ### Goals
-```
--assist in learning
--assess student needs
--successfully send communication between three separate apps
-```
+* Assist in learning
+* Assess student needs
+* Auccessfully send communication between three separate apps
+
 ### Configuration
-```bundle install
+```
+bundle install
  ```
 ### Database initialization
-```rake db:{create,migration,seed}
+```
+rake db:{create,migration,seed}
 ```
 ### Getting Started/Requirements/Prerequisites/Dependencies
-```Ruby version: ruby 2.4.1
+```Ruby version: 2.4.1
 ```
 ### Locations/Where to Find the applications
 #### Here To Learn
@@ -35,13 +43,8 @@ production: https://aqueous-caverns-33840.herokuapp.com
 production: http://lit-fortress-28598.herokuapp.com/
 ```
 ### Versioning
-```v1  5/30/2019
-```
-### Contributing
-```https://github.com/blake-enyart/heretolearn_django
-https://github.com/carriewalsh/HereToLearn
-https://github.com/JennicaStiehl/surveys
-```
+* v1 - 5/30/2019
+
 ### Testing
 ```
 rails generate rspec:install
