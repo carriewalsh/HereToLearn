@@ -1,16 +1,38 @@
 class Student::ResponseController < ApplicationController
   def create
     # Submit to API with post
-    post_responses
-    attendance_record = find_attendance
-    attendance_record.attendance = attendance_status if attendance_status
-    attendance_record.save
+    binding.pry
+    if session[:student_id]
+      post_responses
 
-    ActionCable.server.broadcast 'attendance_channel',
-                                  student_id: session[:student_id],
-                                  attendance: attendance_record.attendance,
-                                  course_id: session[:course_id]
+      attendance_record = find_attendance
 
+      ActionCable.server.broadcast 'attendance_channel',
+                                    student_id: session[:student_id],
+                                    attendance: attendance_record.attendance,
+                                    course_id: session[:course_id]
+
+    elsif session[:student_name]
+      student  = Student.create(
+        first_name: "Guest",
+        last_name: session[:student_name],
+        id: (Student.count + 1),
+        google_id: SecureRandom.hex(2),
+        student_id: SecureRandom.hex(2)
+      )
+      session[:student_id] = student.id
+      student.courses << Course.find(session[:course_id])
+      attendance_record = find_attendance
+
+      ActionCable.server.broadcast 'attendance_channel',
+        student_id: session[:student_id], student_name: session[:student_name],
+        attendance: attendance_record.attendance, course_id: session[:course_id]
+
+      post_responses
+
+    else
+      redirect_to welcome_path
+    end
 
     flash[:info] = "Thank You!"
     redirect_to student_completed_survey_path
@@ -45,9 +67,17 @@ class Student::ResponseController < ApplicationController
 
   def find_attendance
     time_range = (now.beginning_of_day..now)
-    Attendance.find_by(student_id: session[:student_id],
+    attendance = Attendance.find_by(student_id: session[:student_id],
                        course_id: session[:course_id],
                        created_at: time_range)
+
+    unless attendance
+      attendance = Attendance.create(student_id: session[:student_id], course_id: session[:course_id])
+    end
+    attendance.attendance = attendance_status if attendance_status
+    attendance.save
+
+    attendance
   end
 # 'https://aqueous-caverns-33840.herokuapp.com/api/v1/'
   def post_responses( domain = 'https://aqueous-caverns-33840.herokuapp.com/api/v1/', endpoint = 'responses')
