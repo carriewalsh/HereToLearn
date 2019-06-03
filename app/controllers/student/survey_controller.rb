@@ -8,8 +8,13 @@ class Student::SurveyController < ApplicationController
       redirect_to student_class_code_path
 
     else
-      flash[:info] = "You are not registered in our system, please contact your teacher"
-      redirect_to student_unregistered_path
+      name = request.env["omniauth.auth"][:info][:name]
+      session[:student_name] = name
+
+      flash[:info] = "Hello #{name}"
+      redirect_to stduent_class_code_path
+      # flash[:info] = "You are not registered in our system, please contact your teacher"
+      # redirect_to student_unregistered_path
     end
 
   end
