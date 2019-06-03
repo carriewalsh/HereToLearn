@@ -89,7 +89,7 @@
   $(document).ready(function() {
     $('.attendance-options').hide();
   });
-  $('.student-card').on('click', '.current', function(event) {
+  $('.roster-student-card').on('click', '.current', function(event) {
     $(event.target).next().slideToggle();
   });
   $('.student-container').mouseleave(
@@ -116,9 +116,21 @@
     };
 
     var showUpdatedAttendance = function(id, course, attendance) {
-      $(`div.course-card div#${id}.student-card div.current`).remove();
-      $(`div.course-card div#${id}.student-card`).prepend(`<div class="attendance-icon current attendance-${attendance}"></div>`);
+      var url = window.location.href.split("/");
+      var course_id = url[url.length - 1];
+      if (course == course_id) {
+        $(`div#${id}.roster-student-card div.current`).remove();
+        $(`div#${id}.roster-student-card`).prepend(`<div class="attendance-icon current attendance-${attendance}"></div>`);
+      };
     };
+
+    var addAttendance = function (id, name, course, attendance){
+      var url = window.location.href.split("/");
+      var course_id = url[url.length - 1];
+      if (course == course_id) {
+          // Need to add in a `roster-student-card`
+      }
+    }
 </script>
 <script type="text/javascript">
   $(document).ready(function() {
