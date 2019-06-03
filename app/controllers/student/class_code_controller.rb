@@ -1,12 +1,17 @@
 class Student::ClassCodeController < ApplicationController
   def new
+    unless session[:student_id] || session[:student_name]
+      flash[:error] = "Please Log in with Google"
+      redirect_to welcome_path
+    end
+
   end
 
   def create
     course = course_from_code(params[:code])
     student = Student.find(session[:student_id])
 
-    if course && student.courses.include?(course)
+    if course #&& student.courses.include?(course)
       session[:course_id] = course.id
 
       redirect_to student_survey_path
