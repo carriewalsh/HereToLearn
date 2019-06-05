@@ -925,8 +925,12 @@ footer {
 .graph-descriptor{
   width: 50%;
   padding: 25px;
-  line-height: 2;
-  font-size: 20px;
+  line-height: 1.5;
+  font-size: 18px;
+}
+
+.graph-descriptor b {
+  font-weight: bolder;
 }
 
 .graph-card img {
