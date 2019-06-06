@@ -7,7 +7,7 @@
 ## Empowering teachers to help students reach their fullest potential.
  [Here to Learn](https://young-anchorage-86985.herokuapp.com) is a Rails application in production on [Heroku](https://www.heroku.com/) that tracks vital statistics, collects student and teacher input, uses machine learning to predict test outcomes and highlights students in need of extra attention.
 
- Here To Learn works with a Django application that utilizes trained a machine learning model developed [here](https://github.com/blake-enyart/heretolearn_django/blob/master/jupyter_notebook/ml-generator.ipynb) on over 5000 data points to predict test outcomes based on eating and sleeping habits.
+ Here To Learn works with a [Django application](http://lit-fortress-28598.herokuapp.com/) that utilizes trained a machine learning model developed [here](https://github.com/blake-enyart/heretolearn_django/blob/master/jupyter_notebook/ml-generator.ipynb) on over 5000 data points to predict test outcomes based on eating and sleeping habits.
 
  In addition, the Rails application works with the [Surveys](https://aqueous-caverns-33840.herokuapp.com) application which is a stand alone Sinatra application built in the spirit of Service Oriented Architecture (SOA) and stores survey information gathered from students.
 
