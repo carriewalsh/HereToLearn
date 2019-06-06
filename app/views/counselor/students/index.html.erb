@@ -1,17 +1,74 @@
-<section class='graph-container'>
-  <div class="graph-card">
-    <img src="/algorithm_compare_plot.png" class="graph-picture">
-    <p class="graph-descriptor">This is some text ot describe the graphs This is some text ot describe the graphs This is some text ot describe the graphs This is some text ot describe the graphs </p>
+<div class="banner">
+  <div class="dynamic-container">
+    <div class="dynamic">
+      <div class="text-container">
+        <h3 class="grey-heading">9th Grade</h3>
+        <div class="student-container">
+          <% facade.students_9.each do |student| %>
+          <div class="student-card" id=<%= student.id %>>
+            <%= link_to "#{student.first_name} #{student.last_name}", counselor_student_path(student.id), class:"small-link" %>
+            <div class="smaller-grey">
+              #<%= student.student_id %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
+  <div class="dynamic-container">
+    <div class="dynamic">
+      <div class="text-container">
+        <h3 class="grey-heading">10th Grade</h3>
+        <div class="student-container">
+          <% facade.students_10.each do |student| %>
+          <div class="student-card" id=<%= student.id %>>
+            <%= link_to "#{student.first_name} #{student.last_name}", counselor_student_path(student.id), class:"small-link" %>
+            <div class="smaller-grey">
+              #<%= student.student_id %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-  <div class="graph-card">
-    <img src="/residuals_plot.png" class="graph-picture">
-    <p class="graph-descriptor">This is some text ot describe the graphs This is some text ot describe the graphs This is some text ot describe the graphs This is some text ot describe the graphs </p>
+<div class="banner">
+  <div class="dynamic-container">
+    <div class="dynamic">
+      <div class="text-container">
+        <h3 class="grey-heading">11th Grade</h3>
+        <div class="student-container">
+          <% facade.students_11.each do |student| %>
+          <div class="student-card" id=<%= student.id %>>
+            <%= link_to "#{student.first_name} #{student.last_name}", counselor_student_path(student.id), class:"small-link" %>
+            <div class="smaller-grey">
+              #<%= student.student_id %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="graph-card">
-    <img src="/joint_plot.png" class="graph-picture">
-    <p class="graph-descriptor">This is some text ot describe the graphs This is some text ot describe the graphs This is some text ot describe the graphs This is some text ot describe the graphs </p>
+  <div class="dynamic-container">
+    <div class="dynamic">
+      <div class="text-container">
+        <h3 class="grey-heading">12th Grade</h3>
+        <div class="student-container">
+          <% facade.students_12.each do |student| %>
+          <div class="student-card" id=<%= student.id %>>
+            <%= link_to "#{student.first_name} #{student.last_name}", counselor_student_path(student.id), class:"small-link" %>
+            <div class="smaller-grey">
+              #<%= student.student_id %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-</section>
+</div>

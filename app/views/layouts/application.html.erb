@@ -51,6 +51,9 @@
                 </li>
                 <% elsif current_user.role == 'counselor' %>
                 <li>
+                  <%= link_to "Students", counselor_students_path, class:"nav-button", id: current_id?(dashboard_path) %>
+                </li>
+                <li>
                   <%= link_to "Dashboard", counselor_dashboard_path, class:"nav-button", id: current_id?(dashboard_path) %>
                 </li>
                 <% end %>
@@ -68,7 +71,7 @@
         <div class="logged-in-as">
           <h3><%= "Logged in as #{current_user.first_name} #{current_user.last_name}"  %>
           </h3>
-          
+
         </div>
       <% end %>
       <% if !flash.empty? %>
