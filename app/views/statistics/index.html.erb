@@ -13,6 +13,9 @@
 <br>
 <div class="banner">
   <% facade.students.each do |student| %>
+  <script type="text/javascript">
+    window.onload = getStudentData(<%= student.id %>)
+  </script>
   <div class="dynamic-container">
     <div class="dynamic thin">
       <div class="thin student-card" id="attendance-<%= student.id %>">
@@ -21,40 +24,15 @@
           #<%= student.student_id %>
         </div>
       </div>
+
       <div class="predicted-score">
         <h2>Predicted Score: <div id=<%= "predicted-score-#{student.id}" %>></div></h2>
       </div>
       <div class="student-chartjs food-chart">
         <canvas id='<%= "foodchart-#{student.id}" %>'></canvas>
-        <script>
-          var url = `https://lit-fortress-28598.herokuapp.com/machinelearning/results/?student_id=${<%= student.id %>}`
-          var rawData = fetch(url)
-          .then(function(response) {
-            return response.json();
-          })
-          .then(function(myJson) {
-            return myJson;
-          });
-
-          rawData.then(function(json) {
-            var data = Object.values(json.meals);
-            var labels = Object.keys(json.meals);
-            buildChart(data, labels, `foodchart-${<%= student.id %>}`, 'Weekly Food (%)');
-          });
-
-        </script>
       </div>
       <div class="student-chartjs sleep-chart">
         <canvas id='<%= "sleepchart-#{student.id}" %>'></canvas>
-        <script>
-          rawData.then(function(json) {
-            var data = Object.values(json.sleep_quality);
-            var labels = Object.keys(json.sleep_quality);
-            var ctx = document.getElementById(`predicted-score-${<%= student.id %>}`);
-            ctx.appendChild(document.createTextNode(json.score));
-            buildChart(data, labels, `sleepchart-${<%= student.id %>}`, 'Weekly Sleep (%)');
-          });
-        </script>
       </div>
     </div>
   </div>
