@@ -1,5 +1,7 @@
 # Here To Learn
-
+<p align="center">
+ <img src="media/README/landing.png" width="600" height="auto"/>
+</p>
 ## Empowering teachers to help students reach their fullest potential.
  [Here to Learn](https://young-anchorage-86985.herokuapp.com) is a Rails application in production on [Heroku](https://www.heroku.com/) that tracks vital statistics, collects student and teacher input, uses machine learning to predict test outcomes and highlights students in need of extra attention.
 
@@ -35,14 +37,6 @@ bundle exec rspec
 * [RSpec](http://rspec.info/)
 
 ### Tech Stack
-* Javascript
-    - jQuery
-    - Chart JS
-* Python
-    - pandas/NumPy
-    - scikit-learn
-    - django
-* Ruby
-    - Sinatra
-    - Ruby on Rails
-    - Redis
+<p align="center">
+ <img src="media/README/tech_stack.png" width="600" height="auto"/>
+</p>
