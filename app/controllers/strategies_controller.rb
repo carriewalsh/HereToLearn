@@ -29,6 +29,7 @@ class StrategiesController < ApplicationController
     if current_user.role == 'teacher'
       redirect_to student_path(strategy.student_id, course_id: params[:course_id], anchor: 'strategies')
     elsif current_user.role == 'counselor'
+      binding.pry
       redirect_to counselor_dashboard_path
     end
   end
