@@ -60,4 +60,10 @@ Rails.application.routes.draw do
     end
   end
 
+  # namespace :guest do
+    get '/guest', to:'guest#index'
+    # get '/guest/dashboard', to: ''
+    # get '/guest/counselor'
+  # end
+
 end

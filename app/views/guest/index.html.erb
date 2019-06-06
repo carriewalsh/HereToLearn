@@ -1,0 +1,87 @@
+
+    <div class="statistics">
+      <h3 class="grey-heading">Thanks for visiting our site</h3>
+      <br>
+      <p class="about-paragraph">
+        Here is a selection of screenshots of various teacher, counselor, and student pages.
+      </p>
+    </div>
+    <hr>
+    <br>
+<div class="dynamic-container">
+  <div class="dynamic">
+    <div class="statistics">
+      <h3 class="grey-heading">Teacher Dashboard Page</h3>
+      <br>
+      <p class="about-paragraph">
+        What a teacher sees when they log in - a view of their classes and students. Icons next to student names auto-update when students complete their daily survey. The teacher can also click on the icon to update it themselves.
+      </p>
+      <%= image_tag("teacher_dashboard.png", class:'screenshot') %>
+    </div>
+  </div>
+</div>
+
+<div class="dynamic-container">
+  <div class="dynamic">
+    <div class="statistics">
+      <h3 class="grey-heading">Student Show Page</h3>
+      <br>
+      <p class="about-paragraph">
+        Page for an individual student - includes prediction graphs, student statistics and schedule, attendance calendar and graph, and successful strategies.
+      </p>
+      <%= image_tag("student_show_1.png", class:'screenshot') %>
+      <%= image_tag("student_show_2.png", class:'screenshot') %>
+      <%= image_tag("student_show_3.png", class:'screenshot') %>
+      <hr>
+      <h3 class="grey-heading">Strategies</h3>
+      <br>
+      <p>
+        Here is the flow path for viewing and adding strategies. Teachers can edit or delete strategies they have written.
+      </p>
+      <%= image_tag("student_show_4.png", class:'screenshot') %>
+      <p class="about-paragraph">
+        This is the pop-up for teachers to enter successful strategies for a student. The text will be run through a sentiment analyzer and any negative strategies will be flagged and sent to the student's counselor for review.
+      </p>
+      <%= image_tag("student_show_5.png", class:'screenshot') %>
+    </div>
+  </div>
+</div>
+
+<div class="dynamic-container">
+  <div class="dynamic">
+    <div class="statistics">
+      <h3 class="grey-heading">Class Statistics Page</h3>
+      <br>
+      <p class="about-paragraph">
+        Class page where teacher can see daily quiz data for each student and the predicted test score for that week.
+      </p>
+      <%= image_tag("class_statistics.png", class:'screenshot') %>
+    </div>
+  </div>
+</div>
+
+<div class="dynamic-container">
+  <div class="dynamic">
+    <div class="statistics">
+      <h3 class="grey-heading">Counselor Metrics Page</h3>
+      <br>
+      <p class="about-paragraph">
+        This page shows the characteristics about the machine learning model used to predict student test scores. This allows counselors to better understand the limitations of the model and where the strengths of this model are for helping students.
+      </p>
+      <%= image_tag("counselor_metrics.png", class:'screenshot') %>
+    </div>
+  </div>
+</div>
+
+<div class="dynamic-container">
+  <div class="dynamic">
+    <div class="statistics">
+      <h3 class="grey-heading">Student Daily Quiz Page</h3>
+      <br>
+      <p class="about-paragraph">
+        Student-facing page for their daily quiz. Data from this quiz gets sent to the Django app to be processed through the machine learning algorithm. Future functionality can include content-related questions.
+      </p>
+      <%= image_tag("student_quiz_page.png", class:'screenshot') %>
+    </div>
+  </div>
+</div>
