@@ -35,6 +35,12 @@
           <%= link_to "Go To Login", student_auth_path, class: "survey-button" %>
         </div>
       </div>
+      <hr>
+      <div class="">
+        <div class="submit-container">
+          <%= link_to "View site as Guest", guest_path, class:'form-button' %>
+        </div>
+      </div>
       <% else %>
         <ul class ="welcome-course-container">
           <% current_user.courses.each do |course| %>
