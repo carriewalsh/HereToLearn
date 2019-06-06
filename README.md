@@ -1,55 +1,39 @@
 # Here To Learn
+
 ## Empowering teachers to help students reach their fullest potential.
- Here to Learn is a Rails application that tracks vital statistics, collects student and teacher input, uses machine learning to predict test outcomes and highlights students in need of extra attention.
+ [Here to Learn](https://young-anchorage-86985.herokuapp.com) is a Rails application in production on [Heroku](https://www.heroku.com/) that tracks vital statistics, collects student and teacher input, uses machine learning to predict test outcomes and highlights students in need of extra attention.
 
- The Rails application works with a Django application that has trained a machine learning model on over 5000 data points to predict test outcomes based on eating and sleeping habits in order to assist students reach their full potential.
+ Here To Learn works with a Django application that utilizes trained a machine learning model developed [here](https://github.com/blake-enyart/heretolearn_django/blob/master/jupyter_notebook/ml-generator.ipynb) on over 5000 data points to predict test outcomes based on eating and sleeping habits.
 
- In addition, the Rails application works with the Surveys application which is a stand alone Sinatra application built in the spirit of Service Oriented Architecture (SOA) and stores survey information gathered from students.
+ In addition, the Rails application works with the [Surveys](https://aqueous-caverns-33840.herokuapp.com) application which is a stand alone Sinatra application built in the spirit of Service Oriented Architecture (SOA) and stores survey information gathered from students.
 
 ### Contributing
-* [Blake Enyart](https://github.com/blake-enyart) - Developed the [Machine Learning Microservice](https://github.com/blake-enyart/heretolearn_django) django app
 * [Carrie Walsh](https://github.com/carriewalsh) - Developed and designed the main [Here To Learn](https://github.com/carriewalsh/HereToLearn) Ruby on Rails app
-* [Jennica Stiehl](https://github.com/JennicaStiehl) - Developed and designed the [Surveys](https://github.com/JennicaStiehl/surveys) Sinatra app
 * [William Peterson](https://github.com/wipegup) - Oversaw machine learning microservice development and Rails app attendance through websockets
-* [Trevor Nodland](https://github.com/tnodland) - Assisted in Rails app design and dockerization
+* [Jennica Stiehl](https://github.com/JennicaStiehl) - Developed and designed the [Surveys](https://github.com/JennicaStiehl/surveys) Sinatra app
+* [Blake Enyart](https://github.com/blake-enyart) - Developed the [Machine Learning Microservice](https://github.com/blake-enyart/heretolearn_django) django app
+* [Trevor Nodland](https://github.com/tnodland) - Assisted in Rails app design, sentiment analysis, and dockerization
 
-### Goals
-* Assist in learning
-* Assess student needs
-* Auccessfully send communication between three separate apps
+### Rails App Dependencies
+* [Ruby 2.4.1](https://ruby-doc.org/core-2.4.1/)
+* [Rails 5.2.3](https://guides.rubyonrails.org/)
 
-### Configuration
+### Local Configuration
 ```
 bundle install
- ```
-### Database initialization
-```
 rake db:{create,migration,seed}
 ```
-### Getting Started/Requirements/Prerequisites/Dependencies
-```Ruby version: 2.4.1
+### Test Implementation
 ```
-### Locations/Where to Find the applications
-#### Here To Learn
-```development: localhost:3000
-production: https://young-anchorage-86985.herokuapp.com
-```
-#### Surveys
-```development: localhost:9393
-production: https://aqueous-caverns-33840.herokuapp.com
-```
-#### Machine Learning Microservice
-```development: localhost:8000
-production: http://lit-fortress-28598.herokuapp.com/
-```
-### Versioning
-* v1 - 5/30/2019
-
-### Testing
-```
-rails generate rspec:install
 bundle exec rspec
 ```
+
+### Notable Gems
+* [Fast JSON:API](https://github.com/Netflix/fast_jsonapi)
+* [Faraday](https://github.com/lostisland/faraday)
+* [Capybara](https://github.com/teamcapybara/capybara/blob/3.12_stable/README.md)
+* [RSpec](http://rspec.info/)
+
 ### Tech Stack
 * Javascript
     - jQuery
