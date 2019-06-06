@@ -51,10 +51,10 @@
                 </li>
                 <% elsif current_user.role == 'counselor' %>
                 <li>
-                  <%= link_to "Students", counselor_students_path, class:"nav-button", id: current_id?(dashboard_path) %>
+                  <%= link_to "Students", counselor_students_path, class:"nav-button", id: current_id?(counselor_students_path) %>
                 </li>
                 <li>
-                  <%= link_to "Dashboard", counselor_dashboard_path, class:"nav-button", id: current_id?(dashboard_path) %>
+                  <%= link_to "Dashboard", counselor_dashboard_path, class:"nav-button", id: current_id?(counselor_dashboard_path) %>
                 </li>
                 <% end %>
               <li>
