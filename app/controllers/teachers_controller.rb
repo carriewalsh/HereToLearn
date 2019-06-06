@@ -1,6 +1,6 @@
 class TeachersController < ApplicationController
-  before_action :require_teacher!
-  
+  before_action :current_user
+
   def show
   end
 

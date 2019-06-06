@@ -3,8 +3,20 @@ class CounselorFacade
     @counselor = counselor
   end
 
-  def students
-    Student.all
+  def students_9
+    Student.where(grade_level: 9)
+  end
+
+  def students_10
+    Student.where(grade_level: 10)
+  end
+
+  def students_11
+    Student.where(grade_level: 11)
+  end
+
+  def students_12
+    Student.where(grade_level: 12)
   end
 
   def flagged_strats

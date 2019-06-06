@@ -1,42 +1,76 @@
-<section class='graph-container'>
-  <div class="graph-card">
-    <img src="/algorithm_compare_plot.png" class="graph-picture">
-    <p class="graph-descriptor">
-      <b>Figure 1.</b> Algorithmic performance of 4 different regression
-      estimators in a supervised learning scenario. Each estimator has predicted
-      test scores based on eating and sleeping data for each student for the
-      previous 10 days. All trials were performed in RandomSearchCV and scored
-      based on the default scoring metric provided for each respective estimator
-      in sklearn. Estimators chosen for hyperparameter tuning were:
-      AdaBoosted Regressor (ABR), Random Forest Regressor (RFR),
-      Gradient Boosted Regressor (GBR), and Extra Trees Regressor (ETR).
-      The best model and associated hyperparameters were then used to predict
-      test scores for the entire student sample set.
-    </p>
-  </div>
 
+<div class="banner">
+  <div class="dynamic-container">
+    <div class="dynamic">
+      <div class="text-container">
+        <h3 class="grey-heading">9th Grade</h3>
+        <div class="student-container">
+          <% facade.students_9.each do |student| %>
+          <div class="student-card" id=<%= student.id %>>
+            <%= link_to "#{student.first_name} #{student.last_name}", counselor_student_path(student.id), class:"small-link" %>
+            <div class="smaller-grey">
+              #<%= student.student_id %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
 
-  <div class="graph-card">
-    <img src="/residuals_plot.png" class="graph-picture">
-    <p class="graph-descriptor">
-      <b>Figure 2.</b> Residuals plot demonstrating the error distribution
-       for predicted student test scores as compared to actual student test scores
-       across the test grade spectrum. Predictions were based on eating and
-       sleeping habits from the previous 10 days and the estimator used is the
-       Gradient Boosted Regressor model chosen from <br><b>Fig. 1.</b>
-    </p>
   </div>
+  <div class="dynamic-container">
+    <div class="dynamic">
+      <div class="text-container">
+        <h3 class="grey-heading">10th Grade</h3>
+        <div class="student-container">
+          <% facade.students_10.each do |student| %>
+          <div class="student-card" id=<%= student.id %>>
+            <%= link_to "#{student.first_name} #{student.last_name}", counselor_student_path(student.id), class:"small-link" %>
+            <div class="smaller-grey">
+              #<%= student.student_id %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <div class="graph-card">
-    <img src="/joint_plot.png" class="graph-picture">
-    <p class="graph-descriptor">
-      <b>Figure 3.</b> Different presentation of the residuals plot from
-      <b>Fig. 2</b> showcasing the overall distribution of grade predictions
-      as compared to actual grades based on eating and sleeping data for the
-      last 10 days for a student. Data along the red diagonal indicates 100%
-      accuracy by the model. The histogram along the y-axis is predicted test
-      scores while the histogram along the x-axis is actual test scores for
-      each student.
-    </p>
+<div class="banner">
+  <div class="dynamic-container">
+    <div class="dynamic">
+      <div class="text-container">
+        <h3 class="grey-heading">11th Grade</h3>
+        <div class="student-container">
+          <% facade.students_11.each do |student| %>
+          <div class="student-card" id=<%= student.id %>>
+            <%= link_to "#{student.first_name} #{student.last_name}", counselor_student_path(student.id), class:"small-link" %>
+            <div class="smaller-grey">
+              #<%= student.student_id %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-</section>
+  <div class="dynamic-container">
+    <div class="dynamic">
+      <div class="text-container">
+        <h3 class="grey-heading">12th Grade</h3>
+        <div class="student-container">
+          <% facade.students_12.each do |student| %>
+          <div class="student-card" id=<%= student.id %>>
+            <%= link_to "#{student.first_name} #{student.last_name}", counselor_student_path(student.id), class:"small-link" %>
+            <div class="smaller-grey">
+              #<%= student.student_id %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

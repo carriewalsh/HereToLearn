@@ -1,10 +1,11 @@
 <div class="date-container">
   <h2 class="date"><%= date %></h2>
 </div>
+<br>
 <div class="stats-header">
   <h2><%= link_to "View machine accuracy information", counselor_machine_path, class:'form-button' %></h2>
 </div>
-
+<br>
 <div class="banner">
   <div class="dynamic-container">
     <div class="dynamic">
@@ -18,24 +19,6 @@
         </section>
         <% end %>
       </section>
-    </div>
-
-  </div>
-  <div class="dynamic-container">
-    <div class="dynamic">
-      <div class="text-container">
-        <div class="student-container">
-          <% facade.students.each do |student| %>
-          <div class="student-card" id=<%= student.id %>></div>
-          <%= link_to "#{student.first_name} #{student.last_name}", counselor_student_path(student.id), class:"small-link" %>
-          <div class="smaller-grey">
-            #<%= student.student_id %>
-          </div>
-          <% end %>
-        </div>
-
-      </div>
-      </div>
     </div>
   </div>
 </div>
