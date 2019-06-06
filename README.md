@@ -1,7 +1,7 @@
 # Here To Learn
 
 <p align="center">
- <img src="media/README/landing.png" width="600" height="auto"/>
+ <img src="media/README/landing_page.png" width="600" height="auto"/>
 </p>
 
 ## Empowering teachers to help students reach their fullest potential.
