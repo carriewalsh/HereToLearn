@@ -39,6 +39,7 @@ bundle exec rspec
 * [RSpec](http://rspec.info/)
 
 ### Tech Stack
+
 <p align="center">
  <img src="media/README/tech_stack.png" width="600" height="auto"/>
 </p>
