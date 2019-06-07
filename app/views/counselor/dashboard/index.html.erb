@@ -6,19 +6,27 @@
   <h2><%= link_to "View machine accuracy information", counselor_machine_path, class:'form-button' %></h2>
 </div>
 <br>
-<div class="banner">
-  <div class="dynamic-container">
-    <div class="dynamic">
-      <section class='flagged-strategies'>
-        <h3>Strategies we've flagged as "potentially unhelpful":</h3>
-        <% facade.flagged_strats.each do |strat| %>
-        <section class='strategy'>
-          <p><%= strat.strategy %></p>
-          <%= button_to 'Delete this strategy', deactivate_strategy_path(strat), method: :patch %>
-          <%= button_to "Approve this strategy", approve_strategy_path(strat), method: :patch %>
+<hr>
+<br>
+<div class="dynamic-container">
+  <div class="dynamic">
+    <h3 class="grey-heading">Strategies we've flagged as "potentially unhelpful":</h3>
+    <br>
+    <div class="counselor-strategies">
+      <br>
+      <% facade.flagged_strats.each do |strat| %>
+        <section class='flagged-strategies'>
+          <h3>by: <%= strat.teacher.name %></h3>
+          <br>
+          <section class='submit-container'>
+            <p><%= strat.strategy %></p>
+            <br>
+            <%= link_to 'Delete this strategy', deactivate_strategy_path(strat), method: :patch, class:'form-button' %>
+            <%= link_to "Approve this strategy", approve_strategy_path(strat), method: :patch, class:'form-button' %>
+          </section>
         </section>
-        <% end %>
-      </section>
+      <% end %>
+
     </div>
   </div>
 </div>

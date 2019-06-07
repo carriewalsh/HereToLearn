@@ -959,6 +959,22 @@ footer {
   width: 80%;
 }
 
+.counselor-strategies {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flagged-strategies {
+  border: grey 1px solid;
+  padding: 15px;
+  margin: 10px;
+  width: 44%;
+}
+
+.flagged-strategies p {
+  line-height: 1.5;
+}
+
 #code {
   font-size: 24px;
 
