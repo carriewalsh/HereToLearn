@@ -1,6 +1,6 @@
-<section class='graph-container'>
+<div class='graph-container'>
   <div class="graph-card">
-    <img src="/algorithm_compare_plot.png" class="graph-picture">
+    <%= image_tag("algorithm_compare_plot.png", class: "graph-picture") %>
     <p class="graph-descriptor">
       <b>Figure 1.</b> Algorithmic performance of 4 different regression
       estimators in a supervised learning scenario. Each estimator has predicted
@@ -15,9 +15,8 @@
     </p>
   </div>
 
-
   <div class="graph-card">
-    <img src="/residuals_plot.png" class="graph-picture">
+    <%= image_tag("residuals_plot.png", class: "graph-picture") %>
     <p class="graph-descriptor">
       <b>Figure 2.</b> Residuals plot demonstrating the error distribution
        for predicted student test scores as compared to actual student test scores
@@ -28,7 +27,7 @@
   </div>
 
   <div class="graph-card">
-    <img src="/joint_plot.png" class="graph-picture">
+    <%= image_tag("joint_plot.png", class: "graph-picture") %>
     <p class="graph-descriptor">
       <b>Figure 3.</b> Different presentation of the residuals plot from
       <b>Fig. 2</b> showcasing the overall distribution of grade predictions
@@ -39,4 +38,14 @@
       each student.
     </p>
   </div>
-</section>
+</div>
+  <div class="graph-card-last">
+    <%= image_tag("distplot_comparison.png", class: "graph-picture") %>
+    <p class="graph-descriptor-last">
+      <b>Figure 4.</b> Kernel density estimation plots from <b>Fig. 3</b> overlaid
+      on each other to demonstrate the GBR model's tendency to favor predictions
+      more central to the actual test distribution. This illustrates the model's
+      tendency to neglect high and low test performance predictions given the current
+      dataset and variables provided.
+    </p>
+  </div>
