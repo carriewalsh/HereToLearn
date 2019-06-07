@@ -1,4 +1,4 @@
-<section class='graph-container'>
+<div class='graph-container'>
   <div class="graph-card">
     <%= image_tag("algorithm_compare_plot.png", class: "graph-picture") %>
     <p class="graph-descriptor">
@@ -38,4 +38,14 @@
       each student.
     </p>
   </div>
-</section>
+</div>
+  <div class="graph-card-last">
+    <%= image_tag("distplot_comparison.png", class: "graph-picture") %>
+    <p class="graph-descriptor-last">
+      <b>Figure 4.</b> Kernel density estimation plots from <b>Fig. 3</b> overlaid
+      on each other to demonstrate the GBR model's tendency to favor predictions
+      more central to the actual test distribution. This illustrates the model's
+      tendency to neglect high and low test performance predictions given the current
+      dataset and variables provided.
+    </p>
+  </div>

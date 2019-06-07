@@ -915,11 +915,24 @@ footer {
   color: #5fb0c4!important;
 }
 
+.graph-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 5px;
+  align-items: center;
+}
+
 .graph-card {
   width: 80%;
   margin: 20px;
   display: flex;
   align-items: center;
+}
+
+.graph-card img {
+  width: 55%;
+  height: 55%;
 }
 
 .graph-descriptor{
@@ -933,18 +946,25 @@ footer {
   font-weight: bolder;
 }
 
-.graph-card img {
-  width: 50%;
-  height: 50%;
-  // height: auto;
+.graph-card-last {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.graph-container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  padding: 5px;
-  align-items: center;
+.graph-card-last img {
+  width: 80%;
+  height: auto;
+}
+
+.graph-descriptor-last {
+  padding: 25px 0;
+  width: 80%;
+}
+
+.graph-descriptor-last b {
+  font-weight: bolder;
 }
 
 .stats-header {
