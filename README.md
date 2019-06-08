@@ -18,6 +18,11 @@
 * [Blake Enyart](https://github.com/blake-enyart) - Developed the [Machine Learning Microservice](https://github.com/blake-enyart/heretolearn_django) django app and chart.js integration
 * [Trevor Nodland](https://github.com/tnodland) - Assisted in Rails app design, sentiment analysis, and dockerization
 
+### Location of Apps in Production
+* [Here to Learn](https://young-anchorage-86985.herokuapp.com) - Rails app main integration
+* [Django application](http://lit-fortress-28598.herokuapp.com/) - Django based machine learning microservice
+* [Surveys](https://aqueous-caverns-33840.herokuapp.com) - Sinatra based database microservice
+
 ### Rails App Dependencies
 * [Ruby 2.4.1](https://ruby-doc.org/core-2.4.1/)
 * [Rails 5.2.3](https://guides.rubyonrails.org/)
@@ -26,10 +31,6 @@
 ```
 bundle install
 rake db:{create,migration,seed}
-```
-### Test Implementation
-```
-bundle exec rspec
 ```
 
 ### Notable Gems
