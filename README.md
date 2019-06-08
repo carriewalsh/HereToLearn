@@ -13,9 +13,9 @@
 
 ### Contributing
 * [Carrie Walsh](https://github.com/carriewalsh) - Developed and designed the main [Here To Learn](https://github.com/carriewalsh/HereToLearn) Ruby on Rails app
-* [William Peterson](https://github.com/wipegup) - Oversaw machine learning microservice development and Rails app attendance through websockets
+* [William Peterson](https://github.com/wipegup) - Oversaw machine learning microservice development and Rails app attendance functionality through websockets
 * [Jennica Stiehl](https://github.com/JennicaStiehl) - Developed and designed the [Surveys](https://github.com/JennicaStiehl/surveys) Sinatra app
-* [Blake Enyart](https://github.com/blake-enyart) - Developed the [Machine Learning Microservice](https://github.com/blake-enyart/heretolearn_django) django app
+* [Blake Enyart](https://github.com/blake-enyart) - Developed the [Machine Learning Microservice](https://github.com/blake-enyart/heretolearn_django) django app and chart.js integration
 * [Trevor Nodland](https://github.com/tnodland) - Assisted in Rails app design, sentiment analysis, and dockerization
 
 ### Rails App Dependencies
