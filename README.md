@@ -19,7 +19,7 @@
 * [Trevor Nodland](https://github.com/tnodland) - Assisted in Rails app design, sentiment analysis, and dockerization
 
 ### Location of Apps in Production
-* [Here to Learn](https://young-anchorage-86985.herokuapp.com) - Rails app main integration
+* [Here to Learn](https://young-anchorage-86985.herokuapp.com) - Rails based central app designed for user interface
 * [Django application](http://lit-fortress-28598.herokuapp.com/) - Django based machine learning microservice
 * [Surveys](https://aqueous-caverns-33840.herokuapp.com) - Sinatra based database microservice
 
