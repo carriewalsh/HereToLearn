@@ -157,7 +157,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (3.0.3)
-    puma (3.12.1)
+    puma (3.12.4)
     qtip2-jquery-rails (2.2.100)
       railties (>= 3.1)
     rack (2.0.7)
@@ -303,7 +303,7 @@ DEPENDENCIES
   omniauth-google-oauth2
   pg (>= 0.18, < 2.0)
   pry
-  puma (~> 3.11)
+  puma (~> 3.12)
   qtip2-jquery-rails (~> 2.2.100)
   rails (~> 5.2.3)
   redis (~> 4.0)
